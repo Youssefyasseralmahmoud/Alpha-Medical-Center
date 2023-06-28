@@ -12,7 +12,7 @@ class Reservations_services {
   Secury_storage secury = new Secury_storage();
 
   get_doctor_reservations(String id_doctor) async {
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("receptionist_token");
 
     // final Map<String, dynamic> data = {};
     // data['Key']="ID Personal";
@@ -32,7 +32,7 @@ class Reservations_services {
   }
 
   delete_patient_reservation(int id) async {
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("receptionist_token");
 
     // final Map<String, dynamic> data = {};
     // data['Key']="ID Personal";

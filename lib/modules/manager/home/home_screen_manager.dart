@@ -12,8 +12,47 @@ class Home_screen_manager extends StatelessWidget {
     Get.put(Home_screen_manager_controller());
     return GetBuilder<Home_screen_manager_controller>(builder: (controller) {
       return Scaffold(
+        // drawer: Drawer(
+        //   child: Custom_Drawer(),
+        // ),
         drawer: Drawer(
-          child: Custom_Drawer(),
+          child: ListView(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.settings,size: 30,color: StaticColor.primarycolor,),
+                  SizedBox(width: 5,),
+                  Text("قائمة الإعدادات",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+
+                ],
+              ),
+              Divider(),
+              SizedBox(height: 20,),
+              GestureDetector(
+                onTap: (){
+                  controller.logout();
+                },
+                child: Container(
+                  padding: EdgeInsets.all(8),
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height*0.09,
+                  decoration: BoxDecoration(
+                      color:StaticColor.primarycolor,
+                      borderRadius: BorderRadius.circular(20)
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(Icons.arrow_back_ios_new),
+                      Text("تسجيل الخروج",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
+
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
@@ -101,12 +140,12 @@ class Home_screen_manager extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(
-                          Icons.medication_outlined,
+                          Icons.add_circle_outline,
                           color: controller.currentpage == 3
                               ? StaticColor.primarycolor
                               : Colors.black,
                         ),
-                        Text("المرضى"),
+                        Text("قسم جديد"),
                       ],
                     ),
                   ),

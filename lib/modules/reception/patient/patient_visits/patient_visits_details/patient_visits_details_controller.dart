@@ -18,6 +18,7 @@ class Patient_visits_details_controller extends GetxController {
     statusRequest = handlingdata(response);
 
     if (StatusRequest.succes == statusRequest) {
+      data.clear();
       data.addAll(response['data']) ;
       print("response from patient controller");
       print(data);

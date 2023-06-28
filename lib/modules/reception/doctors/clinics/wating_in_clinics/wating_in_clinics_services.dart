@@ -9,15 +9,15 @@ class wating_in_clinics_services {
   wating_in_clinics_services(this.crud);
   Secury_storage secury = new Secury_storage();
 
-  get_all_doctors() async {
-    String? token = await secury.read("admin_token");
+  get_all_doctors(int id) async {
+    String? token = await secury.read("receptionist_token");
 
     // final Map<String, dynamic> data = {};
     // data['Key']="ID Personal";
     // data['Value']="02545164598162";
 
     var response = await crud.postdata(
-        Serverconfig.getalldoctor,
+        Serverconfig.getalldoctor+"?id=${id}",
 
         {
           "Authorization": bearer + " " + token.toString(),
@@ -25,6 +25,25 @@ class wating_in_clinics_services {
         }
     );
     print("response from patient_visits services");
+    print(response);
+    return response.fold((l) => l, (r) => r);
+  }
+  get_all_services_in_type(int id_type) async {
+    String? token = await secury.read("receptionist_token");
+
+    // final Map<String, dynamic> data = {};
+    // data['Key']="ID Personal";
+    // data['Value']="02545164598162";
+
+    var response = await crud.postdata(
+        Serverconfig.get_all_services_in_type_center+"?id=${id_type}",
+
+        {
+          "Authorization": bearer + " " + token.toString(),
+          "Accept": "application/json"
+        }
+    );
+    print("response from get all section services");
     print(response);
     return response.fold((l) => l, (r) => r);
   }

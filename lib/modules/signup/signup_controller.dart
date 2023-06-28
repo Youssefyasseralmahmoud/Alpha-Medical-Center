@@ -31,7 +31,10 @@ class SignupController extends GetxController{
    late var conf_pass;
    late var email;
    late var type;
-   register_services services =register_services(Get.find());
+   late int id_section;
+   List test_data_type_user=[];
+   List data_type_user=[];
+   register_services services =register_services(Get.find(),Get.find());
    StatusRequest? statusRequest;
    Secury_storage secury_storage = new Secury_storage();
    late var admin_token;
@@ -48,10 +51,41 @@ class SignupController extends GetxController{
        print("الحقول غير صالحة");
      }
    }
+   get_all_section() async {
+     statusRequest = StatusRequest.loading;
+     update();
+     var response = await services.get_all_section();
+     test_data_type_user.addAll(response['data']) ;
+     statusRequest = handlingdata(response);
+
+     if (StatusRequest.succes == statusRequest&& test_data_type_user.isNotEmpty) {
+       data_type_user.clear();
+       data_type_user.addAll(response['data']) ;
+       print("all type section is");
+       print(data_type_user);
+     }
+     else if(test_data_type_user.isEmpty) {
+       await Get.snackbar(
+         "تنبيه",
+         "لا يوجد اقسام لعرضهم",
+       );
+     }
+     else if (StatusRequest.failure == statusRequest) {
+       await Get.snackbar(
+         "تحذير",
+         "لا يوجد اقسام لعرضهم",
+       );
+     }
+     else {
+       Get.defaultDialog(title: " خطأ", content: Text("حدث خطا ما"));
+     }
+     update();
+   }
+
 
    register() async{
      if(type == "طبيب"){
-       type="doctor";
+       type="clinic";
      } else if(type=="أدمن"){
        type="Administration";
      }else if(type=="إسعاف"){
@@ -67,20 +101,25 @@ class SignupController extends GetxController{
        type="Manager";
      }
      else if(type=="ممرض"){
-       type="Nurse";
+       type="clinic";
      }
      else if(type=="أشعة"){
-     type="Radiographer";
+     type="xray";
      }
      else if(type=="إستقبال"){
-       type="Receptionist";
+       type="Reception";
      } else{
        type="Store";
      };
-     print("after translate type is ${type}");
+     data_type_user.forEach((name) {
+       if(name['Name']==type){
+         id_section=name['id'];
+       }
+     });
+     print("the id section from controller is ${id_section}");
      statusRequest=StatusRequest.loading;
      update();
-     var response =await services.register(username,password,name,surname,conf_pass,email,type);
+     var response =await services.register(username,password,name,surname,conf_pass,email,type,id_section);
      statusRequest=handlingdata(response);
 
      if(StatusRequest.succes==statusRequest){
@@ -91,62 +130,62 @@ class SignupController extends GetxController{
        //  print("tesst from login");
         // secury_storage.save("admin_token", admin_token);
          await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
-         Get.toNamed("/home_screen_reception");
+         Get.toNamed("/login");
 
        } else if (response['code']== 1 && response['data']['type'] == "doctor"){
            // doctor_token=response['data']['token'];
            // print("tesst from login");
            // secury_storage.save("doctor_token", doctor_token);
            await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
-           Get.toNamed("/HomeDoctor");
+           Get.toNamed("/login");
        }else if (response['code']== 1 && response['data']['type'] == "Ambulance"){
          // doctor_token=response['data']['token'];
          // print("tesst from login");
          // secury_storage.save("doctor_token", doctor_token);
          await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
-         Get.toNamed("/home_screen_ambulance");
+         Get.toNamed("/login");
        }else if (response['code']== 1 && response['data']['type'] == "Finance"){
          // doctor_token=response['data']['token'];
          // print("tesst from login");
          // secury_storage.save("doctor_token", doctor_token);
          await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
-         Get.toNamed("/home_screen_ambulance");
+         Get.toNamed("/login");
        }else if (response['code']== 1 && response['data']['type'] == "Laboratory"){
          // doctor_token=response['data']['token'];
          // print("tesst from login");
          // secury_storage.save("doctor_token", doctor_token);
          await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
-         Get.toNamed("/homelab");
+         Get.toNamed("/login");
        }else if (response['code']== 1 && response['data']['type'] == "Manager"){
          // doctor_token=response['data']['token'];
          // print("tesst from login");
          // secury_storage.save("doctor_token", doctor_token);
          await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
-         Get.toNamed("/Home_screen_manager");
+         Get.toNamed("/login");
        }else if (response['code']== 1 && response['data']['type'] == "Nurse"){
          // doctor_token=response['data']['token'];
          // print("tesst from login");
          // secury_storage.save("doctor_token", doctor_token);
          await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
-         Get.toNamed("/HomeNurse");
+         Get.toNamed("/login");
        }else if (response['code']== 1 && response['data']['type'] == "Radiographer"){
          // doctor_token=response['data']['token'];
          // print("tesst from login");
          // secury_storage.save("doctor_token", doctor_token);
          await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
-         Get.toNamed("/Homex_ray");
+         Get.toNamed("/login");
        }else if (response['code']== 1 && response['data']['type'] == "Administration"){
          // doctor_token=response['data']['token'];
          // print("tesst from login");
          // secury_storage.save("doctor_token", doctor_token);
          await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
-         Get.toNamed("/home_screen_reception");
+         Get.toNamed("/login");
        }else if (response['code']== 1 && response['data']['type'] == "Store"){
          // doctor_token=response['data']['token'];
          // print("tesst from login");
          // secury_storage.save("doctor_token", doctor_token);
          await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
-         Get.toNamed("/HomeNurse");
+         Get.toNamed("/login");
        }
        else{
          statusRequest=StatusRequest.failure;
@@ -158,7 +197,11 @@ class SignupController extends GetxController{
      }
      update();
    }
-
+@override
+  void onInit()async{
+   await get_all_section();
+    super.onInit();
+  }
 
 
 }

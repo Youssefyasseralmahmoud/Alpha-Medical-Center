@@ -86,7 +86,7 @@ class Add_Previous_medical_cond extends StatelessWidget {
                     const SizedBox(height: 30,),
                     TextFormField(
                       validator: (val){
-                        return  validinput(val!, 3, 20,"username");
+                        return  validinput(val!, 3, 20,"ill");
                       },
                       keyboardType: TextInputType.name,
                       onChanged: (val) {

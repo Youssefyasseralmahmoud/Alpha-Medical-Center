@@ -243,35 +243,35 @@ class Reservations extends StatelessWidget {
                                                           ],
                                                         ),
                                                       ),
-                                                      Container(
-                                                        margin: const EdgeInsets.only(
-                                                            bottom: 5),
-                                                        padding: EdgeInsets.all(8),
-                                                        width: MediaQuery.of(context)
-                                                            .size
-                                                            .width,
-                                                        height: 60,
-                                                        color: StaticColor.thirdgrey
-                                                            .withAlpha(30),
-                                                        child: Row(
-                                                          mainAxisAlignment:
-                                                          MainAxisAlignment.end,
-                                                          children: [
-                                                            const Text(" 8:29 :"),
-                                                            const Text(" توقيت الحجز",
-                                                                style: TextStyle(
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .bold)),
-                                                            Container(
-                                                              height: 50,
-                                                              width: 50,
-                                                              child: Image.asset(
-                                                                  "assets/images/time-management.png"),
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ),
+                                                      // Container(
+                                                      //   margin: const EdgeInsets.only(
+                                                      //       bottom: 5),
+                                                      //   padding: EdgeInsets.all(8),
+                                                      //   width: MediaQuery.of(context)
+                                                      //       .size
+                                                      //       .width,
+                                                      //   height: 60,
+                                                      //   color: StaticColor.thirdgrey
+                                                      //       .withAlpha(30),
+                                                      //   child: Row(
+                                                      //     mainAxisAlignment:
+                                                      //     MainAxisAlignment.end,
+                                                      //     children: [
+                                                      //       const Text(" 8:29 :"),
+                                                      //       const Text(" توقيت الحجز",
+                                                      //           style: TextStyle(
+                                                      //               fontWeight:
+                                                      //               FontWeight
+                                                      //                   .bold)),
+                                                      //       Container(
+                                                      //         height: 50,
+                                                      //         width: 50,
+                                                      //         child: Image.asset(
+                                                      //             "assets/images/time-management.png"),
+                                                      //       )
+                                                      //     ],
+                                                      //   ),
+                                                      // ),
                                                     ],
                                                   ),
                                                 )

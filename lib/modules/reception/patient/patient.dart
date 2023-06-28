@@ -96,7 +96,7 @@ class Patient extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20)
               ),
               child: Form(
-                key: controller.formstate,
+              //  key: controller.formstate,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [

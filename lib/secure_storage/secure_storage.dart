@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 class Secury_storage{
 
@@ -11,5 +13,7 @@ class Secury_storage{
   Future<String?> read (String key)async{
     return await storage.read(key: key);
   }
-
+  Future<Void?> delete ()async{
+     await storage.deleteAll();
+  }
 }

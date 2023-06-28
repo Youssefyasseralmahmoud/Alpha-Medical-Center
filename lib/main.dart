@@ -60,17 +60,33 @@ import 'package:project_after_update/modules/doctor/record/patientVisitRecord.da
 import 'package:project_after_update/modules/login/login.dart';
 import 'package:project_after_update/modules/manager/employee/employee.dart';
 import 'package:project_after_update/modules/manager/home/clinics_in_managment/Clinics_details_in_managment/Clinics_details_in_managment.dart';
-import 'package:project_after_update/modules/manager/home/clinics_in_managment/add_clinics/add_clinics.dart';
+import 'package:project_after_update/modules/manager/home/clinics_in_managment/Clinics_details_in_managment/add_clinics_services/add_clinics_service.dart';
+import 'package:project_after_update/modules/manager/home/clinics_in_managment/Clinics_details_in_managment/edit_clinics_services/edit_clinics_service.dart';
+import 'package:project_after_update/modules/manager/home/clinics_in_managment/add_clinics/add_type_clinics.dart';
 import 'package:project_after_update/modules/manager/home/clinics_in_managment/clinics_in_managment.dart';
 import 'package:project_after_update/modules/manager/home/clinics_in_managment/doctors_details_in_managment/doctors_details_in_managment.dart';
+import 'package:project_after_update/modules/manager/home/clinics_in_managment/edit_clinics_type_in_managment/edit_clinics_type.dart';
+import 'package:project_after_update/modules/manager/home/edit_section/edit_section_controller.dart';
+import 'package:project_after_update/modules/manager/home/edit_section/edit_the_section.dart';
 import 'package:project_after_update/modules/manager/home/home_manager.dart';
 import 'package:project_after_update/modules/manager/home/home_screen_manager.dart';
-import 'package:project_after_update/modules/manager/home/laboratory_in_managment/add_analysis/add_analysis.dart';
+import 'package:project_after_update/modules/manager/home/laboratory_in_managment/add_analysis/add_analysis_type.dart';
+import 'package:project_after_update/modules/manager/home/laboratory_in_managment/edit_analysis_type_in_managnent/edit_analysis_type.dart';
+import 'package:project_after_update/modules/manager/home/laboratory_in_managment/laboratory_center_services/add_laboratory_services/add_laboratory_services.dart';
+import 'package:project_after_update/modules/manager/home/laboratory_in_managment/laboratory_center_services/doctors_details_in_laboratory/doctors_details_in_laboratory.dart';
+import 'package:project_after_update/modules/manager/home/laboratory_in_managment/laboratory_center_services/edit_laboratory_service/edit_laboratory_service.dart';
+import 'package:project_after_update/modules/manager/home/laboratory_in_managment/laboratory_center_services/laboratory_center_services.dart';
 import 'package:project_after_update/modules/manager/home/laboratory_in_managment/laboratory_in_managment.dart';
+import 'package:project_after_update/modules/manager/home/new_section/add_new_section.dart';
 import 'package:project_after_update/modules/manager/home/storage_in_managment/storage_deatils_in_managment/storage_details_in_managment.dart';
 import 'package:project_after_update/modules/manager/home/storage_in_managment/storage_in_managment.dart';
-import 'package:project_after_update/modules/manager/home/x_ray_in_managment/add_x_ray/add_x_ray.dart';
+import 'package:project_after_update/modules/manager/home/x_ray_in_managment/add_x_ray/add_x_ray_type.dart';
+import 'package:project_after_update/modules/manager/home/x_ray_in_managment/edit_xray_type_in_managment/edit_xray_type.dart';
 import 'package:project_after_update/modules/manager/home/x_ray_in_managment/x_ray_in_managment.dart';
+import 'package:project_after_update/modules/manager/home/x_ray_in_managment/xray_center_services/add_xray_services/add_xray_services.dart';
+import 'package:project_after_update/modules/manager/home/x_ray_in_managment/xray_center_services/doctors_details_in_xray.dart';
+import 'package:project_after_update/modules/manager/home/x_ray_in_managment/xray_center_services/edit_xray_service/edit_xray_service.dart';
+import 'package:project_after_update/modules/manager/home/x_ray_in_managment/xray_center_services/xray_center_services.dart';
 import 'package:project_after_update/modules/manager/join_request/join_request.dart';
 import 'package:project_after_update/modules/manager/patients/patient_details_in_managment/patient_details_in_managment.dart';
 import 'package:project_after_update/modules/manager/patients/patients_in_managment.dart';
@@ -89,14 +105,21 @@ import 'package:project_after_update/modules/reception/doctors/doctors_details.d
 import 'package:project_after_update/modules/reception/home/home_reception.dart';
 import 'package:project_after_update/modules/reception/home/home_screen_reception.dart';
 import 'package:project_after_update/modules/reception/laboratory_in_reception/laboratory_reserv/laboratory_reserv.dart';
+import 'package:project_after_update/modules/reception/laboratory_in_reception/laboratory_service_type/laboratory_service/laboratory_service.dart';
+import 'package:project_after_update/modules/reception/laboratory_in_reception/laboratory_service_type/laboratory_service_type.dart';
 import 'package:project_after_update/modules/reception/laboratory_in_reception/wating_in_laboratory.dart';
 import 'package:project_after_update/modules/reception/notification/notification.dart';
 import 'package:project_after_update/modules/reception/patient/convert_request/convert_request.dart';
 import 'package:project_after_update/modules/reception/patient/patient.dart';
+import 'package:project_after_update/modules/reception/patient/patient_details/edit_previous_medical_condition/edit_previous_medical.dart';
 import 'package:project_after_update/modules/reception/patient/patient_details/patient_details.dart';
+import 'package:project_after_update/modules/reception/patient/patient_details/visit_ergisteration/visit_register_in_reception.dart';
 import 'package:project_after_update/modules/reception/patient/patient_services/patient_services.dart';
 import 'package:project_after_update/modules/reception/patient/patient_visits/patient_visits.dart';
 import 'package:project_after_update/modules/reception/patient/patient_visits/patient_visits_details/patient_visits_details.dart';
+import 'package:project_after_update/modules/reception/xray_in_reception/wating_in_xray.dart';
+import 'package:project_after_update/modules/reception/xray_in_reception/xray_service_type/xray_service/xray_service.dart';
+import 'package:project_after_update/modules/reception/xray_in_reception/xray_service_type/xray_service_type.dart';
 import 'package:project_after_update/modules/signup/signup.dart';
 import 'package:project_after_update/modules/x-Ray/AddVisit/Addvistx_ray.dart';
 import 'package:project_after_update/modules/x-Ray/EditVisitX_ray/EditVisitNurse.dart';
@@ -138,7 +161,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/signup', page: () => Signup()),
         GetPage(name: '/home_reception', page: () => Home_reception()),
         GetPage(name: '/home_screen_reception', page: () => Home_screen_reception()),
-        GetPage(name: '/doctors', page: () => Doctors()),
+    //    GetPage(name: '/doctors', page: () => Doctors()),
         GetPage(name: '/doctors_details', page: () => Doctors_details()),
         GetPage(name: '/add_record', page: () => Add_record()),
         GetPage(name: '/patient', page: () => Patient()),
@@ -188,7 +211,28 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/Edit_reservation', page: () =>      Edit_reservation()),
         GetPage(name: '/Ambulance_visit_registration', page: () =>      Ambulance_visit_registration()),
         GetPage(name: '/Edit_visit', page: () =>      Edit_visit()),
-
+        GetPage(name: '/Edit_Previous_medical_cond', page: () =>      Edit_Previous_medical_cond()),
+        GetPage(name: '/Add_new_section', page: () =>      Add_new_section()),
+        GetPage(name: '/Edit_section', page: () =>      Edit_section()),
+        GetPage(name: '/Edit_clinics_type', page: () =>      Edit_clinics_type()),
+        GetPage(name: '/Edit_analysis_type', page: () =>      Edit_analysis_type()),
+        GetPage(name: '/Edit_xray_type', page: () =>      Edit_xray_type()),
+        GetPage(name: '/Laboratory_center_services', page: () =>      Laboratory_center_services()),
+        GetPage(name: '/Xray_center_services', page: () =>      Xray_center_services()),
+        GetPage(name: '/Add_clinics_service', page: () =>      Add_clinics_service()),
+        GetPage(name: '/Add_laboratory_service', page: () =>      Add_laboratory_service()),
+        GetPage(name: '/Add_xray_service', page: () =>      Add_xray_service()),
+        GetPage(name: '/Doctors_details_in_laboratory', page: () =>      Doctors_details_in_laboratory()),
+        GetPage(name: '/Doctors_details_in_xray', page: () =>      Doctors_details_in_xray()),
+        GetPage(name: '/Edit_clinics_service', page: () =>      Edit_clinics_service()),
+        GetPage(name: '/Edit_laboratory_service', page: () =>      Edit_laboratory_service()),
+        GetPage(name: '/Edit_xray_service', page: () =>      Edit_xray_service()),
+        GetPage(name: '/Reception_visit_registration', page: () =>      Reception_visit_registration()),
+        GetPage(name: '/Laboratory_service_type', page: () =>      Laboratory_service_type()),
+        GetPage(name: '/Laboratory_service', page: () =>      Laboratory_service()),
+        GetPage(name: '/Wating_in_xray', page: () =>      Wating_in_xray()),
+        GetPage(name: '/Xray_service_type', page: () =>      Xray_service_type()),
+        GetPage(name: '/Xray_service', page: () =>      Xray_service()),
 
 
 
@@ -202,7 +246,6 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/warehouseProducts',    page: () => WarehouseProducts(),  binding:WarehouseBindinds()),
 
         GetPage(name: '/FancyNavBarNurse',    page: () =>FancyNavBarNurse()),
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
         GetPage(name: '/HomeDoctor',           page: () =>Home(),                 binding:HomeDoctorBinding()),
@@ -241,16 +284,6 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/addConsumer',          page: () =>addConsumer(),        binding:warehouseBindinds()),
         GetPage(name: '/warehouseProducts',    page: () =>warehouseProducts(),  binding:warehouseBindinds()),
 ///////////////////////////
-
-
-
-
-
-
-
-
-
-
 
       ],
     );

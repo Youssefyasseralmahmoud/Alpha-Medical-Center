@@ -15,16 +15,20 @@ class wating_in_clincis_controller extends GetxController {
   Secury_storage secury_storage = new Secury_storage();
   List data=[];
   List test_data=[];
+  List data_service=[];
+  List test_data_service=[];
+  late int id ;
 
   get_all_doctors() async {
     statusRequest = StatusRequest.loading;
     update();
-    var response = await services.get_all_doctors();
-    test_data.addAll(response['data']) ;
+    var response = await services.get_all_doctors(id);
+    test_data.addAll(response['data'][0]['section']['user']) ;
     statusRequest = handlingdata(response);
 
     if (StatusRequest.succes == statusRequest&& test_data.isNotEmpty) {
-      data.addAll(response['data']) ;
+      data.clear();
+      data.addAll(response['data'][0]['section']['user']) ;
       print("response from patient controller");
       print(data);
       print(data[0]['username']);
@@ -46,8 +50,41 @@ class wating_in_clincis_controller extends GetxController {
     }
     update();
   }
+  get_all_services_intype() async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await services.get_all_services_in_type(id);
+    test_data_service.addAll(response['data'][0]['center_service']) ;
+    statusRequest = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest&& test_data_service.isNotEmpty) {
+      data_service.clear();
+      data_service.addAll(response['data'][0]['center_service']) ;
+      print("response from get all section controller");
+      print(data_service);
+    }
+    else if(test_data_service.isEmpty) {
+      await Get.snackbar(
+        "تنبيه",
+        "لا يوجد خدمات لعرضهم",
+      );
+    }
+    else if (StatusRequest.failure == statusRequest) {
+      await Get.snackbar(
+        "تحذير",
+        "لا يوجد خدمات لعرضهم",
+      );
+    }
+    else {
+      Get.defaultDialog(title: " خطأ", content: Text("حدث خطا ما"));
+    }
+    update();
+  }
 @override
   void onInit() {
+     id =Get.arguments['id'];
+     print("from wating controller the id of section is ${id}");
     get_all_doctors();
+     get_all_services_intype();
   }
 }

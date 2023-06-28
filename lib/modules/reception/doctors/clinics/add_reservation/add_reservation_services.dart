@@ -10,7 +10,7 @@ class Add_reservation_services {
   Secury_storage secury = new Secury_storage();
   late var message;
   add_reservation(String ID_Doctor, String IDPersonal, String BookingDate,) async {
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("receptionist_token");
     var response = await crud.postdata(Serverconfig.patient_reservation_registeration, {
       "ID_Doctor": ID_Doctor.toString(),
       "IDPersonal": IDPersonal.toString(),

@@ -101,7 +101,7 @@ class Patient_Visits extends StatelessWidget {
                         children: [
                           GestureDetector(
                             onTap: ()async{
-                              await patient_visits_details_controller.get_patient_visits_details(controller.data[0]['id']);
+                              await patient_visits_details_controller.get_patient_visits_details(controller.data[index]['id']);
                                 Get.toNamed("/Patient_visits_details");
                             },
                             child: Container(

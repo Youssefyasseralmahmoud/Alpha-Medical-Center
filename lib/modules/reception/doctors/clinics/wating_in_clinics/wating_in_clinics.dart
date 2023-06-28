@@ -15,7 +15,7 @@ class Wating_in_clinics extends StatelessWidget {
         Get.put<Doctors_controller>(Doctors_controller());
     wating_in_clincis_controller controller = Get.put(wating_in_clincis_controller());
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: StaticColor.primarycolor,
@@ -38,6 +38,16 @@ class Wating_in_clinics extends StatelessWidget {
                   width: 40,
                   child: Image.asset(
                     "assets/images/doctor.png",
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+              Tab(
+                child: Container(
+                  height: 40,
+                  width: 40,
+                  child: Image.asset(
+                    "assets/images/service_details.png",
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -154,13 +164,15 @@ class Wating_in_clinics extends StatelessWidget {
                               onTap: () {
                                 print("test id from wating ${controller.data[index]['id']}");
                                 Get.toNamed("/doctors_details",arguments:{
-                                  "id_doctor" : controller.data[index]['id']
+                                  "id_doctor" : controller.data[index]['user']['id']
                                 }
+
 
 
                                 );
                               },
-                              child: Container(
+                              child:
+                              Container(
                                 margin: const EdgeInsets.only(top: 10),
                                 height: MediaQuery.of(context).size.height * 0.1,
                                 width: MediaQuery.of(context).size.width * 0.2,
@@ -170,7 +182,7 @@ class Wating_in_clinics extends StatelessWidget {
                                 ),
                                 child: ListTile(
                                   title:  Text(
-                                    "${controller.data[index]['username']}اسم الطبيب : ",
+                                    "${controller.data[index]['user']['name']} : اسم الطبيب  ",
                                     style: TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                   subtitle: const Text("حالة الطبيب  : متواجد"),
@@ -322,6 +334,106 @@ class Wating_in_clinics extends StatelessWidget {
                   ]
                   ),
                 ),
+                GetBuilder<wating_in_clincis_controller>(builder: (controller){
+                  return
+                    controller.statusRequest==StatusRequest.loading?
+                    Center(child: CircularProgressIndicator(color: StaticColor.primarycolor,),):
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          const Text(
+                            "خدمات العيادة",
+                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          const Text(
+                            "مركز ألفا الطبي / قسم الإدارة",
+                            style: TextStyle(fontSize: 15, color: Colors.grey),
+                          ),
+                          const Divider(
+                            height: 10,
+                            color: Colors.black45,
+                          ),
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.6,
+                            child: GridView.builder(
+                              gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  crossAxisSpacing: 10,
+                                  mainAxisSpacing: 20),
+                              shrinkWrap: true,
+                              itemCount: controller.data_service.length,
+                              itemBuilder: (context, index) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    Get.bottomSheet(
+                                        Container(
+                                          padding: EdgeInsets.all(10),
+                                          color: Colors.white,
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.end,
+                                                children: [
+                                                  Text("${controller.data_service[index]['Details']}"),
+                                                  Text(" : التفاصيل  ",style: TextStyle(fontWeight: FontWeight.bold),),
+                                                  SizedBox(width: 5,),
+
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                        )
+                                    );
+                                  },
+                                  child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(20),
+                                            bottomRight: Radius.circular(20)),
+                                        color: StaticColor.primarycolor,
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          Expanded(
+                                            flex: 8,
+                                            child: Container(
+                                              width: 200,
+                                              child: Image.asset(
+                                                  "assets/images/clinic.png",
+                                                  fit: BoxFit.fill),
+                                            ),
+                                          ),
+                                          Expanded(
+                                            flex: 2,
+                                            child: Text(
+                                              "${controller.data_service[index]['Name']}",
+                                              style: TextStyle(
+                                                  color: Colors.white, fontSize: 15),
+                                            ),
+                                          ),
+                                          SizedBox(height: 5,),
+                                          Expanded(
+                                            flex: 2,
+                                            child: Text(
+                                              "${controller.data_service[index]['Price']}",
+                                              style: TextStyle(
+                                                  color: Colors.white, fontSize: 15),
+                                            ),
+                                          ),
+                                          Spacer(),
+                                        ],
+                                      )),
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                })
               ],
             );
           })

@@ -1,13 +1,18 @@
+import 'dart:io';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../home/homelabController.dart';
+import 'Addvisitcontrollerlab.dart';
 
 
 
 class Addvisitlab extends StatelessWidget {
   homelabController controller = Get.find();
-
+  Addvisitcontrollerlab addvisitcontrollerlab =Get.find();
+  File? file;
+  bool isloading =false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,7 +94,10 @@ class Addvisitlab extends StatelessWidget {
               buildTextField("نوع التحليل"),
               buildTextField("ملاحظات"),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  uploadtest();
+
+                },
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
@@ -119,7 +127,9 @@ class Addvisitlab extends StatelessWidget {
               ),
 
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  onClick();
+                },
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
@@ -166,6 +176,11 @@ class Addvisitlab extends StatelessWidget {
       ),
       child:  TextField(
         //  controller: controller,
+        onChanged: (value){
+          if(hintText=="نوع التحليل"){addvisitcontrollerlab.lab_type= value; }
+          if (hintText=="ملاحظات" ){addvisitcontrollerlab.details= value;  };
+
+        },
         textDirection: TextDirection.rtl,
         maxLines: null,
         decoration: InputDecoration(
@@ -183,6 +198,30 @@ class Addvisitlab extends StatelessWidget {
 
 
     );
+  }
+
+  void uploadtest() async{
+ try{
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+    if (result != null) {
+      String? path =result.files.single.path;
+       file = File(path!);
+       addvisitcontrollerlab.path = path ;
+      String? filename = file?.path.split("/").last;
+    } else {
+      // User canceled the picker
+    }}
+     catch(e){
+   print(e);
+     }
+
+
+  }
+
+  void onClick() {
+
+    addvisitcontrollerlab.uploadonclick();
   }
 
 

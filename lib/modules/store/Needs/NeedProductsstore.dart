@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_after_update/modules/Lab/Warehose/warehouseControllerlab.dart';
+import 'package:project_after_update/modules/store/home_store/warehouseControllerstor.dart';
+
+import '../../../static_colors/StaticColors.dart';
+import 'need_Controllerstor.dart';
 
 
-
-
-
-class WarehouseProductslab extends StatelessWidget {
-  warehouseControllerlab controller = Get.find();
+class need_Products extends StatelessWidget {
+  need_controller controller =  Get.put(need_controller());
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
         elevation: 0,
@@ -19,7 +19,7 @@ class WarehouseProductslab extends StatelessWidget {
         title: Padding(
           padding: const EdgeInsets.only(top: 30.0, left: 120, bottom: 20),
           child: Text(
-            'مواد المستودع',
+            'الحاجات',
             textAlign: TextAlign.right,
             style: TextStyle(
               fontSize: 25,
@@ -35,7 +35,7 @@ class WarehouseProductslab extends StatelessWidget {
           ),
           Padding(
             padding:
-                const EdgeInsets.only(bottom: 90, right: 20, left: 20, top: 20),
+            const EdgeInsets.only(bottom: 90, right: 20, left: 20, top: 20),
             child: Center(
               child: GridView.builder(
                 itemCount: controller.products.length,
@@ -66,6 +66,30 @@ class WarehouseProductslab extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Text(
+                                (controller.products[index].min)
+                                    .toString(),
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                ),
+                              ),
+                              Text(
+                                ' : الكمية الواجب توافرها',
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
                                 (controller.products[index].quantity)
                                     .toString(),
                                 style: TextStyle(
@@ -75,7 +99,7 @@ class WarehouseProductslab extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                ' : الكمية المتوفر',
+                                ' : الكمية المتوفرة',
                                 style: TextStyle(
                                   color: Colors.black54,
                                   fontWeight: FontWeight.bold,
@@ -99,17 +123,18 @@ class WarehouseProductslab extends StatelessWidget {
                                 keyboardType: TextInputType.number,
                                 onChanged: (value) {
                                   //   controller.updateQuantity(index, value);
-                                  controller.errors(int.parse(value), index);
+                                  controller.order(int.parse(value), index);
                                 },
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
                                   contentPadding:
-                                      EdgeInsets.symmetric(horizontal: 10),
+                                  EdgeInsets.symmetric(horizontal: 10),
                                 ),
                               ),
                             ),
                           ),
                         ),
+
                       ],
                     ),
                   );
@@ -118,11 +143,50 @@ class WarehouseProductslab extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text('تأكيد الطلب'),
+                    content: Text('هل أنت متأكد من هذا الطلب؟'),
+                    actions: <Widget>[
+                      TextButton(
+                        child: const Text('لا'),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                      TextButton(
+                        child: const Text('نعم'),
+                        onPressed: () {
+                          Get.snackbar(
+
+                            'تم تسجيل هذا الطلب',
+                            ''
+                            ,
+                            backgroundColor: Colors.white,
+                            colorText:StaticColor.primarycolor,
+                          );
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  );
+                },
+              );
+
+
+
+
+
+
+
+            },
             child: Align(
-              alignment: Alignment.bottomCenter,
+              alignment: Alignment.bottomLeft,
               child: Container(
-                width: double.infinity,
+                width: 150,
                 height: 50,
 
                 margin: EdgeInsets.all(20),
@@ -132,16 +196,34 @@ class WarehouseProductslab extends StatelessWidget {
                   borderRadius: BorderRadius.circular(25),
                 ),
 
-                child: Center(
-                    child: Text(
-                  'طلب المواد',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w100,
-                    color: Colors.black38,
-                  ),
-                )),
-                // ),
+
+                  child: Padding(
+                  padding:  EdgeInsets.symmetric( horizontal: 10),
+                  child:
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Icon(
+                        Icons.add_shopping_cart,
+                        color: Colors.white,
+                      ),
+
+
+                      SizedBox(width: 10),
+                      Text(
+                      'طلب المواد',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w100,
+                        color: Colors.white,
+
+                      ),
+                          textDirection: TextDirection.rtl,
+                    ),
+
+
+                    ]),
+                 ),
               ),
             ),
           ),
@@ -149,4 +231,7 @@ class WarehouseProductslab extends StatelessWidget {
       ),
     );
   }
+
+
+
 }

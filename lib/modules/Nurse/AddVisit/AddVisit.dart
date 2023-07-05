@@ -95,7 +95,9 @@ class AddVisit extends StatelessWidget {
               buildTextField("التشخيص"),
               buildTextField("ملاحظات"),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  onClick();
+                },
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
@@ -142,6 +144,19 @@ SizedBox(height: 150,)
       ),
       child:  TextField(
         //  controller: controller,
+        onChanged: (value){
+          if(hintText=="التشخيص"){ }
+          else if (hintText=="العلاج" ){ controller.clinicalExamination;}
+          else if (hintText=="السوابق لمرضية" ){controller.clinicalStory; }
+          else if (hintText=="الفحص السرير" ){ }
+          else if (hintText=="القصة السريرية" ){controller.referringPhysician; }
+          else if (hintText=="النبض" ){ controller.heartbeat;}
+          else if (hintText=="ملاحظات" ){controller.comments; }
+          else if (hintText=="SPO2" ){ }
+          else if (hintText=="الضغط" ){controller.pressure; }
+          else if (hintText=="الحرارة" ){ controller.bodyHeat;};
+
+        },
         textDirection: TextDirection.rtl,
         maxLines: null,
         decoration: InputDecoration(
@@ -159,6 +174,11 @@ SizedBox(height: 150,)
 
 
     );
+  }
+
+  void onClick() {
+
+    controller.onclickadd_visit();
   }
 
 

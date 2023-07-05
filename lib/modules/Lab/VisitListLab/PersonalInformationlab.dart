@@ -50,8 +50,8 @@ class PersonalInformationlab extends StatelessWidget {
                   color: Color.fromARGB(100, 189, 189, 189).withAlpha(30),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Text("سالي الجولان :"),
+                    children:  [
+                      Text('${controller.model.data[0].fullName}'),
                       Text(" المريض",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       Padding(
@@ -71,8 +71,8 @@ class PersonalInformationlab extends StatelessWidget {
                   margin: const EdgeInsets.only(bottom: 7,left: 7,right: 7),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Text(" 5423 :"),
+                    children:  [
+                      Text('${controller.model.data[0].id}'),
                       Text("رقم الاضبارة ",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       Padding(
@@ -92,8 +92,8 @@ class PersonalInformationlab extends StatelessWidget {
                   margin: const EdgeInsets.only(bottom: 7,left: 7,right: 7),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Text("40:"),
+                    children:  [
+                      Text('${controller.model.data[0].age}'),
                       Text("العمر",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       Padding(
@@ -113,8 +113,8 @@ class PersonalInformationlab extends StatelessWidget {
                   margin: const EdgeInsets.only(bottom: 5,left: 7,right: 7),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Text("دمشق:"),
+                    children:  [
+                      Text('${controller.model.data[0].address}'),
                       Text("العنوان",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       Padding(
@@ -134,8 +134,8 @@ class PersonalInformationlab extends StatelessWidget {
                   color: Color.fromARGB(100, 189, 189, 189).withAlpha(30),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Text("093476155:"),
+                    children:  [
+                      Text('${controller.model.data[0].phonenumber}'),
                       Text("رقم الهاتف",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       Padding(

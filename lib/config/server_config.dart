@@ -21,7 +21,8 @@ class Serverconfig{
   static const reject_join_request ='$domainnameserver/api/rejectJoinRequest';
   static const visit_registration ='$domainnameserver/api/visitRegistration';
   static const update_visit ='$domainnameserver/api/updateVisit';
-
+  static const personal_information ='$domainnameserver/api/getPatientInformation?Key=ID Personal&Value=0254516459816';
+  static const upload_Xray ='$domainnameserver/api/addX_Rays';
 
 
 

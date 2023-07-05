@@ -43,7 +43,7 @@ class Login_controller extends GetxController{
         print("tesst from login");
         secury_storage.save("admin_token", admin_token);
         await Get.snackbar("تسجيل دخول ناجح", "تمت عملية الدخول بنجاح",);
-         Get.toNamed("/homelab");
+         Get.toNamed("/Home_screen_store");
       }
       else if(response['code']== 1 && response['data']['user']['surname'] == "doctor" ) {
         // && response['carer']=='reception'

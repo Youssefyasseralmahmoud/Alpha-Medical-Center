@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_after_update/Modules/Lab/Warehose/warehouseControllerlab.dart';
+import 'package:project_after_update/modules/Lab/Warehose/warehouseControllerlab.dart';
 
-import 'ProductsinDepartmentlab.dart';
+
+
+
+import 'ProductsinDepartment.dart';
 class addConsumerlab extends StatelessWidget {
   warehouseControllerlab controller = Get.put<warehouseControllerlab>(warehouseControllerlab());
 
@@ -113,7 +116,7 @@ class addConsumerlab extends StatelessWidget {
 
               ),
             ),
-           ProductsinDepartmentlab()
+           ProductsinDepartment()
           ],
 
     ));

@@ -1,4 +1,3 @@
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -38,8 +37,6 @@ import 'package:project_after_update/modules/Lab/AddVisit/Addvistlab.dart';
 import 'package:project_after_update/modules/Lab/EditVistlab/EditVisitlab.dart';
 import 'package:project_after_update/modules/Lab/VisitListLab/PersonalInformationlab.dart';
 import 'package:project_after_update/modules/Lab/VisitListLab/VisitsListlab.dart';
-import 'package:project_after_update/modules/Lab/Warehose/addConsumerlab.dart';
-import 'package:project_after_update/modules/Lab/Warehose/warehouseProductslab.dart';
 import 'package:project_after_update/modules/Lab/funcybarlab.dart';
 import 'package:project_after_update/modules/Lab/home/homelab.dart';
 import 'package:project_after_update/modules/Nurse/AddVisit/AddVisit.dart';
@@ -107,6 +104,14 @@ import 'package:project_after_update/modules/x-Ray/warehose/addConsumer.dart';
 import 'package:project_after_update/modules/x-Ray/warehose/funcybarX-ray.dart';
 import 'package:project_after_update/modules/x-Ray/warehose/warehouseProducts.dart';
 
+import 'GetxBindings/store/store_materialeBinding.dart';
+import 'modules/Lab/Warehose/addConsumer.dart';
+import 'modules/Lab/Warehose/warehouseProductslab.dart';
+import 'modules/store/Orders/dep_order.dart';
+import 'modules/store/home_store/Details.dart';
+import 'modules/store/home_store/archives.dart';
+import 'modules/store/home_store/home_screen_store.dart';
+import 'modules/store/matireials/Pharmaceutical.dart';
 import 'splash_screen/splash_screen.dart';
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -132,7 +137,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       initialBinding: Binding(),
       debugShowCheckedModeBanner: false,
-      initialRoute:'/Splash_screen',
+      initialRoute:'/login',
       getPages: [
         GetPage(name: '/login', page: () =>  Login()),
         GetPage(name: '/signup', page: () => Signup()),
@@ -219,9 +224,9 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/PersonalInformationx_ray',             page: () =>PersonalInformationx_ray (), ),
         GetPage(name: '/VisitsListX_Ray',             page: () =>VisitsListX_Ray (),binding: VisitListX_raybinding() ),
         GetPage(name: '/EditVisitx_ray',             page: () =>EditVisitx_ray (),binding: Editvisitingx_raybinding() ),
-        // GetPage(name: '/addConsumer',          page: () =>addConsumer(),        binding:warehouseBindinds()),
-        // GetPage(name: '/warehouseProducts',    page: () =>warehouseProducts(),  binding:warehouseBindinds()),
-        GetPage(name: '/FancyNavBarDoctor',    page: () =>FancyNavBarPage(),),
+        GetPage(name: '/addConsumer',          page: () =>addConsumer(),        binding:warehouseBindinds()),
+        GetPage(name: '/warehouseProducts',    page: () =>warehouseProducts(),  binding:warehouseBindinds()),
+        //GetPage(name: '/FancyNavBarDoctor',    page: () =>FancyNavBarPage(),),
 
         /////////last adding for lab by saly
         GetPage(name: '/homelab',            page: () =>homelab(),binding: homelabBinding()),
@@ -231,16 +236,14 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/VisitsListlab',             page: () =>VisitsListlab (),binding: VisitListelabBinding() ),
         GetPage(name: '/EditVisitlab',             page: () =>EditVisitlab (),binding: EditVisitlabBinding() ),
         GetPage(name: '/addConsumerlab',          page: () =>addConsumerlab(),        binding:warehouselabbinding()),
-        GetPage(name: '/warehouseProductslab',    page: () =>warehouseProductslab(),  binding:warehouselabbinding()),
-        GetPage(name: '/Homex_ray',            page: () =>homex_ray(),binding: homex_rayBinding()),
-        GetPage(name: '/FancyNavBarx_ray',    page: () =>FancyNavBarx_ray()),
-        GetPage(name: '/Addvisitx_ray',             page: () =>Addvisitx_ray (),binding: AddvisitaX_raybinding () ),
-        GetPage(name: '/PersonalInformationx_ray',             page: () =>PersonalInformationx_ray (), ),
-        GetPage(name: '/VisitsListX_Ray',             page: () =>VisitsListX_Ray (),binding: VisitListX_raybinding() ),
-        GetPage(name: '/EditVisitx_ray',             page: () =>EditVisitx_ray (),binding: Editvisitingx_raybinding() ),
-        GetPage(name: '/addConsumer',          page: () =>addConsumer(),        binding:warehouseBindinds()),
-        GetPage(name: '/warehouseProducts',    page: () =>warehouseProducts(),  binding:warehouseBindinds()),
-///////////////////////////
+        GetPage(name: '/warehouseProductslab',    page: () =>WarehouseProductslab(),  binding:warehouselabbinding()),
+        GetPage(name: '/Home_screen_store',    page: () =>Home_screen_store(),binding:stormaaterialBindinds()),
+        GetPage(name: '/Pharmaceutical',    page: () =>Pharmaceutical()),
+        GetPage(name: '/dep_order',    page: () =>dep_order()),
+        GetPage(name: '/orders_from_warehouse',    page: () =>orders_from_warehouse()),
+        GetPage(name: '/Details',    page: () =>Details()),
+
+
 
 
 

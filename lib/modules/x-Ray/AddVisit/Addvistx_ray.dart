@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -6,7 +9,8 @@ import 'AddvisitcontrollerX_ray.dart';
 
 class Addvisitx_ray extends StatelessWidget {
   homex_rayController controller = Get.find();
-
+  File? file;
+  AddvisitcontrollerX_ray addvisitcontrollerX_ray =Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +81,8 @@ class Addvisitx_ray extends StatelessWidget {
 
               Padding(
                 padding: const EdgeInsets.only(right: 10, bottom: 20, top: 20),
-                child: Text("تسجيل صورة المريض", style: TextStyle(fontFamily: 'Arial',
+                child: Text(
+                  "تسجيل صورة المريض", style: TextStyle(fontFamily: 'Arial',
                   fontSize: 25,
                   fontWeight: FontWeight.w200,
                   color: Colors.black54,
@@ -88,7 +93,9 @@ class Addvisitx_ray extends StatelessWidget {
 
               buildTextField("ملاحظات"),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  uploadtest();
+                },
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
@@ -97,7 +104,7 @@ class Addvisitx_ray extends StatelessWidget {
 
                     margin: EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      border: Border.all(color:  Color(0xff9bb4fd),width: 3),
+                      border: Border.all(color: Color(0xff9bb4fd), width: 3),
                       color: Color(0xffcbd6fa),
                       borderRadius: BorderRadius.circular(25),
                     ),
@@ -123,9 +130,11 @@ class Addvisitx_ray extends StatelessWidget {
       ),
     );
   }
+
   Widget buildTextField(String hintText) {
-    return  Container(
-      margin: const EdgeInsets.only(bottom: 9,left: 20,right: 20),
+    addvisitcontrollerX_ray.details= hintText;
+    return Container(
+      margin: const EdgeInsets.only(bottom: 9, left: 20, right: 20),
       // width: Get.width * 0.90,
       //  height: Get.height * 0.12,
       //  padding: EdgeInsets.symmetric(horizontal: 10),
@@ -133,12 +142,13 @@ class Addvisitx_ray extends StatelessWidget {
         color: Colors.grey[200],
         borderRadius: BorderRadius.circular(10),
       ),
-      child:  TextField(
+      child: TextField(
         //  controller: controller,
+
         textDirection: TextDirection.rtl,
         maxLines: null,
         decoration: InputDecoration(
-          labelText: '${hintText}' ,
+          labelText: '${hintText}',
 
           labelStyle: TextStyle(color: Colors.black45,),
           border: OutlineInputBorder(
@@ -152,7 +162,27 @@ class Addvisitx_ray extends StatelessWidget {
 
 
     );
+
   }
 
+  void uploadtest() async {
+    try {
+      FilePickerResult? result = await FilePicker.platform.pickFiles();
 
+      if (result != null) {
+        String? path = result.files.single.path;
+        addvisitcontrollerX_ray.path =path ;
+        file = File(path!);
+
+        String? filename = file?.path
+            .split("/")
+            .last;
+      } else {
+        // User canceled the picker
+      }
+    }
+    catch (e) {
+      print(e);
+    }
+  }
 }

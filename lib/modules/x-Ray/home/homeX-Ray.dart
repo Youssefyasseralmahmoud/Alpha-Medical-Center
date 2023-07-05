@@ -201,7 +201,7 @@ class homex_ray extends  StatelessWidget{
                   ),
                   ),
                 ),
-                ListPatientsx_ray(),
+
               ],
             )));
   }

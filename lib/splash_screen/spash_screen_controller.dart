@@ -20,7 +20,7 @@ class Splash_controller extends GetxController {
       print(admin_token);
 
     if(admin_token!= null){
-      Get.offAllNamed('/homelab');
+      Get.offAllNamed('/navigationBar_financial');
     }else if (doctor_token!=null){
       Get.offAllNamed("/HomeDoctor");
     }

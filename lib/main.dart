@@ -57,6 +57,17 @@ import 'package:project_after_update/modules/doctor/funcy.dart';
 import 'package:project_after_update/modules/doctor/record/PersonalInformationD.dart';
 import 'package:project_after_update/modules/doctor/record/doctorDitailes.dart';
 import 'package:project_after_update/modules/doctor/record/patientVisitRecord.dart';
+import 'package:project_after_update/modules/financial/Payments_and_Receipts/Payments_and_Receipts.dart';
+import 'package:project_after_update/modules/financial/financial_home/financial_home.dart';
+import 'package:project_after_update/modules/financial/financial_invoices_archive/financial_invoices_archive.dart';
+import 'package:project_after_update/modules/financial/financial_material/financial_material.dart';
+import 'package:project_after_update/modules/financial/maintenance/maintenance.dart';
+import 'package:project_after_update/modules/financial/navigationBar_financial.dart';
+import 'package:project_after_update/modules/financial/sections/financial_Clinic.dart';
+import 'package:project_after_update/modules/financial/sections/financial_Clinic_incoming_material/financial_Clinic_incoming_material.dart';
+import 'package:project_after_update/modules/financial/sections/financial_sections.dart';
+import 'package:project_after_update/modules/financial/waiting_from_reception/InvoicePage.dart';
+import 'package:project_after_update/modules/financial/waiting_from_reception/waiting_from_reception.dart';
 import 'package:project_after_update/modules/login/login.dart';
 import 'package:project_after_update/modules/manager/employee/employee.dart';
 import 'package:project_after_update/modules/manager/home/clinics_in_managment/Clinics_details_in_managment/Clinics_details_in_managment.dart';
@@ -241,6 +252,18 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/addConsumer',          page: () =>addConsumer(),        binding:warehouseBindinds()),
         GetPage(name: '/warehouseProducts',    page: () =>warehouseProducts(),  binding:warehouseBindinds()),
 ///////////////////////////
+
+        GetPage(name: '/financial_home',       page: () =>financial_home(), ),
+        GetPage(name: '/inancial_sections',    page: () =>financial_sections(), ),
+        GetPage(name: '/financial_Clinic',     page: () =>financial_Clinic(), ),
+        GetPage(name: '/financial_Clinic_incoming_material',    page: () =>financial_Clinic_incoming_material(), ),
+        GetPage(name: '/Payments_and_Receipts',    page: () =>Payments_and_Receipts(), ),
+        GetPage(name: '/maintenance',    page: () =>maintenance(), ),
+        GetPage(name: '/waiting_from_reception',    page: () =>waiting_from_reception(), ),
+        GetPage(name: '/InvoicePage',    page: () =>InvoicePage(), ),
+        GetPage(name: '/navigationBar_financial',    page: () =>navigationBar_financial(), ),
+        GetPage(name: '/Financial_invoices_archive',    page: () =>Financial_invoices_archive(), ),
+        GetPage(name: '/financial_material',    page: () =>financial_material(), ),
 
 
 

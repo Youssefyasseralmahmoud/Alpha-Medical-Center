@@ -11,7 +11,7 @@ class Laboratory_in_managment extends StatelessWidget {
   Widget build(BuildContext context) {
     Laboratory_in_managment_controller controller =Get.put(Laboratory_in_managment_controller());
     return DefaultTabController(
-      length: 3,
+      length: 1,
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
           backgroundColor: StaticColor.primarycolor,
@@ -37,26 +37,26 @@ class Laboratory_in_managment extends StatelessWidget {
                   ),
                 ),
               ),
-              Tab(
-                child: Container(
-                  height: 40,
-                  width: 40,
-                  child: Image.asset(
-                    "assets/images/import.png",
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-              Tab(
-                child: Container(
-                  height: 40,
-                  width: 40,
-                  child: Image.asset(
-                    "assets/images/export.png",
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
+              // Tab(
+              //   child: Container(
+              //     height: 40,
+              //     width: 40,
+              //     child: Image.asset(
+              //       "assets/images/import.png",
+              //       fit: BoxFit.fill,
+              //     ),
+              //   ),
+              // ),
+              // Tab(
+              //   child: Container(
+              //     height: 40,
+              //     width: 40,
+              //     child: Image.asset(
+              //       "assets/images/export.png",
+              //       fit: BoxFit.fill,
+              //     ),
+              //   ),
+              // ),
               // Tab(
               //   child: Container(
               //     height: 40,
@@ -319,302 +319,302 @@ Get.toNamed("/Laboratory_center_services",arguments: {
                     ),
                   ]),
                 ),
-                Container(
-                  height: MediaQuery.of(context).size.height,
-                  child: ListView(
-                    children: [
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(8),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: const [
-                            Text(
-                              "الواردات ",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              "مركز الفا الطبي",
-                              style: TextStyle(fontSize: 15, color: Colors.grey),
-                            ),
-                            Divider(
-                              height: 5,
-                              color: Colors.black45,
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                          height: MediaQuery.of(context).size.height * 0.6,
-                          child:
-                          GetBuilder<Laboratory_in_managment_controller>(
-                              builder: (controller) {
-                                return ListView.builder(
-                                    shrinkWrap: true,
-                                    itemCount: 4,
-                                    itemBuilder: (context, index) {
-                                      return controller.droped == false
-                                          ? Container(
-                                        padding:
-                                        const EdgeInsets.symmetric(horizontal: 10),
-                                        margin: const EdgeInsets.only(top: 10),
-                                        height:
-                                        MediaQuery.of(context).size.height *
-                                            0.1,
-                                        width: MediaQuery.of(context).size.width *
-                                            0.8,
-                                        decoration: BoxDecoration(
-                                            color: StaticColor.thirdgrey
-                                                .withAlpha(30),
-                                            borderRadius:
-                                            BorderRadius.circular(20)),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Row(
-                                              mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                GestureDetector(
-                                                    onTap: () {
-                                                      controller.ontapdropdown(
-                                                          controller.droped);
-                                                      print(controller.droped);
-                                                    },
-                                                    child: const Icon(
-                                                        Icons.arrow_drop_down)),
-                                              ],
-                                            ),
-                                            const Text(
-                                              "2023-7-5",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,color: StaticColor.primarycolor),
-                                            ),
-                                          ],
-                                        ),
-                                      )
-                                          : Container(
-                                        padding:
-                                        const EdgeInsets.symmetric(horizontal: 10),
-                                        margin: const EdgeInsets.only(top: 10),
-                                        height:
-                                        MediaQuery.of(context).size.height *
-                                            0.1,
-                                        width: MediaQuery.of(context).size.width *
-                                            0.8,
-                                        decoration: BoxDecoration(
-                                            color: StaticColor.thirdgrey
-                                                .withAlpha(30),
-                                            borderRadius:
-                                            BorderRadius.circular(20)),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                          children: [
-                                            Container(
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                MainAxisAlignment
-                                                    .spaceBetween,
-                                                children: [
-                                                  Row(
-                                                    mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                    children: [
-                                                      GestureDetector(
-                                                          onTap: () {
-                                                            controller
-                                                                .ontapdropdown(
-                                                                controller
-                                                                    .droped);
-                                                            print(controller
-                                                                .droped);
-                                                          },
-                                                          child: const Icon(Icons
-                                                              .arrow_drop_down)),
-                                                    ],
-                                                  ),
-                                                  const Text(
-                                                    "2023-7-5",
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                        FontWeight.bold,
-                                                        color: StaticColor
-                                                            .primarycolor),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            SizedBox(height: 10,),
-                                            const Text(
-                                              " : المبلغ  ",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    });
-                              })),
-
-                    ],
-                  ),
-                ),
-                Container(
-                  height: MediaQuery.of(context).size.height,
-                  child: ListView(
-                    children: [
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(8),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: const [
-                            Text(
-                              "المدفوعات ",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              "مركز الفا الطبي",
-                              style: TextStyle(fontSize: 15, color: Colors.grey),
-                            ),
-                            Divider(
-                              height: 5,
-                              color: Colors.black45,
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                          height: MediaQuery.of(context).size.height * 0.6,
-                          child:
-                          GetBuilder<Laboratory_in_managment_controller>(
-                              builder: (controller) {
-                                return ListView.builder(
-                                    shrinkWrap: true,
-                                    itemCount: 4,
-                                    itemBuilder: (context, index) {
-                                      return controller.droped_two == false
-                                          ? Container(
-                                        padding:
-                                        const EdgeInsets.symmetric(horizontal: 10),
-                                        margin: const EdgeInsets.only(top: 10),
-                                        height:
-                                        MediaQuery.of(context).size.height *
-                                            0.1,
-                                        width: MediaQuery.of(context).size.width *
-                                            0.8,
-                                        decoration: BoxDecoration(
-                                            color: StaticColor.thirdgrey
-                                                .withAlpha(30),
-                                            borderRadius:
-                                            BorderRadius.circular(20)),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Row(
-                                              mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                GestureDetector(
-                                                    onTap: () {
-                                                      controller.ontapdropdown_two(
-                                                          controller.droped_two);
-                                                      print(controller.droped_two);
-                                                    },
-                                                    child: const Icon(
-                                                        Icons.arrow_drop_down)),
-                                              ],
-                                            ),
-                                            const Text(
-                                              "2023-7-5",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,color: StaticColor.primarycolor),
-                                            ),
-                                          ],
-                                        ),
-                                      )
-                                          : Container(
-                                        padding:
-                                        const EdgeInsets.symmetric(horizontal: 10),
-                                        margin: const EdgeInsets.only(top: 10),
-                                        height:
-                                        MediaQuery.of(context).size.height *
-                                            0.1,
-                                        width: MediaQuery.of(context).size.width *
-                                            0.8,
-                                        decoration: BoxDecoration(
-                                            color: StaticColor.thirdgrey
-                                                .withAlpha(30),
-                                            borderRadius:
-                                            BorderRadius.circular(20)),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                          children: [
-                                            Container(
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                MainAxisAlignment
-                                                    .spaceBetween,
-                                                children: [
-                                                  Row(
-                                                    mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                    children: [
-                                                      GestureDetector(
-                                                          onTap: () {
-                                                            controller
-                                                                .ontapdropdown_two(
-                                                                controller
-                                                                    .droped_two);
-                                                          },
-                                                          child: const Icon(Icons
-                                                              .arrow_drop_down)),
-                                                    ],
-                                                  ),
-                                                  const Text(
-                                                    "2023-7-5",
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                        FontWeight.bold,
-                                                        color: StaticColor
-                                                            .primarycolor),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            SizedBox(height: 10,),
-                                            const Text(
-                                              " : المبلغ  ",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    });
-                              })),
-
-                    ],
-                  ),
-                ),
+                // Container(
+                //   height: MediaQuery.of(context).size.height,
+                //   child: ListView(
+                //     children: [
+                //       const SizedBox(
+                //         height: 20,
+                //       ),
+                //       Container(
+                //         padding: const EdgeInsets.all(8),
+                //         child: Column(
+                //           crossAxisAlignment: CrossAxisAlignment.end,
+                //           children: const [
+                //             Text(
+                //               "الواردات ",
+                //               style: TextStyle(
+                //                   fontSize: 20, fontWeight: FontWeight.bold),
+                //             ),
+                //             Text(
+                //               "مركز الفا الطبي",
+                //               style: TextStyle(fontSize: 15, color: Colors.grey),
+                //             ),
+                //             Divider(
+                //               height: 5,
+                //               color: Colors.black45,
+                //             ),
+                //             SizedBox(
+                //               height: 10,
+                //             ),
+                //           ],
+                //         ),
+                //       ),
+                //       Container(
+                //           height: MediaQuery.of(context).size.height * 0.6,
+                //           child:
+                //           GetBuilder<Laboratory_in_managment_controller>(
+                //               builder: (controller) {
+                //                 return ListView.builder(
+                //                     shrinkWrap: true,
+                //                     itemCount: 4,
+                //                     itemBuilder: (context, index) {
+                //                       return controller.droped == false
+                //                           ? Container(
+                //                         padding:
+                //                         const EdgeInsets.symmetric(horizontal: 10),
+                //                         margin: const EdgeInsets.only(top: 10),
+                //                         height:
+                //                         MediaQuery.of(context).size.height *
+                //                             0.1,
+                //                         width: MediaQuery.of(context).size.width *
+                //                             0.8,
+                //                         decoration: BoxDecoration(
+                //                             color: StaticColor.thirdgrey
+                //                                 .withAlpha(30),
+                //                             borderRadius:
+                //                             BorderRadius.circular(20)),
+                //                         child: Row(
+                //                           mainAxisAlignment:
+                //                           MainAxisAlignment.spaceBetween,
+                //                           children: [
+                //                             Row(
+                //                               mainAxisAlignment:
+                //                               MainAxisAlignment.spaceBetween,
+                //                               children: [
+                //                                 GestureDetector(
+                //                                     onTap: () {
+                //                                       controller.ontapdropdown(
+                //                                           controller.droped);
+                //                                       print(controller.droped);
+                //                                     },
+                //                                     child: const Icon(
+                //                                         Icons.arrow_drop_down)),
+                //                               ],
+                //                             ),
+                //                             const Text(
+                //                               "2023-7-5",
+                //                               style: TextStyle(
+                //                                   fontWeight: FontWeight.bold,color: StaticColor.primarycolor),
+                //                             ),
+                //                           ],
+                //                         ),
+                //                       )
+                //                           : Container(
+                //                         padding:
+                //                         const EdgeInsets.symmetric(horizontal: 10),
+                //                         margin: const EdgeInsets.only(top: 10),
+                //                         height:
+                //                         MediaQuery.of(context).size.height *
+                //                             0.1,
+                //                         width: MediaQuery.of(context).size.width *
+                //                             0.8,
+                //                         decoration: BoxDecoration(
+                //                             color: StaticColor.thirdgrey
+                //                                 .withAlpha(30),
+                //                             borderRadius:
+                //                             BorderRadius.circular(20)),
+                //                         child: Column(
+                //                           crossAxisAlignment:
+                //                           CrossAxisAlignment.end,
+                //                           children: [
+                //                             Container(
+                //                               child: Row(
+                //                                 mainAxisAlignment:
+                //                                 MainAxisAlignment
+                //                                     .spaceBetween,
+                //                                 children: [
+                //                                   Row(
+                //                                     mainAxisAlignment:
+                //                                     MainAxisAlignment
+                //                                         .spaceBetween,
+                //                                     children: [
+                //                                       GestureDetector(
+                //                                           onTap: () {
+                //                                             controller
+                //                                                 .ontapdropdown(
+                //                                                 controller
+                //                                                     .droped);
+                //                                             print(controller
+                //                                                 .droped);
+                //                                           },
+                //                                           child: const Icon(Icons
+                //                                               .arrow_drop_down)),
+                //                                     ],
+                //                                   ),
+                //                                   const Text(
+                //                                     "2023-7-5",
+                //                                     style: TextStyle(
+                //                                         fontWeight:
+                //                                         FontWeight.bold,
+                //                                         color: StaticColor
+                //                                             .primarycolor),
+                //                                   ),
+                //                                 ],
+                //                               ),
+                //                             ),
+                //                             SizedBox(height: 10,),
+                //                             const Text(
+                //                               " : المبلغ  ",
+                //                               style: TextStyle(
+                //                                   fontWeight: FontWeight.bold),
+                //                             ),
+                //                           ],
+                //                         ),
+                //                       );
+                //                     });
+                //               })),
+                //
+                //     ],
+                //   ),
+                // ),
+                // Container(
+                //   height: MediaQuery.of(context).size.height,
+                //   child: ListView(
+                //     children: [
+                //       const SizedBox(
+                //         height: 20,
+                //       ),
+                //       Container(
+                //         padding: const EdgeInsets.all(8),
+                //         child: Column(
+                //           crossAxisAlignment: CrossAxisAlignment.end,
+                //           children: const [
+                //             Text(
+                //               "المدفوعات ",
+                //               style: TextStyle(
+                //                   fontSize: 20, fontWeight: FontWeight.bold),
+                //             ),
+                //             Text(
+                //               "مركز الفا الطبي",
+                //               style: TextStyle(fontSize: 15, color: Colors.grey),
+                //             ),
+                //             Divider(
+                //               height: 5,
+                //               color: Colors.black45,
+                //             ),
+                //             SizedBox(
+                //               height: 10,
+                //             ),
+                //           ],
+                //         ),
+                //       ),
+                //       Container(
+                //           height: MediaQuery.of(context).size.height * 0.6,
+                //           child:
+                //           GetBuilder<Laboratory_in_managment_controller>(
+                //               builder: (controller) {
+                //                 return ListView.builder(
+                //                     shrinkWrap: true,
+                //                     itemCount: 4,
+                //                     itemBuilder: (context, index) {
+                //                       return controller.droped_two == false
+                //                           ? Container(
+                //                         padding:
+                //                         const EdgeInsets.symmetric(horizontal: 10),
+                //                         margin: const EdgeInsets.only(top: 10),
+                //                         height:
+                //                         MediaQuery.of(context).size.height *
+                //                             0.1,
+                //                         width: MediaQuery.of(context).size.width *
+                //                             0.8,
+                //                         decoration: BoxDecoration(
+                //                             color: StaticColor.thirdgrey
+                //                                 .withAlpha(30),
+                //                             borderRadius:
+                //                             BorderRadius.circular(20)),
+                //                         child: Row(
+                //                           mainAxisAlignment:
+                //                           MainAxisAlignment.spaceBetween,
+                //                           children: [
+                //                             Row(
+                //                               mainAxisAlignment:
+                //                               MainAxisAlignment.spaceBetween,
+                //                               children: [
+                //                                 GestureDetector(
+                //                                     onTap: () {
+                //                                       controller.ontapdropdown_two(
+                //                                           controller.droped_two);
+                //                                       print(controller.droped_two);
+                //                                     },
+                //                                     child: const Icon(
+                //                                         Icons.arrow_drop_down)),
+                //                               ],
+                //                             ),
+                //                             const Text(
+                //                               "2023-7-5",
+                //                               style: TextStyle(
+                //                                   fontWeight: FontWeight.bold,color: StaticColor.primarycolor),
+                //                             ),
+                //                           ],
+                //                         ),
+                //                       )
+                //                           : Container(
+                //                         padding:
+                //                         const EdgeInsets.symmetric(horizontal: 10),
+                //                         margin: const EdgeInsets.only(top: 10),
+                //                         height:
+                //                         MediaQuery.of(context).size.height *
+                //                             0.1,
+                //                         width: MediaQuery.of(context).size.width *
+                //                             0.8,
+                //                         decoration: BoxDecoration(
+                //                             color: StaticColor.thirdgrey
+                //                                 .withAlpha(30),
+                //                             borderRadius:
+                //                             BorderRadius.circular(20)),
+                //                         child: Column(
+                //                           crossAxisAlignment:
+                //                           CrossAxisAlignment.end,
+                //                           children: [
+                //                             Container(
+                //                               child: Row(
+                //                                 mainAxisAlignment:
+                //                                 MainAxisAlignment
+                //                                     .spaceBetween,
+                //                                 children: [
+                //                                   Row(
+                //                                     mainAxisAlignment:
+                //                                     MainAxisAlignment
+                //                                         .spaceBetween,
+                //                                     children: [
+                //                                       GestureDetector(
+                //                                           onTap: () {
+                //                                             controller
+                //                                                 .ontapdropdown_two(
+                //                                                 controller
+                //                                                     .droped_two);
+                //                                           },
+                //                                           child: const Icon(Icons
+                //                                               .arrow_drop_down)),
+                //                                     ],
+                //                                   ),
+                //                                   const Text(
+                //                                     "2023-7-5",
+                //                                     style: TextStyle(
+                //                                         fontWeight:
+                //                                         FontWeight.bold,
+                //                                         color: StaticColor
+                //                                             .primarycolor),
+                //                                   ),
+                //                                 ],
+                //                               ),
+                //                             ),
+                //                             SizedBox(height: 10,),
+                //                             const Text(
+                //                               " : المبلغ  ",
+                //                               style: TextStyle(
+                //                                   fontWeight: FontWeight.bold),
+                //                             ),
+                //                           ],
+                //                         ),
+                //                       );
+                //                     });
+                //               })),
+                //
+                //     ],
+                //   ),
+                // ),
                 //////////////////////////////to move
 
               ],

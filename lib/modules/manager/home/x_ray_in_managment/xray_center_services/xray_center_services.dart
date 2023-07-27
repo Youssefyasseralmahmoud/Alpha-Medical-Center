@@ -38,41 +38,73 @@ class Xray_center_services extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              padding: const EdgeInsets.all(10),
-              child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: controller.data_doctor.length,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {
+           GetBuilder<Xray_center_service_controller>(builder: (controller){
+             return  Container(
+               padding: const EdgeInsets.all(10),
+               child: ListView.builder(
+                   shrinkWrap: true,
+                   itemCount: controller.data_doctor.length,
+                   itemBuilder: (context, index) {
+                     return GestureDetector(
+                       onTap: () {
                          Get.toNamed("/Doctors_details_in_xray",arguments: {
-                           "id":controller.data_doctor[index]['user']['id']
+                           "id":controller.data_doctor[index]['id']
                          });
-                      },
-                      child: Container(
-                        padding: EdgeInsets.all(8),
-                        margin: const EdgeInsets.only(top: 10),
-                        width: MediaQuery.of(context).size.width * 0.2,
-                        decoration: BoxDecoration(
-                          color: StaticColor.thirdgrey,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child:  Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text(
-                              "${controller.data_doctor[index]['user']['name']} ",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            // Text("اسم العيادة : الأطفال",style: TextStyle(color: Colors.grey),),
-                            // Text(" حالة الطبيب : متواجد",style: TextStyle(color: Colors.grey),),
-                          ],
-                        ),
-                      ),
-                    );
-                  }),
-            ),
+                       },
+                       child: Container(
+                         padding: EdgeInsets.all(8),
+                         margin: const EdgeInsets.only(top: 10),
+                         width: MediaQuery.of(context).size.width * 0.2,
+                         decoration: BoxDecoration(
+                           color: StaticColor.thirdgrey,
+                           borderRadius: BorderRadius.circular(20),
+                         ),
+                         child:  Column(
+                           crossAxisAlignment: CrossAxisAlignment.end,
+                           children: [
+                             Row(
+                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                               children: [
+
+                                 GestureDetector(
+                                   onTap: (){
+                                     Get.toNamed("/Doctors_details_in_managment",arguments: {
+                                       "id":controller.data_doctor[index]['id']
+                                     });
+                                   },
+                                   child: Container(
+                                     height: 40,
+                                     width: 40,
+                                     child:Image.asset("assets/images/service_details.png") ,
+                                   ),
+
+                                 ),
+                                 Container(
+                                   child: Row(
+                                     children: [
+                                       Text(
+                                         "${controller.data_doctor[index]['name']} :",
+                                         style: TextStyle(fontWeight: FontWeight.bold,color: StaticColor.primarycolor),
+                                       ),
+                                       SizedBox(width: 5,),
+                                       Text("اسم الطبيب",style: TextStyle(fontWeight: FontWeight.bold),),
+                                       SizedBox(width: 5,),
+                                       CircleAvatar(
+                                         child:Image.asset("assets/images/doctor.png") ,
+                                       )
+                                     ],
+                                   ),
+                                 ),
+                               ],),
+                             // Text("اسم العيادة : الأطفال",style: TextStyle(color: Colors.grey),),
+                             // Text(" حالة الطبيب : متواجد",style: TextStyle(color: Colors.grey),),
+                           ],
+                         ),
+                       ),
+                     );
+                   }),
+             );
+           })
           ]),
         ),
       ),

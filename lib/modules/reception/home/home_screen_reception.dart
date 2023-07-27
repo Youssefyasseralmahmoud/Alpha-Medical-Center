@@ -62,9 +62,15 @@ class Home_screen_reception extends StatelessWidget {
           shape: CircularNotchedRectangle(),
           notchMargin: 10,
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Container(
+                    height: 50,
+                    width: 50,
+                  ),
                   MaterialButton(
                     onPressed: () {
                       controller.changepage(0);
@@ -83,6 +89,29 @@ class Home_screen_reception extends StatelessWidget {
                       ],
                     ),
                   ),
+                  // MaterialButton(
+                  //   onPressed: () {
+                  //     controller.changepage(1);
+                  //   },
+                  //   child: Column(
+                  //     mainAxisSize: MainAxisSize.min,
+                  //     children: [
+                  //       Icon(
+                  //         Icons.person,
+                  //         color: controller.currentpage == 1
+                  //             ? StaticColor.primarycolor
+                  //             : Colors.black,
+                  //       ),
+                  //       Text("المرضى"),
+                  //     ],
+                  //   ),
+                  // ),
+                ],
+              ),
+              Spacer(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
                   MaterialButton(
                     onPressed: () {
                       controller.changepage(1);
@@ -100,45 +129,45 @@ class Home_screen_reception extends StatelessWidget {
                       ],
                     ),
                   ),
-                ],
-              ),
-              Spacer(),
-              Row(
-                children: [
-                  MaterialButton(
-                    onPressed: () {
-                      controller.changepage(2);
-                    },
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          Icons.medical_services,
-                          color: controller.currentpage == 2
-                              ? StaticColor.primarycolor
-                              : Colors.black,
-                        ),
-                        Text("الخدمات"),
-                      ],
-                    ),
+                  Container(
+                    height: 50,
+                    width: 50,
                   ),
-                  MaterialButton(
-                    onPressed: () {
-                      controller.changepage(3);
-                    },
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          Icons.money_rounded,
-                          color: controller.currentpage == 3
-                              ? StaticColor.primarycolor
-                              : Colors.black,
-                        ),
-                        Text("فاتورة"),
-                      ],
-                    ),
-                  ),
+                  // MaterialButton(
+                  //   onPressed: () {
+                  //     controller.changepage(2);
+                  //   },
+                  //   child:
+                  //   Column(
+                  //     mainAxisSize: MainAxisSize.min,
+                  //     children: [
+                  //       Icon(
+                  //         Icons.medical_services,
+                  //         color: controller.currentpage == 2
+                  //             ? StaticColor.primarycolor
+                  //             : Colors.black,
+                  //       ),
+                  //       Text("الخدمات"),
+                  //     ],
+                  //   ),
+                  // ),
+                  // MaterialButton(
+                  //   onPressed: () {
+                  //     controller.changepage(3);
+                  //   },
+                  //   child: Column(
+                  //     mainAxisSize: MainAxisSize.min,
+                  //     children: [
+                  //       Icon(
+                  //         Icons.money_rounded,
+                  //         color: controller.currentpage == 3
+                  //             ? StaticColor.primarycolor
+                  //             : Colors.black,
+                  //       ),
+                  //       Text("فاتورة"),
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ),
             ],

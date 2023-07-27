@@ -10,6 +10,7 @@ class Patient_service_controller extends GetxController {
   StatusRequest? statusRequest;
   Secury_storage secury_storage = new Secury_storage();
   late String name;
+  late int id_patient_record;
   List data_details=[];
   checkinput() {
 
@@ -22,7 +23,7 @@ class Patient_service_controller extends GetxController {
   get_patient_service() async {
     statusRequest = StatusRequest.loading;
     update();
-    var response = await services.get_required_service();
+    var response = await services.get_required_service(id_patient_record);
     statusRequest = handlingdata(response);
 
     if (StatusRequest.succes == statusRequest) {
@@ -70,6 +71,7 @@ class Patient_service_controller extends GetxController {
 @override
   void onInit() {
     name=Get.arguments['name'];
+    id_patient_record=Get.arguments['id_patient_record'];
     get_patient_service();
     super.onInit();
   }

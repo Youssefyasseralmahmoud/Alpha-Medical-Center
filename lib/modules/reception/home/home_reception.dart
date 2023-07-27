@@ -310,11 +310,11 @@ class Home_reception extends StatelessWidget {
                                         }
                                         );
                                       }else if(controller.data[index]['Name']=='xray'){
-                                        Get.toNamed("/Wating_in_xray",arguments: {
+                                        Get.toNamed("/Xray_service_type",arguments: {
                                           "id_section":controller.data[index]['id']
                                         });
                                       }else if(controller.data[index]['Name']=='Laboratory'){
-                                        Get.toNamed("/wating_in_laboratory",arguments: {
+                                        Get.toNamed("/Laboratory_service_type",arguments: {
                                           "id_section":controller.data[index]['id']
                                         });
                                       }else if(controller.data[index]['Name']=='Store'){
@@ -358,9 +358,13 @@ class Home_reception extends StatelessWidget {
                                               Image.asset(
                                                   "assets/images/finance.png",
                                                   fit: BoxFit.fill) :
+                                              controller.data[index]['Name']=='Ambulance'?
                                               Image.asset(
-                                                  "assets/images/logo.png",
-                                                  fit: BoxFit.fill) ,
+                                                  "assets/images/Ambulance-section.png",
+                                                  fit: BoxFit.fill):
+                                            Image.asset(
+                                            "assets/images/logo.png",
+                                            fit: BoxFit.fill),
                                             ),
                                             Expanded(
                                                 child:

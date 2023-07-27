@@ -203,79 +203,55 @@ class Reservations extends StatelessWidget {
                                           width: 5,
                                         ),
                                         GestureDetector(
-                                          onTap: () {
-                                            Get.bottomSheet(
-                                                Container(
-                                                  decoration: const BoxDecoration(
-                                                      borderRadius: BorderRadius.only(
-                                                          topLeft: Radius.circular(20),
-                                                          topRight:
-                                                          Radius.circular(20)),
-                                                      color: Colors.white),
-                                                  child: Column(
-                                                    children: [
-                                                      Container(
-                                                        margin: const EdgeInsets.only(
-                                                            bottom: 5),
-                                                        padding: EdgeInsets.all(8),
-                                                        width: MediaQuery.of(context)
-                                                            .size
-                                                            .width,
-                                                        height: 60,
-                                                        color: StaticColor.thirdgrey
-                                                            .withAlpha(30),
-                                                        child: Row(
-                                                          mainAxisAlignment:
-                                                          MainAxisAlignment.end,
-                                                          children: [
-                                                            const Text(" سعيد :"),
-                                                            const Text(" المريض",
-                                                                style: TextStyle(
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .bold)),
-                                                            Container(
-                                                              height: 50,
-                                                              width: 50,
-                                                              child: Image.asset(
-                                                                  "assets/images/patient.png"),
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ),
-                                                      // Container(
-                                                      //   margin: const EdgeInsets.only(
-                                                      //       bottom: 5),
-                                                      //   padding: EdgeInsets.all(8),
-                                                      //   width: MediaQuery.of(context)
-                                                      //       .size
-                                                      //       .width,
-                                                      //   height: 60,
-                                                      //   color: StaticColor.thirdgrey
-                                                      //       .withAlpha(30),
-                                                      //   child: Row(
-                                                      //     mainAxisAlignment:
-                                                      //     MainAxisAlignment.end,
-                                                      //     children: [
-                                                      //       const Text(" 8:29 :"),
-                                                      //       const Text(" توقيت الحجز",
-                                                      //           style: TextStyle(
-                                                      //               fontWeight:
-                                                      //               FontWeight
-                                                      //                   .bold)),
-                                                      //       Container(
-                                                      //         height: 50,
-                                                      //         width: 50,
-                                                      //         child: Image.asset(
-                                                      //             "assets/images/time-management.png"),
-                                                      //       )
-                                                      //     ],
-                                                      //   ),
-                                                      // ),
-                                                    ],
-                                                  ),
-                                                )
-                                            );
+                                          onTap: () async{
+
+                                            await controller.get_patient_info(controller.data[index]['ID_PatientMedicalRecord']);
+                                            Get.toNamed("Patient_details_reserv");
+                                            // Get.bottomSheet(
+                                            //   controller.statusRequest==StatusRequest.loading?
+                                            //       CircularProgressIndicator(color: StaticColor.primarycolor,):
+                                            //   Container(
+                                            //     decoration: const BoxDecoration(
+                                            //         borderRadius: BorderRadius.only(
+                                            //             topLeft: Radius.circular(20),
+                                            //             topRight:
+                                            //             Radius.circular(20)),
+                                            //         color: Colors.white),
+                                            //     child: Column(
+                                            //       children: [
+                                            //         Container(
+                                            //           margin: const EdgeInsets.only(
+                                            //               bottom: 5),
+                                            //           padding: EdgeInsets.all(8),
+                                            //           width: MediaQuery.of(context)
+                                            //               .size
+                                            //               .width,
+                                            //           height: 60,
+                                            //           color: StaticColor.thirdgrey
+                                            //               .withAlpha(30),
+                                            //           child: Row(
+                                            //             mainAxisAlignment:
+                                            //             MainAxisAlignment.end,
+                                            //             children: [
+                                            //               Text(" ${controller.patinet_info[index][2]} :"),
+                                            //               const Text(" المريض",
+                                            //                   style: TextStyle(
+                                            //                       fontWeight:
+                                            //                       FontWeight
+                                            //                           .bold)),
+                                            //               Container(
+                                            //                 height: 50,
+                                            //                 width: 50,
+                                            //                 child: Image.asset(
+                                            //                     "assets/images/patient.png"),
+                                            //               )
+                                            //             ],
+                                            //           ),
+                                            //         ),
+                                            //       ],
+                                            //     ),
+                                            //   )
+                                            // );
                                           },
                                           child: Container(
                                             height: 60,

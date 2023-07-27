@@ -39,7 +39,7 @@ class Home_screen_manager_controller extends GetxController {
         "تم تسجيل الخروج بنجاح",
       );
       secury_storage.delete();
-      Get.toNamed("/login");
+      Get.offAllNamed("/login");
 
     }
     else if (StatusRequest.failure == statusRequest) {

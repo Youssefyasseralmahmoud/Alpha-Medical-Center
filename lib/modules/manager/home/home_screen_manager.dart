@@ -115,23 +115,23 @@ class Home_screen_manager extends StatelessWidget {
               Spacer(),
               Row(
                 children: [
-                  MaterialButton(
-                    onPressed: () {
-                      controller.changepage(2);
-                    },
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          Icons.engineering_outlined,
-                          color: controller.currentpage == 2
-                              ? StaticColor.primarycolor
-                              : Colors.black,
-                        ),
-                        Text("الموظفين"),
-                      ],
-                    ),
-                  ),
+                  // MaterialButton(
+                  //   onPressed: () {
+                  //     controller.changepage(2);
+                  //   },
+                  //   child: Column(
+                  //     mainAxisSize: MainAxisSize.min,
+                  //     children: [
+                  //       Icon(
+                  //         Icons.engineering_outlined,
+                  //         color: controller.currentpage == 2
+                  //             ? StaticColor.primarycolor
+                  //             : Colors.black,
+                  //       ),
+                  //       Text("الموظفين"),
+                  //     ],
+                  //   ),
+                  // ),
                   MaterialButton(
                     onPressed: () {
                       controller.changepage(3);
@@ -148,6 +148,10 @@ class Home_screen_manager extends StatelessWidget {
                         Text("قسم جديد"),
                       ],
                     ),
+                  ),
+                  Container(
+                    height: 50,
+                    width: 50,
                   ),
                 ],
               ),

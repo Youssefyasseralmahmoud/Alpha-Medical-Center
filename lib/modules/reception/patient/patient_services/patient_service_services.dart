@@ -10,7 +10,7 @@ class Patient_service_services {
   Patient_service_services(this.crud,this.crud_delete);
   Secury_storage secury = new Secury_storage();
 
-  get_required_service() async {
+  get_required_service(int id_patient_record) async {
 
     String? token = await secury.read("receptionist_token");
     print("thhhhhhe tooooken from getinfo controller is ${token}");
@@ -20,7 +20,7 @@ class Patient_service_services {
     // data['Value']="02545164598162";
 
     var response = await crud.postdata(
-        Serverconfig.get_all_required_services_for_patient,
+        Serverconfig.get_all_required_services_for_patient+"?IDPatientRecord=${id_patient_record}",
 
         {
           "Authorization": bearer + " " + token.toString(),

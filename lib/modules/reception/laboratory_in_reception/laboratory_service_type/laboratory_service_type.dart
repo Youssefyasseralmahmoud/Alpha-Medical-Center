@@ -10,12 +10,74 @@ class Laboratory_service_type extends StatelessWidget {
   Widget build(BuildContext context) {
     Laboratory_service_type_controller controller=Get.put(Laboratory_service_type_controller());
     return Scaffold(
+      bottomNavigationBar:   GestureDetector(
+        onTap: (){
+          Get.toNamed("/Laboratory_reserv");
+        },
+        child: Container(
+          padding: const EdgeInsets.all(8),
+          alignment: Alignment.center,
+          height: 50,
+          width: MediaQuery.of(context).size.width * 0.2,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            color: StaticColor.primarycolor,
+          ),
+          child: const Text(
+            "حجز",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+        ),
+      ),
+
+
       body: GetBuilder<Laboratory_service_type_controller>(builder: (controller){
         return
         controller.statusRequest==StatusRequest.loading?
             Center(child: CircularProgressIndicator(color: StaticColor.primarycolor,),):
           Container(
             child: ListView(children: [
+              Container(
+                margin: const EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Row(
+                  children: [
+                    Expanded(
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                              contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                              prefixIcon: const Icon(Icons.search),
+                              hintText: "البحث",
+                              hintStyle: const TextStyle(fontSize: 20),
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide.none,
+                                  borderRadius: BorderRadius.circular(10)),
+                              filled: true,
+                              fillColor: Colors.grey[200]),
+                        )),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: StaticColor.primarycolor,
+                      ),
+                      width: 60,
+                      height: 55,
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.notifications_active_outlined,
+                          size: 25,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               const SizedBox(height: 20),
               Container(
                 padding: const EdgeInsets.all(10),

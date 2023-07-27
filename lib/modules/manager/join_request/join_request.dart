@@ -140,115 +140,167 @@ class Join_request extends StatelessWidget {
                                              GestureDetector(
                                                onTap: (){
                                                  Get.defaultDialog(
-                                                   title: "يرجى تأكيد نوع المستخدم",
-                                                   content: Column(
-                                                     children: [
+                                                   title: "يرجى تأكيد نوع المستخدم و الخدمة",
+                                                   content:
+                                                   Column(
+                                                       children: [
 
-                                                       Container(
-                                                           margin: EdgeInsets.only(bottom: 10),
-                                                           padding: const EdgeInsets.all(10),
-                                                           width: MediaQuery.of(context).size.width,
-                                                           height: MediaQuery.of(context).size.height * 0.07,
-                                                           decoration: BoxDecoration(
-                                                             color: StaticColor.thirdgrey.withAlpha(20),
-                                                             borderRadius: BorderRadius.circular(20),
-                                                             border: Border(
-                                                               top: BorderSide(
-                                                                   width: 1, color: Colors.black.withAlpha(80)),
-                                                               right: BorderSide(
-                                                                   width: 1, color: Colors.black.withAlpha(80)),
-                                                               left: BorderSide(
-                                                                   width: 1, color: Colors.black.withAlpha(80)),
-                                                               bottom: BorderSide(
-                                                                   width: 1, color: Colors.black.withAlpha(80)),
-                                                             ),
-                                                           ),
-                                                           child: Row(
-                                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                             children: [
-                                                               DropdownButton(
-                                                                 items: controller.department
-                                                                     .map((e) => DropdownMenuItem(
-                                                                   child: Text("$e"),
-                                                                   value: e,
-                                                                 ))
-                                                                     .toList(),
-                                                                 onChanged: (val) {
-                                                                   controller.changedepartment(val!);
-                                                                   controller.type=val;
-                                                                   // controller.selected = val.toString();
-                                                                   print(controller.selected);
-                                                                 },
-                                                                 value: controller.selected,
-                                                                 style: const TextStyle(
-                                                                     fontSize: 15,
-                                                                     color: StaticColor.blackcolor,
-                                                                     fontWeight: FontWeight.bold),
+                                                         Container(
+                                                             margin: EdgeInsets.only(bottom: 10),
+                                                             padding: const EdgeInsets.all(10),
+                                                             width: MediaQuery.of(context).size.width,
+                                                             height: MediaQuery.of(context).size.height * 0.07,
+                                                             decoration: BoxDecoration(
+                                                               color: StaticColor.thirdgrey.withAlpha(20),
+                                                               borderRadius: BorderRadius.circular(20),
+                                                               border: Border(
+                                                                 top: BorderSide(
+                                                                     width: 1, color: Colors.black.withAlpha(80)),
+                                                                 right: BorderSide(
+                                                                     width: 1, color: Colors.black.withAlpha(80)),
+                                                                 left: BorderSide(
+                                                                     width: 1, color: Colors.black.withAlpha(80)),
+                                                                 bottom: BorderSide(
+                                                                     width: 1, color: Colors.black.withAlpha(80)),
                                                                ),
-                                                               const Icon(Icons.work_outline_outlined,
-                                                                   color: StaticColor.primarycolor),
-                                                             ],
-                                                           )),
-
-                                                       SizedBox(height: 10,),
-                                                       GestureDetector(
-                                                         onTap: (){
-                                                           Get.defaultDialog(
-                                                             title: "هل تريد قبول طلب الإنضمام ",
-                                                             content:  Row(
-                                                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                               children: [
-                                                                 GestureDetector(
-                                                                   onTap: (){
-                                                                     controller.accept_join(controller.data[index]['id']);
-                                                                   },
-                                                                   child: Container(
-                                                                     padding: EdgeInsets.all(5),
-                                                                     alignment: Alignment.center,
-                                                                     height: 50,
-                                                                     width: MediaQuery.of(context).size.width*0.3,
-                                                                     decoration: BoxDecoration(
-                                                                       borderRadius: BorderRadius.circular(10),
-                                                                       color: StaticColor.primarycolor,
-                                                                     ),
-                                                                     child: Center(child: Text("نعم ",style: TextStyle(color: Colors.white,fontSize: 20),)),
-                                                                   ),
-                                                                 ),
-                                                                 GestureDetector(
-                                                                   onTap: (){
-                                                                     Get.back();
-                                                                   },
-                                                                   child: Container(
-                                                                     padding: EdgeInsets.all(5),
-                                                                     alignment: Alignment.center,
-                                                                     height: 50,
-                                                                     width: MediaQuery.of(context).size.width*0.3,
-                                                                     decoration: BoxDecoration(
-                                                                       borderRadius: BorderRadius.circular(10),
-                                                                       color: StaticColor.primarycolor,
-                                                                     ),
-                                                                     child: Center(child: Text("لا ",style: TextStyle(color: Colors.white,fontSize: 20),)),
-                                                                   ),
-                                                                 ),
-                                                               ],
                                                              ),
-                                                           );
-                                                         },
-                                                         child: Container(
-                                                           padding: EdgeInsets.all(5),
-                                                           alignment: Alignment.center,
-                                                           height: 50,
-                                                           width: MediaQuery.of(context).size.width*0.3,
-                                                           decoration: BoxDecoration(
-                                                             borderRadius: BorderRadius.circular(10),
-                                                             color: StaticColor.primarycolor,
-                                                           ),
-                                                           child: Center(child: Text("تأكيد ",style: TextStyle(color: Colors.white,fontSize: 20),)),
-                                                         ),
+                                                             child: Row(
+                                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                               children: [
+                                                                GetBuilder<Join_request_controller>(builder: (controller){
+                                                                  return  DropdownButton(
+                                                                    items: controller.department
+                                                                        .map((e) => DropdownMenuItem(
+                                                                      child: Text("$e"),
+                                                                      value: e,
+                                                                    ))
+                                                                        .toList(),
+                                                                    onChanged: (val) {
+                                                                      controller.changedepartment(val!);
+                                                                      controller.type=val;
+                                                                      controller.selected = val.toString();
+                                                                      print(controller.selected);
+                                                                    },
+                                                                    style: const TextStyle(
+                                                                        fontSize: 15,
+                                                                        color: StaticColor.blackcolor,
+                                                                        fontWeight: FontWeight.bold),
+                                                                    hint: Text("${controller.selected}"),
+                                                                  );
+                                                                }),
+                                                                 const Icon(Icons.work_outline_outlined,
+                                                                     color: StaticColor.primarycolor),
+                                                               ],
+                                                             )),
+                                                         SizedBox(height: 5,),
+                                                         Container(
+                                                             margin: EdgeInsets.only(bottom: 10),
+                                                             padding: const EdgeInsets.all(10),
+                                                             width: MediaQuery.of(context).size.width,
+                                                             height: MediaQuery.of(context).size.height * 0.07,
+                                                             decoration: BoxDecoration(
+                                                               color: StaticColor.thirdgrey.withAlpha(20),
+                                                               borderRadius: BorderRadius.circular(20),
+                                                               border: Border(
+                                                                 top: BorderSide(
+                                                                     width: 1, color: Colors.black.withAlpha(80)),
+                                                                 right: BorderSide(
+                                                                     width: 1, color: Colors.black.withAlpha(80)),
+                                                                 left: BorderSide(
+                                                                     width: 1, color: Colors.black.withAlpha(80)),
+                                                                 bottom: BorderSide(
+                                                                     width: 1, color: Colors.black.withAlpha(80)),
+                                                               ),
+                                                             ),
+                                                             child: Row(
+                                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                               children: [
+                                                                GetBuilder<Join_request_controller>(builder: (controller){
+                                                                  return  DropdownButton(
+                                                                    items: controller.data_service_to_show
+                                                                        .map((v) => DropdownMenuItem(
+                                                                      child: Text("$v"),
+                                                                      value: v,
+                                                                    ))
+                                                                        .toList(),
+                                                                    onChanged: (value) {
+                                                                      controller.changedepartment_two(value as String);
+                                                                      controller.type2=value;
+                                                                      controller.selected2 = value.toString();
+                                                                      print(controller.selected2);
+                                                                    },
+                                                                    style: const TextStyle(
+                                                                        fontSize: 15,
+                                                                        color: StaticColor.blackcolor,
+                                                                        fontWeight: FontWeight.bold),
+                                                                    hint: Text("${controller.selected2}"),
+                                                                  );
+                                                                }),
+                                                                 const Icon(Icons.medical_services_outlined,
+                                                                     color: StaticColor.primarycolor),
+                                                               ],
+                                                             )),
 
-                                                       ),
-                                                     ],
-                                                   ),
+                                                         SizedBox(height: 10,),
+                                                         GestureDetector(
+                                                           onTap: (){
+                                                             Get.defaultDialog(
+                                                               title: "هل تريد قبول طلب الإنضمام ",
+                                                               content:  Row(
+                                                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                 children: [
+                                                                   GestureDetector(
+                                                                     onTap: (){
+                                                                       controller.accept_join(controller.data[index]['id']);
+                                                                     },
+                                                                     child: Container(
+                                                                       padding: EdgeInsets.all(5),
+                                                                       alignment: Alignment.center,
+                                                                       height: 50,
+                                                                       width: MediaQuery.of(context).size.width*0.3,
+                                                                       decoration: BoxDecoration(
+                                                                         borderRadius: BorderRadius.circular(10),
+                                                                         color: StaticColor.primarycolor,
+                                                                       ),
+                                                                       child: Center(child: Text("نعم ",style: TextStyle(color: Colors.white,fontSize: 20),)),
+                                                                     ),
+                                                                   ),
+                                                                   GestureDetector(
+                                                                     onTap: (){
+                                                                       Get.back();
+                                                                     },
+                                                                     child: Container(
+                                                                       padding: EdgeInsets.all(5),
+                                                                       alignment: Alignment.center,
+                                                                       height: 50,
+                                                                       width: MediaQuery.of(context).size.width*0.3,
+                                                                       decoration: BoxDecoration(
+                                                                         borderRadius: BorderRadius.circular(10),
+                                                                         color: StaticColor.primarycolor,
+                                                                       ),
+                                                                       child: Center(child: Text("لا ",style: TextStyle(color: Colors.white,fontSize: 20),)),
+                                                                     ),
+                                                                   ),
+                                                                 ],
+                                                               ),
+                                                             );
+                                                           },
+                                                           child: Container(
+                                                             padding: EdgeInsets.all(5),
+                                                             alignment: Alignment.center,
+                                                             height: 50,
+                                                             width: MediaQuery.of(context).size.width*0.3,
+                                                             decoration: BoxDecoration(
+                                                               borderRadius: BorderRadius.circular(10),
+                                                               color: StaticColor.primarycolor,
+                                                             ),
+                                                             child: Center(child: Text("تأكيد ",style: TextStyle(color: Colors.white,fontSize: 20),)),
+                                                           ),
+
+                                                         ),
+                                                       ],
+                                                     ),
+
                                                  );
 
                                                },
@@ -360,7 +412,7 @@ class Join_request extends StatelessWidget {
                                                          mainAxisAlignment:
                                                          MainAxisAlignment.end,
                                                          children: [
-                                                           Text(" ${controller.data[index]['type']} :"),
+                                                           Text(" ${controller.data[0]['type_user']['Name']} :"),
                                                            const Text(" الإختصاص",
                                                                style: TextStyle(
                                                                    fontWeight:
@@ -370,6 +422,114 @@ class Join_request extends StatelessWidget {
                                                              width: 50,
                                                              child: Image.asset(
                                                                  "assets/images/medical-team.png"),
+                                                           )
+                                                         ],
+                                                       ),
+                                                     ),
+                                                     Container(
+                                                       margin: const EdgeInsets.only(
+                                                           bottom: 8),
+                                                       padding: EdgeInsets.all(8),
+                                                       width: MediaQuery.of(context)
+                                                           .size
+                                                           .width,
+                                                       height: 60,
+                                                       color: StaticColor.thirdgrey
+                                                           .withAlpha(30),
+                                                       child: Row(
+                                                         mainAxisAlignment:
+                                                         MainAxisAlignment.end,
+                                                         children: [
+                                                           Text(" ${controller.data[index]['email']} :"),
+                                                           const Text(" البريد الإلكتروني",
+                                                               style: TextStyle(
+                                                                   fontWeight:
+                                                                   FontWeight.bold)),
+                                                           Container(
+                                                             height: 50,
+                                                             width: 50,
+                                                             child: Icon(Icons.email,color: StaticColor.primarycolor,),
+                                                           )
+                                                         ],
+                                                       ),
+                                                     ),
+                                                     Container(
+                                                       margin: const EdgeInsets.only(
+                                                           bottom: 8),
+                                                       padding: EdgeInsets.all(8),
+                                                       width: MediaQuery.of(context)
+                                                           .size
+                                                           .width,
+                                                       height: 60,
+                                                       color: StaticColor.thirdgrey
+                                                           .withAlpha(30),
+                                                       child: Row(
+                                                         mainAxisAlignment:
+                                                         MainAxisAlignment.end,
+                                                         children: [
+                                                           Text(" ${controller.data[index]['salary']} :"),
+                                                           const Text(" الراتب",
+                                                               style: TextStyle(
+                                                                   fontWeight:
+                                                                   FontWeight.bold)),
+                                                           Container(
+                                                             height: 50,
+                                                             width: 50,
+                                                             child: Icon(Icons.monetization_on,color: StaticColor.primarycolor,),
+                                                           )
+                                                         ],
+                                                       ),
+                                                     ),
+                                                     Container(
+                                                       margin: const EdgeInsets.only(
+                                                           bottom: 8),
+                                                       padding: EdgeInsets.all(8),
+                                                       width: MediaQuery.of(context)
+                                                           .size
+                                                           .width,
+                                                       height: 60,
+                                                       color: StaticColor.thirdgrey
+                                                           .withAlpha(30),
+                                                       child: Row(
+                                                         mainAxisAlignment:
+                                                         MainAxisAlignment.end,
+                                                         children: [
+                                                           Text(" ${controller.data[index]['created_at']} :"),
+                                                           const Text("تاريخ الطلب",
+                                                               style: TextStyle(
+                                                                   fontWeight:
+                                                                   FontWeight.bold)),
+                                                           Container(
+                                                             height: 50,
+                                                             width: 50,
+                                                             child: Icon(Icons.date_range,color: StaticColor.primarycolor,),
+                                                           )
+                                                         ],
+                                                       ),
+                                                     ),
+                                                     Container(
+                                                       margin: const EdgeInsets.only(
+                                                           bottom: 8),
+                                                       padding: EdgeInsets.all(8),
+                                                       width: MediaQuery.of(context)
+                                                           .size
+                                                           .width,
+                                                       height: 60,
+                                                       color: StaticColor.thirdgrey
+                                                           .withAlpha(30),
+                                                       child: Row(
+                                                         mainAxisAlignment:
+                                                         MainAxisAlignment.end,
+                                                         children: [
+                                                           Text(" ${controller.data[index]['types_of_center_services']['Name']} :"),
+                                                           const Text(" نوع الخدمة",
+                                                               style: TextStyle(
+                                                                   fontWeight:
+                                                                   FontWeight.bold)),
+                                                           Container(
+                                                             height: 50,
+                                                             width: 50,
+                                                             child: Icon(Icons.medical_services,color: StaticColor.primarycolor,),
                                                            )
                                                          ],
                                                        ),

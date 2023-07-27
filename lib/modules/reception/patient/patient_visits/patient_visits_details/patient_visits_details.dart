@@ -208,6 +208,10 @@ class Patient_visits_details extends StatelessWidget {
                     textAlign: TextAlign.end,
                   ),
                 ),
+                const Divider(
+                  height: 2,
+                  color: Colors.black45,
+                ),
                 const Text(
                   "الملاحظات",
                   style: TextStyle(fontSize: 20),
@@ -231,6 +235,42 @@ class Patient_visits_details extends StatelessWidget {
                 const Divider(
                   height: 2,
                   color: Colors.black45,
+                ),
+                SizedBox(height: 10,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    GestureDetector(
+                      onTap: (){
+                        Get.toNamed("/Xray_in_visit_details");
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(8),
+                        height: MediaQuery.of(context).size.height*0.07,
+                        width:100,
+                        decoration: BoxDecoration(
+                            color: StaticColor.primarycolor,
+                            borderRadius: BorderRadius.circular(20)
+                        ),
+                        child: Container(height:55,width:55,child: Image.asset("assets/images/x-rays.png",)),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: (){
+                        Get.toNamed("/Lab_result_in_visit_details");
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(8),
+                        height: MediaQuery.of(context).size.height*0.07,
+                        width:100,
+                        decoration: BoxDecoration(
+                            color: StaticColor.primarycolor,
+                            borderRadius: BorderRadius.circular(20)
+                        ),
+                        child: Container(height:55,width:55,child: Image.asset("assets/images/lab_req.png",)),
+                      ),
+                    ),
+                  ],
                 ),
               ],
 

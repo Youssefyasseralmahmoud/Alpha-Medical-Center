@@ -61,7 +61,7 @@ delete_xray_services(int id) async {
     // data['Value']="02545164598162";
 
     var response = await crud.postdata(
-        Serverconfig.getalldoctor+"?id=${id}",
+        Serverconfig.getalldoctor_in_type_service+"?id=${id}",
 
         {
           "Authorization": bearer + " " + token.toString(),

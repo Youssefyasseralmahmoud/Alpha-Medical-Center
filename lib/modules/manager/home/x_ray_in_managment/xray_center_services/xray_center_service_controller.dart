@@ -84,12 +84,12 @@ class Xray_center_service_controller extends GetxController {
     statusRequest = StatusRequest.loading;
     update();
     var response = await services.get_all_doctors(id_type);
-    test_data_doctor.addAll(response['data'][0]['section']['user']) ;
+    test_data_doctor.addAll(response['data'][0]['user']) ;
     statusRequest = handlingdata(response);
 
     if (StatusRequest.succes == statusRequest&& test_data_doctor.isNotEmpty) {
       data_doctor.clear();
-      data_doctor.addAll(response['data'][0]['section']['user']) ;
+      data_doctor.addAll(response['data'][0]['user']) ;
       print("response from patient controller");
       print(data_doctor);
 

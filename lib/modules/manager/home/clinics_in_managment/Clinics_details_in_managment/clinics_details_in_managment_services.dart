@@ -61,7 +61,7 @@ class Clinics_details_in_managment_services {
     // data['Value']="02545164598162";
 
     var response = await crud.postdata(
-        Serverconfig.getalldoctor+"?id=${id}",
+        Serverconfig.getalldoctor_in_type_service+"?id=${id}",
 
         {
           "Authorization": bearer + " " + token.toString(),

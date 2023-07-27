@@ -6,7 +6,7 @@ import 'package:project_after_update/modules/reception/patient/convert_request/c
 import 'package:project_after_update/secure_storage/secure_storage.dart';
 
 class Convert_request_controller extends GetxController {
- late String selected;
+  String selected="إختر الخدمة";
   late var type;
   List data_service = [];
   List data_service_to_show = [];

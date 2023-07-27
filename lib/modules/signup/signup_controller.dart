@@ -5,19 +5,19 @@ import 'package:project_after_update/core/function/handlingdata.dart';
 import 'package:project_after_update/modules/signup/signup_services.dart';
 import 'package:project_after_update/secure_storage/secure_storage.dart';
 class SignupController extends GetxController{
-   String selected="طبيب";
-  List<String> department=[
-    "طبيب",
-    "ممرض",
-    " أشعة",
-    "مخبر",
-    "مالية",
-    "مدير",
-    "إسعاف",
-    "إستقبال",
-    "أدمن",
-    "مخزن"
-  ];
+   String selected = "إختر نوع الخدمة";
+  // List<String> department=[
+  //   "طبيب",
+  //   "ممرض",
+  //   " أشعة",
+  //   "مخبر",
+  //   "مالية",
+  //   "مدير",
+  //   "إسعاف",
+  //   "إستقبال",
+  //   "أدمن",
+  //   "مخزن"
+  // ];
   changedepartment(String value){
     selected=value;
     update();
@@ -31,9 +31,10 @@ class SignupController extends GetxController{
    late var conf_pass;
    late var email;
    late var type;
-   late int id_section;
+   late int id_type_services;
    List test_data_type_user=[];
    List data_type_user=[];
+   List data_service_to_show = [];
    register_services services =register_services(Get.find(),Get.find());
    StatusRequest? statusRequest;
    Secury_storage secury_storage = new Secury_storage();
@@ -51,10 +52,56 @@ class SignupController extends GetxController{
        print("الحقول غير صالحة");
      }
    }
-   get_all_section() async {
+   // get_all_section() async {
+   //   statusRequest = StatusRequest.loading;
+   //   update();
+   //   var response = await services.get_all_section();
+   //   test_data_type_user.addAll(response['data']) ;
+   //   statusRequest = handlingdata(response);
+   //
+   //   if (StatusRequest.succes == statusRequest&& test_data_type_user.isNotEmpty) {
+   //     data_type_user.clear();
+   //     data_type_user.addAll(response['data']) ;
+   //     print("all type section is");
+   //     print(data_type_user);
+   //   }
+   //   else if(test_data_type_user.isEmpty) {
+   //     await Get.snackbar(
+   //       "تنبيه",
+   //       "لا يوجد اقسام لعرضهم",
+   //     );
+   //   }
+   //   else if (StatusRequest.failure == statusRequest) {
+   //     await Get.snackbar(
+   //       "تحذير",
+   //       "لا يوجد اقسام لعرضهم",
+   //     );
+   //   }
+   //   else {
+   //     Get.defaultDialog(title: " خطأ", content: Text("حدث خطا ما"));
+   //   }
+   //   update();
+   // }
+   organization() async {
+     await get_all_type_services_in_center();
+     adding_data_to_data_service_to_show();
+   }
+
+   adding_data_to_data_service_to_show() {
+     print("***** adding_data_to_data_service_to_show is working now *****");
+     data_type_user.forEach((name) {
+       print(name['Name']);
+       data_service_to_show.add(name['Name']);
+       print("data service to show are ${data_service_to_show}");
+     });
+   }
+
+
+
+   get_all_type_services_in_center() async {
      statusRequest = StatusRequest.loading;
      update();
-     var response = await services.get_all_section();
+     var response = await services.get_all_type_services_in_center();
      test_data_type_user.addAll(response['data']) ;
      statusRequest = handlingdata(response);
 
@@ -67,13 +114,13 @@ class SignupController extends GetxController{
      else if(test_data_type_user.isEmpty) {
        await Get.snackbar(
          "تنبيه",
-         "لا يوجد اقسام لعرضهم",
+         "لا يوجد خدمات لعرضهم",
        );
      }
      else if (StatusRequest.failure == statusRequest) {
        await Get.snackbar(
          "تحذير",
-         "لا يوجد اقسام لعرضهم",
+         "لا يوجد خدمات لعرضهم",
        );
      }
      else {
@@ -82,49 +129,47 @@ class SignupController extends GetxController{
      update();
    }
 
-
    register() async{
-     if(type == "طبيب"){
-       type="clinic";
-     } else if(type=="أدمن"){
-       type="Administration";
-     }else if(type=="إسعاف"){
-       type="Ambulance";
-     }
-     else if(type=="مالية"){
-       type="Finance";
-     }
-     else if(type=="مخبر"){
-       type="Laboratory";
-     }
-     else if(type=="مدير"){
-       type="Manager";
-     }
-     else if(type=="ممرض"){
-       type="clinic";
-     }
-     else if(type=="أشعة"){
-     type="xray";
-     }
-     else if(type=="إستقبال"){
-       type="Reception";
-     } else{
-       type="Store";
-     };
-     data_type_user.forEach((name) {
-       if(name['Name']==type){
-         id_section=name['id'];
+     // if(type == "طبيب"){
+     //   type="clinic";
+     // } else if(type=="أدمن"){
+     //   type="Administration";
+     // }else if(type=="إسعاف"){
+     //   type="Ambulance";
+     // }
+     // else if(type=="مالية"){
+     //   type="Finance";
+     // }
+     // else if(type=="مخبر"){
+     //   type="Laboratory";
+     // }
+     // else if(type=="مدير"){
+     //   type="Manager";
+     // }
+     // else if(type=="ممرض"){
+     //   type="clinic";
+     // }
+     // else if(type=="أشعة"){
+     // type="xray";
+     // }
+     // else if(type=="إستقبال"){
+     //   type="Reception";
+     // } else{
+     //   type="Store";
+     // };
+     data_type_user.forEach((element) {
+       if(element['Name']==type){
+         id_type_services=element['id'];
        }
      });
-     print("the id section from controller is ${id_section}");
      statusRequest=StatusRequest.loading;
      update();
-     var response =await services.register(username,password,name,surname,conf_pass,email,type,id_section);
+     var response =await services.register(username,password,name,surname,conf_pass,email,type,id_type_services);
      statusRequest=handlingdata(response);
 
      if(StatusRequest.succes==statusRequest){
 
-       if(response['code']== 1 && response['data']['type'] == "Receptionist" ){
+       if(response['code']== 1 && response['data']['type'] == "Reception" ){
          // && response['carer']=='reception'
         // admin_token=response['data']['token'];
        //  print("tesst from login");
@@ -199,7 +244,7 @@ class SignupController extends GetxController{
    }
 @override
   void onInit()async{
-   await get_all_section();
+   await organization();
     super.onInit();
   }
 

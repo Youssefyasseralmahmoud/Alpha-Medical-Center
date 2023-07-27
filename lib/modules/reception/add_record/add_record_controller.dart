@@ -59,7 +59,7 @@ class Patient_Regesteration_controller extends GetxController{
 
         await Get.snackbar("تم الإضافة بنجاح", "تمت عملية إضافة السجل بنجاح",);
         print("the id of patient${response['FullName']} is ${response['id']}");
-        Get.toNamed("/Add_Previous_medical_cond",arguments: {
+        Get.offNamed("/Add_Previous_medical_cond",arguments: {
           "id":response['id']
         });
 

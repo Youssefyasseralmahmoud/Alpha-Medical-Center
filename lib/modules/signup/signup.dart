@@ -233,23 +233,26 @@ class Signup extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   DropdownButton(
-                                    items: controller.department
+
+                                    items: controller.data_service_to_show
                                         .map((e) => DropdownMenuItem(
                                       child: Text("$e"),
                                       value: e,
                                     ))
                                         .toList(),
                                     onChanged: (val) {
-                                      controller.changedepartment(val!);
+                                      controller.changedepartment(val as String);
                                       controller.type=val;
-                                      // controller.selected = val.toString();
+                                       controller.selected = val.toString();
                                       print(controller.selected);
                                     },
-                                    value: controller.selected,
+                                   // value: controller.selected,
+
                                     style: const TextStyle(
                                         fontSize: 15,
                                         color: StaticColor.blackcolor,
                                         fontWeight: FontWeight.bold),
+                                    hint: Text("${controller.selected}"),
                                   ),
                                   const Icon(Icons.work_outline_outlined,
                                       color: StaticColor.blackcolor),

@@ -15,7 +15,7 @@ class Serverconfig{
   static const update_pervious_medical_condition ='$domainnameserver/api/updatePreviousMedicalCondition';
   static const patient_reservation_registeration ='$domainnameserver/api/patientReservationRegistration';
  // static const getalldoctor ='$domainnameserver/api/getAllDoctors';
-  static const getalldoctor ='$domainnameserver/api/getAllUserInThisTypes';
+  static const getalldoctor_in_type_service ='$domainnameserver/api/getAllUserInThisTypes';
   static const get_view_doctor_booking ='$domainnameserver/api/getViewDoctorBookings';
   static const update_patient_reservation ='$domainnameserver/api/updatePatientReservation';
   static const delete_patient_reservation ='$domainnameserver/api/deletePatientReservation';
@@ -44,10 +44,21 @@ class Serverconfig{
   static const delete_services_in_type ='$domainnameserver/api/deleteCenterServices';
   static const update_services_in_type ='$domainnameserver/api/updateCenterServices';
   static const get_user_info_by_id ='$domainnameserver/api/getUserInfoByID';
-  static const get_all_required_services_for_patient ='$domainnameserver/api/getAllPatientServices';
+  static const get_all_required_services_for_patient ='$domainnameserver/api/getPatientServices';
   static const add_service_for_patient ='$domainnameserver/api/addPatientServices';
   static const get_all_center_service ='$domainnameserver/api/getAllCenterService';
   static const delete_service_for_patient ='$domainnameserver/api/removePatientServices';
+  static const download_xray ='$domainnameserver/api/downloadX_Rays';
+  static const get_user_in_section ='$domainnameserver/api/getUsersBySection';
+  static const get_all_type_services_in_center ='$domainnameserver/api/getAllTypesCenterServices';
+  static const get_wating_request_by_typeservice ='$domainnameserver/api/getAllWaitRequestByTypeCenterServices';
+  static const get_patient_info_by_id ='$domainnameserver/api/getPatientInformationByID';
+
+
+
+
+
+
 
 
 

@@ -11,7 +11,7 @@ class register_services{
   register_services(this.crud,this.crud_get);
 
 
-  get_all_section() async {
+  get_all_type_services_in_center() async {
     String? token = await secury.read("admin_token");
 
     // final Map<String, dynamic> data = {};
@@ -19,7 +19,7 @@ class register_services{
     // data['Value']="02545164598162";
 
     var response = await crud_get.postdata(
-        Serverconfig.get_all_section,
+        Serverconfig.get_all_type_services_in_center,
 
         {
           "Authorization": bearer + " " + token.toString(),
@@ -32,8 +32,8 @@ class register_services{
   }
 
 
-  register(String username,String password,String name,String surname,String conf_pass,String email,String type,int id_section)async{
-    print("the id section is ${id_section}");
+  register(String username,String password,String name,String surname,String conf_pass,String email,String type,int id_TypeCenterServices)async{
+    print("the id section is ${id_TypeCenterServices}");
     var response=await crud.postdata(Serverconfig.register,{
       "name" :name,
       "surname" :surname,
@@ -42,7 +42,8 @@ class register_services{
       "password" : password,
       "password_confirmation" :conf_pass,
       "type" :type,
-      "id_Section":"${id_section.toString()}"
+      "id_TypeCenterServices":"${id_TypeCenterServices.toString()}",
+
 
     },
         {

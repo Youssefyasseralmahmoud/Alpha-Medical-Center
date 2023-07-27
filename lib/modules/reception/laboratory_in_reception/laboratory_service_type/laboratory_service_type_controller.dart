@@ -14,8 +14,6 @@ class Laboratory_service_type_controller extends GetxController{
   List test_data=[];
   late int id_section;
 
-
-
   get_all_type_of_section() async {
     statusRequest = StatusRequest.loading;
     update();

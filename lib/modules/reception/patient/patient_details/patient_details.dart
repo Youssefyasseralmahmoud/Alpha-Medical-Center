@@ -19,7 +19,8 @@ class Patient_details extends StatelessWidget {
         bottomNavigationBar:  GestureDetector(
           onTap: (){
             Get.toNamed("/patient_services",arguments: {
-              "name":controller.data_details[0]['FullName']
+              "name":controller.data_details[0]['FullName'],
+              "id_patient_record":controller.data_details[0]['id']
 
             });
           },

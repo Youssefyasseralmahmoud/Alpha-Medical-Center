@@ -125,7 +125,8 @@ class Patient_services extends StatelessWidget {
                                                 children: [
                                                   GestureDetector(
                                                     onTap: (){
-                                                      controller.delete_service_for_patienr(controller.data_details[index]['id']);
+                                                      print("haaaaaaaaaaam id is ${controller.data_details[index]['IDrequiredPatientServices']}");
+                                                      controller.delete_service_for_patienr(controller.data_details[index]['IDrequiredPatientServices']);
                                                     },
                                                     child: Container(
                                                       padding:
@@ -228,16 +229,67 @@ class Patient_services extends StatelessWidget {
                                                       mainAxisAlignment:
                                                       MainAxisAlignment.end,
                                                       children: [
-                                                        const Text("محمد سعيد :"),
-                                                        const Text(" الطبيب",
+                                                         Text(" ${controller.data_details[index]['ServiceDetails']} :"),
+                                                        const Text(" التفاصيل",
                                                             style: TextStyle(
                                                                 fontWeight:
                                                                 FontWeight.bold)),
                                                         Container(
                                                           height: 50,
                                                           width: 50,
-                                                          child: Image.asset(
-                                                              "assets/images/doctor.png"),
+                                                          child: Icon(Icons.edit,color: StaticColor.primarycolor,),
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    margin: const EdgeInsets.only(
+                                                        bottom: 5),
+                                                    width: MediaQuery.of(context)
+                                                        .size
+                                                        .width,
+                                                    height: 60,
+                                                    color: StaticColor.thirdgrey
+                                                        .withAlpha(30),
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                      MainAxisAlignment.end,
+                                                      children: [
+                                                        Text(" ${controller.data_details[index]['ServicePrice']} :"),
+                                                        const Text("السعر",
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                FontWeight.bold)),
+                                                        Container(
+                                                          height: 50,
+                                                          width: 50,
+                                                          child: Icon(Icons.monetization_on,color: StaticColor.primarycolor,),
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    margin: const EdgeInsets.only(
+                                                        bottom: 5),
+                                                    width: MediaQuery.of(context)
+                                                        .size
+                                                        .width,
+                                                    height: 60,
+                                                    color: StaticColor.thirdgrey
+                                                        .withAlpha(30),
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                      MainAxisAlignment.end,
+                                                      children: [
+                                                        Text(" ${controller.data_details[index]['CreatedRequiredPatientServices']} :"),
+                                                        const Text(" تاريخ الطلب",
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                FontWeight.bold)),
+                                                        Container(
+                                                          height: 50,
+                                                          width: 50,
+                                                          child: Icon(Icons.date_range,color: StaticColor.primarycolor,),
                                                         )
                                                       ],
                                                     ),
@@ -266,7 +318,7 @@ class Patient_services extends StatelessWidget {
                                     ),
                                   ),
                                   Container(
-                                    child:  Text("${controller.data_details[index]['center_service_id']}"),
+                                    child:  Text("${controller.data_details[index]['ServiceName']}"),
                                   )
                                 ],
                               ),

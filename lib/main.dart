@@ -59,6 +59,10 @@ import 'package:project_after_update/modules/doctor/record/doctorDitailes.dart';
 import 'package:project_after_update/modules/doctor/record/patientVisitRecord.dart';
 import 'package:project_after_update/modules/login/login.dart';
 import 'package:project_after_update/modules/manager/employee/employee.dart';
+import 'package:project_after_update/modules/manager/home/ambulance_in_managment/add_service_type_inambulance/add_service_type_for_ambulance.dart';
+import 'package:project_after_update/modules/manager/home/ambulance_in_managment/ambulance_in_managment.dart';
+import 'package:project_after_update/modules/manager/home/ambulance_in_managment/details_user_in_ambulance/details_user_in_ambulance.dart';
+import 'package:project_after_update/modules/manager/home/ambulance_in_managment/edit_service_type_ambulance/edit_service_type_ambulance.dart';
 import 'package:project_after_update/modules/manager/home/clinics_in_managment/Clinics_details_in_managment/Clinics_details_in_managment.dart';
 import 'package:project_after_update/modules/manager/home/clinics_in_managment/Clinics_details_in_managment/add_clinics_services/add_clinics_service.dart';
 import 'package:project_after_update/modules/manager/home/clinics_in_managment/Clinics_details_in_managment/edit_clinics_services/edit_clinics_service.dart';
@@ -78,6 +82,10 @@ import 'package:project_after_update/modules/manager/home/laboratory_in_managmen
 import 'package:project_after_update/modules/manager/home/laboratory_in_managment/laboratory_center_services/laboratory_center_services.dart';
 import 'package:project_after_update/modules/manager/home/laboratory_in_managment/laboratory_in_managment.dart';
 import 'package:project_after_update/modules/manager/home/new_section/add_new_section.dart';
+import 'package:project_after_update/modules/manager/home/recption_in_managment/add_service_type_for_reception/add_service_type_for_reception.dart';
+import 'package:project_after_update/modules/manager/home/recption_in_managment/details_of_users/details_of_user.dart';
+import 'package:project_after_update/modules/manager/home/recption_in_managment/dispaly_users_in_reception.dart';
+import 'package:project_after_update/modules/manager/home/recption_in_managment/edit_service_type_reception/edit_service_type_reception.dart';
 import 'package:project_after_update/modules/manager/home/storage_in_managment/storage_deatils_in_managment/storage_details_in_managment.dart';
 import 'package:project_after_update/modules/manager/home/storage_in_managment/storage_in_managment.dart';
 import 'package:project_after_update/modules/manager/home/x_ray_in_managment/add_x_ray/add_x_ray_type.dart';
@@ -98,6 +106,7 @@ import 'package:project_after_update/modules/reception/center_services/center_se
 import 'package:project_after_update/modules/reception/doctors/clinics/add_reservation/add_reservation.dart';
 import 'package:project_after_update/modules/reception/doctors/clinics/clinics.dart';
 import 'package:project_after_update/modules/reception/doctors/clinics/reservations/edit_reservation/edit_reservation.dart';
+import 'package:project_after_update/modules/reception/doctors/clinics/reservations/patient_details/patient_details.dart';
 import 'package:project_after_update/modules/reception/doctors/clinics/reservations/reservations.dart';
 import 'package:project_after_update/modules/reception/doctors/clinics/wating_in_clinics/wating_in_clinics.dart';
 import 'package:project_after_update/modules/reception/doctors/doctors.dart';
@@ -116,7 +125,9 @@ import 'package:project_after_update/modules/reception/patient/patient_details/p
 import 'package:project_after_update/modules/reception/patient/patient_details/visit_ergisteration/visit_register_in_reception.dart';
 import 'package:project_after_update/modules/reception/patient/patient_services/patient_services.dart';
 import 'package:project_after_update/modules/reception/patient/patient_visits/patient_visits.dart';
+import 'package:project_after_update/modules/reception/patient/patient_visits/patient_visits_details/lab_result_in_visit_details/lab_result_in_visit_details.dart';
 import 'package:project_after_update/modules/reception/patient/patient_visits/patient_visits_details/patient_visits_details.dart';
+import 'package:project_after_update/modules/reception/patient/patient_visits/patient_visits_details/xray_in_visit_details/xray_in_visite_details.dart';
 import 'package:project_after_update/modules/reception/xray_in_reception/wating_in_xray.dart';
 import 'package:project_after_update/modules/reception/xray_in_reception/xray_service_type/xray_service/xray_service.dart';
 import 'package:project_after_update/modules/reception/xray_in_reception/xray_service_type/xray_service_type.dart';
@@ -233,6 +244,26 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/Wating_in_xray', page: () =>      Wating_in_xray()),
         GetPage(name: '/Xray_service_type', page: () =>      Xray_service_type()),
         GetPage(name: '/Xray_service', page: () =>      Xray_service()),
+        GetPage(name: '/Xray_in_visit_details', page: () =>      Xray_in_visit_details()),
+        GetPage(name: '/reception_in_managment', page: () =>      Display_users_in_reception()),
+        GetPage(name: '/details_user', page: () =>      Details_of_user()),
+        GetPage(name: '/Add_service_type_for_reception', page: () =>      Add_service_type_for_reception()),
+        GetPage(name: '/Edit_service_type_reception', page: () =>      Edit_service_type_reception()),
+        GetPage(name: '/Ambulance_in_managment', page: () =>      Ambulance_in_managment()),
+        GetPage(name: '/Add_service_type_for_ambulance', page: () =>      Add_service_type_for_ambulance()),
+        GetPage(name: '/Edit_service_type_ambulance', page: () =>      Edit_service_type_ambulance()),
+        GetPage(name: '/Details_of_user_ambulance', page: () =>      Details_of_user_ambulance()),
+        GetPage(name: '/Lab_result_in_visit_details', page: () =>      Lab_result_in_visit_details()),
+        GetPage(name: '/Patient_details_reserv', page: () =>      Patient_details_reserv()),
+
+
+
+
+
+
+
+
+
 
 
 

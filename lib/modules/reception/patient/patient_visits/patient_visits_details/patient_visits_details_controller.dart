@@ -32,4 +32,15 @@ class Patient_visits_details_controller extends GetxController {
     }
     update();
   }
+  download_xray(int id) async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await services.download_xray(id);
+    if(services.finalpath!=null){
+      Get.snackbar("تنبيه", "تم تحميل الصورة بنجاح");
+    }else{
+      Get.snackbar("تنبيه", "لم تم تحميل الصورة بنجاح");
+    }
+    update();
+  }
 }

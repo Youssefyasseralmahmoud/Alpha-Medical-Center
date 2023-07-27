@@ -41,7 +41,7 @@ class Login_controller extends GetxController{
     var response =await services.login(username.toString(),password.toString());
     statusRequest=handlingdata(response);
 
-    if(StatusRequest.succes==statusRequest){
+    if(StatusRequest.succes==statusRequest && response['data']!=""){
 
       if(response['code']== 1 && response['data']['user']['TypeUser'] == "Administration" ){
         // && response['carer']=='reception'
@@ -49,7 +49,15 @@ class Login_controller extends GetxController{
         print("tesst from login");
         secury_storage3.save("admin_token", admin_token);
         await Get.snackbar("تسجيل دخول ناجح", "تمت عملية الدخول بنجاح",);
-         Get.toNamed("/Home_screen_manager");
+         Get.offAllNamed("/Home_screen_manager");
+      }
+      if(response['code']== 1 && response['data']['user']['TypeUser'] == "Manager" ){
+        // && response['carer']=='reception'
+        admin_token=response['data']['token'];
+        print("tesst from login");
+        secury_storage3.save("admin_token", admin_token);
+        await Get.snackbar("تسجيل دخول ناجح", "تمت عملية الدخول بنجاح",);
+        Get.offAllNamed("/Home_screen_manager");
       }
       else if(response['code']== 1 && response['data']['user']['TypeUser'] == "Doctor" ) {
         // && response['carer']=='reception'
@@ -57,7 +65,7 @@ class Login_controller extends GetxController{
         print("tesst from login");
         secury_storage3.save("doctor_token", doctor_token);
         await Get.snackbar("تسجيل دخول ناجح", "تمت عملية الدخول بنجاح",);
-        Get.toNamed("/HomeDoctor");
+        Get.offAllNamed("/HomeDoctor");
       }
       else if(response['code']== 1 && response['data']['user']['TypeUser'] == "Receptionist" ) {
         // && response['carer']=='reception'
@@ -66,7 +74,7 @@ class Login_controller extends GetxController{
         secury_storage3.save("receptionist_token", receptionist_token);
         FirebaseMessaging.instance.subscribeToTopic("reception");
         await Get.snackbar("تسجيل دخول ناجح", "تمت عملية الدخول بنجاح",);
-        Get.toNamed("/home_screen_reception");
+        Get.offAllNamed("/home_screen_reception");
       }
       else if(response['code']== 1 && response['data']['user']['TypeUser'] == "Ambulance" ) {
         // && response['carer']=='reception'
@@ -74,14 +82,14 @@ class Login_controller extends GetxController{
         print("tesst from login");
         secury_storage3.save("ambulance_token", ambulance_token);
         await Get.snackbar("تسجيل دخول ناجح", "تمت عملية الدخول بنجاح",);
-        Get.toNamed("/home_screen_ambulance");
+        Get.offAllNamed("/home_screen_ambulance");
       } else if(response['code']== 1 && response['data']['user']['TypeUser'] == "Laboratory" ) {
         // && response['carer']=='reception'
         laboratory_token=response['data']['token'];
         print("tesst from login");
         secury_storage3.save("laboratory_token", laboratory_token);
         await Get.snackbar("تسجيل دخول ناجح", "تمت عملية الدخول بنجاح",);
-        Get.toNamed("/homelab");
+        Get.offAllNamed("/homelab");
       }
       else if(response['code']== 1 && response['data']['user']['TypeUser'] == "Radiographer" ) {
         // && response['carer']=='reception'
@@ -89,7 +97,7 @@ class Login_controller extends GetxController{
         print("tesst from login");
         secury_storage3.save("xray_token", xray_token);
         await Get.snackbar("تسجيل دخول ناجح", "تمت عملية الدخول بنجاح",);
-        Get.toNamed("/Homex_ray");
+        Get.offAllNamed("/Homex_ray");
       }
       else if(response['code']== 1 && response['data']['user']['TypeUser'] == "Nurse" ) {
         // && response['carer']=='reception'
@@ -97,12 +105,14 @@ class Login_controller extends GetxController{
         print("tesst from login");
         secury_storage3.save("nurse_token", nurse_token);
         await Get.snackbar("تسجيل دخول ناجح", "تمت عملية الدخول بنجاح",);
-        Get.toNamed("/HomeNurse");
+        Get.offAllNamed("/HomeNurse");
       }
       else{
         statusRequest=StatusRequest.failure;
       }
 
+    }else if (StatusRequest.succes==statusRequest && response['code']==1 && response['data']==""){
+      Get.snackbar( "تنبيه","يرجى الإنتظار حتى يتم قبول الطلب من قبل المدير");
     }else{
       Get.defaultDialog(title: "حدث خطأ ما",content:Text("اسم المستخدم أو كلمة المرور خطا"));
     }

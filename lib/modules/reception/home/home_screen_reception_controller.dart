@@ -19,8 +19,8 @@ class Home_screen_reception_controller extends GetxController{
   List<Widget> listpage=[
     const Home_reception(),
     const Patient(),
-    const Center_services(),
-    Text("payment"),
+   // const Center_services(),
+   // Text("payment"),
 
   ];
   changepage(int i){
@@ -43,7 +43,7 @@ class Home_screen_reception_controller extends GetxController{
       FirebaseMessaging.instance.unsubscribeFromTopic("reception");
       secury_storage.delete();
 
-      Get.toNamed("/login");
+      Get.offAllNamed("/login");
 
     }
     else if (StatusRequest.failure == statusRequest) {

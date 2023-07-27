@@ -23,7 +23,7 @@ class Clinics_services {
           "Accept": "application/json"
         }
     );
-    print("response from patient_visits services");
+    print("response from clinics services");
     print(response);
     return response.fold((l) => l, (r) => r);
   }

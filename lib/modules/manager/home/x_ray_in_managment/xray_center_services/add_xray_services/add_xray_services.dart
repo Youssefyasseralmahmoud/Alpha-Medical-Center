@@ -99,7 +99,7 @@ class Add_xray_service extends StatelessWidget {
                           ),
                           TextFormField(
                             validator: (val){
-                              return validinput(val!, 3,14,"idpersonal");
+                              return validinput(val!, 3,20,"idpersonal");
                             },
                             onChanged: (val) {
                               controller.name=val;

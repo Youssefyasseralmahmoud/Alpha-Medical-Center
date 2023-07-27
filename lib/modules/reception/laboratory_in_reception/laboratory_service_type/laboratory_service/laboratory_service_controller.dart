@@ -13,11 +13,94 @@ class laboratory_service_controller extends GetxController {
   Secury_storage secury_storage = new Secury_storage();
   List data=[];
   List test_data=[];
-
   late int id_type;
+  List data_doctor=[];
+  List test_data_doctor=[];
+  List data_wating_req=[];
+  List test_data_waating_req=[];
 
+  List<String> options = [
+    "الأحد",
+    "الإثنين",
+    "الثلاثاء",
+    "الأربعاء",
+    "الخميس",
+    "الجمعة",
+    "السبت",
+  ];
+  List<String> options_houer = [
+    "12-2",
+    "2-4",
+    "4-6",
+    "6-8",
+    "8-10",
+  ];
+  Rx<List<String>> selectedoptionlist = Rx<List<String>>([]);
+  Rx<List<String>> selectedoptionlist_houer = Rx<List<String>>([]);
+  var selectedoption = "".obs;
+  var selectedoption_houer = "".obs;
+  get_wating_request() async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await services.get_wating_request(id_type);
+    test_data_waating_req.addAll(response['data']) ;
+    statusRequest = handlingdata(response);
 
+    if (StatusRequest.succes == statusRequest&& test_data_waating_req.isNotEmpty) {
+      data_wating_req.clear();
+      data_wating_req.addAll(response['data']) ;
+      print("response from patient controller");
+      print(data_wating_req);
+    }
+    else if(test_data_waating_req.isEmpty) {
+      await Get.snackbar(
+        "تنبيه",
+        "لا يوجد طلبات استقبال لعرضهم",
+      );
+    }
+    else if (StatusRequest.failure == statusRequest) {
+      await Get.snackbar(
+        "تنبيه",
+        "لا يوجد طلبات استقبال لعرضهم",
+      );
+    }
+    else {
+      Get.defaultDialog(title: " خطأ", content: Text("حدث خطا ما"));
+    }
+    update();
+  }
 
+  get_all_doctors() async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await services.get_all_doctors(id_type);
+    test_data_doctor.addAll(response['data'][0]['user']) ;
+    statusRequest = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest&& test_data_doctor.isNotEmpty) {
+      data_doctor.clear();
+      data_doctor.addAll(response['data'][0]['user']) ;
+      print("response from patient controller");
+      print(data_doctor);
+      print(data_doctor[0]['username']);
+    }
+    else if(test_data_doctor.isEmpty) {
+      await Get.snackbar(
+        "تحذير",
+        "لا يوجد أطباء لعرضهم",
+      );
+    }
+    else if (StatusRequest.failure == statusRequest) {
+      await Get.snackbar(
+        "تحذير",
+        "لا يوجد أطباء لعرضهم",
+      );
+    }
+    else {
+      Get.defaultDialog(title: " خطأ", content: Text("حدث خطا ما"));
+    }
+    update();
+  }
   get_all_services_intype() async {
     statusRequest = StatusRequest.loading;
     update();
@@ -52,6 +135,8 @@ class laboratory_service_controller extends GetxController {
   @override
   void onInit() {
     id_type=Get.arguments['id_type'];
+    get_wating_request();
+    get_all_doctors();
     get_all_services_intype();
 
     super.onInit();

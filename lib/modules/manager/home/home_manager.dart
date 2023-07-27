@@ -133,6 +133,16 @@ class Home_manager extends StatelessWidget {
                                       }else if(controller.data[index]['Name']=='Store'){
                                         Get.toNamed("/Storage_in_managment");
                                       }
+                                      else if(controller.data[index]['Name']=='Ambulance'){
+                                        Get.toNamed("/Ambulance_in_managment",arguments: {
+                                          "id_section":controller.data[index]['id']
+                                        });
+                                      }
+                                      else if(controller.data[index]['Name']=='Reception'){
+                                        Get.toNamed("/reception_in_managment",arguments: {
+                                          "id_section":controller.data[index]['id']
+                                        });
+                                      }
 
                                     },
                                     onDoubleTap: (){
@@ -216,9 +226,13 @@ class Home_manager extends StatelessWidget {
                                               Image.asset(
                                                   "assets/images/finance.png",
                                                   fit: BoxFit.fill) :
+                                              controller.data[index]['Name']=='Ambulance'?
+                                              Image.asset(
+                                                  "assets/images/Ambulance-section.png",
+                                                  fit: BoxFit.fill):
                                               Image.asset(
                                                   "assets/images/logo.png",
-                                                  fit: BoxFit.fill) ,
+                                                  fit: BoxFit.fill),
                                             ),
                                              Expanded(
                                                 child:
@@ -258,11 +272,17 @@ class Home_manager extends StatelessWidget {
                                                   style: TextStyle(
                                                       color: Colors.white, fontSize: 15),
                                                 ) :
+                                                controller.data[index]['Name']=='Ambulance'?
+                                                Text(
+                                               "الإسعاف",
+                                               style: TextStyle(
+                                                   color: Colors.white, fontSize: 15),
+                                             ):
                                                 Text(
                                                   "${controller.data[index]['Name']}",
                                                   style: TextStyle(
                                                       color: Colors.white, fontSize: 15),
-                                                )
+                                                ),
                                              )
                                           ],
                                         )),

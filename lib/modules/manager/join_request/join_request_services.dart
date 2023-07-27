@@ -33,6 +33,25 @@ class Join_request_services {
     return response.fold((l) => l, (r) => r);
   }
 
+  get_all_type_services_in_center() async {
+    String? token = await secury.read("admin_token");
+
+    // final Map<String, dynamic> data = {};
+    // data['Key']="ID Personal";
+    // data['Value']="02545164598162";
+
+    var response = await crud.postdata(
+        Serverconfig.get_all_type_services_in_center,
+
+        {
+          "Authorization": bearer + " " + token.toString(),
+          "Accept": "application/json"
+        }
+    );
+    print("response from register get all section");
+    print(response);
+    return response.fold((l) => l, (r) => r);
+  }
 
   get_all_join_request() async {
     String? token = await secury.read("admin_token");
@@ -54,12 +73,13 @@ class Join_request_services {
     return response.fold((l) => l, (r) => r);
   }
 
-  accept_join(int id,int id_type_user) async {
+  accept_join(int id,int id_type_user,int id_TypeCenterServices) async {
     print("from accept id_type_user is ${id_type_user}");
     String? token = await secury.read("admin_token");
     var response = await crud_put.postdata(Serverconfig.accept_join_request, {
       "id": "${id.toString()}",
-      "id_TypeUser":"${id_type_user.toString()}"
+      "id_TypeUser":"${id_type_user.toString()}",
+      "id_TypeCenterServices":"${id_TypeCenterServices}"
     }, {
       "Authorization": bearer + " " + token.toString(),
       "Accept": "application/json"

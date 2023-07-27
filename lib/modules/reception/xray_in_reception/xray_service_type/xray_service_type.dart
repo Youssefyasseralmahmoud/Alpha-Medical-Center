@@ -17,6 +17,47 @@ class Xray_service_type extends StatelessWidget {
             Center(child: CircularProgressIndicator(color: StaticColor.primarycolor,),):
             Container(
               child: ListView(children: [
+                Container(
+                  margin: const EdgeInsets.only(top: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Row(
+                    children: [
+                      Expanded(
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                                contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                                prefixIcon: const Icon(Icons.search),
+                                hintText: "البحث",
+                                hintStyle: const TextStyle(fontSize: 20),
+                                border: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius: BorderRadius.circular(10)),
+                                filled: true,
+                                fillColor: Colors.grey[200]),
+                          )),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: StaticColor.primarycolor,
+                        ),
+                        width: 60,
+                        height: 55,
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.notifications_active_outlined,
+                            size: 25,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 const SizedBox(height: 20),
                 Container(
                   padding: const EdgeInsets.all(10),

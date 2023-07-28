@@ -59,6 +59,7 @@ import 'package:project_after_update/modules/doctor/record/doctorDitailes.dart';
 import 'package:project_after_update/modules/doctor/record/patientVisitRecord.dart';
 import 'package:project_after_update/modules/login/login.dart';
 import 'package:project_after_update/modules/manager/employee/employee.dart';
+import 'package:project_after_update/modules/manager/home/Setting_managment.dart';
 import 'package:project_after_update/modules/manager/home/ambulance_in_managment/add_service_type_inambulance/add_service_type_for_ambulance.dart';
 import 'package:project_after_update/modules/manager/home/ambulance_in_managment/ambulance_in_managment.dart';
 import 'package:project_after_update/modules/manager/home/ambulance_in_managment/details_user_in_ambulance/details_user_in_ambulance.dart';
@@ -113,6 +114,8 @@ import 'package:project_after_update/modules/reception/doctors/doctors.dart';
 import 'package:project_after_update/modules/reception/doctors/doctors_details.dart';
 import 'package:project_after_update/modules/reception/home/home_reception.dart';
 import 'package:project_after_update/modules/reception/home/home_screen_reception.dart';
+import 'package:project_after_update/modules/reception/home/profile_info/profile_info.dart';
+import 'package:project_after_update/modules/reception/home/setting/setting.dart';
 import 'package:project_after_update/modules/reception/laboratory_in_reception/laboratory_reserv/laboratory_reserv.dart';
 import 'package:project_after_update/modules/reception/laboratory_in_reception/laboratory_service_type/laboratory_service/laboratory_service.dart';
 import 'package:project_after_update/modules/reception/laboratory_in_reception/laboratory_service_type/laboratory_service_type.dart';
@@ -141,6 +144,7 @@ import 'package:project_after_update/modules/x-Ray/warehose/addConsumer.dart';
 import 'package:project_after_update/modules/x-Ray/warehose/funcybarX-ray.dart';
 import 'package:project_after_update/modules/x-Ray/warehose/warehouseProducts.dart';
 
+import 'modules/manager/home/profile_info_managment/profilr_info_managment.dart';
 import 'splash_screen/splash_screen.dart';
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -255,6 +259,13 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/Details_of_user_ambulance', page: () =>      Details_of_user_ambulance()),
         GetPage(name: '/Lab_result_in_visit_details', page: () =>      Lab_result_in_visit_details()),
         GetPage(name: '/Patient_details_reserv', page: () =>      Patient_details_reserv()),
+        GetPage(name: '/Setting', page: () =>      Setting()),
+        GetPage(name: '/Setting_managment', page: () =>      Setting_managment()),
+        GetPage(name: '/Profile_info_reception', page: () =>      Profile_info_reception()),
+        GetPage(name: '/Profile_info_managment', page: () =>      Profile_info_managment()),
+
+
+
 
 
 

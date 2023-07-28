@@ -64,25 +64,25 @@ class Add_record extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
+                   Row(
+                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                     children: [
+                     Container(
+                       height: 50,
+                       width: 50,
+                       child: Image.asset("assets/images/document.png"),
+                     ),
+                     const Text(
+                       "إضافة سجل طبي",
+                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                     ),
+
+                   ],),
                     const Text(
-                      "قسم الإستقبال",
-                      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                    ),
-                    const Text(
-                      "إضافة سجل طبي",
+                      "يرجى إدخال معلومات المريض",
                       style: TextStyle(fontSize: 15, color: Colors.grey),
                     ),
-                    const Divider(
-                      height: 10,
-                      color: Colors.black45,
-                    ),
-                    const Center(
-                      child: Text(
-                        "معلومات المريض ",
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    const SizedBox(height: 30,),
+                    const SizedBox(height: 20,),
                     TextFormField(
                       validator: (val){
                       return  validinput(val!, 3, 20,"username");

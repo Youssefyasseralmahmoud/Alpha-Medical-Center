@@ -53,6 +53,8 @@ class Serverconfig{
   static const get_all_type_services_in_center ='$domainnameserver/api/getAllTypesCenterServices';
   static const get_wating_request_by_typeservice ='$domainnameserver/api/getAllWaitRequestByTypeCenterServices';
   static const get_patient_info_by_id ='$domainnameserver/api/getPatientInformationByID';
+  static const get_user_info ='$domainnameserver/api/getMyUserInfo';
+
 
 
 

@@ -3,10 +3,12 @@ import 'package:get/get.dart';
 import 'package:project_after_update/core/class/StatusRequest.dart';
 import 'package:project_after_update/core/function/handlingdata.dart';
 import 'package:project_after_update/modules/manager/employee/employee.dart';
+import 'package:project_after_update/modules/manager/home/Setting_managment.dart';
 import 'package:project_after_update/modules/manager/home/home_manager.dart';
 import 'package:project_after_update/modules/manager/home/home_screen_manager_services.dart';
 import 'package:project_after_update/modules/manager/home/new_section/add_new_section.dart';
 import 'package:project_after_update/modules/manager/join_request/join_request.dart';
+import 'package:project_after_update/modules/reception/home/setting/setting.dart';
 import 'package:project_after_update/secure_storage/secure_storage.dart';
 
 class Home_screen_manager_controller extends GetxController {
@@ -18,7 +20,7 @@ class Home_screen_manager_controller extends GetxController {
   List<Widget> listpage = [
     const Home_manager(),
     const Join_request(),
-    const Employee(),
+    const Setting_managment(),
    const Add_new_section(),
   ];
   changepage(int i) {

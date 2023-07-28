@@ -15,45 +15,6 @@ class Home_screen_manager extends StatelessWidget {
         // drawer: Drawer(
         //   child: Custom_Drawer(),
         // ),
-        drawer: Drawer(
-          child: ListView(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.settings,size: 30,color: StaticColor.primarycolor,),
-                  SizedBox(width: 5,),
-                  Text("قائمة الإعدادات",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-
-                ],
-              ),
-              Divider(),
-              SizedBox(height: 20,),
-              GestureDetector(
-                onTap: (){
-                  controller.logout();
-                },
-                child: Container(
-                  padding: EdgeInsets.all(8),
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height*0.09,
-                  decoration: BoxDecoration(
-                      color:StaticColor.primarycolor,
-                      borderRadius: BorderRadius.circular(20)
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Icon(Icons.arrow_back_ios_new),
-                      Text("تسجيل الخروج",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
-
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
           child: Center(
@@ -115,23 +76,23 @@ class Home_screen_manager extends StatelessWidget {
               Spacer(),
               Row(
                 children: [
-                  // MaterialButton(
-                  //   onPressed: () {
-                  //     controller.changepage(2);
-                  //   },
-                  //   child: Column(
-                  //     mainAxisSize: MainAxisSize.min,
-                  //     children: [
-                  //       Icon(
-                  //         Icons.engineering_outlined,
-                  //         color: controller.currentpage == 2
-                  //             ? StaticColor.primarycolor
-                  //             : Colors.black,
-                  //       ),
-                  //       Text("الموظفين"),
-                  //     ],
-                  //   ),
-                  // ),
+                  MaterialButton(
+                    onPressed: () {
+                      controller.changepage(2);
+                    },
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.settings,
+                          color: controller.currentpage == 2
+                              ? StaticColor.primarycolor
+                              : Colors.black,
+                        ),
+                        Text("الإعدادات"),
+                      ],
+                    ),
+                  ),
                   MaterialButton(
                     onPressed: () {
                       controller.changepage(3);
@@ -149,10 +110,7 @@ class Home_screen_manager extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
-                    height: 50,
-                    width: 50,
-                  ),
+
                 ],
               ),
             ],

@@ -64,7 +64,7 @@ class Patient extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   const Text(
-                    "قسم الإستقبال",
+                    "عرض تفاصيل المرضى",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                    Row(
@@ -76,16 +76,12 @@ class Patient extends StatelessWidget {
                         child: Image.asset("assets/images/patient.png"),
                       ),
                       const Text(
-                        "عرض تفاصيل المرضى",
+                        "يرجى إدخال الرقم الوطني",
                         style: TextStyle(fontSize: 15, color: Colors.grey),
                       ),
                     ],
                   ),
-                  const Divider(
-                    height: 10,
-                    color: Colors.black45,
-                  ),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 10,),
                 ],
               ),
             ),
@@ -140,7 +136,7 @@ class Patient extends StatelessWidget {
                             color: StaticColor.primarycolor,
                           ),
                           child: const Text(
-                            "إضافة",
+                            "بحث",
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                         ),

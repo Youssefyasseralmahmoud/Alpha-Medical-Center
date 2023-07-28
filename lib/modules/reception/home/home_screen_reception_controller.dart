@@ -6,6 +6,7 @@ import 'package:project_after_update/core/function/handlingdata.dart';
 import 'package:project_after_update/modules/reception/center_services/center_services.dart';
 import 'package:project_after_update/modules/reception/home/home_reception.dart';
 import 'package:project_after_update/modules/reception/home/home_screen_reception_services.dart';
+import 'package:project_after_update/modules/reception/home/setting/setting.dart';
 import 'package:project_after_update/modules/reception/patient/patient.dart';
 import 'package:project_after_update/secure_storage/secure_storage.dart';
 
@@ -19,7 +20,7 @@ class Home_screen_reception_controller extends GetxController{
   List<Widget> listpage=[
     const Home_reception(),
     const Patient(),
-   // const Center_services(),
+    const Setting(),
    // Text("payment"),
 
   ];

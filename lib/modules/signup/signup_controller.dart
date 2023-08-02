@@ -169,7 +169,7 @@ class SignupController extends GetxController{
 
      if(StatusRequest.succes==statusRequest){
          await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
-         Get.toNamed("/login");
+         Get.offAllNamed("/login");
        // if(response['code']== 1 && response['data']['type'] == "Reception" ){
        //   // && response['carer']=='reception'
        //  // admin_token=response['data']['token'];

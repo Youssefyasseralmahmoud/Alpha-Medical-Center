@@ -15,6 +15,7 @@ class Signup extends StatelessWidget {
           return controller.statusRequest==StatusRequest.loading?
           Center(child: CircularProgressIndicator(color: StaticColor.primarycolor,)) :
           Form(
+
             key: controller.formstate,
             child: ListView(
               children: [

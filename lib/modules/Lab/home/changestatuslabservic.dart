@@ -1,24 +1,36 @@
+import 'dart:io';
+
+import 'package:flutter_file_dialog/flutter_file_dialog.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_utils/get_utils.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:project_after_update/config/server_config.dart';
 import 'package:project_after_update/core/class/Crud.dart';
-
+import 'package:http/http.dart' as http;
+import 'package:project_after_update/core/class/crud_delete.dart';
+import 'package:project_after_update/core/class/crud_put.dart';
 import '../../../core/class/StatusRequest.dart';
 import '../../../core/class/crud_get.dart';
 import '../../../secure_storage/secure_storage.dart';
 
 
-class personalinformationlab {
-  Crud_get crud;
+class changstatuslab {
+  Crud_put crud;
 
   Secury_storage secury = new Secury_storage();
-  personalinformationlab (this.crud);
+  changstatuslab (this.crud);
   String? token ;
-  get_pationbyid(int id)async{
-
+  changstatuslabbyidservice(int id,int status)async{
+    print(id);
+    print(status);
     String? token = await secury.read("admin_token");
-    var response=await crud.postdata(Serverconfig.getinformationbyId+"${id}",
+    var response=await crud.postdata('https://ultimatebyteos.com/api/changeStatus',
+
+        {
+          "id" :"${id}",
+          'Status': '${status}',
+        },
         {
           "Authorization": "Bearer" + " " + token.toString(),
           "Accept": "application/json"
@@ -27,4 +39,5 @@ class personalinformationlab {
     print(response);
     return response.fold((l) => l, (r) => r);
   }
+
 }

@@ -2,18 +2,24 @@ import 'dart:convert';
 
 import 'package:project_after_update/config/server_config.dart';
 import 'package:http/http.dart' as http;
+
+import '../../../secure_storage/secure_storage.dart';
 class Add_visit_service {
    var message;
-   var url = Uri.parse(Serverconfig.upload_Xray);
-   Future<bool> upload(path) async{
+   Secury_storage secury = new Secury_storage();
+
+   String? token ;
+   Future<bool> upload(path,details,id_visit,id_requerd) async{
+     token = await secury.read("admin_token");
      var headers = {
        'Accept': 'application/json',
-       'Authorization': 'Bearer 64|mQOnybpHTsFJmZfv4Bf2tCFy11F7HWilOH4tQgpf'
+       "Authorization": "Bearer" + " " + token.toString(),
      };
-     var request = http.MultipartRequest('POST', Uri.parse('https://ultimatebyteos.com/api/addX_Rays'));
+     var request = http.MultipartRequest('POST', Uri.parse(Serverconfig.upload_Xray));
      request.fields.addAll({
-       'ID_PatientVisitDetails': '3',
-       'Details': 'awdasdawdasdawdaawd'
+       'ID_PatientVisitDetails': '${id_visit}',
+       'Details': '${details}',
+       'requiredPatientServices_id': '${id_requerd}'
      });
      request.files.add(await http.MultipartFile.fromPath('IMG', path));
      request.headers.addAll(headers);
@@ -21,11 +27,13 @@ class Add_visit_service {
      http.StreamedResponse response = await request.send();
 
      if (response.statusCode == 200) {
+       message = "تم إرفاق الصورة";
        print(await response.stream.bytesToString());
      }
      else {
        print(response.reasonPhrase);
      }
+
 
      return true;
    }

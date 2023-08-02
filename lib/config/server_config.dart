@@ -23,6 +23,16 @@ class Serverconfig{
   static const update_visit ='$domainnameserver/api/updateVisit';
   static const personal_information ='$domainnameserver/api/getPatientInformation?Key=ID Personal&Value=0254516459816';
   static const upload_Xray ='$domainnameserver/api/addX_Rays';
+  static const getwaitRequest ='$domainnameserver/api/getAllWaitRequestByTypeCenterServices';
+  static const typeServicexray ='$domainnameserver/api/getAllTypesOfSection?id_section=11';
+  static const getinformationbyId  ='$domainnameserver/api/getPatientInformationByID?id=';
+  static const gitvisitsbyid ='$domainnameserver/api/getVisitsPatientUseIDPatientRecord?IDPatientRecord=';
+  static const typeServicelab ='$domainnameserver/api/getAllTypesOfSection?id_section=5';
+  static const addlabtest ='$domainnameserver/api/addLaboratoryTest';
+  static const deletetest ='$domainnameserver/api/removeLaboratoryTest';
+  static const deletexray ='$domainnameserver/api/deleteX_Rays';
+  static const changestatus ='$domainnameserver/api/changeStatus';
+
 
 
 

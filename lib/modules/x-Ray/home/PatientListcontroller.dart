@@ -1,37 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:project_after_update/modules/x-Ray/home/patientlistService.dart';
 
 import '../../../core/class/StatusRequest.dart';
 import '../../../core/function/handlingdata.dart';
 import '../../../secure_storage/secure_storage.dart';
-import 'homeServicelab.dart';
 
-class  homelabController extends GetxController{
-  GlobalKey<FormState> formstate= GlobalKey<FormState>();
-  homeServicelab service = new homeServicelab(Get.find());
+import 'homeService.dart';
+class  PatientListController extends GetxController{
 
+
+  patientlistservice services = patientlistservice(Get.find());
   StatusRequest? statusRequest;
+  StatusRequest? statusRequest2;
+  late int id_typeservic;
+  late String name;
   Secury_storage secury_storage = new Secury_storage();
   late int index ;
   //late String id_patient;
   //List test_data=[];
   List data_details=[];
+  var data_details2=[];
+   List data_details3 =[];
+
   var notificationCount = 0.obs;
   var isStoping = false.obs;
-
-  void toggleStop() {
-    isStoping.value = !isStoping.value;
-  }
-
-  void incrementNotificationCount() {
-    notificationCount.value++;
-  }
-  get_typescion() async {
+  get_patients(int id_type) async {
     statusRequest = StatusRequest.loading;
     update();
-    statusRequest =handlingdata(statusRequest);
-    var response = await service.get_allTypeofsection();
+
+    var response = await services.get_allwaitrequest(id_type);
 
     //test_data.addAll(response['data']);
     // print("test daaaataaa is ${test_data}");
@@ -40,7 +38,7 @@ class  homelabController extends GetxController{
     if (StatusRequest.succes == statusRequest) {
       data_details.clear();
       data_details.addAll(response['data']) ;
-      print("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee ${data_details.length}");
+
 
     }
 
@@ -57,8 +55,13 @@ class  homelabController extends GetxController{
   }
 
   @override
-  void onInit() {
-    get_typescion();
+  onInit() {
+
+    id_typeservic=Get.arguments['id_typeofservic'];
+    name =Get.arguments['name_ofservic'];
+
+    get_patients(id_typeservic);
+
     super.onInit();
   }
 

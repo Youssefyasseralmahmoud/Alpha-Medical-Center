@@ -9,22 +9,22 @@ import '../../../core/class/crud_get.dart';
 import '../../../secure_storage/secure_storage.dart';
 
 
-class personalinformationlab {
+class homeServicelab {
   Crud_get crud;
 
   Secury_storage secury = new Secury_storage();
-  personalinformationlab (this.crud);
+  homeServicelab (this.crud);
   String? token ;
-  get_pationbyid(int id)async{
+  get_allTypeofsection()async{
 
     String? token = await secury.read("admin_token");
-    var response=await crud.postdata(Serverconfig.getinformationbyId+"${id}",
+    var response=await crud.postdata(Serverconfig.typeServicelab,
         {
           "Authorization": "Bearer" + " " + token.toString(),
           "Accept": "application/json"
         }
     );
-    print(response);
+
     return response.fold((l) => l, (r) => r);
   }
 }

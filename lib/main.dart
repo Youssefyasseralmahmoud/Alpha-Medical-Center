@@ -104,14 +104,20 @@ import 'package:project_after_update/modules/x-Ray/warehose/addConsumer.dart';
 import 'package:project_after_update/modules/x-Ray/warehose/funcybarX-ray.dart';
 import 'package:project_after_update/modules/x-Ray/warehose/warehouseProducts.dart';
 
+
 import 'GetxBindings/store/store_materialeBinding.dart';
+import 'modules/Lab/VisitListLab/detalisvistlab.dart';
 import 'modules/Lab/Warehose/addConsumer.dart';
 import 'modules/Lab/Warehose/warehouseProductslab.dart';
+import 'modules/Lab/home/listlab.dart';
 import 'modules/store/Orders/dep_order.dart';
 import 'modules/store/home_store/Details.dart';
+import 'modules/store/home_store/add_details.dart';
 import 'modules/store/home_store/archives.dart';
 import 'modules/store/home_store/home_screen_store.dart';
 import 'modules/store/matireials/Pharmaceutical.dart';
+import 'modules/x-Ray/VisitsListsX_Ray/detailsofvisit.dart';
+import 'modules/x-Ray/home/List.dart';
 import 'splash_screen/splash_screen.dart';
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -218,17 +224,18 @@ class MyApp extends StatelessWidget {
       //  GetPage(name: '/DoctorBooking',        page: () =>DoctorBooking(),   ),
 
 /////////////////////////////////////////////////////////////////////////////////////
-        GetPage(name: '/Homex_ray',            page: () =>homex_ray(),binding: homex_rayBinding()),
-        GetPage(name: '/FancyNavBarx_ray',    page: () =>FancyNavBarx_ray()),
+        GetPage(name: '/List',            page: () =>List(),),
+        GetPage(name: '/FancyNavBarx_ray',    page: () =>FancyNavBarx_ray(),binding: homex_rayBinding()),
         GetPage(name: '/Addvisitx_ray',             page: () =>Addvisitx_ray (),binding: AddvisitaX_raybinding () ),
-        GetPage(name: '/PersonalInformationx_ray',             page: () =>PersonalInformationx_ray (), ),
+        GetPage(name: '/PersonalInformationx_ray',             page: () =>PersonalInformationx_ray (),),
         GetPage(name: '/VisitsListX_Ray',             page: () =>VisitsListX_Ray (),binding: VisitListX_raybinding() ),
         GetPage(name: '/EditVisitx_ray',             page: () =>EditVisitx_ray (),binding: Editvisitingx_raybinding() ),
         GetPage(name: '/addConsumer',          page: () =>addConsumer(),        binding:warehouseBindinds()),
         GetPage(name: '/warehouseProducts',    page: () =>warehouseProducts(),  binding:warehouseBindinds()),
-        //GetPage(name: '/FancyNavBarDoctor',    page: () =>FancyNavBarPage(),),
+        GetPage(name: '/detailvistexray',    page: () =>DetailVistexrayPage(),),
 
         /////////last adding for lab by saly
+        GetPage(name: '/Listlab',            page: () =>Mylistlab(),),
         GetPage(name: '/homelab',            page: () =>homelab(),binding: homelabBinding()),
         GetPage(name: '/FancyNavBarlab',    page: () =>FancyNavBarlab()),
         GetPage(name: '/Addvisitlab',             page: () =>Addvisitlab (),binding: Addvisitalabbinding () ),
@@ -237,11 +244,14 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/EditVisitlab',             page: () =>EditVisitlab (),binding: EditVisitlabBinding() ),
         GetPage(name: '/addConsumerlab',          page: () =>addConsumerlab(),        binding:warehouselabbinding()),
         GetPage(name: '/warehouseProductslab',    page: () =>WarehouseProductslab(),  binding:warehouselabbinding()),
+        GetPage(name: '/detailvistelab',    page: () => DetailVisteLabPage (),),
         GetPage(name: '/Home_screen_store',    page: () =>Home_screen_store(),binding:stormaaterialBindinds()),
         GetPage(name: '/Pharmaceutical',    page: () =>Pharmaceutical()),
         GetPage(name: '/dep_order',    page: () =>dep_order()),
         GetPage(name: '/orders_from_warehouse',    page: () =>orders_from_warehouse()),
         GetPage(name: '/Details',    page: () =>Details()),
+        GetPage(name: '/add_Details',    page: () =>add_Details ()),
+
 
 
 

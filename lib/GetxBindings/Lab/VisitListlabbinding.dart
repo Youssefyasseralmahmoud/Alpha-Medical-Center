@@ -5,5 +5,5 @@ import 'package:project_after_update/modules/Lab/VisitListLab/VisitsListControll
 class VisitListelabBinding implements Bindings{
   @override
   void dependencies() {
-    Get.put<VisitsListlabController>(VisitsListlabController());
+    Get.put<VisitsListControllerlab>(VisitsListControllerlab());
   }}

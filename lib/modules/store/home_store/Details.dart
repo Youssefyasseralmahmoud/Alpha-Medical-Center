@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_after_update/modules/store/home_store/warehouseControllerstor.dart';
 
 import '../../../static_colors/StaticColors.dart';
 
 
 class Details extends StatelessWidget {
-
+  warehouseControllerstor controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -26,30 +27,47 @@ class Details extends StatelessWidget {
           ),
         ),
       ),
-      body: Column (
+      body:SingleChildScrollView(
+       child :
+      Column (
         children: [
           SizedBox(height: 25),
+      Padding(
+        padding: EdgeInsets.symmetric( horizontal: 20),
+      child :
+      Row(
+
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
           Text(
-            ' : اسم المادة',
+            ': اسم المادة',
+
             style: TextStyle(
               color: Colors.black54,
               fontWeight: FontWeight.bold,
               fontSize: 14,
-
             ),
-            textAlign: TextAlign.right,
-          ),
+
+          )])),
           SizedBox(height: 10),
+      Padding(
+        padding: EdgeInsets.symmetric( horizontal: 20),
+        child :
+      Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
           Container(
             width: 220,
             height: 50,
             decoration: BoxDecoration(
-              color: Colors.grey[300],
+              color: Colors.grey[200],
               borderRadius: BorderRadius.circular(10),
             ),
             child: Center(
-              child: TextField(
-                keyboardType: TextInputType.number,
+              child:TextField(
+                controller: TextEditingController(text: "${controller.products[controller.index].name}"),
+                textAlign: TextAlign.center,
+                keyboardType: TextInputType.text,
                 onChanged: (value) {
                   //   controller.updateQuantity(index, value);
 
@@ -63,10 +81,355 @@ class Details extends StatelessWidget {
             ),
           ),
 
+])),
+          SizedBox(height: 25),
+
+         Row(
+             mainAxisAlignment: MainAxisAlignment.end,
+             children: [
+               Column (
+                 children: [
+                   SizedBox(height: 25),
+                   Padding(
+                     padding: EdgeInsets.symmetric( horizontal: 20),
+                     child :
+
+                     Row(
+                         mainAxisAlignment: MainAxisAlignment.end,
+                         children: [
+                           Text(
+                             '  : الحد الادني  ',
+
+                             style: TextStyle(
+                               color: Colors.black54,
+                               fontWeight: FontWeight.bold,
+                               fontSize: 14,
+                             ),
+
+                           )]),),
+                   SizedBox(height: 10),
+                   Padding(
+                       padding: EdgeInsets.symmetric( horizontal: 20),
+                       child :
+                       Row(
+                           mainAxisAlignment: MainAxisAlignment.end,
+                           children: [
+                             Container(
+                               width: 160,
+                               height: 50,
+                               decoration: BoxDecoration(
+                                 color: Colors.grey[200],
+                                 borderRadius: BorderRadius.circular(10),
+                               ),
+                               child: Center(
+                                 child:TextField(
+                                   controller: TextEditingController(text: "${controller.products[controller.index].min}"),
+                                   textAlign: TextAlign.center,
+                                   keyboardType: TextInputType.number,
+                                   onChanged: (value) {
+                                     //   controller.updateQuantity(index, value);
+
+                                   },
+                                   decoration: InputDecoration(
+                                     border: InputBorder.none,
+                                     contentPadding:
+                                     EdgeInsets.symmetric(horizontal: 10),
+                                   ),
+                                 ),
+                               ),
+                             ),
+
+                           ])),
 
 
+                 ],
+               ),
+           Column (
+             children: [
+               SizedBox(height: 25),
+               Padding(
+                 padding: EdgeInsets.symmetric( horizontal: 20),
+                 child :
+
+                   Row(
+                       mainAxisAlignment: MainAxisAlignment.end,
+                       children: [
+                         Text(
+                           '   : الكمية ',
+
+                           style: TextStyle(
+                             color: Colors.black54,
+                             fontWeight: FontWeight.bold,
+                             fontSize: 14,
+                           ),
+
+                         )]),),
+               SizedBox(height: 10),
+               Padding(
+                   padding: EdgeInsets.symmetric( horizontal: 20),
+                   child :
+                   Row(
+                       mainAxisAlignment: MainAxisAlignment.end,
+                       children: [
+                         Container(
+                           width: 160,
+                           height: 50,
+                           decoration: BoxDecoration(
+                             color: Colors.grey[200],
+                             borderRadius: BorderRadius.circular(10),
+                           ),
+                           child: Center(
+                             child:TextField(
+                               controller: TextEditingController(text: "${controller.products[controller.index].quantity}"),
+                               textAlign: TextAlign.center,
+                               keyboardType: TextInputType.number,
+                               onChanged: (value) {
+                                 //   controller.updateQuantity(index, value);
+
+                               },
+                               decoration: InputDecoration(
+                                 border: InputBorder.none,
+                                 contentPadding:
+                                 EdgeInsets.symmetric(horizontal: 10),
+                               ),
+                             ),
+                           ),
+                         ),
+
+                       ])),
+
+
+             ],
+           ),
+               
+         ]),
+          SizedBox(height: 25),
+          Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Column (
+                  children: [
+                    SizedBox(height: 25),
+                    Padding(
+                      padding: EdgeInsets.symmetric( horizontal: 20),
+                      child :
+
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              '  : تاريخ الانتهاء  ',
+
+                              style: TextStyle(
+                                color: Colors.black54,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
+
+                            )]),),
+                    SizedBox(height: 10),
+                    Padding(
+                        padding: EdgeInsets.symmetric( horizontal: 20),
+                        child :
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                width: 160,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Center(
+                                  child:TextField(
+                                    controller: TextEditingController(text: "${controller.products[controller.index].expiry_date}"),
+                                    textAlign: TextAlign.center,
+                                    keyboardType: TextInputType.datetime,
+                                    onChanged: (value) {
+                                      //   controller.updateQuantity(index, value);
+
+                                    },
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      contentPadding:
+                                      EdgeInsets.symmetric(horizontal: 10),
+                                    ),
+                                  ),
+                                ),
+                              ),
+
+                            ])),
+
+
+                  ],
+                ),
+                Column (
+                  children: [
+                    SizedBox(height: 25),
+                    Padding(
+                      padding: EdgeInsets.symmetric( horizontal: 20),
+                      child :
+
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              '  : تاريخ الاستلام',
+
+                              style: TextStyle(
+                                color: Colors.black54,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
+
+                            )]),),
+                    SizedBox(height: 10),
+                    Padding(
+                        padding: EdgeInsets.symmetric( horizontal: 20),
+                        child :
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                width: 160,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Center(
+                                  child:TextField(
+                                    controller: TextEditingController(text: "${controller.products[controller.index].production_date}"),
+                                    textAlign: TextAlign.center,
+                                    keyboardType: TextInputType.datetime,
+                                    onChanged: (value) {
+                                      //   controller.updateQuantity(index, value);
+
+                                    },
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      contentPadding:
+                                      EdgeInsets.symmetric(horizontal: 10),
+                                    ),
+                                  ),
+                                ),
+                              ),
+
+                            ])),
+
+
+                  ],
+                ),
+
+              ]),
+          SizedBox(height: 38),
+          GestureDetector(
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text('تأكيد التعديل'),
+                    content: Text('هل أنت متأكد من تعديل هذا المادة؟'),
+                    actions: <Widget>[
+                      TextButton(
+                        child: const Text('لا'),
+                        onPressed: () {
+
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                      TextButton(
+                        child: const Text('نعم'),
+                        onPressed: () {
+                          Get.snackbar(
+
+                            'تم تعديل المادة',
+                            ''
+                            ,
+                            backgroundColor: Colors.white,
+                            colorText:StaticColor.primarycolor,
+                          );
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
+            child: Align(
+              alignment: Alignment.center,
+              child: Container(
+                width: 220,
+                height: 50,
+
+                margin: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Color(0xff9bb4fd), width: 3),
+                  color: Color(0xffcbd6fa),
+                  borderRadius: BorderRadius.circular(25),
+                ),
+
+
+                child:  Align(
+                alignment: Alignment.center,
+                  child:
+
+                        Text(
+                          'تعديل المادة',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w100,
+                            color: Colors.white,
+
+                          ),
+                          textDirection: TextDirection.rtl,
+                        ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 10),
+          GestureDetector(
+            onTap: () {
+              Get.toNamed('/add_Details');
+            },
+            child: Align(
+              alignment: Alignment.center,
+              child: Container(
+                width: 220,
+                height: 50,
+
+
+                decoration: BoxDecoration(
+                  border: Border.all(color: Color(0xff9bb4fd), width: 3),
+                  color: Color(0xffcbd6fa),
+                  borderRadius: BorderRadius.circular(25),
+                ),
+
+
+                child:  Align(
+                  alignment: Alignment.center,
+                  child:
+
+                  Text(
+                    'إضافة مادة',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w100,
+                      color: Colors.white,
+
+                    ),
+                    textDirection: TextDirection.rtl,
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
-      ),
+      ),)
     );
   }
 }

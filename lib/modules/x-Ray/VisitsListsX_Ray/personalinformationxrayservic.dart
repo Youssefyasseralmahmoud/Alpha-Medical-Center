@@ -9,11 +9,11 @@ import '../../../core/class/crud_get.dart';
 import '../../../secure_storage/secure_storage.dart';
 
 
-class personalinformationlab {
+class personalinformationxray {
   Crud_get crud;
 
   Secury_storage secury = new Secury_storage();
-  personalinformationlab (this.crud);
+  personalinformationxray (this.crud);
   String? token ;
   get_pationbyid(int id)async{
 

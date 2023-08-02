@@ -9,7 +9,7 @@ import 'Addvisitcontrollerlab.dart';
 
 
 class Addvisitlab extends StatelessWidget {
-  homelabController controller = Get.find();
+
   Addvisitcontrollerlab addvisitcontrollerlab =Get.find();
   File? file;
   bool isloading =false;
@@ -23,7 +23,7 @@ class Addvisitlab extends StatelessWidget {
         title: Padding(
           padding: const EdgeInsets.only(top: 30.0, left: 120, bottom: 20),
           child: Text(
-            'راما سبعه',
+            '${addvisitcontrollerlab.name}',
             textAlign: TextAlign.right,
             style: TextStyle(
               fontSize: 30,
@@ -44,7 +44,10 @@ class Addvisitlab extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 15, right: 15),
                 child: GestureDetector(
                   onTap: () {
-                    Get.toNamed('/VisitsListlab');
+                    Get.toNamed('/VisitsListlab',arguments: {
+                    "RequiredPatientID" : addvisitcontrollerlab.id_requrd,
+                    "IDPatientRecord" : addvisitcontrollerlab.id_patient,
+                    });
                   },
                   child: Container(
                     color: Color.fromARGB(100, 189, 189, 189).withAlpha(50),
@@ -93,39 +96,6 @@ class Addvisitlab extends StatelessWidget {
 
               buildTextField("نوع التحليل"),
               buildTextField("ملاحظات"),
-              GestureDetector(
-                onTap: () {
-                  uploadtest();
-
-                },
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    width: double.infinity,
-                    height: 50,
-
-                    margin: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      border: Border.all(color:  Color(0xff9bb4fd),width: 3),
-                      color: Color(0xffcbd6fa),
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-
-
-                    child: Center(
-                        child: Text(
-                          'إرفاق التحليل',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w100,
-                            color: Colors.black38,
-                          ),
-                        )),
-                    // ),
-                  ),
-                ),
-              ),
-
               GestureDetector(
                 onTap: () {
                   onClick();
@@ -200,24 +170,7 @@ class Addvisitlab extends StatelessWidget {
     );
   }
 
-  void uploadtest() async{
- try{
-    FilePickerResult? result = await FilePicker.platform.pickFiles();
 
-    if (result != null) {
-      String? path =result.files.single.path;
-       file = File(path!);
-       addvisitcontrollerlab.path = path ;
-      String? filename = file?.path.split("/").last;
-    } else {
-      // User canceled the picker
-    }}
-     catch(e){
-   print(e);
-     }
-
-
-  }
 
   void onClick() {
 

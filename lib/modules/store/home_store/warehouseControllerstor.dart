@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_after_update/modules/store/home_store/products_store.dart';
 
 import '../../Lab/Warehose/products.dart';
 
 
 
 class warehouseControllerstor extends GetxController{
+  int index = 0;
   var products = [
 
-    Product(name: 'كحول',quantity: 000),
-    Product(name: 'علبة',quantity: 20),
-    Product(name: 'كحول',quantity: 000),
-    Product(name: 'علبة',quantity: 20),
-    Product(name: 'كحول',quantity: 000),
-    Product(name: 'علبة',quantity: 20),
-    Product(name: 'كحول',quantity: 000),
-    Product(name: 'علبة',quantity: 20),
-    Product(name: 'كحول',quantity: 000),
-    Product(name: 'علبة',quantity: 20),
-    Product(name: 'كحول',quantity: 000),
-    Product(name: 'علبة',quantity: 20),
-
+    Product_store(name: 'كحول',quantity: 000,production_date : '2/2/2023',expiry_date: '3/3/2023',min: 20),
+    Product_store(name: 'علبة',quantity: 20,production_date : '2/2/2023',expiry_date: '3/3/2023',min: 50),
+    Product_store(name: 'كحول',quantity: 000,production_date : '2/2/2023',expiry_date: '3/3/2023',min: 20),
+    Product_store(name: 'علبة',quantity: 20,production_date : '2/2/2023',expiry_date: '3/3/2023',min: 50),
+    Product_store(name: 'كحول',quantity: 000,production_date : '2/2/2023',expiry_date: '3/3/2023',min: 20),
+    Product_store(name: 'علبة',quantity: 20,production_date : '2/2/2023',expiry_date: '3/3/2023',min: 50),
 
   ].obs;
 

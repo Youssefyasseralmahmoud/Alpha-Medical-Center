@@ -38,6 +38,7 @@ dependencies:
   dartz: ^0.10.0
   flutter_secure_storage: ^4.0.0
   fancy_bar: ^2.0.0
+  file_picker: ^4.4.0
 
 
 

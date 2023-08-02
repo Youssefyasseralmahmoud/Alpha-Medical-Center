@@ -19,7 +19,7 @@ class warehouseProducts extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   return InkWell(
                     onTap: () {
-
+                      controller.index = index;
                       Get.toNamed("/Details");
                     },
                     child: Container(

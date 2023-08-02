@@ -31,7 +31,8 @@ class Wating_in_laboratory extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(10)),
                               filled: true,
                               fillColor: Colors.grey[200]),
-                        )),
+                        ),
+                    ),
                     const SizedBox(
                       width: 10,
                     ),

@@ -13,6 +13,9 @@ class Edit_clinics_type extends StatelessWidget {
   Widget build(BuildContext context) {
     Edit_clinics_type_controller controller =Get.put(Edit_clinics_type_controller());
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: StaticColor.primarycolor,
+      ),
         body: GetBuilder<Edit_clinics_type_controller>(builder: (controller){
           return
             controller.statusRequest==StatusRequest.loading?
@@ -22,56 +25,13 @@ class Edit_clinics_type extends StatelessWidget {
               child: ListView(
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(top: 10),
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: Row(
-                      children: [
-                        Expanded(
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                  contentPadding:
-                                  const EdgeInsets.symmetric(vertical: 10),
-                                  prefixIcon: const Icon(Icons.search),
-                                  hintText: "البحث",
-                                  hintStyle: const TextStyle(fontSize: 20),
-                                  border: OutlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  filled: true,
-                                  fillColor: Colors.grey[200]),
-                            )),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: StaticColor.primarycolor,
-                          ),
-                          width: 60,
-                          height: 55,
-                          padding: const EdgeInsets.symmetric(vertical: 8),
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.notifications_active_outlined,
-                              size: 25,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  Container(
                     padding: const EdgeInsets.all(10),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         const Text(
-                          "قسم الإدارة",
+                          "تعديل معلومات العيادة",
                           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                         Row(
@@ -80,10 +40,10 @@ class Edit_clinics_type extends StatelessWidget {
                             Container(
                               height: 50,
                               width: 50,
-                              child: Image.asset("assets/images/patient.png"),
+                              child: Image.asset("assets/images/hospital.png"),
                             ),
                             const Text(
-                              "تعديل معلومات العيادة",
+                              "قسم الإدارة",
                               style: TextStyle(fontSize: 15, color: Colors.grey),
                             ),
                           ],
@@ -124,7 +84,7 @@ class Edit_clinics_type extends StatelessWidget {
                                       color: StaticColor.primarycolor,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                suffixIcon: const Icon(Icons.credit_card_outlined),
+                                suffixIcon: const Icon(Icons.add_circle_outline),
                                 contentPadding: const EdgeInsets.all(15),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(20),

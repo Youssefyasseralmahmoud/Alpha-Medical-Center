@@ -12,6 +12,9 @@ class Reception_visit_registration extends StatelessWidget {
     Reception_visit_registration_controller controller =Get.put(Reception_visit_registration_controller());
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: StaticColor.primarycolor,
+        ),
           body: GetBuilder<Reception_visit_registration_controller>(builder: (controller) {
             return
               Container(
@@ -19,56 +22,13 @@ class Reception_visit_registration extends StatelessWidget {
                 child: ListView(
                   children: [
                     Container(
-                      margin: const EdgeInsets.only(top: 10),
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Row(
-                        children: [
-                          Expanded(
-                              child: TextFormField(
-                                decoration: InputDecoration(
-                                    contentPadding:
-                                    const EdgeInsets.symmetric(vertical: 10),
-                                    prefixIcon: const Icon(Icons.search),
-                                    hintText: "البحث",
-                                    hintStyle: const TextStyle(fontSize: 20),
-                                    border: OutlineInputBorder(
-                                        borderSide: BorderSide.none,
-                                        borderRadius: BorderRadius.circular(10)),
-                                    filled: true,
-                                    fillColor: Colors.grey[200]),
-                              )),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: StaticColor.primarycolor,
-                            ),
-                            width: 60,
-                            height: 55,
-                            padding: const EdgeInsets.symmetric(vertical: 8),
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.notifications_active_outlined,
-                                size: 25,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    Container(
                       padding: const EdgeInsets.all(10),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           const Text(
-                            "قسم الاستقبال",
+                            "تسجيل زيارة",
                             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           Row(
@@ -80,7 +40,7 @@ class Reception_visit_registration extends StatelessWidget {
                                 child: Image.asset("assets/images/health-insurance.png"),
                               ),
                               const Text(
-                                "تسجيل زيارة",
+                                "قسم الإستقبال",
                                 style: TextStyle(fontSize: 15, color: Colors.grey),
                               ),
                             ],
@@ -104,9 +64,9 @@ class Reception_visit_registration extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             TextFormField(
-                              validator: (val){
-                                return validinput(val!, 2,14,"idpersonal");
-                              },
+                              // validator: (val){
+                              //   return validinput(val!, 2,14,"idpersonal");
+                              // },
                               keyboardType: TextInputType.text,
                               onChanged: (value) {
                                 controller.referingdoctor=value ;
@@ -143,7 +103,7 @@ class Reception_visit_registration extends StatelessWidget {
                                     color: StaticColor.primarycolor,
                                   ),
                                   child: const Text(
-                                    "إضافة",
+                                    "تسجيل",
                                     style: TextStyle(color: Colors.white, fontSize: 20),
                                   ),
                                 ),

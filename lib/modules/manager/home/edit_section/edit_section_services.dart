@@ -11,7 +11,8 @@ class Edit_section_services{
     String? token = await secury.read("admin_token");
     var response=await crud.postdata(Serverconfig.update_section,{
       "id" :"${id.toString()}",
-      "Name" : name.toString()
+      "Name" : name.toString(),
+      "isReceptionist":"0"
     },
         {
           "Authorization": bearer + " " + token.toString(),

@@ -18,6 +18,9 @@ class Salary_increase extends StatelessWidget {
         await controller.get_all_salary_increase();
       },
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: StaticColor.primarycolor,
+        ),
         body: GetBuilder<Salary_increase_controller>(builder: (controller){
           return
             controller.statusRequest==StatusRequest.loading?
@@ -25,51 +28,6 @@ class Salary_increase extends StatelessWidget {
             Container(
               child: ListView(
                 children: [
-                  Container(
-                    margin: const EdgeInsets.only(top: 10),
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: Row(
-                      children: [
-                        Expanded(
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                  contentPadding:
-                                  const EdgeInsets.symmetric(vertical: 10),
-                                  prefixIcon: const Icon(Icons.search),
-                                  hintText: "البحث",
-                                  hintStyle: const TextStyle(fontSize: 20),
-                                  border: OutlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  filled: true,
-                                  fillColor: Colors.grey[200]),
-                            )),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: StaticColor.primarycolor,
-                          ),
-                          width: 60,
-                          height: 55,
-                          padding: const EdgeInsets.symmetric(vertical: 8),
-                          child: IconButton(
-                            onPressed: () {
-                              Get.toNamed("/notification");
-                            },
-                            icon: const Icon(
-                              Icons.notifications_active_outlined,
-                              size: 25,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 20),
                   Container(
                     padding: const EdgeInsets.all(10),
                     child: Column(
@@ -179,6 +137,7 @@ class Salary_increase extends StatelessWidget {
                                                                 Center(
                                                                   child: GestureDetector(
                                                                     onTap: (){
+                                                                      Get.back();
                                                                       controller.accept_salary_increase(controller.data[index]['id'],controller.data[index]['user_id']);
                                                                     },
                                                                     child: Container(
@@ -261,6 +220,7 @@ class Salary_increase extends StatelessWidget {
                                                   children: [
                                                     GestureDetector(
                                                       onTap: (){
+                                                        Get.back();
                                                         controller.reject_salary_increase(controller.data[index]['id']);
 
 
@@ -394,6 +354,7 @@ class Salary_increase extends StatelessWidget {
                                                                   Center(
                                                                     child: GestureDetector(
                                                                       onTap: (){
+                                                                        Get.back();
                                                                         controller.accept_salary_increase(controller.data[index]['id'],controller.data[index]['user_id']);
                                                                       },
                                                                       child: Container(
@@ -476,6 +437,7 @@ class Salary_increase extends StatelessWidget {
                                                       children: [
                                                         GestureDetector(
                                                           onTap: (){
+                                                            Get.back();
                                                             controller.reject_salary_increase(controller.data[index]['id']);
 
 

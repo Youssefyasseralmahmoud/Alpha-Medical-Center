@@ -78,37 +78,35 @@ class Home_screen_reception extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(
-                          Icons.person,
+                          Icons.medical_services_outlined,
                           color: controller.currentpage == 1
                               ? StaticColor.primarycolor
                               : Colors.black,
                         ),
-                        Text("معلومات المرضى"),
+                        SizedBox(height: 5,),
+                        Text("إضافة خدمة"),
                       ],
                     ),
                   ),
-                  Container(
-                    height: 50,
-                    width: 30,
+
+                  MaterialButton(
+                    onPressed: () {
+                      controller.changepage(3);
+                    },
+                    child:
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.notifications_active_outlined,
+                          color: controller.currentpage == 3
+                              ? StaticColor.primarycolor
+                              : Colors.black,
+                        ),
+                        Text("الإشعارات"),
+                      ],
+                    ),
                   ),
-                  // MaterialButton(
-                  //   onPressed: () {
-                  //     controller.changepage(2);
-                  //   },
-                  //   child:
-                  //   Column(
-                  //     mainAxisSize: MainAxisSize.min,
-                  //     children: [
-                  //       Icon(
-                  //         Icons.medical_services,
-                  //         color: controller.currentpage == 2
-                  //             ? StaticColor.primarycolor
-                  //             : Colors.black,
-                  //       ),
-                  //       Text("الخدمات"),
-                  //     ],
-                  //   ),
-                  // ),
                   // MaterialButton(
                   //   onPressed: () {
                   //     controller.changepage(3);

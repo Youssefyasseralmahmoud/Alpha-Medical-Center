@@ -187,8 +187,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_after_update/core/class/StatusRequest.dart';
+import 'package:project_after_update/core/function/validinput.dart';
 import 'package:project_after_update/modules/manager/home/home_manager_controller.dart';
 import 'package:project_after_update/modules/reception/home/home_reception_controller.dart';
+import 'package:project_after_update/modules/reception/patient/patient_details/patient_details_controller.dart';
 import 'package:project_after_update/static_colors/StaticColors.dart';
 class Home_reception extends StatelessWidget {
   const Home_reception({Key? key}) : super(key: key);
@@ -196,7 +198,6 @@ class Home_reception extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Home_reception_controller controller =Get.put(Home_reception_controller());
-
     return RefreshIndicator(
       onRefresh: ()async{
         await controller.get_all_section();
@@ -216,39 +217,49 @@ class Home_reception extends StatelessWidget {
                         children: [
                           Expanded(
                               child: TextFormField(
+                                validator: (val){
+                                  return validinput(val!, 14,14,"idpersonal");
+                                },
+                                keyboardType: TextInputType.number,
+                                onChanged: (value) {
+                                  controller.id_patient=value ;
+                                },
                                 decoration: InputDecoration(
                                     contentPadding: const EdgeInsets.symmetric(vertical: 10),
-                                    prefixIcon: const Icon(Icons.search),
-                                    hintText: "البحث",
-                                    hintStyle: const TextStyle(fontSize: 20),
+                                    prefixIcon: GestureDetector(child: const Icon(Icons.search),onTap: (){
+                                            controller.checkinput();
+                                    },),
+                                    hintText: "أدخل الرقم الوطني",
+                                    hintStyle: const TextStyle(fontSize: 15,color: Colors.grey),
                                     border: OutlineInputBorder(
                                         borderSide: BorderSide.none,
                                         borderRadius: BorderRadius.circular(10)),
                                     filled: true,
                                     fillColor: Colors.grey[200]),
-                              )),
+                              ),
+                          ),
                           const SizedBox(
                             width: 10,
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: StaticColor.primarycolor,
-                            ),
-                            width: 60,
-                            height: 55,
-                            padding: const EdgeInsets.symmetric(vertical: 8),
-                            child: IconButton(
-                              onPressed: () {
-                                Get.toNamed("/notification");
-                              },
-                              icon: const Icon(
-                                Icons.notifications_active_outlined,
-                                size: 25,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
+                          // Container(
+                          //   decoration: BoxDecoration(
+                          //     borderRadius: BorderRadius.circular(10),
+                          //     color: StaticColor.primarycolor,
+                          //   ),
+                          //   width: 60,
+                          //   height: 55,
+                          //   padding: const EdgeInsets.symmetric(vertical: 8),
+                          //   child: IconButton(
+                          //     onPressed: () {
+                          //       Get.toNamed("/notification");
+                          //     },
+                          //     icon: const Icon(
+                          //       Icons.notifications_active_outlined,
+                          //       size: 25,
+                          //       color: Colors.white,
+                          //     ),
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),

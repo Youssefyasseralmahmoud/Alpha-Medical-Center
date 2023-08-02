@@ -14,11 +14,11 @@ class Setting extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: StaticColor.primarycolor,
           title:   Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Icon(Icons.settings,size: 30,color:Colors.white,),
               SizedBox(width: 5,),
-              Text("قائمة الإعدادات",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+              Text("قائمة الإعدادات",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),textAlign: TextAlign.right),
 
             ],
           ),

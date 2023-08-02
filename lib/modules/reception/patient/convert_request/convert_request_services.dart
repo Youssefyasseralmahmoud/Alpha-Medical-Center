@@ -32,7 +32,7 @@ class Convert_request_services {
 
     String? token = await secury.read("receptionist_token");
     var response = await crud_get.postdata(
-        Serverconfig.get_all_center_service,
+        Serverconfig.get_all_available_service,
 
         {
           "Authorization": bearer + " " + token.toString(),

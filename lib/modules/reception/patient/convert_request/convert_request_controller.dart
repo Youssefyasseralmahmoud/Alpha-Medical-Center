@@ -33,8 +33,8 @@ class Convert_request_controller extends GetxController {
   adding_data_to_data_service_to_show() {
     print("***** adding_data_to_data_service_to_show is working now *****");
     data_service.forEach((name) {
-      print(name['Name']);
-      data_service_to_show.add(name['Name']);
+      print(name['ServiceName']);
+      data_service_to_show.add(name['ServiceName']);
       print("data service to show are ${data_service_to_show}");
     });
   }
@@ -53,9 +53,9 @@ class Convert_request_controller extends GetxController {
         "the service wich has been choosen is ${selectedoption_centerservices}");
     print("id service init is work noww");
     data_service.forEach((element) {
-      if (element['Name'] == type) {
-          id_service=element['id'];
-        print("****************${element['id']}***************************");
+      if (element['ServiceName'] == type) {
+          id_service=element['center_service_id'];
+        print("****************${element['center_service_id']}***************************");
       }
     });
      print("the final id_service is ${id_service}");
@@ -68,11 +68,8 @@ class Convert_request_controller extends GetxController {
     if(StatusRequest.succes==statusRequest){
 
       await Get.snackbar("تمت الإضافة بنجاح", "تمت عملية إضافة الخدمة بنجاح",);
-      // Get.toNamed("/convert_request",arguments: {
-      //
-      //   "id_visit":response['id']
-      // }
-    //  );
+
+
 
 
     }else if(StatusRequest.failure==statusRequest){

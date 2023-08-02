@@ -232,7 +232,7 @@ class Display_users_in_reception extends StatelessWidget {
           backgroundColor: StaticColor.primarycolor,
           onPressed: (){
             Get.toNamed("/Add_service_type_for_reception",arguments: {
-              "id_section":controller.data_type_section[0]['id_section']
+              "id_section":controller.section_id
             });
           },
           child: Icon(Icons.add_circle),
@@ -301,7 +301,7 @@ class Display_users_in_reception extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: const [
                           Text(
-                            " أنواع الخدمات / قسم الإستقبال  ",
+                            " أنواع الخدمات",
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
@@ -377,6 +377,7 @@ class Display_users_in_reception extends StatelessWidget {
                                                   children: [
                                                     GestureDetector(
                                                       onTap: (){
+                                                        Get.back();
                                                         Get.toNamed("/Edit_service_type_reception",arguments: {
                                                           "id":controller.data_type_section[index]['id'],
                                                           "id_section":controller.data_type_section[index]['id_section']
@@ -457,6 +458,7 @@ class Display_users_in_reception extends StatelessWidget {
                                                   children: [
                                                     GestureDetector(
                                                       onTap: (){
+                                                        Get.back();
                                                         controller.delete_type(controller.data_type_section[index]['id']);
                                                       },
                                                       child: Container(

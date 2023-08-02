@@ -7,20 +7,21 @@ import 'package:project_after_update/modules/manager/home/laboratory_in_managmen
 import 'package:project_after_update/modules/manager/home/x_ray_in_managment/xray_center_services/xray_center_service_services.dart';
 import 'package:project_after_update/secure_storage/secure_storage.dart';
 class Xray_center_service_controller extends GetxController {
-  bool droped = false;
+  late var int_droped ;
+  late var droped;
 
   ontapdropdown(bool droped) {
-    this.droped = !droped;
+    this.droped = droped;
     update();
   }
-  bool droped_two = false;
-
-  ontapdropdown_two(bool droped_two) {
-    this.droped_two = !droped_two;
-    update();
+  detectvalue_of_droped(int int_droped){
+    if(int_droped==1){
+      droped=true;
+    }else{
+      droped=false;
+    }
   }
-
-  Xray_center_service_services services = Xray_center_service_services(Get.find(),Get.find());
+  Xray_center_service_services services = Xray_center_service_services(Get.find(),Get.find(),Get.find());
   StatusRequest? statusRequest;
   Secury_storage secury_storage = new Secury_storage();
   List data=[];
@@ -80,6 +81,28 @@ class Xray_center_service_controller extends GetxController {
     }
     update();
   }
+  change_status(int id_type,int int_droped) async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await services.change_status(id_type,int_droped);
+
+    statusRequest = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest) {
+      await Get.snackbar(
+        "تم التعديل بنجاح",
+        "تمت عملية تعديل حالة النوع  بنجاح",
+      );
+    } else if (StatusRequest.failure == statusRequest) {
+      await Get.snackbar(
+        "تنبيه",
+        "لم يتم التعديل",
+      );
+    } else {
+      Get.defaultDialog(title: " خطأ ", content: Text("حدث خطأ ما"));
+    }
+    update();
+  }
   get_all_doctors() async {
     statusRequest = StatusRequest.loading;
     update();
@@ -114,7 +137,9 @@ class Xray_center_service_controller extends GetxController {
   @override
   void onInit() {
     id_type=Get.arguments['id_type'];
+    int_droped=Get.arguments['status'];
     get_all_services_intype();
+    detectvalue_of_droped(int_droped);
     get_all_doctors();
 
     super.onInit();

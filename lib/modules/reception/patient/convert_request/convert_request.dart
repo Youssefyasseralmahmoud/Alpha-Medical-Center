@@ -10,6 +10,9 @@ class Convert_request extends StatelessWidget {
   Widget build(BuildContext context) {
     Convert_request_controller controller =Get.put<Convert_request_controller>(Convert_request_controller());
      return Scaffold(
+       appBar: AppBar(
+         backgroundColor: StaticColor.primarycolor,
+       ),
         body: GetBuilder<Convert_request_controller>(builder: (controller){
           return
             Container(

@@ -11,54 +11,14 @@ class Add_record extends StatelessWidget {
   Widget build(BuildContext context) {
     Patient_Regesteration_controller controller =Get.put(Patient_Regesteration_controller());
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: StaticColor.primarycolor,
+      ),
       body: Container(
         child: Form(
           key: controller.formstate,
           child: ListView(
             children: [
-              Container(
-                margin: const EdgeInsets.only(top: 10),
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: TextFormField(
-                      decoration: InputDecoration(
-                          contentPadding:
-                              const EdgeInsets.symmetric(vertical: 10),
-                          prefixIcon: const Icon(Icons.search),
-                          hintText: "البحث",
-                          hintStyle: const TextStyle(fontSize: 20),
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(10)),
-                          filled: true,
-                          fillColor: Colors.grey[200]),
-                    )),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: StaticColor.primarycolor,
-                      ),
-                      width: 60,
-                      height: 55,
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.notifications_active_outlined,
-                          size: 25,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 20),
               Container(
                 padding: const EdgeInsets.all(10),
                 child: Column(
@@ -73,7 +33,7 @@ class Add_record extends StatelessWidget {
                        child: Image.asset("assets/images/document.png"),
                      ),
                      const Text(
-                       "إضافة سجل طبي",
+                       "إضافة سجل طبي جديد",
                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                      ),
 

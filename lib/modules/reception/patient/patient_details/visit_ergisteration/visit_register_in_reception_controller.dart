@@ -36,10 +36,11 @@ class Reception_visit_registration_controller extends GetxController{
 
       await Get.snackbar("تم التسجيل بنجاح", "تمت عملية تسجيل الزيارة بنجاح",);
       print("id_visit is ${response['id']}");
-      Get.offAllNamed("/convert_request",arguments: {
+      Get.offNamed("/convert_request",arguments: {
 
         "id_visit":response['id']
       }
+
       );
 
 

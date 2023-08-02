@@ -34,7 +34,7 @@ class Reservations_controller extends GetxController {
     else if(test_data.isEmpty) {
       await Get.snackbar(
         "تحذير",
-        "لا يوجد مواعيد لعرضههم",
+        "لا يوجد مواعيد لعرضهم",
       );
     }
     else if (StatusRequest.failure == statusRequest) {

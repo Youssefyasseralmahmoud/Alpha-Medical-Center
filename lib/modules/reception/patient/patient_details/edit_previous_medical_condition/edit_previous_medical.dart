@@ -13,78 +13,39 @@ class Edit_Previous_medical_cond extends StatelessWidget {
   Widget build(BuildContext context) {
     Edit_previous_medical_controller controller =Get.put(Edit_previous_medical_controller());
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: StaticColor.primarycolor,
+      ),
       body: Container(
         child: Form(
           key: controller.formstate4,
           child: ListView(
             children: [
               Container(
-                margin: const EdgeInsets.only(top: 10),
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              contentPadding:
-                              const EdgeInsets.symmetric(vertical: 10),
-                              prefixIcon: const Icon(Icons.search),
-                              hintText: "البحث",
-                              hintStyle: const TextStyle(fontSize: 20),
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(10)),
-                              filled: true,
-                              fillColor: Colors.grey[200]),
-                        )),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: StaticColor.primarycolor,
-                      ),
-                      width: 60,
-                      height: 55,
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.notifications_active_outlined,
-                          size: 25,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 20),
-              Container(
                 padding: const EdgeInsets.all(10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     const Text(
-                      "قسم الإستقبال",
-                      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                      " تعديل الحالات المرضية السابقة",
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     const Text(
-                      "تعديل الحالات المرضية السابقة",
+                      "قسم الإستقبال",
                       style: TextStyle(fontSize: 15, color: Colors.grey),
                     ),
                     const Divider(
                       height: 10,
                       color: Colors.black45,
                     ),
+                    SizedBox(height: 10),
                     const Center(
                       child: Text(
-                        "الحالات المرضية",
+                        "الحالة المرضية",
                         style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
-                    const SizedBox(height: 30,),
+                    const SizedBox(height: 20,),
                     TextFormField(
                       validator: (val){
                         return  validinput(val!, 3, 20,"ill");

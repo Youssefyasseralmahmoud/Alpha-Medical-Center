@@ -168,73 +168,74 @@ class SignupController extends GetxController{
      statusRequest=handlingdata(response);
 
      if(StatusRequest.succes==statusRequest){
-
-       if(response['code']== 1 && response['data']['type'] == "Reception" ){
-         // && response['carer']=='reception'
-        // admin_token=response['data']['token'];
-       //  print("tesst from login");
-        // secury_storage.save("admin_token", admin_token);
          await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
          Get.toNamed("/login");
-
-       } else if (response['code']== 1 && response['data']['type'] == "doctor"){
-           // doctor_token=response['data']['token'];
-           // print("tesst from login");
-           // secury_storage.save("doctor_token", doctor_token);
-           await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
-           Get.toNamed("/login");
-       }else if (response['code']== 1 && response['data']['type'] == "Ambulance"){
-         // doctor_token=response['data']['token'];
-         // print("tesst from login");
-         // secury_storage.save("doctor_token", doctor_token);
-         await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
-         Get.toNamed("/login");
-       }else if (response['code']== 1 && response['data']['type'] == "Finance"){
-         // doctor_token=response['data']['token'];
-         // print("tesst from login");
-         // secury_storage.save("doctor_token", doctor_token);
-         await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
-         Get.toNamed("/login");
-       }else if (response['code']== 1 && response['data']['type'] == "Laboratory"){
-         // doctor_token=response['data']['token'];
-         // print("tesst from login");
-         // secury_storage.save("doctor_token", doctor_token);
-         await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
-         Get.toNamed("/login");
-       }else if (response['code']== 1 && response['data']['type'] == "Manager"){
-         // doctor_token=response['data']['token'];
-         // print("tesst from login");
-         // secury_storage.save("doctor_token", doctor_token);
-         await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
-         Get.toNamed("/login");
-       }else if (response['code']== 1 && response['data']['type'] == "Nurse"){
-         // doctor_token=response['data']['token'];
-         // print("tesst from login");
-         // secury_storage.save("doctor_token", doctor_token);
-         await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
-         Get.toNamed("/login");
-       }else if (response['code']== 1 && response['data']['type'] == "Radiographer"){
-         // doctor_token=response['data']['token'];
-         // print("tesst from login");
-         // secury_storage.save("doctor_token", doctor_token);
-         await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
-         Get.toNamed("/login");
-       }else if (response['code']== 1 && response['data']['type'] == "Administration"){
-         // doctor_token=response['data']['token'];
-         // print("tesst from login");
-         // secury_storage.save("doctor_token", doctor_token);
-         await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
-         Get.toNamed("/login");
-       }else if (response['code']== 1 && response['data']['type'] == "Store"){
-         // doctor_token=response['data']['token'];
-         // print("tesst from login");
-         // secury_storage.save("doctor_token", doctor_token);
-         await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
-         Get.toNamed("/login");
-       }
-       else{
-         statusRequest=StatusRequest.failure;
-       }
+       // if(response['code']== 1 && response['data']['type'] == "Reception" ){
+       //   // && response['carer']=='reception'
+       //  // admin_token=response['data']['token'];
+       // //  print("tesst from login");
+       //  // secury_storage.save("admin_token", admin_token);
+       //   await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
+       //   Get.toNamed("/login");
+       //
+       // } else if (response['code']== 1 && response['data']['type'] == "doctor"){
+       //     // doctor_token=response['data']['token'];
+       //     // print("tesst from login");
+       //     // secury_storage.save("doctor_token", doctor_token);
+       //     await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
+       //     Get.toNamed("/login");
+       // }else if (response['code']== 1 && response['data']['type'] == "Ambulance"){
+       //   // doctor_token=response['data']['token'];
+       //   // print("tesst from login");
+       //   // secury_storage.save("doctor_token", doctor_token);
+       //   await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
+       //   Get.toNamed("/login");
+       // }else if (response['code']== 1 && response['data']['type'] == "Finance"){
+       //   // doctor_token=response['data']['token'];
+       //   // print("tesst from login");
+       //   // secury_storage.save("doctor_token", doctor_token);
+       //   await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
+       //   Get.toNamed("/login");
+       // }else if (response['code']== 1 && response['data']['type'] == "Laboratory"){
+       //   // doctor_token=response['data']['token'];
+       //   // print("tesst from login");
+       //   // secury_storage.save("doctor_token", doctor_token);
+       //   await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
+       //   Get.toNamed("/login");
+       // }else if (response['code']== 1 && response['data']['type'] == "Manager"){
+       //   // doctor_token=response['data']['token'];
+       //   // print("tesst from login");
+       //   // secury_storage.save("doctor_token", doctor_token);
+       //   await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
+       //   Get.toNamed("/login");
+       // }else if (response['code']== 1 && response['data']['type'] == "Nurse"){
+       //   // doctor_token=response['data']['token'];
+       //   // print("tesst from login");
+       //   // secury_storage.save("doctor_token", doctor_token);
+       //   await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
+       //   Get.toNamed("/login");
+       // }else if (response['code']== 1 && response['data']['type'] == "Radiographer"){
+       //   // doctor_token=response['data']['token'];
+       //   // print("tesst from login");
+       //   // secury_storage.save("doctor_token", doctor_token);
+       //   await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
+       //   Get.toNamed("/login");
+       // }else if (response['code']== 1 && response['data']['type'] == "Administration"){
+       //   // doctor_token=response['data']['token'];
+       //   // print("tesst from login");
+       //   // secury_storage.save("doctor_token", doctor_token);
+       //   await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
+       //   Get.toNamed("/login");
+       // }else if (response['code']== 1 && response['data']['type'] == "Store"){
+       //   // doctor_token=response['data']['token'];
+       //   // print("tesst from login");
+       //   // secury_storage.save("doctor_token", doctor_token);
+       //   await Get.snackbar("تم", "تمت عملية إنشاء الحساب بنجاح",);
+       //   Get.toNamed("/login");
+       // }
+       // else{
+       //   statusRequest=StatusRequest.failure;
+       // }
 
      }else{
        message=response['message'];

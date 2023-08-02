@@ -83,6 +83,8 @@ import 'package:project_after_update/modules/manager/home/laboratory_in_managmen
 import 'package:project_after_update/modules/manager/home/laboratory_in_managment/laboratory_center_services/laboratory_center_services.dart';
 import 'package:project_after_update/modules/manager/home/laboratory_in_managment/laboratory_in_managment.dart';
 import 'package:project_after_update/modules/manager/home/new_section/add_new_section.dart';
+import 'package:project_after_update/modules/manager/home/notification_manager/notification_manager.dart';
+import 'package:project_after_update/modules/manager/home/profile_info_managment/edit_profile_info_managment/edit_profile_info_managment.dart';
 import 'package:project_after_update/modules/manager/home/recption_in_managment/add_service_type_for_reception/add_service_type_for_reception.dart';
 import 'package:project_after_update/modules/manager/home/recption_in_managment/details_of_users/details_of_user.dart';
 import 'package:project_after_update/modules/manager/home/recption_in_managment/dispaly_users_in_reception.dart';
@@ -114,6 +116,7 @@ import 'package:project_after_update/modules/reception/doctors/doctors.dart';
 import 'package:project_after_update/modules/reception/doctors/doctors_details.dart';
 import 'package:project_after_update/modules/reception/home/home_reception.dart';
 import 'package:project_after_update/modules/reception/home/home_screen_reception.dart';
+import 'package:project_after_update/modules/reception/home/profile_info/edit_profile_info/edit_profile_info.dart';
 import 'package:project_after_update/modules/reception/home/profile_info/profile_info.dart';
 import 'package:project_after_update/modules/reception/home/setting/setting.dart';
 import 'package:project_after_update/modules/reception/laboratory_in_reception/laboratory_reserv/laboratory_reserv.dart';
@@ -125,6 +128,7 @@ import 'package:project_after_update/modules/reception/patient/convert_request/c
 import 'package:project_after_update/modules/reception/patient/patient.dart';
 import 'package:project_after_update/modules/reception/patient/patient_details/edit_previous_medical_condition/edit_previous_medical.dart';
 import 'package:project_after_update/modules/reception/patient/patient_details/patient_details.dart';
+import 'package:project_after_update/modules/reception/patient/patient_details/patient_details_from_search.dart';
 import 'package:project_after_update/modules/reception/patient/patient_details/visit_ergisteration/visit_register_in_reception.dart';
 import 'package:project_after_update/modules/reception/patient/patient_services/patient_services.dart';
 import 'package:project_after_update/modules/reception/patient/patient_visits/patient_visits.dart';
@@ -172,11 +176,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute:'/Splash_screen',
       getPages: [
+        //START YOUSSEF
         GetPage(name: '/login', page: () =>  Login()),
         GetPage(name: '/signup', page: () => Signup()),
         GetPage(name: '/home_reception', page: () => Home_reception()),
         GetPage(name: '/home_screen_reception', page: () => Home_screen_reception()),
-    //    GetPage(name: '/doctors', page: () => Doctors()),
         GetPage(name: '/doctors_details', page: () => Doctors_details()),
         GetPage(name: '/add_record', page: () => Add_record()),
         GetPage(name: '/patient', page: () => Patient()),
@@ -263,22 +267,15 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/Setting_managment', page: () =>      Setting_managment()),
         GetPage(name: '/Profile_info_reception', page: () =>      Profile_info_reception()),
         GetPage(name: '/Profile_info_managment', page: () =>      Profile_info_managment()),
+        GetPage(name: '/Patient_details_from_search', page: () =>      Patient_details_from_search()),
+        GetPage(name: '/Notifications_manager', page: () =>      Notifications_manager()),
+        GetPage(name: '/EDit_profile_info', page: () =>      EDit_profile_info()),
+        GetPage(name: '/EDit_profile_info_managment', page: () =>      EDit_profile_info_managment()),
 
 
 
+        ///////////// END YOUSSEF
 
-
-
-
-
-
-
-
-
-
-
-
-        /////////////
         GetPage(name: '/HomeNurse',            page: () =>homeNurse(),          binding:HomeNurseBinding()),
         GetPage(name: '/AddVisit',             page: () =>AddVisit(),           binding:AddVisitBinding()),
         GetPage(name: '/VisitsListNurse',      page: () =>VisitsList(),         binding:VisitsListBinding()),

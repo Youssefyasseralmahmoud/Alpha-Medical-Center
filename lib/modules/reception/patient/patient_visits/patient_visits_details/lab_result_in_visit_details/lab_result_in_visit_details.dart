@@ -13,6 +13,9 @@ class Lab_result_in_visit_details extends StatelessWidget {
     Patient_visits_details_controller controller =
         Get.put(Patient_visits_details_controller());
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: StaticColor.primarycolor,
+      ),
       body: SafeArea(child:
           GetBuilder<Patient_visits_details_controller>(builder: (controller) {
         return controller.statusRequest == StatusRequest.loading
@@ -24,51 +27,6 @@ class Lab_result_in_visit_details extends StatelessWidget {
             : Container(
                 child: ListView(
                   children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 10),
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Row(
-                        children: [
-                          Expanded(
-                              child: TextFormField(
-                            decoration: InputDecoration(
-                                contentPadding:
-                                    const EdgeInsets.symmetric(vertical: 10),
-                                prefixIcon: const Icon(Icons.search),
-                                hintText: "البحث",
-                                hintStyle: const TextStyle(fontSize: 20),
-                                border: OutlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(10)),
-                                filled: true,
-                                fillColor: Colors.grey[200]),
-                          )),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: StaticColor.primarycolor,
-                            ),
-                            width: 60,
-                            height: 55,
-                            padding: const EdgeInsets.symmetric(vertical: 8),
-                            child: IconButton(
-                              onPressed: () {
-                                Get.toNamed("/notification");
-                              },
-                              icon: const Icon(
-                                Icons.notifications_active_outlined,
-                                size: 25,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 20),
                     Container(
                       padding: const EdgeInsets.all(10),
                       child: Column(
@@ -141,68 +99,97 @@ class Lab_result_in_visit_details extends StatelessWidget {
                                     itemBuilder: (context, index) {
                                       return GestureDetector(
                                         onTap: () {
-                                          Get.bottomSheet(Container(
-                                            padding: const EdgeInsets.all(8),
-                                            color: Colors.white,
-                                            child: ListView(
-                                              children: [
-                                                const SizedBox(
-                                                  height: 10,
-                                                ),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.end,
-                                                  children: [
-                                                    Text(
-                                                      "${controller.data[0]['laboratory_test_results'][index]['Details']}",
-                                                    ),
-                                                    const Text(
-                                                      " : التفاصيل",
-                                                      style: TextStyle(
-                                                          color: StaticColor
-                                                              .primarycolor,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    ),
-                                                    const Icon(
-                                                      Icons.edit,
-                                                      color: StaticColor
-                                                          .primarycolor,
-                                                    ),
-                                                  ],
-                                                ),
-                                                const Divider(),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.end,
-                                                  children: [
-                                                    Text(
-                                                      "${controller.data[0]['laboratory_test_results'][index]['created_at']}",
-                                                    ),
-                                                    const Text(
-                                                      " : التاريخ",
-                                                      style: TextStyle(
-                                                          color: StaticColor
-                                                              .primarycolor,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    ),
-                                                    const Icon(
-                                                      Icons.date_range,
-                                                      color: StaticColor
-                                                          .primarycolor,
-                                                    ),
-
-                                                  ],
-                                                ),
-                                                Divider(),
-                                              ],
+                                          Get.bottomSheet(
+                                            Container(
+                                              padding: const EdgeInsets.all(8),
+                                              color: Colors.white,
+                                              child: ListView(
+                                                children: [
+                                                  const SizedBox(
+                                                    height: 10,
+                                                  ),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.end,
+                                                    children: [
+                                                      Text(
+                                                        "${controller.data[0]['ReferringPhysician']}",
+                                                      ),
+                                                      const Text(
+                                                        " : الطبيب المحول",
+                                                        style: TextStyle(
+                                                            color: StaticColor
+                                                                .primarycolor,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      ),
+                                                      Container(
+                                                        height: 40,
+                                                        width: 40,
+                                                        child: Image.asset(
+                                                            "assets/images/doctor.png"),
+                                                      )
+                                                    ],
+                                                  ),
+                                                  const Divider(),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.end,
+                                                    children: [
+                                                      Text(
+                                                        "${controller.data[0]['laboratory_test_results'][index]['created_at']}",
+                                                      ),
+                                                      const Text(
+                                                        " : التاريخ",
+                                                        style: TextStyle(
+                                                            color: StaticColor
+                                                                .primarycolor,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      ),
+                                                      const Icon(
+                                                        Icons.date_range,
+                                                        color: StaticColor
+                                                            .primarycolor,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Divider(),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.end,
+                                                    children: [
+                                                      Text(
+                                                        "${controller.data[0]['laboratory_test_results'][index]['Details']}",
+                                                      ),
+                                                      const Text(
+                                                        " : التفاصيل",
+                                                        style: TextStyle(
+                                                            color: StaticColor
+                                                                .primarycolor,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      ),
+                                                      const Icon(
+                                                        Icons.edit,
+                                                        color: StaticColor
+                                                            .primarycolor,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Divider(),
+                                                ],
+                                              ),
                                             ),
-                                          ));
+                                          );
                                         },
                                         child: Container(
                                           padding: const EdgeInsets.all(8),
-                                          margin: const EdgeInsets.only(bottom: 10),
+                                          margin:
+                                              const EdgeInsets.only(bottom: 10),
                                           height: MediaQuery.of(context)
                                                   .size
                                                   .height *
@@ -224,7 +211,7 @@ class Lab_result_in_visit_details extends StatelessWidget {
                                                     "assets/images/lab_req.png"),
                                               ),
                                               Text(
-                                                  "${controller.data[0]['laboratory_test_results'][index]['id']}")
+                                                  "${controller.data[0]['laboratory_test_results'][index]['required_patient_services']['center_service']['Name']}")
                                             ],
                                           ),
                                         ),

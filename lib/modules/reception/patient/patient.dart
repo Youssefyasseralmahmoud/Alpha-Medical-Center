@@ -3,60 +3,23 @@ import 'package:project_after_update/core/function/validinput.dart';
 import 'package:project_after_update/modules/reception/patient/patient_details/patient_details_controller.dart';
 import 'package:project_after_update/static_colors/StaticColors.dart';
 import 'package:get/get.dart';
+
 class Patient extends StatelessWidget {
   const Patient({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Patient_details_controller controller =Get.put(Patient_details_controller());
+    Patient_details_controller controller =
+        Get.put(Patient_details_controller());
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: StaticColor.primarycolor,
+
+      ),
       body: Container(
         height: MediaQuery.of(context).size.height,
         child: ListView(
           children: [
-            Container(
-              margin: const EdgeInsets.only(top: 10),
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Row(
-                children: [
-                  Expanded(
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                            contentPadding:
-                            const EdgeInsets.symmetric(vertical: 10),
-                            prefixIcon: const Icon(Icons.search),
-                            hintText: "البحث",
-                            hintStyle: const TextStyle(fontSize: 20),
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(10)),
-                            filled: true,
-                            fillColor: Colors.grey[200]),
-                      )),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: StaticColor.primarycolor,
-                    ),
-                    width: 60,
-                    height: 55,
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.notifications_active_outlined,
-                        size: 25,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 20),
             Container(
               padding: const EdgeInsets.all(10),
               child: Column(
@@ -67,12 +30,12 @@ class Patient extends StatelessWidget {
                     "عرض تفاصيل المرضى",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                   Row(
-                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        height: 50,
-                        width: 50,
+                        height: 60,
+                        width: 60,
                         child: Image.asset("assets/images/patient.png"),
                       ),
                       const Text(
@@ -81,49 +44,46 @@ class Patient extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 10,),
+
                 ],
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height*0.3,
+              height: MediaQuery.of(context).size.height * 0.3,
               decoration: BoxDecoration(
-                color: Colors.grey.withAlpha(20),
-                borderRadius: BorderRadius.circular(20)
-              ),
+                  color: Colors.grey.withAlpha(20),
+                  borderRadius: BorderRadius.circular(20)),
               child: Form(
-              //  key: controller.formstate,
+                //  key: controller.formstate,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                        TextFormField(
-                          validator: (val){
-                            return validinput(val!, 14,14,"idpersonal");
-                          },
-                          keyboardType: TextInputType.number,
-                          onChanged: (value) {
-                            controller.id_patient=value ;
-                          },
-                          decoration: InputDecoration(
-                              floatingLabelBehavior: FloatingLabelBehavior.always,
-                              label:  const Text(
-                                " الرقم الوطني ",
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: StaticColor.primarycolor,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              suffixIcon: const Icon(Icons.credit_card_outlined),
-                              contentPadding: const EdgeInsets.all(15),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              )),
-                        ),
-
-
+                    TextFormField(
+                      validator: (val) {
+                        return validinput(val!, 14, 14, "idpersonal");
+                      },
+                      keyboardType: TextInputType.number,
+                      onChanged: (value) {
+                        controller.id_patient = value;
+                      },
+                      decoration: InputDecoration(
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
+                          label: const Text(
+                            " الرقم الوطني ",
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: StaticColor.primarycolor,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          suffixIcon: const Icon(Icons.credit_card_outlined),
+                          contentPadding: const EdgeInsets.all(15),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          )),
+                    ),
                     Center(
                       child: GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           controller.checkinput();
                         },
                         child: Container(
@@ -183,7 +143,6 @@ class Patient extends StatelessWidget {
               //
               // }),
             ),
-
           ],
         ),
       ),

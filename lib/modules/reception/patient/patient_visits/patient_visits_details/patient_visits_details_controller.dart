@@ -6,10 +6,14 @@ import 'package:project_after_update/modules/reception/patient/patient_visits/pa
 import 'package:project_after_update/secure_storage/secure_storage.dart';
 
 class Patient_visits_details_controller extends GetxController {
-  Patient_visits_details_services services = Patient_visits_details_services(Get.find());
+  Patient_visits_details_services services =
+      Patient_visits_details_services(Get.find());
   StatusRequest? statusRequest;
   Secury_storage secury_storage = new Secury_storage();
-  List data=[];
+  List data = [];
+ // late int id_patient_visit;
+ // late String referingphisic;
+
   get_patient_visits_details(int id) async {
     statusRequest = StatusRequest.loading;
     update();
@@ -19,7 +23,7 @@ class Patient_visits_details_controller extends GetxController {
 
     if (StatusRequest.succes == statusRequest) {
       data.clear();
-      data.addAll(response['data']) ;
+      data.addAll(response['data']);
       print("response from patient controller");
       print(data);
     } else if (StatusRequest.failure == statusRequest) {
@@ -32,15 +36,24 @@ class Patient_visits_details_controller extends GetxController {
     }
     update();
   }
+
   download_xray(int id) async {
-    statusRequest = StatusRequest.loading;
     update();
     var response = await services.download_xray(id);
-    if(services.finalpath!=null){
+    statusRequest = StatusRequest.loading;
+    if (services.finalpath != null) {
       Get.snackbar("تنبيه", "تم تحميل الصورة بنجاح");
-    }else{
+    } else {
       Get.snackbar("تنبيه", "لم تم تحميل الصورة بنجاح");
     }
     update();
+  }
+
+  @override
+  void onInit(){
+   // id_patient_visit = Get.arguments['id'];
+  //  referingphisic = Get.arguments['referingphisic'];
+  //  get_patient_visits_details();
+    super.onInit();
   }
 }

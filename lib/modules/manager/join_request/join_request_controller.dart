@@ -10,6 +10,7 @@ import 'package:project_after_update/secure_storage/secure_storage.dart';
 class Join_request_controller extends GetxController {
   String selected="طبيب";
   String selected2="اختر خدمة";
+  String selected3="اختر الدور الوظيفي";
   List<String> department=[
     "طبيب",
     "ممرض",
@@ -31,12 +32,20 @@ class Join_request_controller extends GetxController {
     selected2=value;
     update();
   }
+  changedepartment_thre(String value){
+    selected3=value;
+    update();
+  }
   late var type;
   late var type2;
+  late var type3;
+
   late int id_type_user;
   Join_request_services services = Join_request_services(Get.find(),Get.find(),Get.find());
   StatusRequest? statusRequest;
   Secury_storage secury_storage = new Secury_storage();
+
+
   List data=[];
   List data_type_user=[];
 
@@ -46,16 +55,27 @@ class Join_request_controller extends GetxController {
   List test_data_type_services=[];
   List data_type_services=[];
 
+  List test_data_roles=[];
+  List data_roles=[];
+
   bool reload=false;
+
   List data_service_to_show = [];
+  List data_roles_to_show = [];
+
   late int id_type_services;
+  late int id_roles;
+
  Future<void> hotreload()async {
    await !(reload);
     update();
   }
+
+
   organization() async {
     await get_all_type_services_in_center();
     adding_data_to_data_service_to_show();
+    adding_data_to_data_roles_to_show();
   }
 
   adding_data_to_data_service_to_show() {
@@ -64,6 +84,14 @@ class Join_request_controller extends GetxController {
       print(name['Name']);
       data_service_to_show.add(name['Name']);
       print("data service to show are ${data_service_to_show}");
+    });
+  }
+  adding_data_to_data_roles_to_show() {
+    print("***** adding_data_to_data_service_to_show is working now *****");
+    data_roles.forEach((role) {
+      print(role['name']);
+      data_roles_to_show.add(role['name']);
+      print("data roles to show are ${data_roles_to_show}");
     });
   }
 
@@ -121,6 +149,37 @@ class Join_request_controller extends GetxController {
       await Get.snackbar(
         "تحذير",
         "لا يوجد خدمات لعرضهم",
+      );
+    }
+    else {
+      Get.defaultDialog(title: " خطأ", content: Text("حدث خطا ما"));
+    }
+    update();
+  }
+
+  get_all_roles() async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await services.get_all_roles();
+    test_data_roles.addAll(response['data']) ;
+    statusRequest = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest&& test_data_roles.isNotEmpty) {
+      data_roles.clear();
+      data_roles.addAll(response['data']) ;
+      print("all roles is");
+      print(data_roles);
+    }
+    else if(test_data_roles.isEmpty) {
+      await Get.snackbar(
+        "تنبيه",
+        "لا يوجد أدوار لعرضهم",
+      );
+    }
+    else if (StatusRequest.failure == statusRequest) {
+      await Get.snackbar(
+        "تحذير",
+        "لا يوجد أدوار لعرضهم",
       );
     }
     else {
@@ -199,10 +258,15 @@ class Join_request_controller extends GetxController {
         id_type_services=element['id'];
       }
     });
+    data_roles.forEach((role) {
+      if(role['name']==type3&&role['guard_name']=="sanctum"){
+        id_roles=role['id'];
+      }
+    });
     statusRequest = StatusRequest.loading;
     update();
     var response =
-    await services.accept_join(id,id_type_user,id_type_services);
+    await services.accept_join(id,id_type_user,id_type_services,id_roles);
 
     statusRequest = handlingdata(response);
 
@@ -248,6 +312,7 @@ class Join_request_controller extends GetxController {
   @override
   void onInit()async{
    await get_all_type_user();
+   await get_all_roles();
    await organization();
     get_all_join_request();
   }

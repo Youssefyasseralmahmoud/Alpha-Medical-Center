@@ -146,7 +146,7 @@ class Edit_section extends StatelessWidget {
                                   color: StaticColor.primarycolor,
                                 ),
                                 child: const Text(
-                                  "إضافة",
+                                  "تعديل",
                                   style: TextStyle(color: Colors.white, fontSize: 20),
                                 ),
                               ),

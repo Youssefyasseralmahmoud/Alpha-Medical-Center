@@ -97,7 +97,7 @@ class Add_analysis extends StatelessWidget {
                         ),
                         TextFormField(
                           validator: (val){
-                            return validinput(val!, 3,14,"idpersonal");
+                            return validinput(val!, 3,100,"idpersonal");
                           },
                           onChanged: (val) {
                             controller.name=val;

@@ -79,11 +79,11 @@ class Add_service_type_for_reception extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           const Text(
-                            "قسم الإدارة",
-                            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                            " إضافة نوع خدمة جديدة",
+                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           const Text(
-                            " إضافة نوع خدمة جديدة/ الإستقبال",
+                            "إضافة نوع خدمة ل قسم الإستقبال",
                             style: TextStyle(fontSize: 15, color: Colors.grey),
                           ),
                           const Divider(
@@ -95,7 +95,7 @@ class Add_service_type_for_reception extends StatelessWidget {
                           ),
                           TextFormField(
                             validator: (val){
-                              return validinput(val!, 3,14,"idpersonal");
+                              return validinput(val!, 3,100,"idpersonal");
                             },
                             onChanged: (val) {
                               controller.name=val;

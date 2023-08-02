@@ -130,7 +130,7 @@ class Patient_details extends StatelessWidget {
                           ),
                           const Expanded(
                               child: Text(
-                            "طلب تحويل",
+                            "طلب خدمة",
                             style: TextStyle(
                                 color: Colors.white, fontWeight: FontWeight.bold),
                           ))

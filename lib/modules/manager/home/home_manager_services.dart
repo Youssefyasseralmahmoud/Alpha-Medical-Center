@@ -2,7 +2,9 @@
 import 'package:project_after_update/config/server_config.dart';
 import 'package:project_after_update/core/class/crud_delete.dart';
 import 'package:project_after_update/core/class/crud_get.dart';
+import 'package:project_after_update/core/function/checkinternet.dart';
 import 'package:project_after_update/secure_storage/secure_storage.dart';
+import 'package:http/http.dart' as http;
 
 class Home_manager_services {
   Crud_delete crud_delete;
@@ -31,27 +33,58 @@ class Home_manager_services {
     print(response);
     return response.fold((l) => l, (r) => r);
   }
-  delete_section(int id) async {
+  Future<String>delete_section(int id) async {
     String? token = await secury.read("admin_token");
 
     // final Map<String, dynamic> data = {};
     // data['Key']="ID Personal";
     // data['Value']="02545164598162";
 
-    var response = await crud_delete.postdata(
-        Serverconfig.delete_section,
-        {
-          "id" : "${id}"
-        },
 
-        {
-          "Authorization": bearer + " " + token.toString(),
-          "Accept": "application/json"
+      if (await checkinternet()) {
+        var response = await http.delete(Uri.parse(Serverconfig.delete_section),
+            body:   {
+              "id" : "${id}"
+            },
+            headers:  {
+              "Authorization": bearer + " " + token.toString(),
+              "Accept": "application/json"
+            });
+
+        if (response.statusCode == 200) {
+          print("200 and ${response.body}");
+          return response.body;
         }
-    );
-    print("response from patient_visits services");
-    print(response);
-    return response.fold((l) => l, (r) => r);
+        else if (response.statusCode == 422) {
+          return "حدث خطا في السيرفر";
+        }
+        else {
+          return "لم تتم عملية الحذف";
+        }
+      } else {
+        return "هنالك مشكلة في الإتصال بالأنترنت";
+      }
+      // } catch(_){
+      //   return const Left(StatusRequest.serverfailure);
+      // }
+
+
+
+
+    // await crud_delete.postdata(
+    //     Serverconfig.delete_section,
+    //     {
+    //       "id" : "${id}"
+    //     },
+    //
+    //     {
+    //       "Authorization": bearer + " " + token.toString(),
+    //       "Accept": "application/json"
+    //     }
+    // );
+    // print("response from patient_visits services");
+    // print(response);
+    // return response.fold((l) => l, (r) => r);
   }
 
 }

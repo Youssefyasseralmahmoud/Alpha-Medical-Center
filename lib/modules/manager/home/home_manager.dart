@@ -53,7 +53,7 @@ class Home_manager extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(vertical: 8),
                             child: IconButton(
                               onPressed: () {
-                                Get.toNamed("/notification");
+                                Get.toNamed("/Notifications_manager");
                               },
                               icon: const Icon(
                                 Icons.notifications_active_outlined,
@@ -153,7 +153,9 @@ class Home_manager extends StatelessWidget {
                                           children: [
                                             GestureDetector(
                                               onTap: (){
+                                                Get.back();
                                               controller.delete_section(controller.data[index]['id']);
+                                              Get.back();
                                               },
                                               child: Container(
                                                 padding: EdgeInsets.all(5),
@@ -169,6 +171,7 @@ class Home_manager extends StatelessWidget {
                                             ),
                                             GestureDetector(
                                               onTap: (){
+                                                Get.back();
                                               Get.toNamed("/Edit_section",arguments: {
                                                 "id" : controller.data[index]['id']
 

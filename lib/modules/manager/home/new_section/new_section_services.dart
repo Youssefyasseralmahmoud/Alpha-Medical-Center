@@ -13,7 +13,8 @@ class New_section_services {
   add_new_section(String name) async {
     String? token = await secury.read("admin_token");
     var response = await crud.postdata(Serverconfig.add_new_section, {
-      "Name": name.toString()
+      "Name": name.toString(),
+      "isReceptionist":"0"
     }, {
       "Authorization": bearer + " " + token.toString(),
       "Accept": "application/json"

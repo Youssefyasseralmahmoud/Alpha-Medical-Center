@@ -273,7 +273,7 @@ class Signup extends StatelessWidget {
                               color: StaticColor.primarycolor,
                             ),
                             child: const Text(
-                              "تسجيل الدخول",
+                              "إنشاء حساب",
                               style: TextStyle(
                                   fontSize: 20,
                                   color: Colors.white,

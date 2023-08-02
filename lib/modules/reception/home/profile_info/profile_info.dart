@@ -11,6 +11,30 @@ class Profile_info_reception extends StatelessWidget {
   Widget build(BuildContext context) {
     Profile_info_controller controller = Get.put(Profile_info_controller());
     return Scaffold(
+      bottomNavigationBar:       GestureDetector(
+        onTap: (){
+          Get.offNamed("/EDit_profile_info");
+        },
+        child: Container(
+          padding: EdgeInsets.all(8),
+          height: 60,
+          width: 90,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: StaticColor.primarycolor
+          ),
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+              Icon(Icons.edit,size: 20,color: Colors.white,),
+              SizedBox(width: 10,),
+              Text("تعديل المعلومات",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),)
+            ],),
+          ),
+
+        ),
+      ),
         appBar: AppBar(
           backgroundColor: StaticColor.primarycolor,
           title: Row(
@@ -34,14 +58,14 @@ class Profile_info_reception extends StatelessWidget {
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: 150,
+                  height: 110,
                   color: StaticColor.primarycolor,
                   child: Stack(
                     clipBehavior: Clip.none,
                     children: [
                       Positioned(
                           left: 130,
-                          top: 90,
+                          top: 50,
                           child: CircleAvatar(
                             child: Image.asset(
                                 "assets/images/patient_profile.png"),
@@ -109,34 +133,11 @@ class Profile_info_reception extends StatelessWidget {
                           color: Colors.black45,
                         ),
                         const Text(
-                          " الراتب",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(8),
-                          height: MediaQuery.of(context).size.height * 0.05,
-                          width: MediaQuery.of(context).size.width * 0.8,
-                          decoration: BoxDecoration(
-                            color: StaticColor.thirdgrey,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: Text(
-                            "${controller.data_details[10]}",
-                            style: TextStyle(
-                                fontSize: 15, color: StaticColor.primarycolor),
-                            textAlign: TextAlign.end,
-                          ),
-                        ),
-                        const Divider(
-                          height: 2,
-                          color: Colors.black45,
-                        ),
-                        const Text(
                           "تاريخ الإنضمام",
                           style: TextStyle(fontSize: 20),
                         ),
                         Container(
-                          padding: const EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(10),
                           height: MediaQuery.of(context).size.height * 0.05,
                           width: MediaQuery.of(context).size.width * 0.8,
                           decoration: BoxDecoration(
@@ -161,7 +162,7 @@ class Profile_info_reception extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          padding: const EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(2),
                           height: MediaQuery.of(context).size.height * 0.05,
                           width: MediaQuery.of(context).size.width * 0.8,
                           decoration: BoxDecoration(
@@ -179,7 +180,9 @@ class Profile_info_reception extends StatelessWidget {
                           height: 2,
                           color: Colors.black45,
                         ),
+
                       ],
+
                     ),
                   ),
                 ),

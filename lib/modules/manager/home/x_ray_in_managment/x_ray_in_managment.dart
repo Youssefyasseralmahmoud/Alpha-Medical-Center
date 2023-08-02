@@ -17,7 +17,7 @@ class X_ray_in_managment extends StatelessWidget {
           backgroundColor: StaticColor.primarycolor,
           onPressed: (){
             Get.toNamed("/Add_x_ray",arguments: {
-              "id_section":controller.data[0]['id_section']
+              "id_section":controller.id_section
             });
           },
           child: Icon(Icons.add_circle),
@@ -116,7 +116,8 @@ class X_ray_in_managment extends StatelessWidget {
                           return GestureDetector(
                             onTap: () {
                             Get.toNamed("/Xray_center_services",arguments: {
-                              "id_type" :controller.data[index]['id']
+                              "id_type" :controller.data[index]['id'],
+                              "status":controller.data[index]['Status']
                             });
                             },
                             child: Container(
@@ -162,6 +163,7 @@ class X_ray_in_managment extends StatelessWidget {
                                                   children: [
                                                     GestureDetector(
                                                       onTap: (){
+                                                        Get.back();
                                                         Get.toNamed("/Edit_xray_type",arguments: {
                                                           "id":controller.data[index]['id'],
                                                           "id_section":controller.data[index]['id_section']
@@ -242,6 +244,7 @@ class X_ray_in_managment extends StatelessWidget {
                                                   children: [
                                                     GestureDetector(
                                                       onTap: (){
+                                                        Get.back();
                                                         controller.delete_xray_type(controller.data[index]['id']);
                                                       },
                                                       child: Container(

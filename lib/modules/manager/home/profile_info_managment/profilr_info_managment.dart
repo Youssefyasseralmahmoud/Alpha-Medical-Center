@@ -12,6 +12,30 @@ class Profile_info_managment extends StatelessWidget {
   Widget build(BuildContext context) {
     Profile_info_managment_controller controller = Get.put(Profile_info_managment_controller());
     return Scaffold(
+      bottomNavigationBar:  GestureDetector(
+        onTap: (){
+          Get.offNamed("/EDit_profile_info_managment");
+        },
+        child: Container(
+          padding: EdgeInsets.all(8),
+          height: 60,
+          width: 90,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: StaticColor.primarycolor
+          ),
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.edit,size: 20,color: Colors.white,),
+                SizedBox(width: 10,),
+                Text("تعديل المعلومات",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),)
+              ],),
+          ),
+
+        ),
+      ),
         appBar: AppBar(
           backgroundColor: StaticColor.primarycolor,
           title: Row(
@@ -35,14 +59,14 @@ class Profile_info_managment extends StatelessWidget {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    height: 150,
+                    height: 110,
                     color: StaticColor.primarycolor,
                     child: Stack(
                       clipBehavior: Clip.none,
                       children: [
                         Positioned(
                             left: 130,
-                            top: 90,
+                            top: 50,
                             child: CircleAvatar(
                               child: Image.asset(
                                   "assets/images/patient_profile.png"),

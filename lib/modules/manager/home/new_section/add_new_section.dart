@@ -11,6 +11,9 @@ class Add_new_section extends StatelessWidget {
   Widget build(BuildContext context) {
     New_section_controller controller =Get.put(New_section_controller());
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: StaticColor.primarycolor,
+      ),
       body: GetBuilder<New_section_controller>(builder: (controller){
         return
             controller.statusRequest==StatusRequest.loading?
@@ -20,56 +23,13 @@ class Add_new_section extends StatelessWidget {
               child: ListView(
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(top: 10),
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: Row(
-                      children: [
-                        Expanded(
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                  contentPadding:
-                                  const EdgeInsets.symmetric(vertical: 10),
-                                  prefixIcon: const Icon(Icons.search),
-                                  hintText: "البحث",
-                                  hintStyle: const TextStyle(fontSize: 20),
-                                  border: OutlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  filled: true,
-                                  fillColor: Colors.grey[200]),
-                            )),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: StaticColor.primarycolor,
-                          ),
-                          width: 60,
-                          height: 55,
-                          padding: const EdgeInsets.symmetric(vertical: 8),
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.notifications_active_outlined,
-                              size: 25,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  Container(
                     padding: const EdgeInsets.all(10),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         const Text(
-                          "قسم الإدارة",
+                          "إضافة قسم جديد",
                           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                         Row(
@@ -78,10 +38,10 @@ class Add_new_section extends StatelessWidget {
                             Container(
                               height: 50,
                               width: 50,
-                              child: Image.asset("assets/images/patient.png"),
+                              child: Image.asset("assets/images/receptionist.png"),
                             ),
                             const Text(
-                              "إضافة قسم جديد",
+                              "قسم الإدارة",
                               style: TextStyle(fontSize: 15, color: Colors.grey),
                             ),
                           ],

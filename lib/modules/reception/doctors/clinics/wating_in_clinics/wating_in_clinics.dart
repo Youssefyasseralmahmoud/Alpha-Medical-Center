@@ -80,7 +80,7 @@ class Wating_in_clinics extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               const Text(
-                                "دور الإنتظار/ مركز ألفا الطبي",
+                                "دور الإنتظار مركز ألفا الطبي",
                                 style: TextStyle(fontSize: 15, color: Colors.grey),
                               ),
                             ],

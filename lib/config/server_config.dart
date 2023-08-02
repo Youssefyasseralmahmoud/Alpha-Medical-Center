@@ -1,6 +1,6 @@
 class Serverconfig{
   static const domainnameserver ='https://ultimatebyteos.com';
-  //apis
+  //apis YOUSSEF
   static const signin ='$domainnameserver/api/login';
   static const register ='$domainnameserver/api/register';
   static const patient_regestration ='$domainnameserver/api/patientRegistration';
@@ -53,7 +53,15 @@ class Serverconfig{
   static const get_all_type_services_in_center ='$domainnameserver/api/getAllTypesCenterServices';
   static const get_wating_request_by_typeservice ='$domainnameserver/api/getAllWaitRequestByTypeCenterServices';
   static const get_patient_info_by_id ='$domainnameserver/api/getPatientInformationByID';
+  static const get_all_roles ='$domainnameserver/api/listRoles';
   static const get_user_info ='$domainnameserver/api/getMyUserInfo';
+  static const get_all_available_service ='$domainnameserver/api/getAllCenterServiceAvailable';
+  static const edit_profile_info ='$domainnameserver/api/UpdateMyUserInfo';
+  static const change_status_type_service ='$domainnameserver/api/changeStatus';
+  // END API YOUSSEF
+
+
+
 
 
 

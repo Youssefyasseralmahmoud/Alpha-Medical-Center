@@ -21,7 +21,7 @@ class Ambulance_in_managment extends StatelessWidget {
           backgroundColor: StaticColor.primarycolor,
           onPressed: (){
             Get.toNamed("/Add_service_type_for_ambulance",arguments: {
-              "id_section":controller.data_type_section[0]['id_section']
+              "id_section":controller.section_id
             });
           },
           child: Icon(Icons.add_circle),
@@ -90,7 +90,7 @@ class Ambulance_in_managment extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: const [
                           Text(
-                            " أنواع الخدمات / قسم الإسعاف  ",
+                            " أنواع الخدمات",
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
@@ -166,6 +166,7 @@ class Ambulance_in_managment extends StatelessWidget {
                                                   children: [
                                                     GestureDetector(
                                                       onTap: (){
+                                                        Get.back();
                                                         Get.toNamed("/Edit_service_type_ambulance",arguments: {
                                                           "id":controller.data_type_section[index]['id'],
                                                           "id_section":controller.data_type_section[index]['id_section']
@@ -246,6 +247,7 @@ class Ambulance_in_managment extends StatelessWidget {
                                                   children: [
                                                     GestureDetector(
                                                       onTap: (){
+                                                        Get.back();
                                                         controller.delete_type(controller.data_type_section[index]['id']);
                                                       },
                                                       child: Container(

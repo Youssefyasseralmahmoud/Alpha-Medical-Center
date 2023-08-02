@@ -17,7 +17,7 @@ class Laboratory_in_managment extends StatelessWidget {
           backgroundColor: StaticColor.primarycolor,
           onPressed: (){
             Get.toNamed("/Add_analysis",arguments: {
-              "id_section":controller.data[0]['id_section']
+              "id_section":controller.id_section
             });
           },
           child: Icon(Icons.add_circle),
@@ -114,7 +114,8 @@ class Laboratory_in_managment extends StatelessWidget {
                           return GestureDetector(
                             onTap: () {
 Get.toNamed("/Laboratory_center_services",arguments: {
-  "id_type" :controller.data[index]['id']
+  "id_type" :controller.data[index]['id'],
+  "status":controller.data[index]['Status']
 });
                             },
                             child: Container(
@@ -128,7 +129,7 @@ Get.toNamed("/Laboratory_center_services",arguments: {
                                 child: Column(
                                   children: [
                                     Expanded(
-                                      flex: 9,
+                                      flex: 8,
                                       child: Container(
                                         width: 200,
                                         child: Image.asset(
@@ -145,7 +146,7 @@ Get.toNamed("/Laboratory_center_services",arguments: {
                                       ),
                                     ),
                                     Expanded(
-                                      flex: 2,
+                                      flex: 3,
                                       child: Row(
                                         mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -161,6 +162,7 @@ Get.toNamed("/Laboratory_center_services",arguments: {
                                                   children: [
                                                     GestureDetector(
                                                       onTap: (){
+                                                        Get.back();
                                                         Get.toNamed("/Edit_analysis_type",arguments: {
                                                           "id":controller.data[index]['id'],
                                                           "id_section":controller.data[index]['id_section']
@@ -231,6 +233,7 @@ Get.toNamed("/Laboratory_center_services",arguments: {
                                                   "assets/images/pen.png"),
                                             ),
                                           ),
+
                                           GestureDetector(
                                             onTap: () {
                                               Get.defaultDialog(
@@ -241,6 +244,7 @@ Get.toNamed("/Laboratory_center_services",arguments: {
                                                   children: [
                                                     GestureDetector(
                                                       onTap: (){
+                                                        Get.back();
                                                         controller.delete_analysis_type(controller.data[index]['id']);
                                                       },
                                                       child: Container(

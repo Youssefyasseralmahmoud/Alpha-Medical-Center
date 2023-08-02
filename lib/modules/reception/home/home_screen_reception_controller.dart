@@ -7,6 +7,7 @@ import 'package:project_after_update/modules/reception/center_services/center_se
 import 'package:project_after_update/modules/reception/home/home_reception.dart';
 import 'package:project_after_update/modules/reception/home/home_screen_reception_services.dart';
 import 'package:project_after_update/modules/reception/home/setting/setting.dart';
+import 'package:project_after_update/modules/reception/notification/notification.dart';
 import 'package:project_after_update/modules/reception/patient/patient.dart';
 import 'package:project_after_update/secure_storage/secure_storage.dart';
 
@@ -21,7 +22,7 @@ class Home_screen_reception_controller extends GetxController{
     const Home_reception(),
     const Patient(),
     const Setting(),
-   // Text("payment"),
+    const Notifications()
 
   ];
   changepage(int i){

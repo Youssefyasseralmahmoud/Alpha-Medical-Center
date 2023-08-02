@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_after_update/core/class/StatusRequest.dart';
+import 'package:project_after_update/core/function/validinput.dart';
 import 'package:project_after_update/modules/reception/laboratory_in_reception/laboratory_service_type/laboratory_service_type_controller.dart';
 import 'package:project_after_update/static_colors/StaticColors.dart';
 class Laboratory_service_type extends StatelessWidget {
@@ -10,6 +11,9 @@ class Laboratory_service_type extends StatelessWidget {
   Widget build(BuildContext context) {
     Laboratory_service_type_controller controller=Get.put(Laboratory_service_type_controller());
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: StaticColor.primarycolor,
+      ),
       bottomNavigationBar:   GestureDetector(
         onTap: (){
           Get.toNamed("/Laboratory_reserv");
@@ -37,62 +41,32 @@ class Laboratory_service_type extends StatelessWidget {
             Center(child: CircularProgressIndicator(color: StaticColor.primarycolor,),):
           Container(
             child: ListView(children: [
-              Container(
-                margin: const EdgeInsets.only(top: 10),
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              contentPadding: const EdgeInsets.symmetric(vertical: 10),
-                              prefixIcon: const Icon(Icons.search),
-                              hintText: "البحث",
-                              hintStyle: const TextStyle(fontSize: 20),
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(10)),
-                              filled: true,
-                              fillColor: Colors.grey[200]),
-                        )),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: StaticColor.primarycolor,
-                      ),
-                      width: 60,
-                      height: 55,
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.notifications_active_outlined,
-                          size: 25,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
               const SizedBox(height: 20),
               Container(
                 padding: const EdgeInsets.all(10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
-                  children: const [
+                  children:  [
                     Text(
                       "أنواع تحاليل المخبر",
                       style: TextStyle(
                           fontSize: 20, fontWeight: FontWeight.bold),
                     ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 50,
+                      height: 50,
+                      child: Image.asset("assets/images/lab_req.png"),
+                    ),
                     Text(
                       "مركز ألفا الطبي",
                       style: TextStyle(fontSize: 15, color: Colors.grey),
                     ),
+
+                  ],
+                ),
                     Divider(
                       height: 10,
                       color: Colors.black45,

@@ -78,7 +78,7 @@ class Wating_in_xray extends StatelessWidget {
                             ),
                           ),
                           const Text(
-                            "دور الإنتظار / قسم الأشعة/ مركز ألفا الطبي",
+                            "دور الإنتظار مركز ألفا الطبي",
                             style: TextStyle(fontSize: 15, color: Colors.grey),
                           ),
                         ],

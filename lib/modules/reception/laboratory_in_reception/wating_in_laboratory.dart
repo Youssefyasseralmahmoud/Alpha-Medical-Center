@@ -78,7 +78,7 @@ class Wating_in_laboratory extends StatelessWidget {
                           ),
                         ),
                         const Text(
-                          "دور الإنتظار / قسم المخبر/ مركز ألفا الطبي",
+                          "دور الإنتظار مركز ألفا الطبي",
                           style: TextStyle(fontSize: 15, color: Colors.grey),
                         ),
                       ],

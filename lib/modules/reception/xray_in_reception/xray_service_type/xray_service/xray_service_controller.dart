@@ -18,6 +18,7 @@ class Xray_service_controller extends GetxController {
   List data_wating_req=[];
   List test_data_waating_req=[];
   late int id_type;
+  late int status;
   List<String> options = [
     "الأحد",
     "الإثنين",
@@ -135,6 +136,7 @@ class Xray_service_controller extends GetxController {
   @override
   void onInit(){
     id_type=Get.arguments['id_type'];
+    status=Get.arguments['status'];
     get_wating_request();
     get_all_doctors();
     get_all_services_intype();

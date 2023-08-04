@@ -66,7 +66,8 @@ class Xray_service_type extends StatelessWidget {
                       return GestureDetector(
                         onTap: () {
                           Get.toNamed("/Xray_service",arguments: {
-                            "id_type" :controller.data[index]['id']
+                            "id_type" :controller.data[index]['id'],
+                            "status":controller.data[index]['Status']
                           });
                         },
                         child: Container(

@@ -79,11 +79,37 @@ class Laboratory_service extends StatelessWidget {
                                   style: TextStyle(
                                       fontSize: 20, fontWeight: FontWeight.bold),
                                 ),
+                                controller.status==0?
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
+                                    Container(
+                                      child: Row(
+                                        children: [
+                                          Text("الدور متوقف حاليا",style: TextStyle(fontSize: 15),),
+                                          Icon(Icons.error_outline_outlined,color: Colors.red,)
+                                        ],
+                                      ),
+                                    ),
                                     const Text(
-                                      "دور الإنتظار/ عيادة الأطفال/ مركز ألفا الطبي",
+                                      "دور الإنتظار مركز ألفا الطبي",
+                                      style: TextStyle(fontSize: 15, color: Colors.grey),
+                                    ),
+                                  ],
+                                ) :
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      child: Row(
+                                        children: [
+                                          Text("الدور يعمل حاليا",style: TextStyle(fontSize: 15),),
+                                          Icon(Icons.error_outline_outlined,color: Colors.green,)
+                                        ],
+                                      ),
+                                    ),
+                                    const Text(
+                                      "دور الإنتظار مركز ألفا الطبي",
                                       style: TextStyle(fontSize: 15, color: Colors.grey),
                                     ),
                                   ],
@@ -105,7 +131,7 @@ class Laboratory_service extends StatelessWidget {
                                     onTap: () {},
                                     child: Container(
                                       margin: const EdgeInsets.only(top: 10),
-                                      height: MediaQuery.of(context).size.height * 0.1,
+                                     // height: MediaQuery.of(context).size.height * 0.1,
                                       width: MediaQuery.of(context).size.width * 0.2,
                                       decoration: BoxDecoration(
                                         color: StaticColor.thirdgrey,

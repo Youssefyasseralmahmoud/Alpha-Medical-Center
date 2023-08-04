@@ -14,6 +14,7 @@ class laboratory_service_controller extends GetxController {
   List data=[];
   List test_data=[];
   late int id_type;
+  late int status;
   List data_doctor=[];
   List test_data_doctor=[];
   List data_wating_req=[];
@@ -135,6 +136,7 @@ class laboratory_service_controller extends GetxController {
   @override
   void onInit() {
     id_type=Get.arguments['id_type'];
+    status=Get.arguments['Status'];
     get_wating_request();
     get_all_doctors();
     get_all_services_intype();

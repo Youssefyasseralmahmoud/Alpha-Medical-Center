@@ -20,6 +20,7 @@ class wating_in_clincis_controller extends GetxController {
   List test_data_waating_req = [];
   List data_wating_req = [];
   late int id;
+  late int status;
   get_wating_request() async {
     statusRequest = StatusRequest.loading;
     update();
@@ -109,6 +110,7 @@ class wating_in_clincis_controller extends GetxController {
   @override
   void onInit() {
     id = Get.arguments['id'];
+    status=Get.arguments['status'];
     print("from wating controller the id of section is ${id}");
     get_wating_request();
     get_all_doctors();

@@ -59,7 +59,7 @@ class Wating_in_clinics extends StatelessWidget {
           child: GetBuilder<wating_in_clincis_controller>(builder: (controller){
             return
             controller.statusRequest==StatusRequest.loading?
-                Center(child: CircularProgressIndicator(color: StaticColor.primarycolor,),):
+                const Center(child: CircularProgressIndicator(color: StaticColor.primarycolor,),):
               TabBarView(
               children: [
               GetBuilder<wating_in_clincis_controller>(builder: (controller){
@@ -76,9 +76,35 @@ class Wating_in_clinics extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
+                          controller.status==0?
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
+                              Container(
+                                child: Row(
+                                  children: [
+                                        const Text("الدور متوقف حاليا",style: TextStyle(fontSize: 15),),
+                                    const Icon(Icons.error_outline_outlined,color: Colors.red,)
+                                  ],
+                                ),
+                              ),
+                              const Text(
+                                "دور الإنتظار مركز ألفا الطبي",
+                                style: TextStyle(fontSize: 15, color: Colors.grey),
+                              ),
+                            ],
+                          ) :
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                child: Row(
+                                  children: [
+                                    const Text("الدور يعمل حاليا",style: TextStyle(fontSize: 15),),
+                                    const Icon(Icons.error_outline_outlined,color: Colors.green,)
+                                  ],
+                                ),
+                              ),
                               const Text(
                                 "دور الإنتظار مركز ألفا الطبي",
                                 style: TextStyle(fontSize: 15, color: Colors.grey),
@@ -94,6 +120,8 @@ class Wating_in_clinics extends StatelessWidget {
                     ),
                     Container(
                       padding: const EdgeInsets.all(10),
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height*0.6,
                       child: ListView.builder(
                           shrinkWrap: true,
                           itemCount: controller.data_wating_req.length,
@@ -102,7 +130,7 @@ class Wating_in_clinics extends StatelessWidget {
                               onTap: () {},
                               child: Container(
                                 margin: const EdgeInsets.only(top: 10),
-                             padding: EdgeInsets.all(8),
+                             padding: const EdgeInsets.all(8),
                                 width: MediaQuery.of(context).size.width * 0.2,
                                 decoration: BoxDecoration(
                                   color: StaticColor.thirdgrey,
@@ -114,12 +142,12 @@ class Wating_in_clinics extends StatelessWidget {
                                     ListTile(
                                       title: Text(
                                         "${controller.data_wating_req[index]['FullName']} : المريض  ",
-                                        style: TextStyle(fontWeight: FontWeight.bold),
+                                        style: const TextStyle(fontWeight: FontWeight.bold),
                                       ),
                                       subtitle: Text(" الخدمة : ${controller.data_wating_req[index]['ServiceName']}"),
                                       trailing: Text(
                                         "${controller.data_wating_req[index]['CreatedRequiredPatientServices']}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             color: StaticColor.primarycolor,
                                             fontWeight: FontWeight.bold),
                                       ),
@@ -130,8 +158,6 @@ class Wating_in_clinics extends StatelessWidget {
                               ),
                             );
                           }),
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height*0.6,
                     )
                   ]);
 
@@ -193,7 +219,7 @@ class Wating_in_clinics extends StatelessWidget {
                                 child: ListTile(
                                   title:  Text(
                                     "${controller.data[index]['name']} : اسم الطبيب  ",
-                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                    style: const TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                   subtitle: const Text("حالة الطبيب  : متواجد"),
                                      trailing: CircleAvatar(
@@ -347,7 +373,7 @@ class Wating_in_clinics extends StatelessWidget {
                 GetBuilder<wating_in_clincis_controller>(builder: (controller){
                   return
                     controller.statusRequest==StatusRequest.loading?
-                    Center(child: CircularProgressIndicator(color: StaticColor.primarycolor,),):
+                    const Center(child: CircularProgressIndicator(color: StaticColor.primarycolor,),):
                     Container(
                       padding: const EdgeInsets.all(10),
                       child: Column(
@@ -380,7 +406,7 @@ class Wating_in_clinics extends StatelessWidget {
                                   onTap: () {
                                     Get.bottomSheet(
                                         Container(
-                                          padding: EdgeInsets.all(10),
+                                          padding: const EdgeInsets.all(10),
                                           color: Colors.white,
                                           child: Column(
                                             children: [
@@ -388,8 +414,8 @@ class Wating_in_clinics extends StatelessWidget {
                                                 mainAxisAlignment: MainAxisAlignment.end,
                                                 children: [
                                                   Text("${controller.data_service[index]['Details']}"),
-                                                  Text(" : التفاصيل  ",style: TextStyle(fontWeight: FontWeight.bold),),
-                                                  SizedBox(width: 5,),
+                                                  const Text(" : التفاصيل  ",style: TextStyle(fontWeight: FontWeight.bold),),
+                                                  const SizedBox(width: 5,),
 
                                                 ],
                                               )
@@ -399,7 +425,7 @@ class Wating_in_clinics extends StatelessWidget {
                                     );
                                   },
                                   child: Container(
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         borderRadius: BorderRadius.only(
                                             bottomLeft: Radius.circular(20),
                                             bottomRight: Radius.circular(20)),
@@ -420,20 +446,20 @@ class Wating_in_clinics extends StatelessWidget {
                                             flex: 2,
                                             child: Text(
                                               "${controller.data_service[index]['Name']}",
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   color: Colors.white, fontSize: 15),
                                             ),
                                           ),
-                                          SizedBox(height: 5,),
+                                          const SizedBox(height: 5,),
                                           Expanded(
                                             flex: 2,
                                             child: Text(
                                               "${controller.data_service[index]['Price']}",
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   color: Colors.white, fontSize: 15),
                                             ),
                                           ),
-                                          Spacer(),
+                                          const Spacer(),
                                         ],
                                       )),
                                 );

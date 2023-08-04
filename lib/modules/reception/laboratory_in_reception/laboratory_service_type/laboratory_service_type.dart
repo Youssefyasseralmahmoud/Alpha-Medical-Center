@@ -88,7 +88,9 @@ class Laboratory_service_type extends StatelessWidget {
                     return GestureDetector(
                       onTap: () {
                         Get.toNamed("/Laboratory_service",arguments: {
-                          "id_type" :controller.data[index]['id']
+                          "id_type" :controller.data[index]['id'],
+                          "Status":controller.data[index]['Status'],
+
                         });
                       },
                       child: Container(

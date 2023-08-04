@@ -60,7 +60,8 @@ class Clinics extends StatelessWidget {
                             GestureDetector(
                               onTap: () {
                                 Get.toNamed("/wating_in_clinics",arguments: {
-                                  "id":controller.data[index]['id']
+                                  "id":controller.data[index]['id'],
+                                  "status":controller.data[index]['Status']
                                 });
                               },
                               child: Container(

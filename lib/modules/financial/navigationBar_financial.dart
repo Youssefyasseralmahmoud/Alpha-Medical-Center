@@ -1,11 +1,7 @@
 import 'package:fancy_bar/fancy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_after_update/modules/Nurse/BottomNavigationControllerNurse.dart';
-import 'package:project_after_update/modules/Nurse/Home/homeNurse.dart';
 
-
-import 'package:project_after_update/modules/Nurse/warehouse/addConsumer.dart';
 import 'package:project_after_update/modules/financial/financial_employees_salary/financial_employees_salary.dart';
 import 'package:project_after_update/modules/financial/financial_home/financial_home.dart';
 import 'package:project_after_update/modules/financial/navigationBar_financial_controller.dart';

@@ -32,7 +32,7 @@ class financial_material extends StatelessWidget {
           ],
         ),
       ),
-      body: _buildMaterialList(),
+      body: _buildMaterialList() ,
 
 
     );

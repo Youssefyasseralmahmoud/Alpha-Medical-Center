@@ -1,58 +1,58 @@
-// import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
-// import 'package:syncfusion_flutter_calendar/calendar.dart';
-//
-// class DoctorBooking extends StatelessWidget {
-//   DoctorBooking();
-//   final calendarController = Get.put(CalendarController());
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//
-//       appBar: AppBar(
-//         toolbarHeight: 120,
-//         elevation: 0,
-//
-//         backgroundColor: Colors.transparent,
-//         // textDirection: TextDirection.rtl,
-//
-//         title: Padding(
-//           padding: const EdgeInsets.only(left: 170, right: 0, top: 25, bottom: 0),
-//           child: Text(
-//             'جدول المواعيد ',
-//             textAlign: TextAlign.right,
-//             style: TextStyle(
-//               fontSize: 28,
-//               color: Colors.black54,
-//             ),
-//           ),
-//         ),
-//       ),
-//       body: SfCalendar(
-//         view: CalendarView.month,
-//         cellBorderColor: Color(0xff2342a1),
-//         todayHighlightColor: Color(0xff9bb4fd),
-//         // todayTextStyle: TextStyle(color:Color(0xff9bb4fd)),
-//         selectionDecoration: BoxDecoration(
-//             border: Border.all(color: Color(0xffb3c6ff), width: 3)),
-//         dataSource: calendarController.dataSource,
-//                 appointmentTextStyle: TextStyle(fontSize: 30),
-//
-//         monthViewSettings: MonthViewSettings(
-//           showAgenda: true,
-//           agendaViewHeight: 300,
-//           dayFormat: 'EEE',
-//           numberOfWeeksInView: 4,
-//           appointmentDisplayCount: 2,
-//           appointmentDisplayMode: MonthAppointmentDisplayMode.appointment,
-//           navigationDirection: MonthNavigationDirection.horizontal,
-//         ),
-//      ),
-//     );
-//   }
-// }
-//
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+//import 'package:syncfusion_flutter_calendar/calendar.dart';
+
+class DoctorBooking extends StatelessWidget {
+  DoctorBooking();
+ // final calendarController = Get.put(CalendarController());
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+
+      appBar: AppBar(
+        toolbarHeight: 120,
+        elevation: 0,
+
+        backgroundColor: Colors.transparent,
+        // textDirection: TextDirection.rtl,
+
+        title: Padding(
+          padding: const EdgeInsets.only(left: 170, right: 0, top: 25, bottom: 0),
+          child: Text(
+            'جدول المواعيد ',
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              fontSize: 28,
+              color: Colors.black54,
+            ),
+          ),
+        ),
+      ),
+     //  body: SfCalendar(
+     //    view: CalendarView.month,
+     //    cellBorderColor: Color(0xff2342a1),
+     //    todayHighlightColor: Color(0xff9bb4fd),
+     //    // todayTextStyle: TextStyle(color:Color(0xff9bb4fd)),
+     //    selectionDecoration: BoxDecoration(
+     //        border: Border.all(color: Color(0xffb3c6ff), width: 3)),
+     //    dataSource: calendarController.dataSource,
+     //            appointmentTextStyle: TextStyle(fontSize: 30),
+     //
+     //    monthViewSettings: MonthViewSettings(
+     //      showAgenda: true,
+     //      agendaViewHeight: 300,
+     //      dayFormat: 'EEE',
+     //      numberOfWeeksInView: 4,
+     //      appointmentDisplayCount: 2,
+     //      appointmentDisplayMode: MonthAppointmentDisplayMode.appointment,
+     //      navigationDirection: MonthNavigationDirection.horizontal,
+     //    ),
+     // ),
+    );
+  }
+}
+
 // class Event {
 //   final String eventName;
 //   final DateTime from;
@@ -60,7 +60,7 @@
 //
 //   Event({required this.eventName, required this.from, required this.to});
 // }
-//
+
 // class CalendarController extends GetxController {
 //   final events = <Event>[
 //     Event(

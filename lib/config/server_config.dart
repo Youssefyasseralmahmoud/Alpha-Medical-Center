@@ -21,6 +21,14 @@ class Serverconfig{
   static const reject_join_request ='$domainnameserver/api/rejectJoinRequest';
   static const visit_registration ='$domainnameserver/api/visitRegistration';
   static const update_visit ='$domainnameserver/api/updateVisit';
+  static const get_Patient_Services ='$domainnameserver/api/getPatientServices';
+  static const get_Users_ByType ='$domainnameserver/api/getUsersByType';
+  static const add_Follower ='$domainnameserver/api/addFollower';
+  static const get_List_Follower_After_Today ='$domainnameserver/api/getListFollowerAfterToday';
+  static const get_User_Info_By_ID ='$domainnameserver/api/getUserInfoByID';
+  static const get_All_Wait_Request_ByType_Center_Services ='$domainnameserver/api/getAllWaitRequestByTypeCenterServices';
+  static const get_Patient_Information_ByID ='$domainnameserver/api/getPatientInformationByID';
+  static const get_Type_Center_Services ='$domainnameserver/api/getTypeCenterServices';
 
 
 

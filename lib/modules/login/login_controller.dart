@@ -51,7 +51,7 @@ class Login_controller extends GetxController{
         print("tesst from login");
         secury_storage.save("doctor_token", doctor_token);
         await Get.snackbar("تسجيل دخول ناجح", "تمت عملية الدخول بنجاح",);
-        Get.toNamed("/HomeDoctor");
+        Get.toNamed("/FancyNavBarDoctor");
       }
       else{
         statusRequest=StatusRequest.failure;

@@ -93,7 +93,8 @@ class EditVisit extends StatelessWidget {
                         return validinput(val!, 2, 2, "BodyHeat");
                       },
                       onChanged: (val) {
-                        controller.BodyHeat = val;
+                        int value =  int.parse(val);
+                        controller.BodyHeat =value;
                       },
                       decoration: InputDecoration(
                           floatingLabelBehavior: FloatingLabelBehavior.always,

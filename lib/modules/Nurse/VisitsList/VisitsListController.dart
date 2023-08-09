@@ -52,6 +52,18 @@ class VisitsListController extends GetxController{
     }
     update();
   }
+  go_to_edit(int index ){
+    Get.toNamed("/EditVisitDetailsNures",arguments: {
+      "Pressure" :data[index]['Pressure'].toString(),
+      "Heartbeat" : data[index]['Heartbeat'].toString(),
+      "BodyHeat" : data[index]['BodyHeat'].toString(),
+      "ClinicalStory" : data[index]['ClinicalStory'].toString(),
+      "ClinicalExamination" : data[index]['ClinicalExamination'].toString(),
+      "Comments" : data[index]['Comments'].toString(),
+      "id" : data[index]['id']
+
+    });
+  }
 
 
 

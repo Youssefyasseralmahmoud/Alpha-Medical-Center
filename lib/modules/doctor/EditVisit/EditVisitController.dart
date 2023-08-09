@@ -10,28 +10,33 @@ class EditVisitController extends GetxController{
 final TextEditingController  textEditingController = TextEditingController();
 late String Pressure;
 late String Heartbeat;
-late String BodyHeat;
+late int BodyHeat;
 late String ClinicalStory;
 late String ClinicalExamination;
 late String comments;
-late String hint_Pressure;
-late String hint_Heartbeat;
-late String hint_BodyHeat;
-late String hint_ClinicalStory;
-late String hint_ClinicalExamination;
-late String hint_comments;
+late String hint_Pressure=" ";
+late String hint_Heartbeat=" ";
+late String hint_BodyHeat=" ";
+late String hint_ClinicalStory=" ";
+late String hint_ClinicalExamination=" ";
+late String hint_comments=" ";
 late int id;
 @override
   void onInit() {
   if (Get.arguments != null) {
-    hint_Pressure = Get.arguments['Pressure'];
-    hint_Heartbeat = Get.arguments['Heartbeat'];
-    hint_BodyHeat = Get.arguments['BodyHeat'];
-    hint_ClinicalStory = Get.arguments['ClinicalStory'];
-    hint_ClinicalExamination = Get.arguments['ClinicalExamination'];
-    hint_comments = Get.arguments['Comments'];
-    id = Get.arguments['id'];
-
+    if (Get.arguments['Pressure']!=null)
+      hint_Pressure = Get.arguments['Pressure'];
+    if (Get.arguments['Heartbeat']!=null)
+      hint_Heartbeat = Get.arguments['Heartbeat'];
+    if (Get.arguments['BodyHeat']!=null)
+      hint_BodyHeat = Get.arguments['BodyHeat'];
+    if (Get.arguments['ClinicalStory']!=null)
+      hint_ClinicalStory = Get.arguments['ClinicalStory'];
+    if (Get.arguments['ClinicalExamination']!=null)
+      hint_ClinicalExamination = Get.arguments['ClinicalExamination'];
+    if (Get.arguments['Comments']!=null)
+      hint_comments = Get.arguments['Comments'];
+    id =Get.arguments['id'];
 
   }
 

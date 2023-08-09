@@ -76,7 +76,7 @@ String start2 = "";
 
   @override
   void onInit() {
-   get_users_users_by_type();
+  get_users_users_by_type();
    get_all_nurese_follower();
 
 

@@ -29,6 +29,9 @@ class Serverconfig{
   static const get_All_Wait_Request_ByType_Center_Services ='$domainnameserver/api/getAllWaitRequestByTypeCenterServices';
   static const get_Patient_Information_ByID ='$domainnameserver/api/getPatientInformationByID';
   static const get_Type_Center_Services ='$domainnameserver/api/getTypeCenterServices';
+  static const get_ViewDoctorBookings ='$domainnameserver/api/getViewDoctorBookings';
+
+
 
 
 

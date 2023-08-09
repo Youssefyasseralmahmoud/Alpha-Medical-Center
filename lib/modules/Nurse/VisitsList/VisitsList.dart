@@ -15,212 +15,153 @@ class VisitsList extends StatelessWidget {
   Nures_patiient_services_list_controller nures_patiient_services_list_controller = Get.put(Nures_patiient_services_list_controller());
   @override
   Widget build(BuildContext context) {
-    Widget xRayContainer;
-    if (controller.data[0]['x_ray'] != null && controller.data[0]['x_ray'].length > 0) {
-      xRayContainer = Container(
-        height: 500,
-        child: ListView.builder(
-          itemCount: controller.data[0]['x_ray'].length,
-          itemBuilder: (context, index) {
-            final imageName = controller.data[0]['x_ray'][index]['NameIMG'];
-            final imageId = controller.data[0]['x_ray'][index]['id'];
-            print(imageId);
-            return ListTile(
-              title: Text(imageName),
-              trailing: ElevatedButton(
-                onPressed: () async {
-                  // controller.download_x(imageId);
-                },
-                child: Text('Download'),
-              ),
-            );
-          },
-        ),
-      );
-    } else {
-      xRayContainer = Text('No x-ray images available.');
-    }
+
     return Scaffold(
-      backgroundColor: Color(0xffffffff),
-      appBar: AppBar(
-        toolbarHeight: 90,
-        elevation: 0,
-        backgroundColor: Color(0xff9bb4fd),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            controller.showDetails.assignAll(List.filled(100, false));
-            Get.back();
-          },
-        ),
-        title: Padding(
-          padding: const EdgeInsets.only(top: 30.0, left: 120, bottom: 20),
-          child: Text(
-            'سجل المريض ',
-            textAlign: TextAlign.right,
-            style: TextStyle(
-              fontSize: 28,
-              color: Colors.white,
-            ),
+        appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              nures_patiient_services_list_controller.showDetails.assignAll(List.filled(100, false));
+              Get.back();
+            },
+          ),
+          iconTheme: IconThemeData(
+
+              color: Colors.black54,size: 28),
+          toolbarHeight: 70,
+          elevation: 0,
+          backgroundColor: Color(0xff9bb4fd),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+
+              Expanded(
+                child: Text(
+                  'خدمات المريض',
+                  textAlign: TextAlign.right,
+                  style: TextStyle(fontSize: 22, color: Colors.black54),
+                ),
+              ),
+              SizedBox(
+                width: 25,
+              ),
+            ],
           ),
         ),
-      ),
-      body: Column(
-        children: [
-          SizedBox(height: 30),
+        body:Column(
+          children: [
+            SizedBox(height: 15),
+            // add some space between the title and the icon
+            Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15),
+              child: GestureDetector(
+                onTap: () {
+                  Get.toNamed('/PersonalInformationN');
+                },
+                child: Container(
+                  color:Color.fromARGB(100, 189, 189, 189).withAlpha(50),
+                  // margin: const EdgeInsets.only(bottom: 7,left: 7,right: 7),
+                  width: Get.width,
+                  height: 60,
 
-          // if (controller.is_doctortransfer == true)
-          //   Row(
-          //     mainAxisAlignment: MainAxisAlignment.center,
-          //     children: [
-          //       TextButton(
-          //           onPressed: () {
-          //             Get.toNamed('/DoctorDitailes');
-          //           },
-          //           child: Text('سامر علي',
-          //             style: TextStyle(
-          //                 fontSize: 18,
-          //                 fontWeight: FontWeight.bold,
-          //                 color: Color(0xff9bb4fd)),
-          //           )),
-          //       Text(
-          //         'اسم الطبيب المحول للمريض',
-          //         style: TextStyle(
-          //           fontSize: 18,
-          //           fontWeight: FontWeight.w200,
-          //           color: Colors.black54,
-          //         ),
-          //       ),
-          //     ],
-          //   ),
-          SizedBox(height: 15),
-          // add some space between the title and the icon
-          Padding(
-            padding: const EdgeInsets.only(left: 15, right: 15),
-            child: GestureDetector(
-              onTap: () {
-                Get.toNamed('/PersonalInformationN');
-              },
-              child: Container(
-                color:Color.fromARGB(100, 189, 189, 189).withAlpha(50),
-                // margin: const EdgeInsets.only(bottom: 7,left: 7,right: 7),
-                width: Get.width,
-                height: 60,
-
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Padding(
-                      padding: EdgeInsets.all(15.0),
-                      child: Icon(Icons.arrow_back_ios,
-                          color: Color(0xff9bb4fd)),
-                    ),
-                    Text(
-                      "البيانات الشخصية للمريض ",
-                      style: TextStyle(
-                        color: Color(0x8e000000),
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Padding(
+                        padding: EdgeInsets.all(15.0),
+                        child: Icon(Icons.arrow_back_ios,
+                            color: Color(0xff9bb4fd)),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(15.0),
-                      child: Icon(
-                        Icons.featured_play_list_outlined,
-                        color: Color(0xff9bb4fd),
+                      Text(
+                        "البيانات الشخصية للمريض ",
+                        style: TextStyle(
+                          color: Color(0x8e000000),
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                  ],
+                      Padding(
+                        padding: EdgeInsets.all(15.0),
+                        child: Icon(
+                          Icons.featured_play_list_outlined,
+                          color: Color(0xff9bb4fd),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 15, right: 15, top: 20),
-            child: GestureDetector(
-              onTap:  () async{
-                print("iddddd");
+            Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15, top: 20),
+              child: GestureDetector(
+                onTap:  () async{
+                  print("iddddd");
 
-                await nures_patiient_services_list_controller.get_patient_services(controller.data[0]['IDPatientRecord']);
-                Get.toNamed("/Nures_patiient_services_list");
+                  await nures_patiient_services_list_controller.get_patient_services(controller.data[0]['IDPatientRecord']);
+                  Get.toNamed("/Nures_patiient_services_list");
 
 
-              },
-              child: Container(
-                color:Color.fromARGB(100, 189, 189, 189).withAlpha(50),
-                // margin: const EdgeInsets.only(bottom: 7,left: 7,right: 7),
-                width: Get.width,
-                height: 60,
+                },
+                child: Container(
+                  color:Color.fromARGB(100, 189, 189, 189).withAlpha(50),
+                  // margin: const EdgeInsets.only(bottom: 7,left: 7,right: 7),
+                  width: Get.width,
+                  height: 60,
 
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Padding(
-                      padding: EdgeInsets.all(15.0),
-                      child: Icon(Icons.arrow_back_ios,
-                          color: Color(0xff9bb4fd)),
-                    ),
-                    Text(
-                      "خدمات المريض ",
-                      style: TextStyle(
-                        color: Color(0x8e000000),
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Padding(
+                        padding: EdgeInsets.all(15.0),
+                        child: Icon(Icons.arrow_back_ios,
+                            color: Color(0xff9bb4fd)),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(15.0),
-                      child: Icon(
-                        Icons.featured_play_list_outlined,
-                        color: Color(0xff9bb4fd),
+                      Text(
+                        "خدمات المريض ",
+                        style: TextStyle(
+                          color: Color(0x8e000000),
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                  ],
+                      Padding(
+                        padding: EdgeInsets.all(15.0),
+                        child: Icon(
+                          Icons.featured_play_list_outlined,
+                          color: Color(0xff9bb4fd),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Text(
-              'سجل الزيارات',
-              style: TextStyle(
-                fontFamily: 'Arial',
-                fontSize: 25,
-                color: Colors.black54,
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(
+                'سجل الزيارات',
+                style: TextStyle(
+                  fontFamily: 'Arial',
+                  fontSize: 25,
+                  color: Colors.black54,
+                ),
               ),
             ),
-          ),
 
-          Container(
-            child: Expanded(
-                child:
-                _buildEmployeeList()
+            Container(
+              child: Expanded(
+                  child:
+                  _buildEmployeeList()
 
+              ),
             ),
-          )
-          // Expanded(
-          //   child: ListView.builder(
-          //     itemCount: controller.data.length,
-          //
-          //     itemBuilder: (context, index) {
-          //       print(controller.data.length);
-          //
-          //
-          //       return  Container(
-          //         child: Expanded(
-          //             child:
-          //             _buildEmployeeList()
-          //
-          //         ),
-          //       );
-          //     },
-          //   ),
-          // ),
-        ],
-      ),
+          ],
+        )
+
     );
   }
+
   Widget _buildEmployeeList() {
     return ListView.builder(
       itemCount:controller.data.length ,
@@ -229,8 +170,11 @@ class VisitsList extends StatelessWidget {
       },
     );
   }
+
+
+
   Widget visit(int index) {
-    String createdAt = controller.data[index]['updated_at'];
+    String createdAt =  controller.data[index]['updated_at'];
     String date = '';
     String time = '';
 
@@ -282,8 +226,8 @@ class VisitsList extends StatelessWidget {
                 Column(
                   children: [
                     if (!controller.doctor.value) doctor(index),
-                    if (controller.data[index]['x_ray'] != null && controller.data[index]['x_ray'].length > 0) ashaa(index),
-                    if (controller.data[index]['laboratory_test_results'] != null && controller.data[index]['laboratory_test_results'].length > 0) makhbar(index),
+                    // if (controller.data[index]['x_ray'] != null && controller.data[index]['x_ray'].length > 0) ashaa(index),
+                    //if (controller.data[index]['laboratory_test_results'] != null && controller.data[index]['laboratory_test_results'].length > 0) makhbar(index),
                   ],
                 )
               else
@@ -302,35 +246,103 @@ class VisitsList extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 7, left: 7, right: 7),
       width: Get.width,
-      // height: 60,
       color: Color.fromARGB(100, 189, 189, 189).withAlpha(50),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          if (string != null)
-            Center(
-              child: Expanded(
-                  child: Text('${string}',
+      child: SingleChildScrollView(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            if (string != null)
+              Expanded(
+                child: Center(
+                  child: Text(
+                    '${string}',
                     maxLines: null,
                     textAlign: TextAlign.center,
-                  )),
-            )
-          else Center(child: Text('    ' + '_', maxLines: null, textAlign: TextAlign.center)) ,
+                  ),
+                ),
+              )
+            else
+              Expanded(
+                child: Center(child: Text('    ' + '_', maxLines: null, textAlign: TextAlign.center)),
+              ),
 
-          SizedBox(width: 90,),
-          Center(child: Text('  :  ' + '${s1}', maxLines: null, textAlign: TextAlign.center)),
-          Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Icon(
-              icon,
-              color: Color(0xff9bb4fd),
+            SizedBox(
+              width: 0,
             ),
-          )
-        ],
+            Center(child: Text('  :  ' + '${s1}', maxLines: null, textAlign: TextAlign.center)),
+            Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Icon(
+                icon,
+                color: Color(0xff9bb4fd),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
 
+  Widget doctor(int index) {
+    return Column(
+      children: [
+
+        Column(
+          children: [
+
+            Padding(
+              padding: const EdgeInsets.only(left: 10, right: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton(
+                      onPressed: () {
+                        controller.go_to_edit(index);
+                      },
+                      child: Text(
+                        'تعديل',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xff9bb4fd),
+                        ),
+                      )),
+                  Text('عيادات',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w100,
+                        color: Colors.black45,
+                      )),
+                ],
+              ),
+            ),
+            widget1('     اسم الطبيب', controller.data[index]['ReferringPhysician'], Icons.co_present_outlined),
+            //widget1('اسم القسم', ' القلبية', Icons.recent_actors_outlined),
+
+            if (controller.data[index]['BodyHeat']!=null)
+            widget1('            الحرارة', controller.data[index]['BodyHeat'].toString(), Icons.edit)
+            else
+              widget1('            الحرارة', "-", Icons.edit),
+            widget1('            الضغط', controller.data[index]['Pressure'], Icons.edit),
+
+            widget1('             النبض',controller.data[index]['Heartbeat'], Icons.edit),
+            widget1('القصة السريرية',controller.data[index]['ClinicalStory'], Icons.edit),
+            widget1('الفحص السريري ', controller.data[index]['ClinicalExamination'], Icons.edit),
+            widget1('التشخيص و العلاج', controller.data[index]['Comments'], Icons.edit),
+
+            SizedBox(
+              height: 20,
+            )
+          ],
+        ),
+
+
+        SizedBox(
+          height: 20,
+        )
+      ],
+    );
+  }
   Widget makhbar(int index) {
     return Column(
       children: [
@@ -395,48 +407,5 @@ class VisitsList extends StatelessWidget {
     ]);
   }
 
-  Widget doctor(int index) {
-    return Column(children: [
-      Padding(
-        padding: const EdgeInsets.only(left: 10, right: 30),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            TextButton(
-                onPressed: () {
-                  //controller.go_to_edit(index);
-                },
-                child: Text(
-                  'تعديل',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xff9bb4fd),
-                  ),
-                )),
-            Text('عيادات',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w100,
-                  color: Colors.black45,
-                )),
-          ],
-        ),
-      ),
 
-      widget1('     اسم الطبيب', controller.data[index]['ReferringPhysician'], Icons.co_present_outlined),
-      //widget1('اسم القسم', ' القلبية', Icons.recent_actors_outlined),
-      widget1('            الحرارة', controller.data[index]['BodyHeat'], Icons.edit),
-      widget1('            الضغط', controller.data[index]['Pressure'], Icons.edit),
-
-      widget1('             النبض',controller.data[index]['Heartbeat'], Icons.edit),
-      widget1('القصة السريرية',controller.data[index]['ClinicalStory'], Icons.edit),
-      widget1('الفحص السريري ', controller.data[index]['ClinicalExamination'], Icons.edit),
-      widget1('التشخيص و العلاج', controller.data[index]['Comments'], Icons.edit),
-
-      SizedBox(
-        height: 20,
-      )
-    ]);
-  }
 }

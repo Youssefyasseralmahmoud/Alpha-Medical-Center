@@ -88,10 +88,12 @@ class EditVisitDetailsNures extends StatelessWidget {
                     ),
                     TextFormField(
                       validator: (val) {
+
                         return validinput(val!, 2, 2, "BodyHeat");
                       },
                       onChanged: (val) {
-                        controller.BodyHeat = val;
+int value =  int.parse(val);
+                     controller.BodyHeat =value;
                       },
                       decoration: InputDecoration(
                           floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -330,7 +332,7 @@ class EditVisitDetailsNures extends StatelessWidget {
                     Center(
                       child: GestureDetector(
                         onTap: () {
-                          controller.checkinput();
+                          controller.edit_result();
                         },
                         child: Container(
                           padding: const EdgeInsets.all(5),

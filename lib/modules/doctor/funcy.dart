@@ -17,8 +17,9 @@ class FancyNavBarPageDoctor extends StatelessWidget {
 
   final screens = [
     Home(),
-    DoctorBooking(),
-    Doctor_following_nures()
+     DoctorBooking(),
+    Doctor_following_nures(),
+    // Doctor_following_nures()
   ];
 
   @override

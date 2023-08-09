@@ -5,7 +5,7 @@ class warehouseBindinds implements Bindings
 {
   @override
   void dependencies() {
-    Get.put<warehouseController>(warehouseController());
+    Get.put<Nurse_warehouseController>(Nurse_warehouseController());
   }
 
 }

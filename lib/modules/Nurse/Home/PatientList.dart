@@ -2,17 +2,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-
+import 'package:project_after_update/modules/Nurse/Home/homeNurseController.dart';
+import 'package:project_after_update/modules/Nurse/Nurse_wait_patient/Nurse_wait_patient_controller.dart';
 
 class ListPatients extends StatelessWidget {
   const ListPatients({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    homeNurseController controller= Get.put<homeNurseController>(homeNurseController());
     return Flexible(
         child: ListView.builder(
-            itemCount: 8,
+            itemCount: controller.data_names.length,
             itemBuilder: (BuildContext contex, int index) {
               return Listpatients(
                 index: index,
@@ -24,15 +25,26 @@ class ListPatients extends StatelessWidget {
 class Listpatients extends StatelessWidget {
   final int index;
 
+
   const Listpatients({Key? key, required this.index}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    homeNurseController controller= Get.put<homeNurseController>(homeNurseController());
+    Nurse_wait_patient_controller controller2= Get.put<Nurse_wait_patient_controller>(Nurse_wait_patient_controller());
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: GestureDetector(
         onTap: () {
-          Get.toNamed('/AddVisit');
+        //  controller.data4.clear();
+          controller2.refresh();
+          controller2.get_allwaitingPatient(controller.data_names[index]);
+
+          Get.toNamed("/Nurse_wait_patient",
+          //     arguments: {
+          //     //  "id" : controller.data[0]['id']
+          // }
+          );
 
         },
         child: Card(
@@ -57,7 +69,7 @@ class Listpatients extends StatelessWidget {
 
                   },
                 ),
-                Text('راما سبعه',style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: 'Arial')),
+                Text("${controller.data_names[index]}",style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: 'Arial')),
                 IconButton(
                   color:Color(0xff9bb4fd),
                   icon: Icon(

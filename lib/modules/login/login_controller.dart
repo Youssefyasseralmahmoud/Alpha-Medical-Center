@@ -65,7 +65,7 @@ class Login_controller extends GetxController{
         print("tesst from login");
         secury_storage3.save("doctor_token", doctor_token);
         await Get.snackbar("تسجيل دخول ناجح", "تمت عملية الدخول بنجاح",);
-        Get.offAllNamed("/HomeDoctor");
+        Get.toNamed("/FancyNavBarDoctor");
       }
       else if(response['code']== 1 && response['data']['user']['TypeUser'] == "Receptionist" ) {
         // && response['carer']=='reception'

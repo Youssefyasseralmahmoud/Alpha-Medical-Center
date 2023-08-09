@@ -29,7 +29,7 @@ class Splash_controller extends GetxController {
     if(admin_token!= null){
       Get.offAllNamed('/Home_screen_manager');
     }else if (doctor_token!=null){
-      Get.offAllNamed("/HomeDoctor");
+      Get.offAllNamed("/FancyNavBarDoctor");
     }else if (receptionist_token!=null){
       Get.offAllNamed("/home_screen_reception");
     }else if (ambulance_token!=null){

@@ -1,10 +1,12 @@
 import 'package:fancy_bar/fancy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_after_update/Modules/Nurse/BottomNavigationControllerNurse.dart';
-import 'package:project_after_update/Modules/Nurse/Home/homeNurse.dart';
+import 'package:project_after_update/modules/Nurse/BottomNavigationControllerNurse.dart';
+import 'package:project_after_update/modules/Nurse/Home/homeNurse.dart';
+import 'package:project_after_update/modules/Nurse/Nurse_worl_after_today/Nurse_worl_after_today.dart';
 
-import 'package:project_after_update/Modules/Nurse/warehouse/addConsumer.dart';
+
+import 'package:project_after_update/modules/Nurse/warehouse/addConsumer.dart';
 class FancyNavBarNurse extends StatelessWidget {
   FancyNavBarNurse({Key? key}) : super(key: key);
 
@@ -13,7 +15,9 @@ class FancyNavBarNurse extends StatelessWidget {
 
   final screens = [
     homeNurse(),
-    addConsumer()
+     addConsumerNurse(),
+    Nurse_worl_after_today(),
+
   ];
 
   @override
@@ -34,6 +38,12 @@ class FancyNavBarNurse extends StatelessWidget {
             textColor: Color(0xff9bb4fd),
             title: "المستودع",
             icon: Icon(Icons.medical_information_rounded,color: Color(0xff9bb4fd)),
+
+          ),
+          FancyItem(
+            textColor: Color(0xff9bb4fd),
+            title: "المهام",
+            icon: Icon(Icons.file_copy_outlined,color: Color(0xff9bb4fd)),
 
           ),
 

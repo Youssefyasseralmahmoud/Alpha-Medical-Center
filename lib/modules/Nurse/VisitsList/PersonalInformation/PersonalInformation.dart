@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'VisitsListController.dart';
+import 'package:project_after_update/modules/Nurse/Nures_patiient_services_list/Nures_patiient_services_list_controller.dart';
+import 'package:project_after_update/modules/Nurse/VisitsList/PersonalInformation/PersonalinfrmationController.dart';
+import '../VisitsListController.dart';
 
 class PersonalInformation extends StatelessWidget {
+  int height = Get.height.toInt();
+  int width = Get.width.toInt();
 
+  // VisitsListController controller = Get.find();
 
-  int  height = Get.height.toInt();
- int  width  = Get.width.toInt();
-
-  VisitsListController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +19,7 @@ class PersonalInformation extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 330.0,top: 50),
             child: IconButton(icon:Icon( Icons.arrow_back_rounded,size: 35,color: Colors.black54),
-              onPressed: (){Get.offNamed('/VisitsListNurse');},),
+              onPressed: (){Get.offNamed('/patientVisitRecord');},),
           ),
           CircleAvatar(
             backgroundColor: Color(0xff9bb4fd),
@@ -70,8 +71,8 @@ class PersonalInformation extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: const [
-                      Text(" 5423 :"),
-                      Text("رقم الاضبارة ",
+                      Text(" 5423456789 :"),
+                      Text("رقم الوطني ",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       Padding(
                         padding: EdgeInsets.all(10.0),
@@ -155,7 +156,4 @@ class PersonalInformation extends StatelessWidget {
       ),
     );
   }
-
-
-
 }

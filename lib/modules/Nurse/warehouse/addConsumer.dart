@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_after_update/Modules/Nurse/warehouse/warehouseController.dart';
+import 'package:project_after_update/modules/Nurse/warehouse/warehouseController.dart';
+import 'package:project_after_update/static_colors/StaticColors.dart';
 
 
 import 'ProductsinDepartment.dart';
-class addConsumer extends StatelessWidget {
-  warehouseController controller = Get.put<warehouseController>(warehouseController());
+class addConsumerNurse extends StatelessWidget {
+  Nurse_warehouseController controller = Get.put<Nurse_warehouseController>(Nurse_warehouseController());
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +45,12 @@ class addConsumer extends StatelessWidget {
          // crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             const Padding(
-              padding:EdgeInsets.all(50.0),
+              padding:EdgeInsets.only(top: 60,right: 20,bottom: 10),
               child: Text(
                 "               مستهلكات القسم",
                 style: TextStyle(
                   fontFamily: 'Arial',
-                  fontSize: 30,
+                  fontSize: 27,
                   color: Color(0xff36414d),
                 ),
               ),
@@ -65,6 +66,7 @@ class addConsumer extends StatelessWidget {
                       value: value,
                     ))
                         .toList(),
+
                     onChanged: (newValue) {
                       controller.selectedValue.value = newValue!;
                     },
@@ -74,6 +76,29 @@ class addConsumer extends StatelessWidget {
 
 
                   )),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: TextFormField(
+
+                keyboardType: TextInputType.visiblePassword,
+
+                decoration: InputDecoration(
+                    floatingLabelBehavior:
+                    FloatingLabelBehavior.always,
+                    label: const Text(
+                      "الكمية",
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: StaticColor.blackcolor,
+                          fontWeight: FontWeight.bold),
+                    ),
+
+                    contentPadding: const EdgeInsets.all(10),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    )),
               ),
             ),
             Container(
@@ -114,7 +139,7 @@ class addConsumer extends StatelessWidget {
 
               ),
             ),
-           ProductsinDepartment()
+           ProductsinDepartmentNurse()
           ],
 
     ));

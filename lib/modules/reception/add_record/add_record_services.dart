@@ -11,7 +11,7 @@ class Patient_Regesteration_services {
   late var message;
   add_patient_record(String idpersonal, String fullname, String age,
       String phonenumber, String addres, String ambulancecase) async {
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("receptionist_token");
     var response = await crud.postdata(Serverconfig.patient_regestration, {
       "IDPersonal": idpersonal.toString(),
       "FullName": fullname.toString(),

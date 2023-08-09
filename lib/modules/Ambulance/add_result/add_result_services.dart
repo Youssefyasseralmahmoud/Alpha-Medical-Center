@@ -9,7 +9,7 @@ class Add_result_services{
   Secury_storage secury = new Secury_storage();
   add_resault(String Pressure,String Heartbeat,String BodyHeat,String ClinicalStory,String ClinicalExamination,int id)async{
     //there is String id in parameters
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("ambulance_token");
     var response=await crud.postdata(Serverconfig.add_preview_resault,{
       "id" :"${id}",
       "Pressure" : Pressure,

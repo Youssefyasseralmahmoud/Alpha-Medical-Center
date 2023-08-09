@@ -10,6 +10,7 @@ class Binding extends Bindings{
     Get.put(Crud_get());
     Get.put(Crud_put());
     Get.put(Crud_delete());
+    //// commit in binding
   }
 
 }

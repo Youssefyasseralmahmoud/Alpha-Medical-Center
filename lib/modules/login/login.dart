@@ -18,7 +18,7 @@ class Login extends StatelessWidget {
             controller.statusRequest == StatusRequest.loading?
                 Center(child: CircularProgressIndicator(color: StaticColor.primarycolor,)) :
              Form(
-               key: controller.formstate,
+              // key: controller.formstate3,
                child: ListView(
                 children: [
                   Container(
@@ -109,7 +109,7 @@ class Login extends StatelessWidget {
                             ),
                             GestureDetector(
                               onTap: () {
-                                controller.checkinput();
+                                controller.login();
                               },
                               child: Container(
                                 alignment: Alignment.center,

@@ -2,8 +2,8 @@ import 'package:get/get.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
-class ProductsinDepartmentlab extends StatelessWidget {
-  const ProductsinDepartmentlab({Key? key}) : super(key: key);
+class ProductsinDepartment extends StatelessWidget {
+  const ProductsinDepartment({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,17 +11,17 @@ class ProductsinDepartmentlab extends StatelessWidget {
         child: ListView.builder(
             itemCount: 8,
             itemBuilder: (BuildContext contex, int index) {
-              return Productslab(
+              return Products(
                 index: index,
               );
             }));
   }
 }
 
-class Productslab extends StatelessWidget {
+class Products extends StatelessWidget {
   final int index;
 
-  const Productslab({Key? key, required this.index}) : super(key: key);
+  const Products({Key? key, required this.index}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class Productslab extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: GestureDetector(
         onTap: () {
-          Get.toNamed('/Addvisitlab');
+          Get.toNamed('/addVisit');
 
         },
         child: Card(
@@ -57,7 +57,7 @@ class Productslab extends StatelessWidget {
                   ),
 
                 ),
-                Text('قطن ',style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: 'Arial')),
+                Text('أدوية ',style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: 'Arial')),
                 IconButton(
                   color: Color(0xffb3c6ff),
                   icon: Icon(

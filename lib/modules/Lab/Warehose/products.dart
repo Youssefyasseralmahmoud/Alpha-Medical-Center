@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-class Productlab {
+class Product {
   final String name;
   int quantity;
 
-  Productlab({required this.name, this.quantity = 0});
+  Product({required this.name, this.quantity = 0});
 }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 
+import '../../../core/class/StatusRequest.dart';
+import '../../../static_colors/StaticColors.dart';
 import 'VisitsListControllerX_Ray.dart';
 
 
@@ -10,6 +12,8 @@ class VisitsListX_Ray extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       backgroundColor: Color(0xffffffff),
       appBar: AppBar(
@@ -28,8 +32,10 @@ class VisitsListX_Ray extends StatelessWidget {
           ),
         ),
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
+      body:GetBuilder<VisitsListControllerX_Ray>(builder: (controller) {
+       return SafeArea(
+
+          child: SingleChildScrollView(
           child: Column(
             children: [
               SizedBox(height: 30),
@@ -38,7 +44,7 @@ class VisitsListX_Ray extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 15, right: 15),
                 child: GestureDetector(
                   onTap: () {
-                    Get.toNamed('/PersonalInformationx_ray');
+                    controller.get_patieninfobytid(controller.id_patient);
                   },
                   child: Container(
                     color: Color.fromARGB(100, 189, 189, 189).withAlpha(50),
@@ -85,11 +91,66 @@ class VisitsListX_Ray extends StatelessWidget {
                   ),
                 ),
               ),
-              visit(),
+              controller.statusRequest == StatusRequest.loading?
+              Center(child: CircularProgressIndicator(color: StaticColor.primarycolor,)) :
+              Container(
+                height: MediaQuery.of(context).size.height - 160, // ارتفاع المحتوى
+                child:Directionality(
+                  textDirection: TextDirection.rtl, // تحديد اتجاه النص من اليمين لليسار
+                  child: GridView.builder(
+                    itemCount: controller.date.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      childAspectRatio: 3.3,
+                    ),
+                    itemBuilder: (BuildContext context, int index) {
+                      return InkWell(
+                        onTap: () {
+                          Get.toNamed('/detailvistexray');
+                        },
+                        child: SizedBox(
+                          height: 50,
+                          child: Card(
+                            color: Colors.white,
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              side: BorderSide(
+                                color: StaticColor.primarycolor,
+                                width: 2,
+                              ),
+                            ),
+                            child:  Row(
+                            textDirection: TextDirection.rtl,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(right: 45),
+                                child: Text(
+                                  '${controller.date[index]}',
+                                  style: TextStyle(fontSize: 18, color: Colors.black54),
+                                  textDirection: TextDirection.rtl,
+                                ),
+                              ),
+
+
+                            ],
+                          ),
+                          ),
+                        ),
+                      );
+                    },
+                    // ...
+                  ),
+                )
+              ),
+
             ],
           ),
         ),
-      ),
+      );
+      })
     );
   }
 
@@ -137,7 +198,7 @@ class VisitsListX_Ray extends StatelessWidget {
                   return Column(
                     children: [
 
-                      if (controller.ashaa != false) ashaa(),
+                       ashaa(),
 
                     ],
                   );

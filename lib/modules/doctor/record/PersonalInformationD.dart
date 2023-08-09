@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_after_update/modules/doctor/Home/homeController.dart';
 
 
 
 class PersonalInformationD extends StatelessWidget {
-
+  homeController controller = Get.put(homeController());
 
   int  height = Get.height.toInt();
  int  width  = Get.width.toInt();
@@ -71,8 +72,8 @@ class PersonalInformationD extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: const [
-                      Text(" 5423 :"),
-                      Text("رقم الاضبارة ",
+                      Text(" 5423456789 :"),
+                      Text("رقم الوطني ",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       Padding(
                         padding: EdgeInsets.all(10.0),

@@ -59,6 +59,14 @@ class Serverconfig{
   static const edit_profile_info ='$domainnameserver/api/UpdateMyUserInfo';
   static const change_status_type_service ='$domainnameserver/api/changeStatus';
   // END API YOUSSEF
+  static const get_Patient_Services ='$domainnameserver/api/getPatientServices';
+  static const get_Users_ByType ='$domainnameserver/api/getUsersByType';
+  static const add_Follower ='$domainnameserver/api/addFollower';
+  static const get_List_Follower_After_Today ='$domainnameserver/api/getListFollowerAfterToday';
+  static const get_User_Info_By_ID ='$domainnameserver/api/getUserInfoByID';
+  static const get_All_Wait_Request_ByType_Center_Services ='$domainnameserver/api/getAllWaitRequestByTypeCenterServices';
+  static const get_Patient_Information_ByID ='$domainnameserver/api/getPatientInformationByID';
+  static const get_Type_Center_Services ='$domainnameserver/api/getTypeCenterServices';
 
 
 

@@ -43,13 +43,19 @@ import 'package:project_after_update/modules/Lab/Warehose/warehouseProductslab.d
 import 'package:project_after_update/modules/Lab/funcybarlab.dart';
 import 'package:project_after_update/modules/Lab/home/homelab.dart';
 import 'package:project_after_update/modules/Nurse/AddVisit/AddVisit.dart';
+import 'package:project_after_update/modules/Nurse/EditVisitDetailsNures/EditVisitDetailsNures.dart';
 import 'package:project_after_update/modules/Nurse/EditVisitNurse/EditVisitNurse.dart';
 import 'package:project_after_update/modules/Nurse/Home/homeNurse.dart';
-import 'package:project_after_update/modules/Nurse/VisitsList/PersonalInformation.dart';
+import 'package:project_after_update/modules/Nurse/Nures_patiient_services_list/Nures_patiient_services_list.dart';
+import 'package:project_after_update/modules/Nurse/Nurse_wait_patient/Nurse_wait_patient.dart';
+import 'package:project_after_update/modules/Nurse/VisitsList/Nurse_visit_ditails/Nurse_visit_ditails.dart';
+import 'package:project_after_update/modules/Nurse/VisitsList/PersonalInformation/PersonalInformation.dart';
+
 import 'package:project_after_update/modules/Nurse/VisitsList/VisitsList.dart';
 import 'package:project_after_update/modules/Nurse/funcybarNurse.dart';
 import 'package:project_after_update/modules/Nurse/warehouse/addConsumer.dart';
 import 'package:project_after_update/modules/Nurse/warehouse/warehouseProducts.dart';
+import 'package:project_after_update/modules/doctor/Doctor_patient_servies/Doctor_patient_servies.dart';
 import 'package:project_after_update/modules/doctor/EditVisit/EditVisit.dart';
 import 'package:project_after_update/modules/doctor/Home/home.dart';
 import 'package:project_after_update/modules/doctor/bookings/DoctorBooking.dart';
@@ -57,6 +63,17 @@ import 'package:project_after_update/modules/doctor/funcy.dart';
 import 'package:project_after_update/modules/doctor/record/PersonalInformationD.dart';
 import 'package:project_after_update/modules/doctor/record/doctorDitailes.dart';
 import 'package:project_after_update/modules/doctor/record/patientVisitRecord.dart';
+import 'package:project_after_update/modules/financial/Payments_and_Receipts/Payments_and_Receipts.dart';
+import 'package:project_after_update/modules/financial/financial_home/financial_home.dart';
+import 'package:project_after_update/modules/financial/financial_invoices_archive/financial_invoices_archive.dart';
+import 'package:project_after_update/modules/financial/financial_material/financial_material.dart';
+import 'package:project_after_update/modules/financial/maintenance/maintenance.dart';
+import 'package:project_after_update/modules/financial/navigationBar_financial.dart';
+import 'package:project_after_update/modules/financial/sections/financial_Clinic.dart';
+import 'package:project_after_update/modules/financial/sections/financial_Clinic_incoming_material/financial_Clinic_incoming_material.dart';
+import 'package:project_after_update/modules/financial/sections/financial_sections.dart';
+import 'package:project_after_update/modules/financial/waiting_from_reception/InvoicePage.dart';
+import 'package:project_after_update/modules/financial/waiting_from_reception/waiting_from_reception.dart';
 import 'package:project_after_update/modules/login/login.dart';
 import 'package:project_after_update/modules/manager/employee/employee.dart';
 import 'package:project_after_update/modules/manager/home/Setting_managment.dart';
@@ -278,11 +295,16 @@ class MyApp extends StatelessWidget {
 
         GetPage(name: '/HomeNurse',            page: () =>homeNurse(),          binding:HomeNurseBinding()),
         GetPage(name: '/AddVisit',             page: () =>AddVisit(),           binding:AddVisitBinding()),
-        GetPage(name: '/VisitsListNurse',      page: () =>VisitsList(),         binding:VisitsListBinding()),
+        GetPage(name: '/VisitsListNurse',      page: () =>VisitsList(),         ),
         GetPage(name: '/EditVisitNurse',       page: () =>EditVisitNurse(),     binding:EditVisitNurseBinding()),
         GetPage(name: '/PersonalInformationN', page: () =>PersonalInformation(),binding:VisitsListBinding()),
-        GetPage(name: '/addConsumer',          page: () => AddConsumer(),        binding:WarehouseBindinds()),
-        GetPage(name: '/warehouseProducts',    page: () => WarehouseProducts(),  binding:WarehouseBindinds()),
+        GetPage(name: '/addConsumer_nurse',          page: () => addConsumerNurse(),        ),//binding:WarehouseBindindsN),
+        GetPage(name: '/warehouseProducts_nurse',    page: () => Nurse_warehouseProducts(), ),// binding:WarehouseBindinds()),
+        GetPage(name: '/Nurse_visit_ditails',        page: () =>Nurse_visit_ditails()),
+        GetPage(name: '/EditVisitDetailsNures',      page: () =>EditVisitDetailsNures()),
+        GetPage(name: '/FancyNavBarNurse',            page: () =>FancyNavBarNurse()),
+        GetPage(name: '/Nures_patiient_services_list',     page: () =>Nures_patiient_services_list()),
+        GetPage(name: '/Nurse_wait_patient',               page: () =>Nurse_wait_patient()),
 
         GetPage(name: '/FancyNavBarNurse',    page: () =>FancyNavBarNurse()),
 
@@ -292,7 +314,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/PersonalInformationD', page: () =>PersonalInformationD(), binding:patientVisitRecordBinding()),
         GetPage(name: '/DoctorDitailes',       page: () =>DoctorDitailes(),       binding:patientVisitRecordBinding()),
         GetPage(name: '/EditVisitDoctor',      page: () =>EditVisit(),            binding:EditVisitBinding()),
-      //  GetPage(name: '/DoctorBooking',        page: () =>DoctorBooking(),   ),
+        GetPage(name: '/FancyNavBarDoctor',    page: () =>FancyNavBarPageDoctor(),),
+        GetPage(name: '/doctor_patient_servies',    page: () =>Doctor_patient_servies(),),
 
 /////////////////////////////////////////////////////////////////////////////////////
         GetPage(name: '/Homex_ray',            page: () =>homex_ray(),binding: homex_rayBinding()),
@@ -303,7 +326,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/EditVisitx_ray',             page: () =>EditVisitx_ray (),binding: Editvisitingx_raybinding() ),
         // GetPage(name: '/addConsumer',          page: () =>addConsumer(),        binding:warehouseBindinds()),
         // GetPage(name: '/warehouseProducts',    page: () =>warehouseProducts(),  binding:warehouseBindinds()),
-        GetPage(name: '/FancyNavBarDoctor',    page: () =>FancyNavBarPage(),),
+       // GetPage(name: '/FancyNavBarDoctor',    page: () =>FancyNavBarPageDoctor(),),
 
         /////////last adding for lab by saly
         GetPage(name: '/homelab',            page: () =>homelab(),binding: homelabBinding()),
@@ -320,9 +343,31 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/PersonalInformationx_ray',             page: () =>PersonalInformationx_ray (), ),
         GetPage(name: '/VisitsListX_Ray',             page: () =>VisitsListX_Ray (),binding: VisitListX_raybinding() ),
         GetPage(name: '/EditVisitx_ray',             page: () =>EditVisitx_ray (),binding: Editvisitingx_raybinding() ),
-        GetPage(name: '/addConsumer',          page: () =>addConsumer(),        binding:warehouseBindinds()),
-        GetPage(name: '/warehouseProducts',    page: () =>warehouseProducts(),  binding:warehouseBindinds()),
+        // GetPage(name: '/addConsumer',          page: () =>addConsume(),        binding:warehouseBindinds()),
+        // GetPage(name: '/warehouseProducts',    page: () =>warehouseProducts(),  binding:warehouseBindinds()),
 ///////////////////////////
+
+        GetPage(name: '/financial_home',       page: () =>financial_home(), ),
+        GetPage(name: '/inancial_sections',    page: () =>financial_sections(), ),
+        GetPage(name: '/financial_Clinic',     page: () =>financial_Clinic(), ),
+        GetPage(name: '/financial_Clinic_incoming_material',    page: () =>financial_Clinic_incoming_material(), ),
+        GetPage(name: '/Payments_and_Receipts',    page: () =>Payments_and_Receipts(), ),
+        GetPage(name: '/maintenance',    page: () =>maintenance(), ),
+        GetPage(name: '/waiting_from_reception',    page: () =>waiting_from_reception(), ),
+        GetPage(name: '/InvoicePage',    page: () =>InvoicePage(), ),
+        GetPage(name: '/navigationBar_financial',    page: () =>navigationBar_financial(), ),
+        GetPage(name: '/Financial_invoices_archive',    page: () =>Financial_invoices_archive(), ),
+        GetPage(name: '/financial_material',    page: () =>financial_material(), ),
+
+
+
+
+
+
+
+
+
+
 
       ],
     );

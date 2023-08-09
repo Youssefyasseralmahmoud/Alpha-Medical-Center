@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_after_update/Modules/Nurse/warehouse/warehouseController.dart';
+import 'package:project_after_update/modules/Nurse/warehouse/warehouseController.dart';
 
 
-class warehouseProducts extends StatelessWidget {
-  warehouseController controller = Get.find();
+  class Nurse_warehouseProducts extends StatelessWidget {
+  Nurse_warehouseController controller = Get.put<Nurse_warehouseController>(Nurse_warehouseController());
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +115,7 @@ class warehouseProducts extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {  Get.toNamed('/addConsumer'); },
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Container(

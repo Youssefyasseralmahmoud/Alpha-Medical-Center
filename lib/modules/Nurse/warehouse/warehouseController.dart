@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_after_update/Modules/Nurse/warehouse/products.dart';
-class warehouseController extends GetxController{
+import 'package:project_after_update/modules/Nurse/warehouse/products.dart';
+class Nurse_warehouseController extends GetxController{
   var products = [
     Product(name: 'علبة كحول',quantity: 30),
     Product(name: 'كيس قطن',quantity: 20),
-    Product(name: 'أبر',quantity: 20),
-    Product(name: 'شاش',quantity: 20),
+    Product(name: 'أبر',quantity: 10),
+    Product(name: 'شاش',quantity: 70),
     Product(name: 'أدوية',quantity: 20),
-    Product(name: 'كحول',quantity: 20),
-    Product(name: 'علبة',quantity: 20),
+    Product(name: 'كحول',quantity: 80),
+    Product(name: 'علبة',quantity: 100),
 
   ].obs;
 
@@ -30,7 +30,7 @@ class warehouseController extends GetxController{
 
   }
 
-  var selectedValue = 'Option 1'.obs;
-  var dropdownValues = ['Option 1', 'Option 2', 'Option 3'].obs;
+  var selectedValue = ' '.obs;
+  var dropdownValues = ['كحول', 'قطن', 'أبر' , 'شاش',' '].obs;
 
 }

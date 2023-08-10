@@ -6,6 +6,7 @@ import 'package:project_after_update/static_colors/StaticColors.dart';
 class Splash_screen extends StatelessWidget {
   const Splash_screen({Key? key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     Splash_controller controller =Get.put(Splash_controller());

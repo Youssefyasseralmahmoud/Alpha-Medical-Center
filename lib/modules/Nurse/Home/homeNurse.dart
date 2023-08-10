@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_after_update/Modules/Nurse/Home/PatientList.dart';
+
+import 'package:project_after_update/core/function/validinput.dart';
+import 'package:project_after_update/modules/Nurse/AddVisit/AddVisitController.dart';
+import 'package:project_after_update/modules/Nurse/Home/PatientList.dart';
 import 'package:project_after_update/modules/Nurse/Home/homeNurseController.dart';
+import 'package:project_after_update/modules/Nurse/VisitsList/PersonalInformation/PersonalinfrmationController.dart';
+import 'package:project_after_update/static_colors/StaticColors.dart';
+
 class homeNurse extends StatelessWidget {
 
-homeNurseController controller= Get.put<homeNurseController>(homeNurseController());
+
   @override
+    homeNurseController controller= Get.put(homeNurseController());
+  PersonalinfrmationController personalinfrmationController = Get.put(PersonalinfrmationController());
+ // AddVisitController addVisitController =Get.put<AddVisitController>(AddVisitController());
   Widget build(BuildContext context) {
     return Scaffold(
         body:
@@ -101,106 +110,20 @@ homeNurseController controller= Get.put<homeNurseController>(homeNurseController
                         fontWeight: FontWeight.w200,
                         color: Colors.black38),
                   ),),
-                Center(
-                  child: Container(
-                    width: Get.width * 0.90,
-                    height: Get.height * 0.17,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.topRight,
-                          end: Alignment.bottomLeft,
-
-                          colors: [
-                            Color(0xffe5ebfc),
-                            Color(0xffbecefd),
-                            Color(0xff9bb4fd)
-                          ]
-
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: Get.width * 0.45,
-                          height: Get.height * 0.17,
-                          decoration: BoxDecoration(
-                            // color: Color(0x6E649EFF),
-
-                            borderRadius: BorderRadius.circular(20),
-                            image: DecorationImage(
-                              image: AssetImage("assets/images/pic.png"),
-                            ),
-                          ),
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('تحويل المرضى',  style: TextStyle(fontFamily: 'Arial',
-                                fontSize: 20,
-                                fontWeight: FontWeight.w200,
-                                color: Colors.black45),),
-                            SizedBox(height: 10,),
-                            Obx(() => OutlinedButtonTheme(
-
-                              data: OutlinedButtonThemeData(
-                                style: ButtonStyle(
-                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-
-                                      borderRadius: BorderRadius.circular(18.0),
-                                      side: BorderSide(color :Color(0xff1e364d,)),
-
-                                    ),
-
-                                  ),
-                                ),
-                              ),
-                              child: OutlinedButton(
-
-                                  onPressed: () => controller.toggleStop(),
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(6.0),
-                                        child: Icon(Icons.timer_sharp, size: 25,
-                                          color:  Color(0xff494e56,),
-                                        ),
-                                      ),
-                                      SizedBox(width: 10,),
-                                      Padding(
-                                        padding: const EdgeInsets.all( 6.0),
-                                        child: Text(controller.isStoping.value
-                                            ? 'إيقاف  '
-                                            : 'أستئناف',
-                                          style: TextStyle(fontFamily: 'Arial',
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w200,
-                                              color:Color(0xff494e56,)),),
-                                      ),
-                                    ],
-                                  )
-                              ),
-                            ),
-                            ),
-                          ],
-                        ),
-
-                      ],
-                    ),
-                  ),
-                ),
 
                 Padding(
-                  padding: const EdgeInsets.only(right: 140, bottom: 20, top: 20),
-                  child: Text("قائمة المرضى", style: TextStyle(fontFamily: 'Arial',
-                    fontSize: 25,
-                    fontWeight: FontWeight.w100,
-                    color:Colors.black87 ,
-                  ),
+                  padding: const EdgeInsets.only(right: 0, bottom:5 , top: 12),
+                  child: Center(
+                    child: Text("خدمات اليوم", style: TextStyle(fontFamily: 'Arial',
+                      fontSize: 25,
+                      fontWeight: FontWeight.w100,
+                      color:Colors.black87 ,
+                    ),
+                    ),
                   ),
                 ),
                 ListPatients(),
+
               ],
             )));
   }

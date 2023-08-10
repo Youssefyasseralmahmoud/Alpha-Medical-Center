@@ -284,6 +284,51 @@ class Ambulance_patients_details extends StatelessWidget {
                           ),
 
                         ),
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 5),
+                          width: MediaQuery.of(context).size.width,
+                          height: 60,
+                          color: StaticColor.thirdgrey.withAlpha(30),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children:  [
+                              Container(
+                                child: Row(
+                                  children: [
+                                    Text("${controller.data_details_2[0]['DiseaseName']}  :"),
+                                    Text("السوابق المرضية",
+                                        style: TextStyle(fontWeight: FontWeight.bold)),
+                                    Icon(
+                                      Icons.medication,
+                                      color: StaticColor.primarycolor,
+                                    )
+                                  ],
+                                ),
+                              ),
+
+                            ],
+                          ),
+
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 5),
+                          width: MediaQuery.of(context).size.width,
+                          height: 60,
+                          color: StaticColor.thirdgrey.withAlpha(30),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children:  [
+                              Text("${controller.data_details_2[0]['Details']}  :"),
+                              Text("تفاصيل السوابق",
+                                  style: TextStyle(fontWeight: FontWeight.bold)),
+                              Icon(
+                                Icons.medical_services_rounded,
+                                color: StaticColor.primarycolor,
+                              )
+                            ],
+                          ),
+
+                        ),
                       ],
                     ),
                   ),

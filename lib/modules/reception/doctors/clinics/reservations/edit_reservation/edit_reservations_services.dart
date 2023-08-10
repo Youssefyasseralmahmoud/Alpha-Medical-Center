@@ -11,7 +11,7 @@ class Edit_reservation_services {
   Secury_storage secury = new Secury_storage();
 
   edit_reservation(int id, String bookingdate_edit,) async {
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("receptionist_token");
     var response = await crud.postdata(Serverconfig.update_patient_reservation, {
       "id": "${id.toString()}",
       "Type": "Preview",

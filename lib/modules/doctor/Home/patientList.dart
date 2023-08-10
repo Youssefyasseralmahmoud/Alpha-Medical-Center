@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_after_update/modules/doctor/record/patientVisitRecordController.dart';
+import 'package:project_after_update/modules/doctor/Home/homeController.dart';
 
 
 class patientList extends StatelessWidget {
@@ -7,9 +9,10 @@ class patientList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    homeController controller = Get.find();
     return Flexible(
         child: ListView.builder(
-            itemCount: 8,
+            itemCount: controller.data.length,
 
             itemBuilder: (BuildContext contex, int index) {
               return Listpatients(
@@ -27,21 +30,27 @@ class Listpatients extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    homeController controller = Get.put(homeController());
+    patientVisitRecordController patientVisitRecord =Get.put(patientVisitRecordController());
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: GestureDetector(
-        onTap: () {
-          Get.toNamed('/patientVisitRecord');
-
+        onTap: ()  async {
+          print("${controller.data[index]['IDPatientRecord']}");
+          print("xxxxxxxxxxxxxxxxxxxx");
+        await patientVisitRecord.get_patient_visits(
+              controller.data[index]['IDPatientRecord']);
+          Get.toNamed("/patientVisitRecord");
         },
-        child: Container(
+
+      child: Container(
           clipBehavior: Clip.antiAlias,
 
            decoration: BoxDecoration(
-             color: Color(0xfff8f9ff),
-             border: Border.all(color:    Color(0xff9bb4fd),width: 2),
+             color: Color(0xffffffff),
+             border: Border.all(color:    Color(0xffe0e8ff),width: 2),
 
-            borderRadius: BorderRadius.circular(5),
+            borderRadius: BorderRadius.circular(25),
           ),
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(7, 7, 7, 7),
@@ -60,7 +69,7 @@ class Listpatients extends StatelessWidget {
 
                   },
                 ),
-                Text('راما سبعه',style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: 'Arial')),
+                Text(controller.data[index]['FullName'],style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: 'Arial')),
                 IconButton(
                   color: Color(0xff9bb4fd),
                   icon: Icon(

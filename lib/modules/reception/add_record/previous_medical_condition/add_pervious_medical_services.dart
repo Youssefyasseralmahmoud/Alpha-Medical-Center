@@ -10,7 +10,7 @@ class Add_pervious_medical_services {
   Secury_storage secury = new Secury_storage();
   late var message;
   add_previous_medical(String diseasename, String details, int id_patient_record,) async {
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("receptionist_token");
     var response = await crud.postdata(Serverconfig.add_pervious_medical_condition, {
       "DiseaseName": "${diseasename}",
       "Details": "${details}",

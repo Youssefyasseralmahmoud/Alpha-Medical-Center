@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_after_update/Modules/Lab/Warehose/productslablab.dart';
-
+import 'package:project_after_update/Modules/lab/warehose/products.dart';
 
 class warehouseControllerlab extends GetxController{
   var products = [
-    Productlab(name: ' كحول',quantity: 30),
-    Productlab(name: 'كيس قطن',quantity: 20),
-    Productlab(name: 'أبر',quantity: 20),
-    Productlab(name: 'شاش',quantity: 20),
-    Productlab(name: 'أدوية',quantity: 20),
-    Productlab(name: 'كحول',quantity: 20),
-    Productlab(name: 'علبة',quantity: 20),
+    Product(name: 'علبة كحول',quantity: 30),
+    Product(name: 'كيس قطن',quantity: 20),
+    Product(name: 'أبر',quantity: 20),
+    Product(name: 'شاش',quantity: 20),
+    Product(name: 'أدوية',quantity: 20),
+    Product(name: 'كحول',quantity: 20),
+    Product(name: 'علبة',quantity: 20),
 
   ].obs;
 

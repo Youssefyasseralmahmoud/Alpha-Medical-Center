@@ -3,19 +3,28 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../core/class/StatusRequest.dart';
+import '../../../static_colors/StaticColors.dart';
+import 'PatientListcontroller.dart';
+import 'homeX-RayController.dart';
+
 
 
 class ListPatientsx_ray extends StatelessWidget {
-  const ListPatientsx_ray({Key? key}) : super(key: key);
+  final PatientListController controller ;
+  const ListPatientsx_ray( {Key? key, required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
+    return  controller.statusRequest == StatusRequest.loading?
+    Center(child: CircularProgressIndicator(color: StaticColor.primarycolor,)) :
+      Flexible(
         child: ListView.builder(
-            itemCount: 8,
+            itemCount: controller.data_details.length,
             itemBuilder: (BuildContext contex, int index) {
               return Listpatients(
                 index: index,
+                controller: controller,
               );
             }));
   }
@@ -23,8 +32,9 @@ class ListPatientsx_ray extends StatelessWidget {
 
 class Listpatients extends StatelessWidget {
   final int index;
+  final PatientListController controller ;
 
-  const Listpatients({Key? key, required this.index}) : super(key: key);
+  const Listpatients({Key? key, required this.index,required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +42,16 @@ class Listpatients extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: GestureDetector(
         onTap: () {
-          Get.toNamed('/Addvisitx_ray');
+          print(controller.data_details3);
+          Get.toNamed('/Addvisitx_ray',arguments: {
+            "RequiredPatientID" : controller.data_details[index]['RequiredPatientID'],
+            "IDPatientRecord" : controller.data_details[index]['IDPatientRecord'],
+            "patient_visit_details_id" : controller.data_details[index]['patient_visit_details_id'],
+            "Name" : controller.data_details[index]['FullName']
+
+
+          });
+          print(controller.data_details3);
 
         },
         child: Card(
@@ -57,7 +76,7 @@ class Listpatients extends StatelessWidget {
 
                   },
                 ),
-                Text('راما سبعه',style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: 'Arial')),
+                Text('${controller.data_details[index]['FullName']}',style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: 'Arial')),
                 IconButton(
                   color:Color(0xff9bb4fd),
                   icon: Icon(

@@ -16,6 +16,8 @@ class Reservations_controller extends GetxController {
   Secury_storage secury_storage = new Secury_storage();
   List data=[];
   List test_data=[];
+  List patinet_info=[];
+  List test_patient_info=[];
   late String id_doctor;
 
   get_doctor_reservations() async {
@@ -26,18 +28,48 @@ class Reservations_controller extends GetxController {
     statusRequest = handlingdata(response);
 
     if (StatusRequest.succes == statusRequest&& test_data.isNotEmpty) {
+      data.clear();
       data.addAll(response['data']) ;
     }
     else if(test_data.isEmpty) {
       await Get.snackbar(
         "تحذير",
-        "لا يوجد مواعيد لعرضههم",
+        "لا يوجد مواعيد لعرضهم",
       );
     }
     else if (StatusRequest.failure == statusRequest) {
       await Get.snackbar(
         "تحذير",
         "${response['message']}",
+      );
+    }
+    else {
+      Get.defaultDialog(title: " خطأ", content: Text("حدث خطا ما"));
+    }
+    update();
+  }
+  get_patient_info(int id_patient) async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await services.get_patient_info_by_id(id_patient);
+    test_patient_info.addAll(response['data'].values) ;
+    statusRequest = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest&& test_patient_info.isNotEmpty) {
+      patinet_info.clear();
+      patinet_info.addAll(response['data'].values) ;
+      print("the beauti name of patient is ${patinet_info}");
+    }
+    else if(test_patient_info.isEmpty) {
+      await Get.snackbar(
+        "تنبيه",
+        "لا يوجد بيانات لعرضها",
+      );
+    }
+    else if (StatusRequest.failure == statusRequest) {
+      await Get.snackbar(
+        "تنبيه",
+        "لا يوجد بيانات لعرضها",
       );
     }
     else {

@@ -12,9 +12,9 @@ class Home_screen_manager extends StatelessWidget {
     Get.put(Home_screen_manager_controller());
     return GetBuilder<Home_screen_manager_controller>(builder: (controller) {
       return Scaffold(
-        drawer: Drawer(
-          child: Custom_Drawer(),
-        ),
+        // drawer: Drawer(
+        //   child: Custom_Drawer(),
+        // ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
           child: Center(
@@ -84,12 +84,12 @@ class Home_screen_manager extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(
-                          Icons.engineering_outlined,
+                          Icons.settings,
                           color: controller.currentpage == 2
                               ? StaticColor.primarycolor
                               : Colors.black,
                         ),
-                        Text("الموظفين"),
+                        Text("الإعدادات"),
                       ],
                     ),
                   ),
@@ -101,15 +101,16 @@ class Home_screen_manager extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(
-                          Icons.medication_outlined,
+                          Icons.add_circle_outline,
                           color: controller.currentpage == 3
                               ? StaticColor.primarycolor
                               : Colors.black,
                         ),
-                        Text("المرضى"),
+                        Text("قسم جديد"),
                       ],
                     ),
                   ),
+
                 ],
               ),
             ],

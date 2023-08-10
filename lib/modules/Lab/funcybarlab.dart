@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'BottomNAvigationControllerlab.dart';
-import 'Warehose/addConsumerlab.dart';
+import 'Warehose/addConsumer.dart';
 import 'home/homelab.dart';
 
 
@@ -17,7 +17,7 @@ class FancyNavBarlab extends StatelessWidget {
 
   final screens = [
     homelab(),
-    addConsumerlab()
+    addConsumerlab ()
   ];
 
   @override

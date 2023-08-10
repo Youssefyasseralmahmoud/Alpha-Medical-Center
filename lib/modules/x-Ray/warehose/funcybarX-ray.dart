@@ -1,16 +1,14 @@
 import 'package:fancy_bar/fancy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'package:project_after_update/Modules/x-Ray/home/homeX-Ray.dart';
 import 'package:project_after_update/Modules/x-Ray/warehose/BottomNAvigationControllerX-ray.dart';
 
+import '../home/homeX-Ray.dart';
+import '../home/homeX-RayController.dart';
 import 'addConsumer.dart';
 class FancyNavBarx_ray extends StatelessWidget {
   FancyNavBarx_ray({Key? key}) : super(key: key);
-
-  BottomNavigationControllerx_ray bottomNavigationController =
-  Get.put(BottomNavigationControllerx_ray());
+  BottomNavigationControllerx_ray bottomNavigationController =  Get.put(BottomNavigationControllerx_ray());
 
   final screens = [
     homex_ray(),

@@ -11,7 +11,7 @@ class Ambulance_visit_registration_services {
   Secury_storage secury = new Secury_storage();
   late var message;
   visit_registration(int IDPatientRecord, String title, String ReferringPhysician,) async {
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("ambulance_token");
     var response = await crud.postdata(Serverconfig.visit_registration, {
       "IDPatientRecord": "${IDPatientRecord}",
       "Title": "${title}",

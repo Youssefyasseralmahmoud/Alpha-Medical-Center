@@ -143,6 +143,11 @@ class Home_manager extends StatelessWidget {
                                           "id_section":controller.data[index]['id']
                                         });
                                       }
+                                      else if(controller.data[index]['Name']=='Finance'){
+                                        Get.toNamed("/Finance_in_managment",arguments: {
+                                          "id_section":controller.data[index]['id']
+                                        });
+                                      }
 
                                     },
                                     onDoubleTap: (){

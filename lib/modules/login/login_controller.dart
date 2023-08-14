@@ -21,6 +21,7 @@ class Login_controller extends GetxController{
   late var laboratory_token;
   late var xray_token;
   late var nurse_token;
+  late var finance_token;
   String? Function(String?)? valid;
 
 
@@ -51,7 +52,7 @@ class Login_controller extends GetxController{
         await Get.snackbar("تسجيل دخول ناجح", "تمت عملية الدخول بنجاح",);
          Get.offAllNamed("/Home_screen_manager");
       }
-      if(response['code']== 1 && response['data']['user']['TypeUser'] == "Manager" ){
+      else if(response['code']== 1 && response['data']['user']['TypeUser'] == "Manager" ){
         // && response['carer']=='reception'
         admin_token=response['data']['token'];
         print("tesst from login");
@@ -106,6 +107,13 @@ class Login_controller extends GetxController{
         secury_storage3.save("nurse_token", nurse_token);
         await Get.snackbar("تسجيل دخول ناجح", "تمت عملية الدخول بنجاح",);
         Get.offAllNamed("/HomeNurse");
+      }  else if(response['code']== 1 && response['data']['user']['TypeUser'] == "Finance" ){
+        // && response['carer']=='reception'
+        finance_token=response['data']['token'];
+        print("tesst from login");
+        secury_storage3.save("finance_token", finance_token);
+        await Get.snackbar("تسجيل دخول ناجح", "تمت عملية الدخول بنجاح",);
+        Get.offAllNamed("/navigationBar_financial");
       }
       else{
         statusRequest=StatusRequest.failure;

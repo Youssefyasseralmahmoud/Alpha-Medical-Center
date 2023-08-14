@@ -26,6 +26,10 @@ class Crud {
         print("enter to 422");
         Map responsebody = jsonDecode(response.body);
         return Right(responsebody);
+      }   else if (response.statusCode == 403) {
+        print("enter to 403");
+        Map responsebody = jsonDecode(response.body);
+        return Left(StatusRequest.failure);
       }
       else {
         return const Left(StatusRequest.serverexception);

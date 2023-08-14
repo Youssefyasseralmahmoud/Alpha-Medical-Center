@@ -384,7 +384,7 @@ class Wating_in_clinics extends StatelessWidget {
                             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           const Text(
-                            "مركز ألفا الطبي / قسم الإدارة",
+                            "مركز ألفا الطبي ",
                             style: TextStyle(fontSize: 15, color: Colors.grey),
                           ),
                           const Divider(

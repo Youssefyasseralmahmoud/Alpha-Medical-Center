@@ -381,7 +381,7 @@ class Laboratory_service extends StatelessWidget {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 const Text(
-                                  "مركز ألفا الطبي / قسم الإستقبال / المخبر",
+                                  "مركز ألفا الطبي ",
                                   style: TextStyle(
                                       fontSize: 15, color: Colors.grey),
                                 ),
@@ -452,7 +452,7 @@ class Laboratory_service extends StatelessWidget {
                                                   ),
                                                 ),
                                                 Expanded(
-                                                  flex: 2,
+                                                  flex: 3,
                                                   child: Text(
                                                     " ${controller.data[index]['Name']}",
                                                     style: TextStyle(

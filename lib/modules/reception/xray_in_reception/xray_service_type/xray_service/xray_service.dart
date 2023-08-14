@@ -371,7 +371,7 @@ class Xray_service extends StatelessWidget {
                               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                             const Text(
-                              "مركز ألفا الطبي / قسم الإستقبال / الأشعة",
+                              "مركز ألفا الطبي  ",
                               style: TextStyle(fontSize: 15, color: Colors.grey),
                             ),
                             const Divider(

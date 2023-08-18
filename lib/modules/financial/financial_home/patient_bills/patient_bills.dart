@@ -38,7 +38,10 @@ class Patient_bills extends StatelessWidget {
                     color: StaticColor.primarycolor,
                   ),
                 )
-              : Column(
+              :
+         controller.data.isEmpty?
+         Center(child: Text("لا يوجد فواتير لعرضهم",style: TextStyle(color: StaticColor.primarycolor,fontSize: 15),),):
+          Column(
                   children: [
                     SizedBox(
                       height: 20,
@@ -98,13 +101,24 @@ class Patient_bills extends StatelessWidget {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.end,
                                         children: [
-                                          Text(
-                                              ' ${controller.data[index]['FullName']} : اسم المريض ',
-                                              textAlign: TextAlign.right,
-                                              style: TextStyle(
-                                                  color: Colors.black54,
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.bold)),
+                                         Row(
+                                           mainAxisAlignment: MainAxisAlignment.end,
+                                           children: [
+                                           Text(
+                                               ' ${controller.data[index]['FullName']}    ',
+                                               textAlign: TextAlign.right,
+                                               style: TextStyle(
+                                                   color: StaticColor.primarycolor,
+                                                   fontSize: 15,
+                                                   fontWeight: FontWeight.bold,)),
+                                           Text(
+                                               '  : اسم المريض ',
+                                               textAlign: TextAlign.right,
+                                               style: TextStyle(
+                                                   color: Colors.black54,
+                                                   fontSize: 15,
+                                                   fontWeight: FontWeight.bold)),
+                                         ],),
                                           Text(
                                               '   تفاصيل الحسم :  ${controller.data[index]['Discount_Details']}  -',
                                               textAlign: TextAlign.right),
@@ -158,6 +172,7 @@ class Patient_bills extends StatelessWidget {
                                                                 controller.data[
                                                                         index][
                                                                     'Bill_ID']);
+                                                            controller.data.removeAt(index);
                                                           },
                                                           child: Container(
                                                             padding:

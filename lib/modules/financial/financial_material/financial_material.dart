@@ -76,7 +76,7 @@ class financial_material extends StatelessWidget {
                                   children: [
                                     Text('${controller.data[index]['Name']} ',style: TextStyle(color: Color(0xff9bb4fd) ,fontWeight: FontWeight.bold,fontSize: 17),),
                                     SizedBox(height: 10,),
-                                    Text('20000',style: TextStyle(color: Color(0xff9bb4fd) ,fontWeight: FontWeight.bold,fontSize: 17),),
+                                    Text('${controller.data[index]['Quantity']}',style: TextStyle(color: Color(0xff9bb4fd) ,fontWeight: FontWeight.bold,fontSize: 17),),
 
 
 
@@ -86,7 +86,7 @@ class financial_material extends StatelessWidget {
                                   children: [
                                     Text(':  اسم المادة ',style: TextStyle(color: Colors.black54 ,fontWeight: FontWeight.w600,fontSize: 18),),
                                     SizedBox(height: 3,),
-                                    Text(' :         السعر ',style: TextStyle(color: Colors.black54 ,fontWeight: FontWeight.w600,fontSize: 18),),
+                                    Text(' :         الكمية ',style: TextStyle(color: Colors.black54 ,fontWeight: FontWeight.w600,fontSize: 18),),
                                   ],
                                 ) ,
 
@@ -123,65 +123,65 @@ class financial_material extends StatelessWidget {
                                   alignment: AlignmentDirectional(-1, 0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
 
-                                      Container(
-                                        height: 40,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: Color(0x4cffffff),
-                                        ),
-                                        child: IconButton(
-                                          icon: Icon(
-                                            Icons.edit,
-                                            color: Color(0xff9bb4fd),
-                                            size: 25,
-                                          ),
-                                          onPressed: () {
-                                            Get.defaultDialog(
-                                              title: 'تعديل السعر',
-                                              content: Column(
-                                                children: [
-                                                  Padding(
-                                                    padding: const EdgeInsets.only(left: 30.0,right: 30),
-                                                    child: TextFormField(
-
-                                                      decoration: InputDecoration(labelText: 'السعر الجديد'),
-                                                      keyboardType: TextInputType.number,
-                                                      onChanged: (value){
-                                                        controller.price=value;
-                                                      },
-                                                    ),
-                                                  ),
-
-                                                ],
-                                              ),
-                                              actions: [
-                                                ElevatedButton(
-                                                  onPressed: () {
-                                                    Get.back();
-                                                  },
-                                                  style: ButtonStyle(
-                                                    backgroundColor: MaterialStateProperty.all<Color>(Color(0xff9bb4fd)),
-                                                  ),
-                                                  child: Text('إلغاء'),
-                                                ),
-                                                ElevatedButton(
-                                                  style: ButtonStyle(
-                                                    backgroundColor: MaterialStateProperty.all<Color>(Color(0xff9bb4fd)),
-                                                  ),
-                                                  onPressed: () {
-                                                    controller.update_material_price(controller.data[index]['id']);
-                                                    Get.back();
-                                                  },
-                                                  child: Text('تعديل السعر'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        ),
-                                      ),
+                                      // Container(
+                                      //   height: 40,
+                                      //   decoration: BoxDecoration(
+                                      //     shape: BoxShape.circle,
+                                      //     color: Color(0x4cffffff),
+                                      //   ),
+                                      //   child: IconButton(
+                                      //     icon: Icon(
+                                      //       Icons.edit,
+                                      //       color: Color(0xff9bb4fd),
+                                      //       size: 25,
+                                      //     ),
+                                      //     onPressed: () {
+                                      //       Get.defaultDialog(
+                                      //         title: 'تعديل السعر',
+                                      //         content: Column(
+                                      //           children: [
+                                      //             Padding(
+                                      //               padding: const EdgeInsets.only(left: 30.0,right: 30),
+                                      //               child: TextFormField(
+                                      //
+                                      //                 decoration: InputDecoration(labelText: 'السعر الجديد'),
+                                      //                 keyboardType: TextInputType.number,
+                                      //                 onChanged: (value){
+                                      //                   controller.price=value;
+                                      //                 },
+                                      //               ),
+                                      //             ),
+                                      //
+                                      //           ],
+                                      //         ),
+                                      //         actions: [
+                                      //           ElevatedButton(
+                                      //             onPressed: () {
+                                      //               Get.back();
+                                      //             },
+                                      //             style: ButtonStyle(
+                                      //               backgroundColor: MaterialStateProperty.all<Color>(Color(0xff9bb4fd)),
+                                      //             ),
+                                      //             child: Text('إلغاء'),
+                                      //           ),
+                                      //           ElevatedButton(
+                                      //             style: ButtonStyle(
+                                      //               backgroundColor: MaterialStateProperty.all<Color>(Color(0xff9bb4fd)),
+                                      //             ),
+                                      //             onPressed: () {
+                                      //               controller.update_material_price(controller.data[index]['id']);
+                                      //               Get.back();
+                                      //             },
+                                      //             child: Text('تعديل السعر'),
+                                      //           ),
+                                      //         ],
+                                      //       );
+                                      //     },
+                                      //   ),
+                                      // ),
                                       GestureDetector(
                                         onTap: (){
                                           Get.bottomSheet(

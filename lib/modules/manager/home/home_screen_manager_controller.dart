@@ -19,7 +19,7 @@ class Home_screen_manager_controller extends GetxController {
   int currentpage = 0;
   List<Widget> listpage = [
     const Home_manager(),
-    const Join_request(),
+    Join_request(),
     const Setting_managment(),
    const Add_new_section(),
   ];

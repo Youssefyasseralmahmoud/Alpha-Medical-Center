@@ -81,11 +81,18 @@ class Receipts extends StatelessWidget {
                                             child: Image.asset(
                                                 "assets/images/receipt.png"),
                                           ),
-                                          Text('اسم المريض : راما',
-                                              textAlign: TextAlign.right,
-                                              style: TextStyle(
-                                                  color: Colors.black54,
-                                                  fontSize: 20)),
+                                          Row(children: [
+                                            Text('${controller.data[index]['FullName']}',
+                                                textAlign: TextAlign.right,
+                                                style: TextStyle(
+                                                    color: StaticColor.primarycolor,
+                                                    fontSize: 20)),
+                                            Text(' : اسم المريض ',
+                                                textAlign: TextAlign.right,
+                                                style: TextStyle(
+                                                    color: Colors.black54,
+                                                    fontSize: 20)),
+                                          ],),
                                         ],
                                       ),
                                       subtitle: Column(

@@ -60,6 +60,11 @@ class Maintenance extends StatelessWidget {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: GestureDetector(
+                            onTap: (){
+                              Get.toNamed("/Payments_for_maintenance",arguments: {
+                                "maintenance_req_id":controller.data[index]['id']
+                              });
+                            },
                             child: Card(
                               shape: RoundedRectangleBorder(
                                 side: BorderSide(
@@ -205,6 +210,18 @@ class Maintenance extends StatelessWidget {
                                                         fontSize: 15)),
                                               ],
                                             ),
+                                            GestureDetector(onTap: (){
+                                              Get.toNamed("/Add_payments_maintenance_request",arguments: {
+                                                "maintenanceRequests_id":controller.data[index]['id']
+                                              });
+                                            },child: Container(
+
+                                              padding: EdgeInsets.all(6),
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(20),
+                                                color: StaticColor.primarycolor
+                                              ),
+                                                child: Text("إضافة مدفوعات",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.white),))),
                                             Column(
                                               children: [
                                                 GestureDetector(

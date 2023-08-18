@@ -72,10 +72,18 @@ class Financial_invoices_archive extends StatelessWidget {
                                  subtitle: Column(
                                    crossAxisAlignment: CrossAxisAlignment.end,
                                    children: [
-                                     Text('اسم المريض : راما',
-                                         textAlign: TextAlign.right,
-                                         style: TextStyle(
-                                             color: Colors.black54, fontSize: 20)),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                      Text('${controller.data[index]['patient_visit_detail']['patient_medical_record']['FullName']}',
+                                          textAlign: TextAlign.right,
+                                          style: TextStyle(
+                                              color: StaticColor.primarycolor, fontSize: 20)),
+                                      Text(' : اسم المريض  ',
+                                          textAlign: TextAlign.right,
+                                          style: TextStyle(
+                                              color: Colors.black54, fontSize: 20)),
+                                    ],),
                                      Text('  شركة التأمين :  ${controller.data[index]['insurance_companie']['Name']}  -',
                                          textAlign: TextAlign.right),
 

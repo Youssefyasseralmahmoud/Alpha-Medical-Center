@@ -73,7 +73,7 @@ class display_user_in_reception_controller extends GetxController {
     else if(test_data_type_section.isEmpty) {
       await Get.snackbar(
         "تنبيه",
-        "لا يوجد انواع حدمات لعرضهم",
+        "لا يوجد انواع خدمات لعرضهم",
       );
     }
     else if (StatusRequest.failure == statusRequest) {

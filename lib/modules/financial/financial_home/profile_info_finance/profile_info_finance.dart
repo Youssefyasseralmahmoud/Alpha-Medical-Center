@@ -101,7 +101,7 @@ class Profile_info_finance extends StatelessWidget {
                               borderRadius: BorderRadius.circular(5),
                             ),
                             child: Text(
-                              "${controller.data_details[3]}",
+                              "${controller.data_details[1]['name']}",
                               style: TextStyle(
                                   fontSize: 15, color: StaticColor.primarycolor),
                               textAlign: TextAlign.end,
@@ -124,7 +124,7 @@ class Profile_info_finance extends StatelessWidget {
                               borderRadius: BorderRadius.circular(5),
                             ),
                             child: Text(
-                              "${controller.data_details[6]}",
+                              "${controller.data_details[1]['email']}",
                               style: TextStyle(
                                   fontSize: 15, color: StaticColor.primarycolor),
                               textAlign: TextAlign.end,
@@ -147,7 +147,7 @@ class Profile_info_finance extends StatelessWidget {
                               borderRadius: BorderRadius.circular(5),
                             ),
                             child: Text(
-                              "${controller.data_details[10]}",
+                              "${controller.data_details[1]['salary']}",
                               style: TextStyle(
                                   fontSize: 15, color: StaticColor.primarycolor),
                               textAlign: TextAlign.end,
@@ -170,7 +170,7 @@ class Profile_info_finance extends StatelessWidget {
                               borderRadius: BorderRadius.circular(5),
                             ),
                             child: Text(
-                              "${controller.data_details[11]}",
+                              "${controller.data_details[1]['created_at']}",
                               style: TextStyle(
                                   fontSize: 15, color: StaticColor.primarycolor),
                               textAlign: TextAlign.end,
@@ -195,7 +195,7 @@ class Profile_info_finance extends StatelessWidget {
                               borderRadius: BorderRadius.circular(5),
                             ),
                             child: Text(
-                              "${controller.data_details[7]}",
+                              "${controller.data_details[1]['type']}",
                               style: TextStyle(
                                   fontSize: 15, color: StaticColor.primarycolor),
                               textAlign: TextAlign.end,

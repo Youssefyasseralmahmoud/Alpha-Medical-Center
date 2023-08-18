@@ -1,5 +1,6 @@
 
 
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_after_update/core/class/StatusRequest.dart';
@@ -198,8 +199,6 @@ class Join_request_controller extends GetxController {
       data.clear();
       data.addAll(response['data']) ;
       print("response from patient controller");
-      print(data);
-      print(data[0]['username']);
     }
     else if(test_data.isEmpty) {
       await Get.snackbar(
@@ -264,6 +263,7 @@ class Join_request_controller extends GetxController {
       }
     });
     statusRequest = StatusRequest.loading;
+    print("thee id type user ya youssef is ${id_type_user}");
     update();
     var response =
     await services.accept_join(id,id_type_user,id_type_services,id_roles);

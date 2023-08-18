@@ -207,8 +207,19 @@ class InvoicePage extends StatelessWidget {
                                       ),
                                     ),
                                     Container(
-                                      child: Text(
-                                          "${controller.data_details[index]['center_service']['Name']}"),
+                                      child:
+                                      Column(
+                                        children: [
+                                          Text(
+                                            "${controller.data_details[index]['center_service']['Name']}",style: TextStyle(fontWeight: FontWeight.bold),),
+                                          Row(children: [
+                                            Text(
+                                                "${controller.data_details[index]['center_service']['Price']}"),
+                                            Text(
+                                                " : السعر"),
+                                          ],),
+                                        ],
+                                      )
                                     )
                                   ],
                                 ),

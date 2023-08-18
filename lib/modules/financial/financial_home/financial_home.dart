@@ -147,7 +147,7 @@ class financial_home extends StatelessWidget {
 
             GestureDetector(
               onTap: () {
-                Get.toNamed('/inancial_sections');
+                Get.toNamed('/Complete_order');
               },
               child: Align(
                 alignment: Alignment.bottomCenter,
@@ -164,7 +164,7 @@ class financial_home extends StatelessWidget {
 
                   child: Center(
                       child: Text(
-                    'واردات الأقسام',
+                    'طلبات المواد المكتملة',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w100,
@@ -194,7 +194,7 @@ class financial_home extends StatelessWidget {
 
                   child: Center(
                       child: Text(
-                    'المدفوعاات & المقبوظات',
+                    'المدفوعات',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w100,
@@ -224,7 +224,7 @@ class financial_home extends StatelessWidget {
 
                   child: Center(
                       child: Text(
-                    'طلب صيانة',
+                    'طلبات الصيانة',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w100,

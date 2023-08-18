@@ -22,27 +22,59 @@ class Home_manager extends StatelessWidget {
               Container(
                 child: ListView(
                   children: [
+                    // Container(
+                    //   margin: const EdgeInsets.only(top: 10),
+                    //   padding: const EdgeInsets.symmetric(horizontal: 15),
+                    //   child: Row(
+                    //     children: [
+                    //       Expanded(
+                    //           child: TextFormField(
+                    //             decoration: InputDecoration(
+                    //                 contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                    //                 prefixIcon: const Icon(Icons.search),
+                    //                 hintText: "البحث",
+                    //                 hintStyle: const TextStyle(fontSize: 20),
+                    //                 border: OutlineInputBorder(
+                    //                     borderSide: BorderSide.none,
+                    //                     borderRadius: BorderRadius.circular(10)),
+                    //                 filled: true,
+                    //                 fillColor: Colors.grey[200]),
+                    //           )),
+                    //       const SizedBox(
+                    //         width: 10,
+                    //       ),
+                    //       Container(
+                    //         decoration: BoxDecoration(
+                    //           borderRadius: BorderRadius.circular(10),
+                    //           color: StaticColor.primarycolor,
+                    //         ),
+                    //         width: 60,
+                    //         height: 55,
+                    //         padding: const EdgeInsets.symmetric(vertical: 8),
+                    //         child: IconButton(
+                    //           onPressed: () {
+                    //             Get.toNamed("/Notifications_manager");
+                    //           },
+                    //           icon: const Icon(
+                    //             Icons.notifications_active_outlined,
+                    //             size: 25,
+                    //             color: Colors.white,
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                    const SizedBox(height: 20),
                     Container(
-                      margin: const EdgeInsets.only(top: 10),
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Row(
-                        children: [
-                          Expanded(
-                              child: TextFormField(
-                                decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.symmetric(vertical: 10),
-                                    prefixIcon: const Icon(Icons.search),
-                                    hintText: "البحث",
-                                    hintStyle: const TextStyle(fontSize: 20),
-                                    border: OutlineInputBorder(
-                                        borderSide: BorderSide.none,
-                                        borderRadius: BorderRadius.circular(10)),
-                                    filled: true,
-                                    fillColor: Colors.grey[200]),
-                              )),
-                          const SizedBox(
-                            width: 10,
-                          ),
+                      padding: const EdgeInsets.all(10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children:  [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+
                           Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
@@ -51,30 +83,24 @@ class Home_manager extends StatelessWidget {
                             width: 60,
                             height: 55,
                             padding: const EdgeInsets.symmetric(vertical: 8),
-                            child: IconButton(
+                            child:
+                            IconButton(
                               onPressed: () {
-                                Get.toNamed("/Notifications_manager");
+                                Get.toNamed("/All_employee_manager");
                               },
                               icon: const Icon(
-                                Icons.notifications_active_outlined,
+                                Icons.work,
                                 size: 25,
                                 color: Colors.white,
                               ),
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children:  [
-                          Text(
-                            "قسم الإدارة",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color:Colors.black),
-                          ),
+                            Text(
+                              "قسم الإدارة",
+                              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color:Colors.black),
+                            ),
+                        ],),
+                          SizedBox(height: 20,),
                           Container(
                             color: StaticColor.primarycolor,
                             child: Row(
@@ -105,7 +131,7 @@ class Home_manager extends StatelessWidget {
                             color: Colors.black45,
                           ),
                           Container(
-                            height: MediaQuery.of(context).size.height*0.6,
+                            height: MediaQuery.of(context).size.height*0.65,
                             child: GridView.builder(
                               itemCount: controller.data.length,
                               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -131,7 +157,9 @@ class Home_manager extends StatelessWidget {
                                           "id_section":controller.data[index]['id']
                                         });
                                       }else if(controller.data[index]['Name']=='Store'){
-                                        Get.toNamed("/Storage_in_managment");
+                                        Get.toNamed("/Storage_in_managment",arguments: {
+                                          "id_section":controller.data[index]['id']
+                                        });
                                       }
                                       else if(controller.data[index]['Name']=='Ambulance'){
                                         Get.toNamed("/Ambulance_in_managment",arguments: {
@@ -147,6 +175,10 @@ class Home_manager extends StatelessWidget {
                                         Get.toNamed("/Finance_in_managment",arguments: {
                                           "id_section":controller.data[index]['id']
                                         });
+                                      } else{
+                                        Get.toNamed("/reception_in_managment",arguments: {
+                                          "id_section":controller.data[index]['id']
+                                        });
                                       }
 
                                     },
@@ -160,7 +192,7 @@ class Home_manager extends StatelessWidget {
                                               onTap: (){
                                                 Get.back();
                                               controller.delete_section(controller.data[index]['id']);
-                                              Get.back();
+                                              controller.data.removeAt(index);
                                               },
                                               child: Container(
                                                 padding: EdgeInsets.all(5),

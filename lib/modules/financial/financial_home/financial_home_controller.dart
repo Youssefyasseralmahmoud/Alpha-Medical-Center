@@ -29,21 +29,20 @@ late String id_patient ;
     statusRequest = StatusRequest.loading;
     update();
     var response = await services.get_all_patient_bills(id_patient);
-    test_data.addAll(response['data']);
     statusRequest = handlingdata(response);
 
-    if (StatusRequest.succes == statusRequest&&test_data.isNotEmpty) {
+    if (StatusRequest.succes == statusRequest) {
       data.clear();
       data.addAll(response['data']);
      Get.toNamed("/Patient_bills");
-    } else if (test_data.isEmpty) {
+    } else if (StatusRequest.failure==statusRequest) {
        Get.snackbar(
         "تنبيه",
-        "لا يوجد فواتير لعرضهم",
+        "لا يوجد فواتير لعرضهم لهذا الرقم",
       );
     }
     else {
-      Get.defaultDialog(title: " خطأ", content: Text("حدث خطا ما"));
+      Get.defaultDialog(title: " تنبيه", content: Text("حدث خطا ما "));
     }
     update();
   }

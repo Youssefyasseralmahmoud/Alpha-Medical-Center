@@ -29,32 +29,32 @@ class Finanical_employee_salary extends StatelessWidget {
               : Container(
                   child: ListView(
                     children: [
-                      Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Row(
-                          children: [
-                            Expanded(
-                                child: TextFormField(
-                              decoration: InputDecoration(
-                                  contentPadding:
-                                      const EdgeInsets.symmetric(vertical: 10),
-                                  prefixIcon: const Icon(Icons.search),
-                                  hintText: "البحث",
-                                  hintStyle: const TextStyle(fontSize: 20),
-                                  border: OutlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  filled: true,
-                                  fillColor: Colors.grey[200]),
-                            )),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 20),
+                      // Container(
+                      //   margin: const EdgeInsets.only(top: 10),
+                      //   padding: const EdgeInsets.symmetric(horizontal: 15),
+                      //   child: Row(
+                      //     children: [
+                      //       Expanded(
+                      //           child: TextFormField(
+                      //         decoration: InputDecoration(
+                      //             contentPadding:
+                      //                 const EdgeInsets.symmetric(vertical: 10),
+                      //             prefixIcon: const Icon(Icons.search),
+                      //             hintText: "البحث",
+                      //             hintStyle: const TextStyle(fontSize: 20),
+                      //             border: OutlineInputBorder(
+                      //                 borderSide: BorderSide.none,
+                      //                 borderRadius: BorderRadius.circular(10)),
+                      //             filled: true,
+                      //             fillColor: Colors.grey[200]),
+                      //       )),
+                      //       const SizedBox(
+                      //         width: 10,
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
+                       const SizedBox(height: 20),
                       Container(
                         padding: const EdgeInsets.all(10),
                         child: Column(
@@ -98,7 +98,7 @@ class Finanical_employee_salary extends StatelessWidget {
                               color: Colors.black45,
                             ),
                             Container(
-                              height: MediaQuery.of(context).size.height * 0.6,
+                              height: MediaQuery.of(context).size.height * 0.65,
                               child: GridView.builder(
                                 itemCount: controller.data.length,
                                 gridDelegate:

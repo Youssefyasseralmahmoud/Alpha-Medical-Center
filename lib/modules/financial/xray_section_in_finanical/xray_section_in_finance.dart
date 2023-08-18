@@ -135,78 +135,78 @@ class Xray_section_in_finance extends StatelessWidget {
                                             ),
                                           ),
 
-                                          Container(
-                                            height: 40,
-                                            decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: Color(0x67e0e0e1),
-                                            ),
-                                            child: IconButton(
-                                              icon: Icon(
-                                                Icons.add_box_outlined,
-                                                color: Color(0xff9bb4fd),
-                                                size: 25,
-                                              ),
-                                              onPressed: () {
-                                                Get.defaultDialog(
-                                                  title: 'طلب زيادة',
-                                                  content: Column(
-                                                    children: [
-                                                      Padding(
-                                                        padding: const EdgeInsets.only(left: 30.0,right: 30),
-                                                        child: TextFormField(
-
-                                                          decoration: InputDecoration(labelText: 'نسبة الزيادة'),
-                                                          keyboardType: TextInputType.number,
-                                                          validator: (value) {
-                                                            if (value == null || value.isEmpty) {
-                                                              return 'رجاء ادخل النسبة ';
-                                                            }
-                                                            return null;
-                                                          },
-                                                          onSaved: (value) {
-                                                            final newSalary = double.tryParse(value!);
-                                                            if (newSalary != null) {
-                                                              // employee.salary = newSalary;
-                                                            }
-                                                          },
-                                                        ),
-                                                      ),
-                                                      Padding(
-                                                        padding: const EdgeInsets.only(left: 30.0,right: 30),
-                                                        child: TextFormField(
-                                                          decoration: InputDecoration(labelText: 'ملاحظة'),
-                                                          maxLines: 3,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  actions: [
-                                                    ElevatedButton(
-                                                      onPressed: () {
-                                                        Get.back();
-                                                      },
-                                                      style: ButtonStyle(
-                                                        backgroundColor: MaterialStateProperty.all<Color>(Color(0xff9bb4fd)),
-                                                      ),
-                                                      child: Text('إلغاء'),
-                                                    ),
-                                                    ElevatedButton(
-                                                      style: ButtonStyle(
-                                                        backgroundColor: MaterialStateProperty.all<Color>(Color(0xff9bb4fd)),
-                                                      ),
-                                                      onPressed: () {
-                                                        // Implement salary increase request logic here
-                                                        // You can access the entered values using the employee instance
-                                                        Get.back();
-                                                      },
-                                                      child: Text('إرسال الطلب'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            ),
-                                          ),
+                                          // Container(
+                                          //   height: 40,
+                                          //   decoration: BoxDecoration(
+                                          //     shape: BoxShape.circle,
+                                          //     color: Color(0x67e0e0e1),
+                                          //   ),
+                                          //   child: IconButton(
+                                          //     icon: Icon(
+                                          //       Icons.add_box_outlined,
+                                          //       color: Color(0xff9bb4fd),
+                                          //       size: 25,
+                                          //     ),
+                                          //     onPressed: () {
+                                          //       Get.defaultDialog(
+                                          //         title: 'طلب زيادة',
+                                          //         content: Column(
+                                          //           children: [
+                                          //             Padding(
+                                          //               padding: const EdgeInsets.only(left: 30.0,right: 30),
+                                          //               child: TextFormField(
+                                          //
+                                          //                 decoration: InputDecoration(labelText: 'نسبة الزيادة'),
+                                          //                 keyboardType: TextInputType.number,
+                                          //                 validator: (value) {
+                                          //                   if (value == null || value.isEmpty) {
+                                          //                     return 'رجاء ادخل النسبة ';
+                                          //                   }
+                                          //                   return null;
+                                          //                 },
+                                          //                 onSaved: (value) {
+                                          //                   final newSalary = double.tryParse(value!);
+                                          //                   if (newSalary != null) {
+                                          //                     // employee.salary = newSalary;
+                                          //                   }
+                                          //                 },
+                                          //               ),
+                                          //             ),
+                                          //             Padding(
+                                          //               padding: const EdgeInsets.only(left: 30.0,right: 30),
+                                          //               child: TextFormField(
+                                          //                 decoration: InputDecoration(labelText: 'ملاحظة'),
+                                          //                 maxLines: 3,
+                                          //               ),
+                                          //             ),
+                                          //           ],
+                                          //         ),
+                                          //         actions: [
+                                          //           ElevatedButton(
+                                          //             onPressed: () {
+                                          //               Get.back();
+                                          //             },
+                                          //             style: ButtonStyle(
+                                          //               backgroundColor: MaterialStateProperty.all<Color>(Color(0xff9bb4fd)),
+                                          //             ),
+                                          //             child: Text('إلغاء'),
+                                          //           ),
+                                          //           ElevatedButton(
+                                          //             style: ButtonStyle(
+                                          //               backgroundColor: MaterialStateProperty.all<Color>(Color(0xff9bb4fd)),
+                                          //             ),
+                                          //             onPressed: () {
+                                          //               // Implement salary increase request logic here
+                                          //               // You can access the entered values using the employee instance
+                                          //               Get.back();
+                                          //             },
+                                          //             child: Text('إرسال الطلب'),
+                                          //           ),
+                                          //         ],
+                                          //       );
+                                          //     },
+                                          //   ),
+                                          // ),
                                         ],
                                       ),
                                     ),

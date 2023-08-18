@@ -229,6 +229,7 @@ class Display_users_in_reception extends StatelessWidget {
                                                       onTap: (){
                                                         Get.back();
                                                         controller.delete_type(controller.data_type_section[index]['id']);
+                                                        controller.data_type_section.removeAt(index);
                                                       },
                                                       child: Container(
                                                         padding:
@@ -662,21 +663,21 @@ class Display_users_in_reception extends StatelessWidget {
                                                   ),
 
                                                 ),
-                                                Container(
-                                                  height: 60,
-                                                  width: 50,
-                                                  child: Column(
-                                                    children: [
-                                                      Expanded(
-                                                          flex: 2,
-                                                          child: Image.asset(
-                                                            "assets/images/cancel.png",
-                                                            fit: BoxFit.fill,
-                                                          )),
-                                                      const Expanded(child: Text("إزالة")),
-                                                    ],
-                                                  ),
-                                                ),
+                                                // Container(
+                                                //   height: 60,
+                                                //   width: 50,
+                                                //   child: Column(
+                                                //     children: [
+                                                //       Expanded(
+                                                //           flex: 2,
+                                                //           child: Image.asset(
+                                                //             "assets/images/cancel.png",
+                                                //             fit: BoxFit.fill,
+                                                //           )),
+                                                //       const Expanded(child: Text("إزالة")),
+                                                //     ],
+                                                //   ),
+                                                // ),
                                               ],
                                             ),
                                           ),

@@ -397,17 +397,12 @@ class Xray_service extends StatelessWidget {
                                             padding: EdgeInsets.all(10),
                                             color: Colors.white,
                                             child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.end,
                                               children: [
-                                                Row(
-                                                  mainAxisAlignment: MainAxisAlignment.end,
-                                                  children: [
-                                                    Text("${controller.data[index]['Details']}"),
-                                                    //  Text("${controller.data[0]['center_service'][index]['Details']}"),
-                                                    Text(" : التفاصيل  ",style: TextStyle(fontWeight: FontWeight.bold),),
-                                                    SizedBox(width: 5,),
+                                                Text(" : التفاصيل  ",style: TextStyle(fontWeight: FontWeight.bold),),
+                                                Text("${controller.data[index]['Details']}"),
+                                                //  Text("${controller.data[0]['center_service'][index]['Details']}"),
 
-                                                  ],
-                                                )
                                               ],
                                             ),
                                           )

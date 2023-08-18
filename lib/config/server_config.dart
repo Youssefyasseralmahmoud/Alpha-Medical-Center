@@ -60,6 +60,7 @@ class Serverconfig{
   static const change_status_type_service ='$domainnameserver/api/changeStatus';
   // finance section youssef//
   static const get_all_bills ='$domainnameserver/api/getAllBills';
+
   static const get_all_insurance_company ='$domainnameserver/api/getAllInsuranceCompany';
   static const remove_insurance_compnay ='$domainnameserver/api/removeInsuranceCompany';
   static const edit_insurance_company ='$domainnameserver/api/updateInsuranceCompany';
@@ -86,6 +87,37 @@ class Serverconfig{
   static const change_material_price ='$domainnameserver/api/changeMaterialPrice';
   static const change_salary_user ='$domainnameserver/api/changeSalaryUser';
   static const pay_back ='$domainnameserver/api/payBackWhenCancelingTheBill';
+  static const get_all_payments_maintenance ='$domainnameserver/api/getPaymentsMaintenanceRequests';
+  static const delete_payments ='$domainnameserver/api/removePayments';
+  static const add_payments_maintenance_req ='$domainnameserver/api/addPaymentsMaintenanceRequests';
+  static const get_all_payment ='$domainnameserver/api/getAllPayments';
+  static const add_salary_increase_from_reception ='$domainnameserver/api/addSalaryIncrease';
+  static const update_payments_maintenance ='$domainnameserver/api/updatePayments';
+  static const get_all_user_status ='$domainnameserver/api/listStatusUsers';
+  static const get_all_order_incomplete ='$domainnameserver/api/getAllOrdersInComplete';
+  static const accept_or_reject_item_request ='$domainnameserver/api/AcceptOrRejectItemRequest';
+  static const get_all_order_complete ='$domainnameserver/api/getAllOrdersComplete';
+  static const add_payments_orders ='$domainnameserver/api/addPaymentsOrdersAndConsumable';
+  static const get_all_payments_orders ='$domainnameserver/api/getPaymentsOrdersAndConsumable';
+  static const update_user_staus ='$domainnameserver/api/updateUserStatus';
+  static const get_all_item_in_order ='$domainnameserver/api/getAllItemByOrderInComplete';
+  static const get_all_item_in_order_complete ='$domainnameserver/api/getAllItemByOrderComplete';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

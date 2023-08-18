@@ -44,14 +44,14 @@ class update_maintenance_request_controller extends GetxController{
 
     if(StatusRequest.succes==statusRequest){
 
-      await Get.snackbar("تم الإضافة بنجاح", "تمت عملية إضافة طلب الصيانة بنجاح",);
+      await Get.snackbar("تم الإضافة بنجاح", "تمت عملية ـعديل طلب الصيانة بنجاح",);
 
     }else if(StatusRequest.failure==statusRequest){
-      await Get.snackbar("تنبيه", "لم يتم إضافة طلب الصيانة",);
+      await Get.snackbar("تنبيه", "لم يتم تعديل طلب الصيانة",);
 
     }
     else{
-      Get.defaultDialog(title: "حدث خطأ ما",content:Text("لم يتم إضافة  طلب الصيانة"));
+      Get.defaultDialog(title: "حدث خطأ ما",content:Text("لم يتم تعديل  طلب الصيانة"));
 
     }
     update();

@@ -684,21 +684,21 @@ class Finance_in_managment extends StatelessWidget {
                                                  ),
 
                                                ),
-                                               Container(
-                                                 height: 60,
-                                                 width: 50,
-                                                 child: Column(
-                                                   children: [
-                                                     Expanded(
-                                                         flex: 2,
-                                                         child: Image.asset(
-                                                           "assets/images/cancel.png",
-                                                           fit: BoxFit.fill,
-                                                         )),
-                                                     const Expanded(child: Text("إزالة")),
-                                                   ],
-                                                 ),
-                                               ),
+                                               // Container(
+                                               //   height: 60,
+                                               //   width: 50,
+                                               //   child: Column(
+                                               //     children: [
+                                               //       Expanded(
+                                               //           flex: 2,
+                                               //           child: Image.asset(
+                                               //             "assets/images/cancel.png",
+                                               //             fit: BoxFit.fill,
+                                               //           )),
+                                               //       const Expanded(child: Text("إزالة")),
+                                               //     ],
+                                               //   ),
+                                               // ),
                                              ],
                                            ),
                                          ),

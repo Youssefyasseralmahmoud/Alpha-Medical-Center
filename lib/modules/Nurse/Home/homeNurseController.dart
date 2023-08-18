@@ -14,7 +14,7 @@ import 'dart:collection';
 class homeNurseController extends GetxController {
   var notificationCount = 0.obs;
   var isStoping = false.obs;
-
+RxBool isFilterOn =true.obs ;
   void toggleStop() {
     isStoping.value = !isStoping.value;
   }
@@ -24,12 +24,14 @@ class homeNurseController extends GetxController {
   }
 
   homeNurseServices services =
-      homeNurseServices(Get.find(), Get.find(), Get.find(), Get.find(),Get.find());
+      homeNurseServices(Get.find(), Get.find(), Get.find(), Get.find(),Get.find(),Get.find(),Get.find());
   StatusRequest? statusRequest;
   StatusRequest? statusRequest2;
   StatusRequest? statusRequest3;
   StatusRequest? statusRequest4;
   StatusRequest? statusRequest5;
+  StatusRequest? statusRequest6;
+  StatusRequest? statusRequest7;
   Secury_storage secury_storage = new Secury_storage();
   late String id_patient;
 
@@ -116,7 +118,7 @@ class homeNurseController extends GetxController {
   List<String> data_names_doctor = [];
   Future<void> get_name_doctor() async {
     for (var item in data2) {
-      if (item['ID_UserFollow'] == 5) {
+      if (item['ID_UserFollow'] == 11) {
         String id = await get_doctor_name(item['ID_User']);
         print("${id}");
         data_names_doctor.add(id);
@@ -134,7 +136,7 @@ class homeNurseController extends GetxController {
   List<Map<String, dynamic>> getListOfFollowerData() {
     List<Map<String, dynamic>> data = [];
     for (var item in data2) {
-      if (item['ID_UserFollow'] == 5) {
+      if (item['ID_UserFollow'] == 11) {
         print(item);
         print('5');
         data.add(item);
@@ -306,5 +308,58 @@ class homeNurseController extends GetxController {
     return "";
   }
 
+
+  changstatuslabbyidservic(int status , int type) async {
+    statusRequest3 = StatusRequest.loading;
+    update();
+
+    var response = await services.changstatuslabbyidservice(type);
+    statusRequest3 = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest3) {
+      if(status==0){
+        Get.defaultDialog(title: "", content: Text("تم إيقاف طلبات التحويل"));}
+      else {
+        Get.defaultDialog(title: "", content: Text("تم استئناف طلبات التحويل"));
+
+      }
+
+
+    }
+
+    else if (StatusRequest.failure == statusRequest3) {
+      await Get.snackbar(
+        "تحذير",
+        "لا يوجد بيانات لعرضها",
+      );
+    }
+    else{
+      Get.defaultDialog(title: "حدث خطأ ما", content: Text("حدث خطا ما"));
+    }
+    update();
+
+  }
+  String detaile ="";
+    increment_requrst_Salary() async {
+    statusRequest7 = StatusRequest.loading;
+    update();
+    var response = await services.increment_requrst_Salary(detaile);
+    statusRequest7 = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest7) {
+      await Get.snackbar(
+        "ملاحظة ",
+        "تم إرسال الطلب بنجاج",
+      );
+    } else if (StatusRequest.failure == statusRequest7) {
+      await Get.snackbar(
+        "تنبيه",
+        "فشل إرسال الطلب",
+      );
+    } else {
+      Get.defaultDialog(title: " خطأ ", content: Text("حدث خطأ ما"));
+    }
+    update();
+  }
 
 }

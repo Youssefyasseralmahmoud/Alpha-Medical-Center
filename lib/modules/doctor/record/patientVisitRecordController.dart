@@ -19,15 +19,18 @@ class patientVisitRecordController extends GetxController{
   }
   var doctor = false.obs;
 
-  patientVisitRecordServices services = patientVisitRecordServices(Get.find());
+  patientVisitRecordServices services = patientVisitRecordServices(Get.find(),Get.find());
   StatusRequest? statusRequest;
+  StatusRequest? statusRequest2;
   Secury_storage secury_storage = new Secury_storage();
   List data=[];
   List test_data=[];
+  List data2=[];
+  List test_data2=[];
   get_patient_visits(int id) async {
     statusRequest = StatusRequest.loading;
     update();
-    var response = await services.get_patient_visits(id);
+    var response = await services.get_patient_visits(1);
     test_data.addAll(response['data']) ;
     statusRequest = handlingdata(response);
 
@@ -41,10 +44,55 @@ class patientVisitRecordController extends GetxController{
     }   else if(test_data.isEmpty) {
       await Get.snackbar(
         "تحذير",
-        "لا يوجد زيارات لعرضها",
+        "لا يوجد خدمات لعرضها",
       );
     }
     else if (StatusRequest.failure == statusRequest) {
+      await Get.snackbar(
+        "تحذير",
+        "لا يوجد خدمات مقدمة للمريض لعرضها",
+      );
+    }
+    else {
+      Get.defaultDialog(title: " خطأ", content: Text("حدث خطا ما"));
+    }
+    update();
+  }
+  go_to_edit(int index ){
+    Get.toNamed("/EditVisitDoctor"
+        ,arguments: {
+      "Pressure" :data[index]['Pressure'].toString(),
+      "Heartbeat" : data[index]['Heartbeat'].toString(),
+      "BodyHeat" : data[index]['BodyHeat'].toString(),
+      "ClinicalStory" : data[index]['ClinicalStory'].toString(),
+      "ClinicalExamination" : data[index]['ClinicalExamination'].toString(),
+      "Comments" : data[index]['Comments'].toString(),
+      "id" : data[index]['id']
+
+    }
+    );
+  }
+  get_patient_info(int id) async {
+    statusRequest2 = StatusRequest.loading;
+    update();
+    var response = await services.get_patient_info(id);
+   // test_data2.addAll(response['data']) ;
+    statusRequest2 = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest2) {
+      data2.clear();
+      data2.add(response['data']) ;
+      print("this is patient details");
+
+      print(data2);
+    }
+    // else if(StatusRequest.failure == statusRequest2) {
+    //   await Get.snackbar(
+    //     "تحذير",
+    //     "لا يوجد زيارات لعرضها",
+    //   );
+    // }
+    else if (StatusRequest.failure == statusRequest2) {
       await Get.snackbar(
         "تحذير",
         "لا يوجد زيارات لعرضها",
@@ -54,19 +102,7 @@ class patientVisitRecordController extends GetxController{
       Get.defaultDialog(title: " خطأ", content: Text("حدث خطا ما"));
     }
     update();
-  }
-  go_to_edit(int index ){
-    Get.toNamed("/EditVisitDoctor",arguments: {
-      "Pressure" :data[index]['Pressure'].toString(),
-      "Heartbeat" : data[index]['Heartbeat'].toString(),
-      "BodyHeat" : data[index]['BodyHeat'].toString(),
-      "ClinicalStory" : data[index]['ClinicalStory'].toString(),
-      "ClinicalExamination" : data[index]['ClinicalExamination'].toString(),
-      "Comments" : data[index]['Comments'].toString(),
-      "id" : data[index]['id']
-
-    });
-  }
+  } 
 
 
 }

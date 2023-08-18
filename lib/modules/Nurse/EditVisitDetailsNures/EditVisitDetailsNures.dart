@@ -8,9 +8,12 @@ import 'package:project_after_update/static_colors/StaticColors.dart';
 class EditVisitDetailsNures extends StatelessWidget {
   // const Ambulance_Patient_visits_details({Key? key}) : super(key: key);
 
+
+  EditVisitDetailsNuresController controller =Get.put(EditVisitDetailsNuresController());
+  //if (controller.hint_Pressure== null)
   @override
   Widget build(BuildContext context) {
-    EditVisitDetailsNuresController controller =Get.put(EditVisitDetailsNuresController());
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -25,7 +28,7 @@ class EditVisitDetailsNures extends StatelessWidget {
 
             Expanded(
               child: Text(
-                'تعديل تيجة المعاينة',
+                'تعديل نتيحة المعاينة',
                 textAlign: TextAlign.right,
                 style: TextStyle(fontSize: 22, color: Colors.black54),
               ),
@@ -46,7 +49,7 @@ class EditVisitDetailsNures extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(10),
               child: Form(
-                key: controller.formstate2,
+                // key: controller.formstate2,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
@@ -68,6 +71,7 @@ class EditVisitDetailsNures extends StatelessWidget {
                                 fontWeight: FontWeight.bold),
                           ),
                           hintText: controller.hint_Pressure.toString(),
+                          //  hintText: "عالي",
                           hintStyle: TextStyle(color:Colors.grey.withAlpha(70)),
                           suffixIcon: Container(
                             padding: EdgeInsets.all(5),
@@ -88,12 +92,11 @@ class EditVisitDetailsNures extends StatelessWidget {
                     ),
                     TextFormField(
                       validator: (val) {
-
                         return validinput(val!, 2, 2, "BodyHeat");
                       },
                       onChanged: (val) {
-int value =  int.parse(val);
-                     controller.BodyHeat =value;
+                        int value =  int.parse(val);
+                        controller.BodyHeat =value;
                       },
                       decoration: InputDecoration(
                           floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -105,6 +108,7 @@ int value =  int.parse(val);
                                 fontWeight: FontWeight.bold),
                           ),
                           hintText: controller.hint_BodyHeat.toString(),
+                          // hintText: "40",
                           hintStyle: TextStyle(color:Colors.grey.withAlpha(70)),
                           suffixIcon: Container(
                             padding: EdgeInsets.all(5),
@@ -140,6 +144,7 @@ int value =  int.parse(val);
                                 fontWeight: FontWeight.bold),
                           ),
                           hintText: controller.hint_ClinicalStory.toString(),
+                          //   hintText: "ألم  في الرأس و صداع",
                           hintStyle: TextStyle(color:Colors.grey.withAlpha(70)),
                           suffixIcon: Container(
                             padding: EdgeInsets.all(5),
@@ -175,6 +180,7 @@ int value =  int.parse(val);
                                 fontWeight: FontWeight.bold),
                           ),
                           hintText: controller.hint_ClinicalExamination.toString(),
+                          //  hintText: "سليم",
                           hintStyle: TextStyle(color:Colors.grey.withAlpha(70)),
                           suffixIcon: Container(
                             padding: EdgeInsets.all(5),
@@ -203,13 +209,14 @@ int value =  int.parse(val);
                       decoration: InputDecoration(
                           floatingLabelBehavior: FloatingLabelBehavior.always,
                           label: const Text(
-                            "ضربات القلب",
+                            "النبض",
                             style: TextStyle(
                                 fontSize: 20,
                                 color: StaticColor.primarycolor,
                                 fontWeight: FontWeight.bold),
                           ),
                           hintText: controller.hint_Heartbeat.toString(),
+                          //hintText: "طبيعي",
                           hintStyle: TextStyle(color:Colors.grey.withAlpha(70)),
                           suffixIcon: Container(
                             padding: EdgeInsets.all(6),
@@ -238,14 +245,15 @@ int value =  int.parse(val);
                       decoration: InputDecoration(
                           floatingLabelBehavior: FloatingLabelBehavior.always,
                           label: const Text(
-                            "الملاحظات",
+                            "التشخيص و العلاج",
                             style: TextStyle(
                                 fontSize: 20,
                                 color: StaticColor.primarycolor,
                                 fontWeight: FontWeight.bold),
                           ),
                           hintText: controller.hint_comments.toString(),
-                          hintStyle: TextStyle(color:Colors.grey.withAlpha(70)),
+                          // hintText: "صداع مزمن | مسكنات ",
+                          hintStyle: TextStyle(color:Colors.grey.withAlpha(170)),
                           suffixIcon: Container(
                             padding: EdgeInsets.all(6),
                             height: 20,
@@ -357,6 +365,46 @@ int value =  int.parse(val);
           ],
         ),
       ),
+    );
+  }
+  Widget buildTextField(String string) {
+    return  Container(
+      margin: const EdgeInsets.only(bottom: 30,left: 15,right: 15),
+      // width: Get.width * 0.90,
+      //  height: Get.height * 0.12,
+
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child:  TextField(
+
+
+        //   controller: controller.textEditingController,
+        textDirection: TextDirection.rtl,
+        maxLines: null,
+        textAlign: TextAlign.right,
+
+        decoration: InputDecoration(
+
+          labelText:'${string}' ,
+
+//hintText: "jhg",
+          labelStyle: TextStyle(color: Colors.indigo,
+              fontSize: 22.5,
+              fontWeight: FontWeight.bold
+
+          ),
+
+          border: OutlineInputBorder(
+
+            borderSide: BorderSide(color: Colors.indigo),
+          ),
+
+        ),
+      ),
+
+
     );
   }
 }

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_after_update/modules/doctor/Doctor_patient_servies/Doctor_patient_servies_controller.dart';
+import 'package:project_after_update/modules/doctor/Home/homeController.dart';
 import 'package:project_after_update/modules/doctor/record/patientVisitRecordController.dart';
 
 class patientVisitRecord extends StatelessWidget {
   patientVisitRecordController controller = Get.put(patientVisitRecordController());
 Doctor_patient_servies_servie_controller Doctor_patient_servies = Get.put(Doctor_patient_servies_servie_controller());
+  homeController homeControler = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +68,10 @@ Doctor_patient_servies_servie_controller Doctor_patient_servies = Get.put(Doctor
           Padding(
             padding: const EdgeInsets.only(left: 15, right: 15),
             child: GestureDetector(
-              onTap: () {
+              onTap: () async {
+int id =homeControler.data[0]['IDPatientRecord'] ;
+print('${id}');
+                await controller.get_patient_info(id);
                 Get.toNamed('/PersonalInformationD');
               },
               child: Container(
@@ -235,7 +240,8 @@ Doctor_patient_servies_servie_controller Doctor_patient_servies = Get.put(Doctor
               if (controller.showDetails[index])
                 Column(
                   children: [
-                    if (!controller.doctor.value) doctor(index),
+                   // if (!controller.doctor.value)
+                      doctor(index),
                     // if (controller.data[index]['x_ray'] != null && controller.data[index]['x_ray'].length > 0) ashaa(index),
                     //if (controller.data[index]['laboratory_test_results'] != null && controller.data[index]['laboratory_test_results'].length > 0) makhbar(index),
                   ],
@@ -339,6 +345,8 @@ Doctor_patient_servies_servie_controller Doctor_patient_servies = Get.put(Doctor
             widget1('القصة السريرية',controller.data[index]['ClinicalStory'], Icons.edit),
             widget1('الفحص السريري ', controller.data[index]['ClinicalExamination'], Icons.edit),
             widget1('التشخيص و العلاج', controller.data[index]['Comments'], Icons.edit),
+
+
 
             SizedBox(
               height: 20,

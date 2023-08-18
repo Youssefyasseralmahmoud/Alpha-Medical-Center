@@ -13,6 +13,7 @@ class patientList extends StatelessWidget {
     return Flexible(
         child: ListView.builder(
             itemCount: controller.data.length,
+           // itemCount:3,
 
             itemBuilder: (BuildContext contex, int index) {
               return Listpatients(
@@ -30,16 +31,17 @@ class Listpatients extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> s = ["راما سبعة ","سالي الجولان ", "يوسف المحمود"];
     homeController controller = Get.put(homeController());
     patientVisitRecordController patientVisitRecord =Get.put(patientVisitRecordController());
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: GestureDetector(
         onTap: ()  async {
-          print("${controller.data[index]['IDPatientRecord']}");
+         // print("${controller.data[index]['IDPatientRecord']}");
           print("xxxxxxxxxxxxxxxxxxxx");
-        await patientVisitRecord.get_patient_visits(
-              controller.data[index]['IDPatientRecord']);
+        await patientVisitRecord.get_patient_visits(controller.data[index]['IDPatientRecord']);
+      //   await patientVisitRecord.get_patient_visits(17);
           Get.toNamed("/patientVisitRecord");
         },
 
@@ -58,17 +60,19 @@ class Listpatients extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                IconButton(
-                  color:  Color(0xff9bb4fd),
-                  icon: Icon(
-                    Icons.delete,
-                    size: 30,
-                  ),
-                  onPressed: () {
-                    //   itemDetailsController.add()
-
-                  },
-                ),
+                // IconButton(
+                //   color:  Color(0xff9bb4fd),
+                //   icon: Icon(
+                //     Icons.delete,
+                //     size: 30,
+                //   ),
+                //   onPressed: () {
+                //     //   itemDetailsController.add()
+                //
+                //   },
+                // ),
+             //   Text("${s[index]}",style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: 'Arial')),
+              //  if (controller.data.isNotEmpty)
                 Text(controller.data[index]['FullName'],style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: 'Arial')),
                 IconButton(
                   color: Color(0xff9bb4fd),

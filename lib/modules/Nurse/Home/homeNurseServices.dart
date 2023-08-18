@@ -1,6 +1,8 @@
 
 import 'package:project_after_update/config/server_config.dart';
+import 'package:project_after_update/core/class/Crud.dart';
 import 'package:project_after_update/core/class/crud_get.dart';
+import 'package:project_after_update/core/class/crud_put.dart';
 import 'package:project_after_update/secure_storage/secure_storage.dart';
 
 class homeNurseServices{
@@ -10,7 +12,9 @@ class homeNurseServices{
   Crud_get crud_get_allwaitingPatient;
   Crud_get crud_get_nurses_follower;
   Crud_get crud_get_name_of_service;
-  homeNurseServices(this.crud,this.crud_get_nurses_follower,this.crud_get_UserInfoByID,this.crud_get_allwaitingPatient,this.crud_get_name_of_service);
+  Crud_put crud_change;
+  Crud crud_salary;
+  homeNurseServices(this.crud,this.crud_get_nurses_follower,this.crud_get_UserInfoByID,this.crud_get_allwaitingPatient,this.crud_get_name_of_service,this.crud_change, this.crud_salary);
   Secury_storage secury = new Secury_storage();
 
   get_patient_details(id_patient) async {
@@ -87,6 +91,49 @@ class homeNurseServices{
         }
     );
 
+    return response.fold((l) => l, (r) => r);
+  }
+
+
+
+
+
+
+
+  changstatuslabbyidservice(int status)async{
+   // print(id);
+    print(status);
+    String? token = await secury.read("admin_token");
+    var response=await crud_change.postdata(Serverconfig.changeStatus,
+        {"id" :"${2}",
+          'Status': '${status}',
+        },
+        {
+          "Authorization": "Bearer" + " " + token.toString(),
+          "Accept": "application/json"
+        }
+    );
+    print(response);
+    return response.fold((l) => l, (r) => r);
+  }
+
+
+  increment_requrst_Salary(String Details)async{
+    //there is String id in parameters
+    String? token = await secury.read("doctor_token");
+    //  String? token = "15|nHiUHfUWloXkp1CC2ZcoVK5dhSg7dZ0tyMMIfiqp";
+
+    var response=await crud_salary.postdata(Serverconfig.add_Salary_Increase,{
+      "Details" :Details,
+
+    },
+        {
+          "Authorization": "Bearer" + " " + token.toString(),
+          "Accept": "application/json"
+        }
+    );
+    print("this is response edit_services  ");
+    print(response);
     return response.fold((l) => l, (r) => r);
   }
 

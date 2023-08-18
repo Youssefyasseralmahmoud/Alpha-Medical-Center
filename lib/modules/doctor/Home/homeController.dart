@@ -8,10 +8,18 @@ import 'package:project_after_update/core/function/handlingdata.dart';
 class homeController extends GetxController{
 
 
-  Doctor_home_services services = Doctor_home_services(Get.find());
+  bool isFilterOn =true;
+
+  Doctor_home_services services = Doctor_home_services(Get.find(),Get.find(),Get.find(),Get.find());
   StatusRequest? statusRequest;
+  StatusRequest? statusRequest3;
+  StatusRequest? statusRequest2;
+  StatusRequest? statusRequest4;
+
   Secury_storage secury_storage = new Secury_storage();
   List data=[];
+  List data2=[];
+  String detaile = "";
 
   var notificationCount = 0.obs;
   var isStoping = false.obs;
@@ -23,11 +31,11 @@ class homeController extends GetxController{
   void incrementNotificationCount() {
     notificationCount.value++;
   }
-  get_allwaitingPatient() async {
+  get_allwaitingPatient(int id_TypeCenterServices) async {
     statusRequest = StatusRequest.loading;
     update();
     print("statuserequest now is ${statusRequest}");
-    var response = await services.get_allwaitingPatient(4);
+    var response = await services.get_allwaitingPatient(id_TypeCenterServices);
 
     statusRequest = handlingdata(response);
 
@@ -49,8 +57,71 @@ class homeController extends GetxController{
   }
   @override
   void onInit() {
-    get_allwaitingPatient();
+    get_my_user();
+
     super.onInit();
   }
+  changstatuslabbyidservic(int status ) async {
+    statusRequest3 = StatusRequest.loading;
+    update();
 
+    var response = await services.changstatuslabbyidservice(status);
+    statusRequest3 = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest3) {
+      if (status == 0) {
+        Get.defaultDialog(title: "", content: Text("تم إيقاف طلبات التحويل"));
+      }
+      else {
+        Get.defaultDialog(title: "", content: Text("تم استئناف طلبات التحويل"));
+      }
+    }
+  }
+  increment_requrst_Salary() async {
+    statusRequest4 = StatusRequest.loading;
+    update();
+    var response = await services.increment_requrst_Salary(detaile);
+    statusRequest4 = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest4) {
+      await Get.snackbar(
+        "ملاحظة ",
+        "تم إرسال الطلب بنجاج",
+      );
+    } else if (StatusRequest.failure == statusRequest4) {
+      await Get.snackbar(
+        "تنبيه",
+        "فشل إرسال الطلب",
+      );
+    } else {
+      Get.defaultDialog(title: " خطأ ", content: Text("حدث خطأ ما"));
+    }
+    update();
+  }
+  get_my_user() async {
+    statusRequest2 = StatusRequest.loading;
+    update();
+    print("statuserequest now is ${statusRequest2}");
+    var response = await services.get_my_user_info();
+
+    statusRequest2 = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest2) {
+
+      data2.clear();
+      data2.add(response['data']) ;
+      print(response);
+      print("get information");
+      get_allwaitingPatient(data2[0]['id_TypeCenterServices']);
+
+    } else if (StatusRequest.failure == statusRequest2) {
+      await Get.snackbar(
+        "تحذير",
+        "",
+      );
+    } else {
+      Get.defaultDialog(title: "حدث خطأ ما", content: Text("حدث خطا ماwait"));
+    }
+    update();
+  }
 }

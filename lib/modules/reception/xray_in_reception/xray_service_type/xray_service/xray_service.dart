@@ -136,8 +136,8 @@ class Xray_service extends StatelessWidget {
                                   ),
                                   child:  ListTile(
                                     title: Text(
-                                      "  ${controller.data_wating_req[index]["FullName"]} : المريض  ",
-                                      style: TextStyle(fontWeight: FontWeight.bold),
+                                      "  المريض : ${controller.data_wating_req[index]["FullName"]}   ",
+                                      style: TextStyle(fontWeight: FontWeight.bold,color: StaticColor.primarycolor),
                                     ),
                                     subtitle: Text(" الخدمة : ${controller.data_wating_req[index]['ServiceName']}"),
                                     trailing: Text(

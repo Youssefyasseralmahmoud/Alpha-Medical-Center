@@ -141,8 +141,8 @@ class Wating_in_clinics extends StatelessWidget {
                                   children: [
                                     ListTile(
                                       title: Text(
-                                        "${controller.data_wating_req[index]['FullName']} : المريض  ",
-                                        style: const TextStyle(fontWeight: FontWeight.bold),
+                                        " المريض : ${ controller.data_wating_req[index]['FullName']}   ",
+                                        style: const TextStyle(fontWeight: FontWeight.bold,color: StaticColor.primarycolor),
                                       ),
                                       subtitle: Text(" الخدمة : ${controller.data_wating_req[index]['ServiceName']}"),
                                       trailing: Text(
@@ -233,7 +233,7 @@ class Wating_in_clinics extends StatelessWidget {
                                   //   "${controller.data[index]['name']} : اسم الطبيب  ",
                                   //   style: const TextStyle(fontWeight: FontWeight.bold),
                                   // ),
-                                  subtitle: const Text("حالة الطبيب  : متواجد"),
+                                 // subtitle: const Text("حالة الطبيب  : متواجد"),
                                      trailing:
                                   Row(
                                     mainAxisSize: MainAxisSize.min,

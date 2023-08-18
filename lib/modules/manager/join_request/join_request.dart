@@ -3,9 +3,11 @@ import 'package:get/get.dart';
 import 'package:project_after_update/core/class/StatusRequest.dart';
 import 'package:project_after_update/modules/manager/join_request/join_request_controller.dart';
 import 'package:project_after_update/static_colors/StaticColors.dart';
-
-class Join_request extends StatelessWidget {
-  const Join_request({Key? key}) : super(key: key);
+class Join_requestpag extends StatefulWidget {
+  @override
+  Join_request createState() => Join_request();
+}
+class Join_request extends State<Join_requestpag>{
 
   @override
   Widget build(BuildContext context) {
@@ -256,6 +258,10 @@ class Join_request extends StatelessWidget {
                                                         onConfirm: (){
                                                           Get.back();
                                                           controller.accept_join(controller.data[index]['id']);
+                                                          controller.data.removeAt(index);
+                                                          setState(() {
+                                                            Join_requestpag();
+                                                          });
                                                         },
                                                         textCancel: "رجوع",
                                                         onCancel: (){

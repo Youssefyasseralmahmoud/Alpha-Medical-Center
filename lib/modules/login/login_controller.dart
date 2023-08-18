@@ -25,15 +25,6 @@ class Login_controller extends GetxController{
 
 
 
-  // checkinput(){
-  //  // var formdata=formstate3.currentState;
-  //   if(formdata!.validate()){
-  //     login();
-  //   }else{
-  //     print("الحقول غير صالحة");
-  //   }
-  // }
-
   login() async{
 
     statusRequest=StatusRequest.loading;
@@ -49,7 +40,10 @@ class Login_controller extends GetxController{
         print("tesst from login");
         secury_storage3.save("admin_token", admin_token);
         await Get.snackbar("تسجيل دخول ناجح", "تمت عملية الدخول بنجاح",);
-         Get.offAllNamed("/Home_screen_manager");
+       Get.offAllNamed("/FancyNavBarNurse");
+        //Get.offAllNamed("/Home_screen_manager");
+         //Get.offAllNamed("/FancyNavBarx_ray");
+
       }
       if(response['code']== 1 && response['data']['user']['TypeUser'] == "Manager" ){
         // && response['carer']=='reception'

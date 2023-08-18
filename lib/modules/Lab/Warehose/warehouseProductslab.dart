@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_after_update/modules/Lab/Warehose/warehouseControllerlab.dart';
 
+import '../../../static_colors/StaticColors.dart';
+
 
 
 
@@ -19,7 +21,7 @@ class WarehouseProductslab extends StatelessWidget {
         title: Padding(
           padding: const EdgeInsets.only(top: 30.0, left: 120, bottom: 20),
           child: Text(
-            'مواد المستودع',
+            'طلب مواد',
             textAlign: TextAlign.right,
             style: TextStyle(
               fontSize: 25,
@@ -38,14 +40,17 @@ class WarehouseProductslab extends StatelessWidget {
                 const EdgeInsets.only(bottom: 90, right: 20, left: 20, top: 20),
             child: Center(
               child: GridView.builder(
-                itemCount: controller.products.length,
+                itemCount: controller.data_details.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
+                  crossAxisCount: 1,
+                  mainAxisSpacing:3.3,
+
+                  childAspectRatio: 2,
                 ),
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
+                    width: 200,
+                    height: 100,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       border: Border.all(color: Color(0xffb3c6ff), width: 3),
@@ -54,7 +59,7 @@ class WarehouseProductslab extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          controller.products[index].name,
+                          controller.data_details[index]['Name'],
                           style: TextStyle(
                             color: Color(0xff9bb4fd),
                             fontWeight: FontWeight.bold,
@@ -66,7 +71,7 @@ class WarehouseProductslab extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Text(
-                                (controller.products[index].quantity)
+                                (controller.data_details[index]['Quantity'])
                                     .toString(),
                                 style: TextStyle(
                                   color: Colors.black54,
@@ -86,19 +91,39 @@ class WarehouseProductslab extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 10),
-                        Center(
-                          child: Container(
-                            width: 70,
-                            height: 50,
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children:[
+
+                          ElevatedButton(
+                            onPressed: () {
+                           controller.id_order = controller.data_details2[0]['id'];
+                           controller.id_matirial = controller.data_details[index]['id'];
+                           controller.name =controller.data_details[index]['Name'];
+                           controller.additem();
+
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary:
+                              StaticColor.primarycolor,
+                            ),
+                            child: Text('طلب'),
+                          ),
+                              SizedBox(width: 30),
+
+                           Container(
+                            width: 60,
+                            height: 40,
                             decoration: BoxDecoration(
                               color: Colors.grey[300],
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: Center(
+
                               child: TextField(
                                 keyboardType: TextInputType.number,
                                 onChanged: (value) {
-                                  //   controller.updateQuantity(index, value);
+                                  controller.quantity = value;
                                   controller.errors(int.parse(value), index);
                                 },
                                 decoration: InputDecoration(
@@ -108,8 +133,8 @@ class WarehouseProductslab extends StatelessWidget {
                                 ),
                               ),
                             ),
-                          ),
-                        ),
+
+                        ])
                       ],
                     ),
                   );
@@ -117,34 +142,7 @@ class WarehouseProductslab extends StatelessWidget {
               ),
             ),
           ),
-          GestureDetector(
-            onTap: () {},
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                width: double.infinity,
-                height: 50,
 
-                margin: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Color(0xff9bb4fd), width: 3),
-                  color: Color(0xffcbd6fa),
-                  borderRadius: BorderRadius.circular(25),
-                ),
-
-                child: Center(
-                    child: Text(
-                  'طلب المواد',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w100,
-                    color: Colors.black38,
-                  ),
-                )),
-                // ),
-              ),
-            ),
-          ),
         ],
       ),
     );

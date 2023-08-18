@@ -36,7 +36,7 @@ class Home extends StatelessWidget {
               SizedBox(height: 20,),
               GestureDetector(
                 onTap: (){
-                  controller.logout();
+                  //controller.logout();
                 },
                 child: Container(
                   padding: EdgeInsets.all(8),

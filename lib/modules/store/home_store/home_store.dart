@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:project_after_update/modules/store/home_store/warehouseControllerstor.dart';
 import 'package:project_after_update/modules/store/home_store/warehouseProductsstore.dart';
 import 'package:project_after_update/static_colors/StaticColors.dart';
 import 'package:get/get.dart';
 
 class home_store extends StatelessWidget {
   home_store({Key? key}) : super(key: key);
+  warehouseControllerstor controller = Get.find();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: SafeArea(
+    return
+      GetBuilder<warehouseControllerstor>(builder: (controller) {
+       return Scaffold(
+        body:
+        SafeArea(
          child: Column(
          children: [
           Container(
@@ -101,8 +106,57 @@ class home_store extends StatelessWidget {
              child: warehouseProducts(),
              flex: 1,
            ),
+           GestureDetector(
+             onTap: () {
+               Get.toNamed('/add_Details');
+
+             },
+             child: Align(
+               alignment: Alignment.bottomLeft,
+               child: Container(
+                 width: 160,
+                 height: 50,
+
+                 margin: EdgeInsets.all(20),
+                 decoration: BoxDecoration(
+                   border: Border.all(color: Color(0xff9bb4fd), width: 3),
+                   color: Color(0xffcbd6fa),
+                   borderRadius: BorderRadius.circular(25),
+                 ),
+
+
+                 child: Padding(
+                   padding:  EdgeInsets.symmetric( horizontal: 10),
+                   child:
+                   Row(
+                       mainAxisAlignment: MainAxisAlignment.end,
+                       children: [
+                         Icon(
+                           Icons.add,
+                           color: Colors.white,
+                         ),
+
+
+                         SizedBox(width: 10),
+                         Text(
+                           ' إضافة مادة',
+                           style: TextStyle(
+                             fontSize: 20,
+                             fontWeight: FontWeight.w100,
+                             color: Colors.white,
+
+                           ),
+                           textDirection: TextDirection.rtl,
+                         ),
+
+
+                       ]),
+                 ),
+               ),
+             ),
+           ),
         ],
       ),
     ));
-  }
-}
+  });
+}}

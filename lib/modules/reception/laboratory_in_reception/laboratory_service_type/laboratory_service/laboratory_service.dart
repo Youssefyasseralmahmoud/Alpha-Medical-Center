@@ -215,7 +215,7 @@ class Laboratory_service extends StatelessWidget {
                                           "${controller.data_doctor[index]['name']} : اسم الطبيب  ",
                                           style: TextStyle(fontWeight: FontWeight.bold),
                                         ),
-                                        subtitle: const Text("حالة الطبيب  : متواجد"),
+                                      //  subtitle: const Text("حالة الطبيب  : متواجد"),
                                         trailing:
                                   CircleAvatar(
                                   child: Image.asset("assets/images/doctor.png"),

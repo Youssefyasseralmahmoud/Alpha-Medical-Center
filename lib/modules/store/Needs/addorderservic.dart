@@ -10,7 +10,7 @@ class addorderserver{
   addorderserver(this.crud);
 
   addorder()async{
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("Store_token");
     var response=await crud.postdata(Serverconfig.Addorder,{
       "Type" :"external",
     },

@@ -11,7 +11,7 @@ class Acceept_item_request_services {
   Secury_storage secury = new Secury_storage();
   late var message;
   accept_item(int item_id) async {
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("Store_token");
     var response = await crud.postdata(Serverconfig.Accept+"${item_id}",
 
         {

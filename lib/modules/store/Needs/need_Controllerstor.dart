@@ -106,9 +106,7 @@ class need_controller extends GetxController{
 
 
     }
-    else{
-      Get.defaultDialog(title: "حدث خطأ ما",content:Text("اسم المستخدم أو كلمة المرور خطا"));
-    }
+
 
 
   }

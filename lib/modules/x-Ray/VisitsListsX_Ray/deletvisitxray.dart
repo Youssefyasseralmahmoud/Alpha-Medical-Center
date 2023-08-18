@@ -20,7 +20,7 @@ class deletexray {
   String? token ;
   deletexraybyid(int id)async{
 
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("xray_token");
     var response=await crud.postdata(Serverconfig.deletexray,
 
         {

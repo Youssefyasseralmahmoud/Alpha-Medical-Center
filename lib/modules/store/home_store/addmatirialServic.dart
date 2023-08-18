@@ -9,7 +9,7 @@ class Addmatirialservic{
   Addmatirialservic(this.crud);
   Secury_storage secury = new Secury_storage();
   AddMatirial(String name,String status, String quantity , String lower,String upper, String production,String Expiry)async{
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("Store_token");
     var response=await crud.postdata(Serverconfig.Addmatirial,{
       'Name': '${name}',
       'Status': '1',

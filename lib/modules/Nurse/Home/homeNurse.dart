@@ -10,12 +10,14 @@ import 'package:project_after_update/static_colors/StaticColors.dart';
 
 class homeNurse extends StatelessWidget {
 
-
-  @override
-    homeNurseController controller= Get.put(homeNurseController());
+  homeNurseController controller= Get.put(homeNurseController());
   PersonalinfrmationController personalinfrmationController = Get.put(PersonalinfrmationController());
+  @override
+
+
  // AddVisitController addVisitController =Get.put<AddVisitController>(AddVisitController());
   Widget build(BuildContext context) {
+    return GetBuilder<homeNurseController>(builder: (controller){
     return Scaffold(
         body:
         SafeArea(
@@ -39,7 +41,7 @@ class homeNurse extends StatelessWidget {
                         //  color: Color(0xff3366ff)
                         //,
                         onPressed: () {
-                          Get.offAllNamed('/login');
+                         controller.logout();
                         },
                       ),
                     ),
@@ -139,10 +141,11 @@ class homeNurse extends StatelessWidget {
                     ),
                   ),
                 ),
+
                 ListPatients(),
 
               ],
-            )));
+            )));});
   }
   void _increment_requrst_SalaryDialog() {
     Get.defaultDialog(

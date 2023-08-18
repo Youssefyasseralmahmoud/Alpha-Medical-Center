@@ -25,7 +25,7 @@ class changstatuslab {
   changstatuslabbyidservice( int status) async {
     //print(id);
     print(status);
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("nurse_token");
     var response = await crud.postdata(Serverconfig.changeStatus,
         {"id": "${2}",
           'Status': '${status}',

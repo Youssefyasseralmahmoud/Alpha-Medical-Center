@@ -24,7 +24,7 @@ class Nurse_wait_patient_controller extends GetxController {
   }
 
   homeNurseServices services =
-  homeNurseServices(Get.find(), Get.find(), Get.find(), Get.find(),Get.find(),Get.find(),Get.find());
+  homeNurseServices(Get.find(), Get.find(), Get.find(), Get.find(),Get.find(),Get.find(),Get.find(),Get.find(),Get.find());
   StatusRequest? statusRequest;
   StatusRequest? statusRequest3;
 

@@ -15,9 +15,10 @@ class Doctor_home_services {
   Crud_put crud_Change;
   Crud crud_salary;
   Crud_get crud_my_user;
+  Crud_get crud_logout;
 
   Secury_storage secury = new Secury_storage();
-  Doctor_home_services (this.crud,this.crud_Change,this.crud_salary,this.crud_my_user);
+  Doctor_home_services (this.crud,this.crud_Change,this.crud_salary,this.crud_my_user,this.crud_logout);
   String? token ;
   get_allwaitingPatient(int id_types_of_center_services)async{
 
@@ -78,6 +79,25 @@ class Doctor_home_services {
         }
     );
 
+    return response.fold((l) => l, (r) => r);
+  }
+  logout() async {
+    String? token = await secury.read("doctor_token");
+
+    // final Map<String, dynamic> data = {};
+    // data['Key']="ID Personal";
+    // data['Value']="02545164598162";
+
+    var response = await crud_logout.postdata(
+        Serverconfig.logout,
+
+        {
+          "Authorization": "Bearer" + " " + token.toString(),
+          "Accept": "application/json"
+        }
+    );
+    print("response from get all section services");
+    print(response);
     return response.fold((l) => l, (r) => r);
   }
 

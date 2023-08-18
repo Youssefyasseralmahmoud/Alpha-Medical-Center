@@ -39,7 +39,7 @@ class Splash_controller extends GetxController {
     }else if (xray_token!=null){
       Get.offAllNamed("/Homex_ray");
     }else if (nurse_token!=null){
-      Get.offAllNamed("/HomeNurse");
+      Get.offAllNamed("/FancyNavBarNurse");
     }
     else{
       Get.offAllNamed('/login');

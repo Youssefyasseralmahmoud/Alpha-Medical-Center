@@ -1,7 +1,9 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_after_update/core/class/StatusRequest.dart';
 import 'package:project_after_update/modules/doctor/Home/Doctor_home_services.dart';
+import 'package:project_after_update/modules/doctor/Home/home_services.dart';
 import 'package:project_after_update/secure_storage/secure_storage.dart';
 import 'package:project_after_update/core/function/handlingdata.dart';
 
@@ -10,11 +12,14 @@ class homeController extends GetxController{
 
   bool isFilterOn =true;
 
-  Doctor_home_services services = Doctor_home_services(Get.find(),Get.find(),Get.find(),Get.find());
+  Doctor_home_services services = Doctor_home_services(Get.find(),Get.find(),Get.find(),Get.find(),Get.find());
+
   StatusRequest? statusRequest;
   StatusRequest? statusRequest3;
   StatusRequest? statusRequest2;
   StatusRequest? statusRequest4;
+  StatusRequest? statusRequest8;
+
 
   Secury_storage secury_storage = new Secury_storage();
   List data=[];
@@ -121,6 +126,36 @@ class homeController extends GetxController{
       );
     } else {
       Get.defaultDialog(title: "حدث خطأ ما", content: Text("حدث خطا ماwait"));
+    }
+    update();
+  }
+
+  logout() async {
+    statusRequest8 = StatusRequest.loading;
+    update();
+    var response = await services.logout();
+    // test_data.addAll(response['data']) ;
+    statusRequest8 = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest8) {
+      await Get.snackbar(
+        "تم",
+        "تم تسجيل الخروج بنجاح",
+      );
+      FirebaseMessaging.instance.unsubscribeFromTopic("doctor");
+      secury_storage.delete();
+
+      Get.offAllNamed("/login");
+
+    }
+    else if (StatusRequest.failure == statusRequest8) {
+      await Get.snackbar(
+        "تنبيه",
+        "لم تتم عملية تسجيل الخروج   ",
+      );
+    }
+    else {
+      Get.defaultDialog(title: " خطأ", content: Text("حدث خطا ما"));
     }
     update();
   }

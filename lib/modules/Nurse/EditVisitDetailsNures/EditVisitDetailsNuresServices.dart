@@ -12,7 +12,7 @@ class EditVisitDetailsNuresServices {
   Secury_storage secury = new Secury_storage();
   edit_result(String Pressure,String Heartbeat,int BodyHeat,String ClinicalStory,String ClinicalExamination,String comments,int id)async{
     //there is String id in parameters
-    String? token = await secury.read("admin");
+    String? token = await secury.read("nurse_token");
     print("the id for visit to edit it is ${id}");
     var response=await crud.postdata(Serverconfig.update_preview_reult,{
       "id" :"${id}",

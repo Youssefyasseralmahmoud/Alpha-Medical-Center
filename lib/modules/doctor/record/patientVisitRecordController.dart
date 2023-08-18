@@ -17,6 +17,7 @@ class patientVisitRecordController extends GetxController{
     update();
 
   }
+
   var doctor = false.obs;
 
   patientVisitRecordServices services = patientVisitRecordServices(Get.find(),Get.find());
@@ -30,27 +31,26 @@ class patientVisitRecordController extends GetxController{
   get_patient_visits(int id) async {
     statusRequest = StatusRequest.loading;
     update();
-    var response = await services.get_patient_visits(1);
+    var response = await services.get_patient_visits(id);
     test_data.addAll(response['data']) ;
     statusRequest = handlingdata(response);
 
     if (StatusRequest.succes == statusRequest&& test_data.isNotEmpty) {
       data.clear();
       data.addAll(response['data']) ;
-      print("this is patient viiiiitssssssssssss");
-
+      print("this is patient viiiiisiiiits");
       print(data);
       //Get.toNamed("/Ambulance_patients_visits");
     }   else if(test_data.isEmpty) {
       await Get.snackbar(
         "تحذير",
-        "لا يوجد خدمات لعرضها",
+        "لا يوجد زيارات لعرضها",
       );
     }
     else if (StatusRequest.failure == statusRequest) {
       await Get.snackbar(
         "تحذير",
-        "لا يوجد خدمات مقدمة للمريض لعرضها",
+        "لا يوجد زيارات لعرضها",
       );
     }
     else {
@@ -102,7 +102,16 @@ class patientVisitRecordController extends GetxController{
       Get.defaultDialog(title: " خطأ", content: Text("حدث خطا ما"));
     }
     update();
-  } 
+  }
+  // late int id ;
+  // @override
+  // void onInit() {
+  //   if (Get.arguments != null) {
+  //     if (Get.arguments['id'] != null)
+  //       id = Get.arguments['id'];
+  //   }
+  //   super.onInit();
+  // }
 
 
 }

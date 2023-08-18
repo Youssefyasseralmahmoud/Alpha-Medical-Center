@@ -15,6 +15,9 @@ class patientVisitRecordServices{
   get_patient_visits(int id) async {
     String? token = await secury.read("doctor_token");
 
+    // final Map<String, dynamic> data = {};
+    // data['Key']="ID Personal";
+    // data['Value']="02545164598162";
 
     var response = await crud.postdata(
         Serverconfig.get_patient_visits + "?IDPatientRecord=${id}",

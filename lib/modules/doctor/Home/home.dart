@@ -86,7 +86,7 @@ class _HomeState extends State<Home> {
                       //  color: Color(0xff3366ff)
                       //,
                       onPressed: () {
-                        Get.offAllNamed('/login');
+                      controller.logout();
                       },
                     ),
                   ),

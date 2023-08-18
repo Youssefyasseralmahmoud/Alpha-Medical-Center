@@ -31,18 +31,27 @@ class Listpatients extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> s = ["راما سبعة ","سالي الجولان ", "يوسف المحمود"];
+
     homeController controller = Get.put(homeController());
     patientVisitRecordController patientVisitRecord =Get.put(patientVisitRecordController());
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: GestureDetector(
         onTap: ()  async {
-         // print("${controller.data[index]['IDPatientRecord']}");
+          print("${controller.data[index]['IDPatientRecord']}");
           print("xxxxxxxxxxxxxxxxxxxx");
         await patientVisitRecord.get_patient_visits(controller.data[index]['IDPatientRecord']);
+          await patientVisitRecord.get_patient_info(controller.data[index]['IDPatientRecord']);
       //   await patientVisitRecord.get_patient_visits(17);
-          Get.toNamed("/patientVisitRecord");
+          Get.toNamed("/patientVisitRecord"
+           // ,
+              // arguments: {
+              // "id" :controller.data[index]['IDPatientRecord'].toString(),
+
+
+           //   }
+          );
+
         },
 
       child: Container(
@@ -73,7 +82,14 @@ class Listpatients extends StatelessWidget {
                 // ),
              //   Text("${s[index]}",style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: 'Arial')),
               //  if (controller.data.isNotEmpty)
-                Text(controller.data[index]['FullName'],style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: 'Arial')),
+
+                Row(
+                  children: [
+                    Text(" (  ${controller.data[index]['ServiceName']}  )        " ,style: TextStyle(fontSize: 14,fontWeight: FontWeight.w200,fontFamily: 'Arial',color: Colors.grey[900])),
+                    Text(controller.data[index]['FullName'],style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: 'Arial')),
+
+                  ],
+                ),
                 IconButton(
                   color: Color(0xff9bb4fd),
                   icon: Icon(

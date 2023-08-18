@@ -17,7 +17,7 @@ class Payments_for_orders_services {
     String? token = await secury.read("finance_token");
 
     var response = await crud_get.postdata(
-        Serverconfig.get_all_payments_orders+"?Order_id=1=${order_id}",
+        Serverconfig.get_all_payments_orders+"?Order_id=${order_id}",
 
         {
           "Authorization": bearer + " " + token.toString(),

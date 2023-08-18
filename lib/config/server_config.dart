@@ -79,6 +79,12 @@ class Serverconfig{
   static const deletetest ='$domainnameserver/api/removeLaboratoryTest';
   static const deletexray ='$domainnameserver/api/deleteX_Rays';
   static const changestatus ='$domainnameserver/api/changeStatus';
+  static const changeStatus ='$domainnameserver/api/changeStatus';
+  static const add_Salary_Increase ='$domainnameserver/api/addSalaryIncrease';
+  static const get_MyUser_Info ='$domainnameserver/api/getMyUserInfo';
+
+
+
 
 
 

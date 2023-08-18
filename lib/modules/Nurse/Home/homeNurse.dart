@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:project_after_update/core/function/validinput.dart';
-import 'package:project_after_update/modules/Nurse/AddVisit/AddVisitController.dart';
+
 import 'package:project_after_update/modules/Nurse/Home/PatientList.dart';
 import 'package:project_after_update/modules/Nurse/Home/homeNurseController.dart';
 import 'package:project_after_update/modules/Nurse/VisitsList/PersonalInformation/PersonalinfrmationController.dart';

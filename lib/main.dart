@@ -335,8 +335,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/PersonalInformationx_ray',             page: () =>PersonalInformationx_ray (),),
         GetPage(name: '/VisitsListX_Ray',             page: () =>VisitsListX_Ray (),binding: VisitListX_raybinding() ),
         GetPage(name: '/EditVisitx_ray',             page: () =>EditVisitx_ray (),binding: Editvisitingx_raybinding() ),
-        GetPage(name: '/addConsumer',          page: () =>addConsumer(),        binding:warehouseBindinds()),
-        GetPage(name: '/warehouseProducts',    page: () =>warehouseProducts(),  binding:warehouseBindinds()),
+        GetPage(name: '/addConsumer',          page: () =>AddConsumer(),        binding:warehouseBindinds()),
+        GetPage(name: '/warehouseProducts',    page: () =>WarehouseProducts(),  binding:warehouseBindinds()),
         GetPage(name: '/detailvistexray',    page: () =>DetailVistexrayPage(),),
 
         /////////last adding for lab by saly

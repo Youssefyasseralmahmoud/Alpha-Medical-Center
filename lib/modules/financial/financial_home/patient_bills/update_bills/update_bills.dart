@@ -118,6 +118,7 @@ class update_bill extends StatelessWidget {
                                                               controller.data_details[
                                                               index][
                                                               'id']);
+                                                          controller.data_details.removeAt(index);
                                                         },
                                                         child: Container(
                                                           padding:

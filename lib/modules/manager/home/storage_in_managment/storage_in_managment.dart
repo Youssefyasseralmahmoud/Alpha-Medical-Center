@@ -138,9 +138,9 @@ class Storage_in_managment extends StatelessWidget {
                                       Divider(),
                                       Text(" ${controller.data[index]['UpperLimit']} : الحد الأعلى   ",),
                                       Divider(),
-                                      Text(" ${controller.data[index]['ProductionDate']} : تاريخ الإنتاج   ",),
-                                      Divider(),
-                                      Text(" ${controller.data[index]['ExpiryDate']} : تاريخ الإنتهاء   ",),
+                                      // Text(" ${controller.data[index]['ProductionDate']} : تاريخ الإنتاج   ",),
+                                      // Divider(),
+                                      // Text(" ${controller.data[index]['ExpiryDate']} : تاريخ الإنتهاء   ",),
 
                                     ],),
                                 )));
@@ -161,7 +161,7 @@ class Storage_in_managment extends StatelessWidget {
                                   "اسم المنتج :  ${controller.data[index]['Name']} ",
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
-                                Text("تاريخ الإنتاج  : ${controller.data[index]['ProductionDate']}",style: TextStyle(color: Colors.grey),),
+                                Text(" تاريخ الإنتاج  : ${controller.data[index]['created_at']}",style: TextStyle(color: Colors.grey),),
                               ],
                             ),
                           ),

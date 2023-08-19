@@ -5,6 +5,7 @@ import 'package:project_after_update/modules/x-Ray/VisitsListsX_Ray/personalinfo
 
 import '../../../core/class/StatusRequest.dart';
 import '../../../core/function/handlingdata.dart';
+import 'PersonallinformationServec.dart';
 import 'deletetastservice.dart';
 
 class VisitsListControllerlab extends GetxController{
@@ -28,7 +29,7 @@ class VisitsListControllerlab extends GetxController{
   StatusRequest? statusRequest3;
   deletetest delete =deletetest(Get.find());
   Visitlestservicelab visitlestservice = Visitlestservicelab(Get.find());
-  personalinformationxray personalInformationService= personalinformationxray(Get.find());
+  personalinformationlab personalInformationService= personalinformationlab(Get.find());
   void toggleDetails() {
     showDetails.value = !showDetails.value;
   }
@@ -102,6 +103,8 @@ class VisitsListControllerlab extends GetxController{
 
         if (data_details[0][i]['laboratory_test_results'].length!=0){
           data.add(data_details[0][i]['laboratory_test_results']);
+          print('mMMMMMMmmmm');
+          print(data_details);
           String s ='2023-8-15';
           //String s1 = DateTime.parse(data_details[0][i]['created_at']).toString();
          // date.add(s.substring(0, 10)) ;

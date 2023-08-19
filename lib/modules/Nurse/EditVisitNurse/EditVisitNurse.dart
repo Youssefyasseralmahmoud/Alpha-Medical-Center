@@ -89,6 +89,7 @@ class EditVisitNurse extends StatelessWidget {
               child: GestureDetector(
                 onTap: (){
                   controller.edit_visit();
+
                 },
                 child: Container(
                   padding: const EdgeInsets.all(5),

@@ -237,16 +237,17 @@ class Join_request_controller extends GetxController {
     else if(type=="ممرض"){
       type="Nurse";
     }
-    else if(type=="أشعة"){
-      type="Radiographer";
+    else if(type=="مخزن"){
+      type="Store";
     }
     else if(type=="إستقبال"){
       type="Receptionist";
     } else if(type=="ضيف"){
       type="Guest";
-    }else{
-      type="Store";
-    };
+    }
+    else if(type=="أشعة"){
+      type="Radiographer";
+    }
     data_type_user.forEach((name) {
       if(name['Name']==type){
         id_type_user=name['id'];

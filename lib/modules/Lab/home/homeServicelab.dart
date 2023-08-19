@@ -32,7 +32,7 @@ class homeServicelab {
 
   increment_requrst_Salary(String Details)async{
     //there is String id in parameters
-    String? token = await secury.read("nurse_token");
+    String? token = await secury.read("laboratory_token");
     //  String? token = "15|nHiUHfUWloXkp1CC2ZcoVK5dhSg7dZ0tyMMIfiqp";
 
     var response=await crud_salary.postdata(Serverconfig.add_Salary_Increase,{
@@ -49,7 +49,7 @@ class homeServicelab {
     return response.fold((l) => l, (r) => r);
   }
   logout() async {
-    String? token = await secury.read("nurse_token");
+    String? token = await secury.read("laboratory_token");
 
     var response = await crud.postdata(
         Serverconfig.logout,

@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_after_update/modules/Lab/home/changestatuslabservic.dart';
-import 'package:project_after_update/modules/x-Ray/home/patientlistService.dart';
+
 
 import '../../../core/class/StatusRequest.dart';
 import '../../../core/function/handlingdata.dart';
 import '../../../secure_storage/secure_storage.dart';
+import '../AddVisit/completeservice.dart';
+import '../VisitListLab/patientlistService.dart';
 
 
 class  PatientListControllerlab extends GetxController{
 
   changstatuslab change =changstatuslab(Get.find());
   patientlistservice services = patientlistservice(Get.find());
+  completvisit service2 = completvisit(Get.find());
   StatusRequest? statusRequest;
   StatusRequest? statusRequest2;
   StatusRequest? statusRequest3;
+  StatusRequest? statusRequest5;
   late int id_typeservic;
 
   late String name;
@@ -64,12 +68,12 @@ class  PatientListControllerlab extends GetxController{
     statusRequest3 = handlingdata(response);
 
     if (StatusRequest.succes == statusRequest3) {
-        if(status==0){
-      Get.defaultDialog(title: "", content: Text("تم إيقاف طلبات التحويل"));}
-        else {
-          Get.defaultDialog(title: "", content: Text("تم استئناف طلبات التحويل"));
+      if(status==0){
+        Get.defaultDialog(title: "", content: Text("تم إيقاف طلبات التحويل"));}
+      else {
+        Get.defaultDialog(title: "", content: Text("تم استئناف طلبات التحويل"));
 
-        }
+      }
 
 
     }
@@ -85,18 +89,23 @@ class  PatientListControllerlab extends GetxController{
     }
     update();
 
+  }
+  copmpletvisit(var id)async{
+    statusRequest5 = StatusRequest.loading;
+    update();
+    var respons2=  await service2.enter(id);
+    var response = await service2.complete(id);
+
+    statusRequest5 = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest5)
+      Get.defaultDialog(title: "", content: Text("تمت إزالة المريض من الدور"));
+    else
+      Get.defaultDialog(title: "", content: Text("حدث خطأ ما "));
 
 
 
-
-
-
-
-
-
-
-
-}
+  }
 
   @override
   onInit() {

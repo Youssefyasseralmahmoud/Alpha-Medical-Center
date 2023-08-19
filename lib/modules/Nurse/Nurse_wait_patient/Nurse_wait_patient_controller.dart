@@ -37,11 +37,9 @@ class Nurse_wait_patient_controller extends GetxController {
 
   @override
   void onInit() {
-
-
     super.onInit();
-  }
 
+  }
 
 
   get_allwaitingPatient(int id) async {

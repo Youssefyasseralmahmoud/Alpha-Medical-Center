@@ -55,9 +55,14 @@ class VisitsList extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 15, right: 15),
               child: GestureDetector(
-                onTap: () {
-                  Get.toNamed('/PersonalInformationN');
-                },
+                onTap:() async{
+              print("iddddd");
+
+              await controller.get_patient_info(controller.data[0]['IDPatientRecord']);
+              Get.toNamed("/PersonalInformationN");
+
+
+              },
                 child: Container(
                   color:Color.fromARGB(100, 189, 189, 189).withAlpha(50),
                   // margin: const EdgeInsets.only(bottom: 7,left: 7,right: 7),

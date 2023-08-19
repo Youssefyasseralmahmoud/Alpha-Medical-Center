@@ -13,6 +13,7 @@ class patientList extends StatelessWidget {
     return Flexible(
         child: ListView.builder(
             itemCount: controller.data.length,
+           // itemCount:3,
 
             itemBuilder: (BuildContext contex, int index) {
               return Listpatients(
@@ -30,6 +31,7 @@ class Listpatients extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     homeController controller = Get.put(homeController());
     patientVisitRecordController patientVisitRecord =Get.put(patientVisitRecordController());
     return Padding(
@@ -38,9 +40,18 @@ class Listpatients extends StatelessWidget {
         onTap: ()  async {
           print("${controller.data[index]['IDPatientRecord']}");
           print("xxxxxxxxxxxxxxxxxxxx");
-        await patientVisitRecord.get_patient_visits(
-              controller.data[index]['IDPatientRecord']);
-          Get.toNamed("/patientVisitRecord");
+        await patientVisitRecord.get_patient_visits(controller.data[index]['IDPatientRecord']);
+          await patientVisitRecord.get_patient_info(controller.data[index]['IDPatientRecord']);
+      //   await patientVisitRecord.get_patient_visits(17);
+          Get.toNamed("/patientVisitRecord"
+           // ,
+              // arguments: {
+              // "id" :controller.data[index]['IDPatientRecord'].toString(),
+
+
+           //   }
+          );
+
         },
 
       child: Container(
@@ -58,18 +69,27 @@ class Listpatients extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                IconButton(
-                  color:  Color(0xff9bb4fd),
-                  icon: Icon(
-                    Icons.delete,
-                    size: 30,
-                  ),
-                  onPressed: () {
-                    //   itemDetailsController.add()
+                // IconButton(
+                //   color:  Color(0xff9bb4fd),
+                //   icon: Icon(
+                //     Icons.delete,
+                //     size: 30,
+                //   ),
+                //   onPressed: () {
+                //     //   itemDetailsController.add()
+                //
+                //   },
+                // ),
+             //   Text("${s[index]}",style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: 'Arial')),
+              //  if (controller.data.isNotEmpty)
 
-                  },
+                Row(
+                  children: [
+                    Text(" (  ${controller.data[index]['ServiceName']}  )        " ,style: TextStyle(fontSize: 14,fontWeight: FontWeight.w200,fontFamily: 'Arial',color: Colors.grey[900])),
+                    Text(controller.data[index]['FullName'],style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: 'Arial')),
+
+                  ],
                 ),
-                Text(controller.data[index]['FullName'],style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: 'Arial')),
                 IconButton(
                   color: Color(0xff9bb4fd),
                   icon: Icon(

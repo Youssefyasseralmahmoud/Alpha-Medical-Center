@@ -8,7 +8,7 @@ class EditVisitNurseServices{
   EditVisitNurseServices(this.crud);
   Secury_storage secury = new Secury_storage();
   edit_visit(int id,int idpatientrecord,String title,String referringphysician )async{
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("nurse_token");
     var response=await crud.postdata(Serverconfig.update_visit,{
       "id" :id.toString(),
       "IDPatientRecord" : idpatientrecord.toString(),

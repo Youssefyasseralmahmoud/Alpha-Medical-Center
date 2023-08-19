@@ -14,25 +14,27 @@ class Laboratory_service_type extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: StaticColor.primarycolor,
       ),
-      bottomNavigationBar:   GestureDetector(
-        onTap: (){
-          Get.toNamed("/Laboratory_reserv");
-        },
-        child: Container(
-          padding: const EdgeInsets.all(8),
-          alignment: Alignment.center,
-          height: 50,
-          width: MediaQuery.of(context).size.width * 0.2,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            color: StaticColor.primarycolor,
-          ),
-          child: const Text(
-            "حجز",
-            style: TextStyle(color: Colors.white, fontSize: 20),
-          ),
-        ),
-      ),
+    //  bottomNavigationBar:
+
+      // GestureDetector(
+      //   onTap: (){
+      //     Get.toNamed("/Laboratory_reserv");
+      //   },
+      //   child: Container(
+      //     padding: const EdgeInsets.all(8),
+      //     alignment: Alignment.center,
+      //     height: 50,
+      //     width: MediaQuery.of(context).size.width * 0.2,
+      //     decoration: BoxDecoration(
+      //       borderRadius: BorderRadius.circular(8),
+      //       color: StaticColor.primarycolor,
+      //     ),
+      //     child: const Text(
+      //       "حجز",
+      //       style: TextStyle(color: Colors.white, fontSize: 20),
+      //     ),
+      //   ),
+      // ),
 
 
       body: GetBuilder<Laboratory_service_type_controller>(builder: (controller){

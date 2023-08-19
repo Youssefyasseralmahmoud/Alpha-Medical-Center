@@ -5,10 +5,11 @@ import 'package:project_after_update/modules/Nurse/VisitsList/PersonalInformatio
 import '../VisitsListController.dart';
 
 class PersonalInformation extends StatelessWidget {
-  int height = Get.height.toInt();
-  int width = Get.width.toInt();
+  VisitsListController controller = Get.find();
 
-  // VisitsListController controller = Get.find();
+  int  height = Get.height.toInt();
+  int  width  = Get.width.toInt();
+
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class PersonalInformation extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 330.0,top: 50),
             child: IconButton(icon:Icon( Icons.arrow_back_rounded,size: 35,color: Colors.black54),
-              onPressed: (){Get.offNamed('/patientVisitRecord');},),
+              onPressed: (){Get.back();},),
           ),
           CircleAvatar(
             backgroundColor: Color(0xff9bb4fd),
@@ -49,9 +50,9 @@ class PersonalInformation extends StatelessWidget {
                   color: Color.fromARGB(100, 189, 189, 189).withAlpha(30),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Text("محمد سعيد :"),
-                      Text(" المريض",
+                    children:  [
+                      Text("${controller.data2[0]['FullName']}     : "),
+                      Text("اسم المريض",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       Padding(
                         padding: EdgeInsets.all(10.0),
@@ -70,9 +71,9 @@ class PersonalInformation extends StatelessWidget {
                   margin: const EdgeInsets.only(bottom: 7,left: 7,right: 7),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Text(" 5423456789 :"),
-                      Text("رقم الوطني ",
+                    children:  [
+                      Text(" ${controller.data2[0]['IDPersonal']}    : "),
+                      Text("الرقم الوطني ",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       Padding(
                         padding: EdgeInsets.all(10.0),
@@ -91,8 +92,8 @@ class PersonalInformation extends StatelessWidget {
                   margin: const EdgeInsets.only(bottom: 7,left: 7,right: 7),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Text("40:"),
+                    children:  [
+                      Text("${controller.data2[0]['age']}   : "),
                       Text("العمر",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       Padding(
@@ -112,8 +113,8 @@ class PersonalInformation extends StatelessWidget {
                   margin: const EdgeInsets.only(bottom: 5,left: 7,right: 7),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Text("دمشق:"),
+                    children:  [
+                      Text("${controller.data2[0]['address']}   : "),
                       Text("العنوان",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       Padding(
@@ -133,8 +134,8 @@ class PersonalInformation extends StatelessWidget {
                   color: Color.fromARGB(100, 189, 189, 189).withAlpha(30),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Text("093476155:"),
+                    children:  [
+                      Text("${controller.data2[0]['phonenumber']}   : "),
                       Text("رقم الهاتف",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       Padding(

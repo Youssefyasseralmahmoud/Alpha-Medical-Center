@@ -200,6 +200,7 @@ class Add_clinics_service extends StatelessWidget {
                             onChanged: (val) {
                               controller.price=val;
                             },
+                            keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                                 floatingLabelBehavior: FloatingLabelBehavior.always,
                                 label: const Text(

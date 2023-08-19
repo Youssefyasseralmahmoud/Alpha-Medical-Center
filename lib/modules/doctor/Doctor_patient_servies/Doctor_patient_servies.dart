@@ -41,6 +41,14 @@ class Doctor_patient_servies extends StatelessWidget {
       ),
         body:Column(
           children: [
+            if (controller_patient_servies.data.isEmpty)
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Text("لا يوجد خدمات ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.normal),),
+                ),
+              )
+            else
             Container(
               child: Expanded(
                   child:

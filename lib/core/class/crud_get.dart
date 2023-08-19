@@ -23,8 +23,9 @@ class Crud_get {
       }
       else if (response.statusCode == 422) {
         print("enter to 422");
-        Map responsebody = jsonDecode(response.body);
-        return Right(responsebody);
+        // Map responsebody = jsonDecode(response.body);
+        // return Right(responsebody);
+        return const Left(StatusRequest.failure);
       }
       else {
         return const Left(StatusRequest.serverexception);

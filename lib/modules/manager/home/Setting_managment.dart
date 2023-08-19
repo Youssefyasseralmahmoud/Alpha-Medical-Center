@@ -8,6 +8,7 @@ class Setting_managment extends StatelessWidget {
   const Setting_managment({Key? key}) : super(key: key);
 
   @override
+
   Widget build(BuildContext context) {
     Get.put(Home_screen_manager_controller());
     return GetBuilder<Home_screen_manager_controller>(builder: (controller){

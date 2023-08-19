@@ -58,6 +58,92 @@ class Serverconfig{
   static const get_all_available_service ='$domainnameserver/api/getAllCenterServiceAvailable';
   static const edit_profile_info ='$domainnameserver/api/UpdateMyUserInfo';
   static const change_status_type_service ='$domainnameserver/api/changeStatus';
+  // finance section youssef//
+  static const get_all_bills ='$domainnameserver/api/getAllBills';
+
+  static const get_all_insurance_company ='$domainnameserver/api/getAllInsuranceCompany';
+  static const remove_insurance_compnay ='$domainnameserver/api/removeInsuranceCompany';
+  static const edit_insurance_company ='$domainnameserver/api/updateInsuranceCompany';
+  static const add_insurance_company ='$domainnameserver/api/addInsuranceCompany';
+  static const get_all_patient_services_in_financial ='$domainnameserver/api/getAllVisitsThatDoNotHaveBill';
+  static const add_bill ='$domainnameserver/api/addBill';
+  static const add_receipts ='$domainnameserver/api/addReceipts';
+  static const get_all_patient_bills ='$domainnameserver/api/getAllBillsOfPatientByIDPersonal';
+  static const delete_bill ='$domainnameserver/api/removeBill';
+  static const get_patient_service_by_visite_id ='$domainnameserver/api/getPatientServicesByVisitID';
+  static const delete_services_not_complete ='$domainnameserver/api/deleteServicePatientNotComplete';
+  static const get_all_receipts ='$domainnameserver/api/getAllReceipts';
+  static const get_bill_details ='$domainnameserver/api/getBill';
+  static const delete_receipts ='$domainnameserver/api/removeReceipts';
+  static const update_receipts ='$domainnameserver/api/updateReceipts';
+  static const update_bill ='$domainnameserver/api/updateBill';
+
+  static const get_all_maintenance_request ='$domainnameserver/api/getAllMaintenanceRequests';
+  static const add_mainteance_request ='$domainnameserver/api/addMaintenanceRequests';
+  static const update_maintenance_request ='$domainnameserver/api/updateMaintenanceRequests';
+  static const delete_main_tenance_request ='$domainnameserver/api/removeMaintenanceRequests';
+  static const get_myuser_info ='$domainnameserver/api/getMyUserInfo';
+  static const get_all_material_in_center ='$domainnameserver/api/getAllCenterMaterial';
+  static const change_material_price ='$domainnameserver/api/changeMaterialPrice';
+  static const change_salary_user ='$domainnameserver/api/changeSalaryUser';
+  static const pay_back ='$domainnameserver/api/payBackWhenCancelingTheBill';
+  static const get_all_payments_maintenance ='$domainnameserver/api/getPaymentsMaintenanceRequests';
+  static const delete_payments ='$domainnameserver/api/removePayments';
+  static const add_payments_maintenance_req ='$domainnameserver/api/addPaymentsMaintenanceRequests';
+  static const get_all_payment ='$domainnameserver/api/getAllPayments';
+  static const add_salary_increase_from_reception ='$domainnameserver/api/addSalaryIncrease';
+  static const update_payments_maintenance ='$domainnameserver/api/updatePayments';
+  static const get_all_user_status ='$domainnameserver/api/listStatusUsers';
+  static const get_all_order_incomplete ='$domainnameserver/api/getAllOrdersInComplete';
+  static const accept_or_reject_item_request ='$domainnameserver/api/AcceptOrRejectItemRequest';
+  static const get_all_order_complete ='$domainnameserver/api/getAllOrdersComplete';
+  static const add_payments_orders ='$domainnameserver/api/addPaymentsOrdersAndConsumable';
+  static const get_all_payments_orders ='$domainnameserver/api/getPaymentsOrdersAndConsumable';
+  static const update_user_staus ='$domainnameserver/api/updateUserStatus';
+  static const get_all_item_in_order ='$domainnameserver/api/getAllItemByOrderInComplete';
+  static const get_all_item_in_order_complete ='$domainnameserver/api/getAllItemByOrderComplete';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //end finance api //
   // END API YOUSSEF
   static const get_Patient_Services ='$domainnameserver/api/getPatientServices';
   static const get_Users_ByType ='$domainnameserver/api/getUsersByType';

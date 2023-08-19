@@ -1,222 +1,170 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:ui';
+
+import 'package:project_after_update/modules/financial/orders_from_warehouse/orders_from_warehouse_controller.dart';
+import 'package:project_after_update/static_colors/StaticColors.dart';
+
+import '../../../core/class/StatusRequest.dart';
 class orders_from_warehouse extends StatelessWidget {
   const orders_from_warehouse({Key? key}) : super(key: key);
 
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-            color: Colors.black54,size: 28),
-        toolbarHeight: 100,
-        elevation: 0,
+    Order_from_warehouse_controller controller=Get.put(Order_from_warehouse_controller());
+    return
+      RefreshIndicator(
+        onRefresh: ()async{
+          await controller.get_all_orders_incomplete();
+        },
+        child: Scaffold(
         backgroundColor: Colors.white,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Spacer(),
-            Expanded(
-              child: Text(
-                'طلبات المستودع',
-                textAlign: TextAlign.right,
-                style: TextStyle(fontSize: 25, color: Colors.black54),
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+              color: Colors.black54,size: 28),
+          toolbarHeight: 100,
+          elevation: 0,
+          backgroundColor: Colors.white,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Spacer(),
+              Expanded(
+                child: Text(
+                  'طلبات المستودع',
+                  textAlign: TextAlign.right,
+                  style: TextStyle(fontSize: 25, color: Colors.black54),
+                ),
               ),
-            ),
-            SizedBox(
-              width: 20,
-            ),
-          ],
+              SizedBox(
+                width: 20,
+              ),
+            ],
+          ),
         ),
-      ),
-      body: _buildMaterialList(),
+        body:SafeArea(
+          child:
+          GetBuilder<Order_from_warehouse_controller>(builder: (controller){
 
-
-    );
-  }
-
-  Widget _buildMaterialList() {
-    return ListView.builder(
-      itemCount: 4,
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
-          child: Container(
-            width: 300,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: 4,
-                  color: Color(0xff9bb4fd),
-                )
-              ],
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Column(
-
-              children: [
-
-                SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        Get.back();
-                      },
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(Color(
-                            0xD0F65050)),
-                      ),
-                      child: Text('رفض الطلبة'),
-                    ),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(Color(0xff9bb4fd)),
-                      ),
-                      onPressed: () {
-                        // Implement salary increase request logic here
-                        // You can access the entered values using the employee instance
-                        Get.back();
-                      },
-                      child: Text('قبول الطلبية'),
-                    ),
-                  ],
-                ),
-
-                SizedBox(height: 10),
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          '  (  العدد  :  20  )',
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.black54,
-                          ),
-                        ),
-                        Text(
-                          "قطن",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w200,
-                            fontFamily: 'Arial',
-                          ),
-                        ),
+            return
+              controller.statusRequest==StatusRequest.loading?
+              Center(child: CircularProgressIndicator(color: StaticColor.primarycolor,),):
+                  controller.data.isEmpty?
+                      Center(child: Container(child: Text("لا يوجد طلبات لعرضهم",style: TextStyle(color: StaticColor.primarycolor),),),):
+              ListView.builder(
+              itemCount: controller.data.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                //  padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
+                  padding: EdgeInsets.all(8),
+                  child: Container(
+                    padding: EdgeInsets.all(5),
+                    width: 300,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 4,
+                          color: Color(0xff9bb4fd),
+                        )
                       ],
-                    );
-                  },
-                ),
-                Align(
-                  alignment: AlignmentDirectional.bottomEnd,
-                  child: ClipRect(
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(
-                        sigmaX: 5,
-                        sigmaY: 2,
-                      ),
-                      child: Container(
-                        width: double.infinity,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [Color(0x49e1e7f8), Color(0xff9bb4fd)],
-                            stops: [0, 1],
-                            begin: AlignmentDirectional(0, -1),
-                            end: AlignmentDirectional(0, 1),
-                          ),
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(8),
-                            bottomRight: Radius.circular(8),
-                            topLeft: Radius.circular(0),
-                            topRight: Radius.circular(0),
-                          ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Column(
+
+                      children: [
+
+                        SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text("${controller.data[index]['Type']}",style: TextStyle(color: StaticColor.primarycolor),),
+                            Text(" : نوع الطلب",style: TextStyle(fontWeight: FontWeight.bold),),
+                          ],
                         ),
-                        alignment: AlignmentDirectional(-1, 0),
-                        child: Center(
-                          child: Text(
-                            '12/12/2022',
-                            style: TextStyle(
-                              color: Colors.black54,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 19,
+                        Divider(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+
+                            Text("${controller.data[index]['created_at']}",style: TextStyle(color: StaticColor.primarycolor),),
+                            Text(" : تاريخ الإنشاء",style: TextStyle(fontWeight: FontWeight.bold),),
+                          ],
+                        ),
+                        Divider(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+
+                            Text("${controller.data[index]['updated_at']}",style: TextStyle(color: StaticColor.primarycolor),),
+                            Text(" : تاريخ التعديل ",style: TextStyle(fontWeight: FontWeight.bold),),
+                          ],
+                        ),
+
+                        SizedBox(height: 10),
+                        Align(
+                          alignment: AlignmentDirectional.bottomEnd,
+                          child: ClipRect(
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(
+                                sigmaX: 5,
+                                sigmaY: 2,
+                              ),
+                              child: Container(
+                                width: double.infinity,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [Color(0x49e1e7f8), Color(0xff9bb4fd)],
+                                    stops: [0, 1],
+                                    begin: AlignmentDirectional(0, -1),
+                                    end: AlignmentDirectional(0, 1),
+                                  ),
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(8),
+                                    bottomRight: Radius.circular(8),
+                                    topLeft: Radius.circular(0),
+                                    topRight: Radius.circular(0),
+                                  ),
+                                ),
+                                alignment: AlignmentDirectional(-1, 0),
+                                child: Center(
+                                  child:
+                                  GestureDetector(
+                                    onTap: (){
+                                      Get.toNamed("/All_item_in_order",arguments: {
+                                        "order_id":controller.data[index]['id']
+                                      });
+                                    },
+                                    child: Text(
+                                      'عرض مواد الطلب',
+                                      style: TextStyle(
+                                        color: Colors.black54,
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
                   ),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
+                );
+              },
+            );
+          }),
+        ),
+
+
+    ),
+      );
   }
 
 
-  void _editmMateriaPriceslDialog() {
-    Get.defaultDialog(
-      title: 'تعديل السعر',
-      content: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 30.0,right: 30),
-            child: TextFormField(
 
-              decoration: InputDecoration(labelText: 'السعر الجديد'),
-              keyboardType: TextInputType.number,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'رجاء ادخل السعر الجديد ';
-                }
-                return null;
-              },
-              onSaved: (value) {
-                final newSalary = double.tryParse(value!);
-                if (newSalary != null) {
-                  // employee.salary = newSalary;
-                }
-              },
-            ),
-          ),
-
-        ],
-      ),
-      actions: [
-        ElevatedButton(
-          onPressed: () {
-            Get.back();
-          },
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Color(0xff9bb4fd)),
-          ),
-          child: Text('إلغاء'),
-        ),
-        ElevatedButton(
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Color(0xff9bb4fd)),
-          ),
-          onPressed: () {
-            // Implement salary increase request logic here
-            // You can access the entered values using the employee instance
-            Get.back();
-          },
-          child: Text('تعديل السعر'),
-        ),
-      ],
-    );
-  }
 }

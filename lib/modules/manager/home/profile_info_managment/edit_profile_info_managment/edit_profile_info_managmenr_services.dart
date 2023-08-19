@@ -13,7 +13,7 @@ class Edit_profile_info_managment_services{
 
 
   edit_profil_info(String username,String password,String name,String surname,String email,String pass_conf)async{
-    String? token = await secury.read("receptionist_token");
+    String? token = await secury.read("admin_token");
     var response=await crud.postdata(Serverconfig.edit_profile_info,{
       "name" :name,
       "surname" :surname,

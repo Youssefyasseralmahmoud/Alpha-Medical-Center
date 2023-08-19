@@ -56,6 +56,7 @@ print("response from controller is ${response}");
     else {
       print("no");
       Get.snackbar( " تم", "تمت عملية الحذف بنجاح");
+      Get.offAllNamed("/Home_screen_manager");
     }
     update();
   }

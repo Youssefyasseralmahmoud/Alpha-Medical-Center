@@ -161,6 +161,7 @@ class Reservations extends StatelessWidget {
                                                                               .data[index]
                                                                           [
                                                                           'id']);
+                                                                  controller.data.removeAt(index);
 
                                                                 },
                                                                 child:

@@ -49,7 +49,8 @@ class Profile_info_reception extends StatelessWidget {
             ],
           ),
         ),
-        body: GetBuilder<Profile_info_controller>(builder: (controller) {
+        body:
+        GetBuilder<Profile_info_controller>(builder: (controller) {
           return
             controller.statusRequest==StatusRequest.loading?
             Center(child: CircularProgressIndicator(color: StaticColor.primarycolor,)):
@@ -99,7 +100,7 @@ class Profile_info_reception extends StatelessWidget {
                             borderRadius: BorderRadius.circular(5),
                           ),
                           child: Text(
-                            "${controller.data_details[3]}",
+                            "${controller.data_details[1]['name']}",
                             style: TextStyle(
                                 fontSize: 15, color: StaticColor.primarycolor),
                             textAlign: TextAlign.end,
@@ -122,7 +123,7 @@ class Profile_info_reception extends StatelessWidget {
                             borderRadius: BorderRadius.circular(5),
                           ),
                           child: Text(
-                            "${controller.data_details[6]}",
+                            "${controller.data_details[1]['email']}",
                             style: TextStyle(
                                 fontSize: 15, color: StaticColor.primarycolor),
                             textAlign: TextAlign.end,
@@ -145,7 +146,7 @@ class Profile_info_reception extends StatelessWidget {
                             borderRadius: BorderRadius.circular(5),
                           ),
                           child: Text(
-                            "${controller.data_details[11]}",
+                            "${controller.data_details[1]['created_at']}",
                             style: TextStyle(
                                 fontSize: 15, color: StaticColor.primarycolor),
                             textAlign: TextAlign.end,
@@ -170,7 +171,30 @@ class Profile_info_reception extends StatelessWidget {
                             borderRadius: BorderRadius.circular(5),
                           ),
                           child: Text(
-                            "${controller.data_details[7]}",
+                            "${controller.data_details[1]['type']}",
+                            style: TextStyle(
+                                fontSize: 15, color: StaticColor.primarycolor),
+                            textAlign: TextAlign.end,
+                          ),
+                        ),
+                        const Divider(
+                          height: 2,
+                          color: Colors.black45,
+                        ),
+                        const Text(
+                          " الراتب",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(8),
+                          height: MediaQuery.of(context).size.height * 0.05,
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          decoration: BoxDecoration(
+                            color: StaticColor.thirdgrey,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Text(
+                            "${controller.data_details[1]['salary']}",
                             style: TextStyle(
                                 fontSize: 15, color: StaticColor.primarycolor),
                             textAlign: TextAlign.end,
@@ -189,6 +213,6 @@ class Profile_info_reception extends StatelessWidget {
               ],
             ),
           );
-        }));
+        }),);
   }
 }

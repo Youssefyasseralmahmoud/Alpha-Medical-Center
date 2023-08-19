@@ -66,9 +66,7 @@ class warehouseController extends GetxController{
         "لا يوجد بيانات لعرضها",
       );
     }
-    else{
-      Get.defaultDialog(title: "حدث خطأ ما", content: Text("حدث خطا ما"));
-    }
+
     update();
   }
   addorder()async{
@@ -84,9 +82,7 @@ class warehouseController extends GetxController{
       data_details2.add(response['data']) ;
 
     }
-    else{
-      Get.defaultDialog(title: "حدث خطأ ما",content:Text("اسم المستخدم أو كلمة المرور خطا"));
-    }
+
 
 
   }
@@ -113,9 +109,7 @@ class warehouseController extends GetxController{
           "لا يوجد بيانات لعرضها",
         );
       }
-      else{
-        Get.defaultDialog(title: "حدث خطأ ما", content: Text("حدث خطا ما"));
-      }
+
       update();}
     else{
       Get.snackbar(

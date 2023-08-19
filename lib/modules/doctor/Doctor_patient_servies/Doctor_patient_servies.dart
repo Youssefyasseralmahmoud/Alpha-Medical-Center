@@ -8,37 +8,37 @@ class Doctor_patient_servies extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            controller_patient_servies.showDetails.assignAll(List.filled(100, false));
-            Get.back();
-          },
-        ),
-        iconTheme: IconThemeData(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              controller_patient_servies.showDetails.assignAll(List.filled(100, false));
+              Get.back();
+            },
+          ),
+          iconTheme: IconThemeData(
 
-            color: Colors.black54,size: 28),
-        toolbarHeight: 70,
-        elevation: 0,
-        backgroundColor: Color(0xff9bb4fd),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
+              color: Colors.black54,size: 28),
+          toolbarHeight: 70,
+          elevation: 0,
+          backgroundColor: Color(0xff9bb4fd),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
 
-            Expanded(
-              child: Text(
-                'خدمات المريض',
-                textAlign: TextAlign.right,
-                style: TextStyle(fontSize: 22, color: Colors.black54),
+              Expanded(
+                child: Text(
+                  'خدمات المريض',
+                  textAlign: TextAlign.right,
+                  style: TextStyle(fontSize: 22, color: Colors.black54),
+                ),
               ),
-            ),
-            SizedBox(
-              width: 25,
-            ),
-          ],
+              SizedBox(
+                width: 25,
+              ),
+            ],
+          ),
         ),
-      ),
         body:Column(
           children: [
             if (controller_patient_servies.data.isEmpty)
@@ -49,13 +49,13 @@ class Doctor_patient_servies extends StatelessWidget {
                 ),
               )
             else
-            Container(
-              child: Expanded(
-                  child:
-                  _buildEmployeeList()
+              Container(
+                child: Expanded(
+                    child:
+                    _buildEmployeeList()
 
+                ),
               ),
-            ),
           ],
         )
 
@@ -185,14 +185,14 @@ class Doctor_patient_servies extends StatelessWidget {
     return Column(
       children: [
 
-    Column(
-    children: [
-    widget1('أسم الخدمة ', controller_patient_servies.data[index]['ServiceName'],
-    Icons.edit_note_sharp),
-    widget1('تفاصيل الخدمة', controller_patient_servies.data[index]['ServiceDetails'], Icons.home_repair_service_outlined),
-      widget1('سعر الخدمة  ', '${controller_patient_servies.data[index]['ServicePrice']}', Icons.monetization_on_outlined),
-    ],
-    ),
+        Column(
+          children: [
+            widget1('أسم الخدمة ', controller_patient_servies.data[index]['ServiceName'],
+                Icons.edit_note_sharp),
+            widget1('تفاصيل الخدمة', controller_patient_servies.data[index]['ServiceDetails'], Icons.home_repair_service_outlined),
+            widget1('سعر الخدمة  ', '${controller_patient_servies.data[index]['ServicePrice']}', Icons.monetization_on_outlined),
+          ],
+        ),
 
 
         SizedBox(

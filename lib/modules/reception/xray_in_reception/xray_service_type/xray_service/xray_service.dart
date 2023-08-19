@@ -207,10 +207,16 @@ class Xray_service extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                   child: ListTile(
-                                    title:  Text(
-                                      "${controller.data_doctor[index]['name']} : اسم الطبيب  ",
-                                      style: TextStyle(fontWeight: FontWeight.bold),
-                                    ),
+                                    title: Row(children: [
+                                      Text(
+                                        "${controller.data_doctor[index]['name']}  ",
+                                        style: TextStyle(fontWeight: FontWeight.bold,color: StaticColor.primarycolor),
+                                      ),
+                                      Text(
+                                        "   : اسم الطبيب ",
+                                        style: TextStyle(fontWeight: FontWeight.bold),
+                                      ),
+                                    ],),
                                    // subtitle: const Text("حالة الطبيب  : متواجد"),
                                     trailing: CircleAvatar(
                                       child: Image.asset("assets/images/doctor.png"),

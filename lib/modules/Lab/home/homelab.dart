@@ -7,13 +7,13 @@ import 'Typeserviclab.dart';
 import 'homelabController.dart';
 
 class homelab extends  StatelessWidget{
-
+  homelabController controller=  Get.put(homelabController());
 
   homelab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Get.put(homelabController());
+
     return GetBuilder<homelabController>(builder: (controller) {
       return Scaffold(
           body: SafeArea(
@@ -52,7 +52,7 @@ class homelab extends  StatelessWidget{
                           //  color: Color(0xff3366ff)
                           //,
                           onPressed: () {
-                            //  _increment_requrst_SalaryDialog();
+                            _increment_requrst_SalaryDialog();
                           },
                         ),
                       ),
@@ -185,5 +185,45 @@ class homelab extends  StatelessWidget{
     });
 
   }
+  void _increment_requrst_SalaryDialog() {
+    Get.defaultDialog(
+      title: ' طلب زيادة راتب ',
+      content: Column(
+        children: [
+
+          Padding(
+            padding: const EdgeInsets.only(left: 30.0,right: 30),
+            child: TextFormField(
+              onChanged: (val) {
+                controller.detaile = val;
+              },
+              decoration: InputDecoration(labelText: 'أدخل تفاصيل الطلب'),
+              maxLines: 3,
+            ),
+          ),
+        ],
+      ),
+      actions: [
+        ElevatedButton(
+          onPressed: () {
+            Get.back();
+          },
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Color(0xff9bb4fd)),
+          ),
+          child: Text('إلغاء'),
+        ),
+        ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Color(0xff9bb4fd)),
+          ),
+          onPressed: () {
+            controller.increment_requrst_Salary();
+            Get.back();
+          },
+          child: Text('إرسال الطلب'),
+        ),
+      ],
+    );}
 }
 

@@ -102,7 +102,7 @@ class Serverconfig{
   static const update_user_staus ='$domainnameserver/api/updateUserStatus';
   static const get_all_item_in_order ='$domainnameserver/api/getAllItemByOrderInComplete';
   static const get_all_item_in_order_complete ='$domainnameserver/api/getAllItemByOrderComplete';
-
+  static const completeRequiredPatientServices ='$domainnameserver/api/completeRequiredPatientServices';
 
 
 
@@ -157,7 +157,7 @@ class Serverconfig{
   static const personal_information ='$domainnameserver/api/getPatientInformation?Key=ID Personal&Value=0254516459816';
   static const upload_Xray ='$domainnameserver/api/addX_Rays';
   static const getwaitRequest ='$domainnameserver/api/getAllWaitRequestByTypeCenterServices';
-  static const typeServicexray ='$domainnameserver/api/getAllTypesOfSection?id_section=11';
+  static const typeServicexray ='$domainnameserver/api/getAllTypesOfSection?id_section=4';
   static const getinformationbyId  ='$domainnameserver/api/getPatientInformationByID?id=';
   static const gitvisitsbyid ='$domainnameserver/api/getVisitsPatientUseIDPatientRecord?IDPatientRecord=';
   static const typeServicelab ='$domainnameserver/api/getAllTypesOfSection?id_section=5';

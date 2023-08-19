@@ -38,7 +38,9 @@ class waiting_from_reception extends StatelessWidget {
                     child: CircularProgressIndicator(
                       color: StaticColor.primarycolor,
                     ),
-                  )
+                  ):
+                controller.data_details.isEmpty?
+                    Center(child: Container(child: Text("لا يوجد خدمات مطلوبة لعرضها",style: TextStyle(color: StaticColor.primarycolor),),),)
                 : Column(
                     children: [
                       SizedBox(

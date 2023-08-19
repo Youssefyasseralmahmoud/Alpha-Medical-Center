@@ -5,217 +5,6 @@ import 'package:project_after_update/modules/manager/home/recption_in_managment/
 import 'package:project_after_update/modules/manager/join_request/join_request_controller.dart';
 import 'package:project_after_update/static_colors/StaticColors.dart';
 
-// class Display_users_in_reception extends StatelessWidget {
-//   const Display_users_in_reception({Key? key}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     display_user_in_reception_controller controller =Get.put(display_user_in_reception_controller());
-//     return RefreshIndicator(
-//       onRefresh:()async{
-//         await controller.get_all_user();
-//       } ,
-//       child: Scaffold(
-//         body: SafeArea(
-//             child: GetBuilder<display_user_in_reception_controller>(builder: (controller){
-//               return
-//                 controller.statusRequest==StatusRequest.loading?
-//                 Center(child: CircularProgressIndicator(color: StaticColor.primarycolor,),):
-//                 Container(
-//                   child: ListView(
-//                     children: [
-//                       Container(
-//                         margin: const EdgeInsets.only(top: 10),
-//                         padding: const EdgeInsets.symmetric(horizontal: 15),
-//                         child: Row(
-//                           children: [
-//                             Expanded(
-//                                 child: TextFormField(
-//                                   decoration: InputDecoration(
-//                                       contentPadding: const EdgeInsets.symmetric(vertical: 10),
-//                                       prefixIcon: const Icon(Icons.search),
-//                                       hintText: "البحث",
-//                                       hintStyle: const TextStyle(fontSize: 20),
-//                                       border: OutlineInputBorder(
-//                                           borderSide: BorderSide.none,
-//                                           borderRadius: BorderRadius.circular(10)),
-//                                       filled: true,
-//                                       fillColor: Colors.grey[200]),
-//                                 )),
-//                             const SizedBox(
-//                               width: 10,
-//                             ),
-//                             Container(
-//                               decoration: BoxDecoration(
-//                                 borderRadius: BorderRadius.circular(10),
-//                                 color: StaticColor.primarycolor,
-//                               ),
-//                               width: 60,
-//                               height: 55,
-//                               padding: const EdgeInsets.symmetric(vertical: 8),
-//                               child: IconButton(
-//                                 onPressed: () {
-//                                   Get.toNamed("/notification");
-//                                 },
-//                                 icon: const Icon(
-//                                   Icons.notifications_active_outlined,
-//                                   size: 25,
-//                                   color: Colors.white,
-//                                 ),
-//                               ),
-//                             ),
-//                           ],
-//                         ),
-//                       ),
-//                       const SizedBox(height: 20),
-//                       Container(
-//                         padding: const EdgeInsets.all(10),
-//                         child: Column(
-//                           crossAxisAlignment: CrossAxisAlignment.end,
-//                           children: [
-//                             const Text(
-//                               "قسم الإدارة",
-//                               style: TextStyle(
-//                                   fontSize: 20,
-//                                   fontWeight: FontWeight.bold,
-//                                   color: Colors.black),
-//                             ),
-//                             Divider(),
-//                             Container(
-//                               //  padding: EdgeInsets.all(2),
-//                               color: StaticColor.primarycolor,
-//                               child: Row(
-//                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                                 children: [
-//                                   Container(
-//                                     padding: EdgeInsets.all(3),
-//                                     height: 60,
-//                                     width: 60,
-//                                     child: Image.asset(
-//                                       "assets/images/receptionist.png",
-//                                       fit: BoxFit.fill,
-//                                     ),
-//                                   ),
-//                                   Container(
-//                                     padding: const EdgeInsets.only(right: 5),
-//                                     child: const Text(
-//                                       "الموظفين",
-//                                       style: TextStyle(fontSize: 15, color: Colors.white,fontWeight: FontWeight.bold),
-//                                     ),
-//                                   ),
-//                                 ],
-//                               ),
-//                             ),
-//                             const Divider(
-//                               height: 10,
-//                               color: Colors.black45,
-//                             ),
-//                           ],
-//                         ),
-//                       ),
-//                       GetBuilder<display_user_in_reception_controller>(builder: (controller){
-//                         return
-//                           controller.data[0]['types_of_center_services'][0]['user'].isEmpty?Container(child: Center(child: Text("لا يوجد موظفين لعرضهم",style: TextStyle(color: StaticColor.primarycolor),),),):
-//                           Card(
-//                             child: Container(
-//                               padding: const EdgeInsets.all(8),
-//                               height: MediaQuery.of(context).size.height * 0.6,
-//                               decoration: BoxDecoration(
-//                                 borderRadius: BorderRadius.circular(20),
-//                               ),
-//                               child: ListView.builder(
-//                                   itemCount: controller.data[0]['types_of_center_services'][0]['user'].length,
-//                                   itemBuilder: (context, index) {
-//                                     return GestureDetector(
-//                                       onTap: () {},
-//                                       child: Container(
-//                                         padding: EdgeInsets.all(8)
-//                                         ,
-//                                         margin: const EdgeInsets.only(top: 10),
-//                                         height: MediaQuery.of(context).size.height * 0.1,
-//                                         width: MediaQuery.of(context).size.width * 0.2,
-//                                         decoration: BoxDecoration(
-//                                           color: StaticColor.thirdgrey,
-//                                           borderRadius: BorderRadius.circular(20),
-//                                         ),
-//                                         child: Row(
-//                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                                           children: [
-//                                             Container(
-//                                               child: Row(
-//                                                 children: [
-//                                                   GestureDetector(
-//                                                     onTap: (){
-//                                                       Get.toNamed("/details_user",arguments: {
-//                                                         "id_user":controller.data[0]['types_of_center_services'][0]['user'][index]['id']
-//                                                       });
-//                                                     },
-//                                                     child: Container(
-//                                                       height: 60,
-//                                                       width: 50,
-//                                                       child: Column(
-//                                                         children: [
-//                                                           Expanded(
-//                                                               flex: 2,
-//                                                               child: Image.asset(
-//                                                                 "assets/images/service_details.png",
-//                                                                 fit: BoxFit.fill,
-//                                                               )),
-//                                                           const Expanded(child: Text("تفاصيل")),
-//                                                         ],
-//                                                       ),
-//                                                     ),
-//
-//                                                   ),
-//                                                   Container(
-//                                                     height: 60,
-//                                                     width: 50,
-//                                                     child: Column(
-//                                                       children: [
-//                                                         Expanded(
-//                                                             flex: 2,
-//                                                             child: Image.asset(
-//                                                               "assets/images/cancel.png",
-//                                                               fit: BoxFit.fill,
-//                                                             )),
-//                                                         const Expanded(child: Text("إزالة")),
-//                                                       ],
-//                                                     ),
-//                                                   ),
-//                                                 ],
-//                                               ),
-//                                             ),
-//                                             Column(
-//                                               crossAxisAlignment: CrossAxisAlignment.end,
-//                                               children: [
-//                                                Row(children: [
-//                                                  Text(
-//                                                    "${controller.data[0]['types_of_center_services'][0]['user'][index]['name']} ",
-//                                                    style: TextStyle(fontWeight: FontWeight.bold),
-//                                                  ),
-//                                                  SizedBox(width: 3,),
-//                                                  Text(": الإسم",style: TextStyle(fontWeight: FontWeight.bold,color: StaticColor.primarycolor),)
-//                                                ],),
-//                                             //    const Text(" الإختصاص : ب",style: TextStyle(color: Colors.grey),),
-//                                               ],
-//                                             ),
-//                                           ],
-//                                         ),
-//                                       ),
-//                                     );
-//                                   }),
-//                             ),
-//                           );
-//                       })
-//                     ],
-//                   ),
-//                 );
-//             })
-//         ),
-//       ),
-//     );
-//   }
-// }
 /////////////////////
 
 
@@ -253,26 +42,6 @@ class Display_users_in_reception extends StatelessWidget {
                   ),
                 ),
               ),
-              // Tab(
-              //   child: Container(
-              //     height: 40,
-              //     width: 40,
-              //     child: Image.asset(
-              //       "assets/images/import.png",
-              //       fit: BoxFit.fill,
-              //     ),
-              //   ),
-              // ),
-              // Tab(
-              //   child: Container(
-              //     height: 40,
-              //     width: 40,
-              //     child: Image.asset(
-              //       "assets/images/export.png",
-              //       fit: BoxFit.fill,
-              //     ),
-              //   ),
-              // ),
               Tab(
                 child: Container(
                   height: 40,
@@ -460,6 +229,7 @@ class Display_users_in_reception extends StatelessWidget {
                                                       onTap: (){
                                                         Get.back();
                                                         controller.delete_type(controller.data_type_section[index]['id']);
+                                                        controller.data_type_section.removeAt(index);
                                                       },
                                                       child: Container(
                                                         padding:
@@ -845,86 +615,93 @@ class Display_users_in_reception extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: ListView.builder(
-                            itemCount: controller.data[0]['types_of_center_services'][0]['user'].length,
-                            itemBuilder: (context, index) {
-                              return GestureDetector(
-                                onTap: () {},
-                                child: Container(
-                                  padding: EdgeInsets.all(8)
-                                  ,
-                                  margin: const EdgeInsets.only(top: 10),
-                                  height: MediaQuery.of(context).size.height * 0.1,
-                                  width: MediaQuery.of(context).size.width * 0.2,
-                                  decoration: BoxDecoration(
-                                    color: StaticColor.thirdgrey,
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        child: Row(
-                                          children: [
-                                            GestureDetector(
-                                              onTap: (){
-                                                Get.toNamed("/details_user",arguments: {
-                                                  "id_user":controller.data[0]['types_of_center_services'][0]['user'][index]['id']
-                                                });
-                                              },
-                                              child: Container(
-                                                height: 60,
-                                                width: 50,
-                                                child: Column(
-                                                  children: [
-                                                    Expanded(
-                                                        flex: 2,
-                                                        child: Image.asset(
-                                                          "assets/images/service_details.png",
-                                                          fit: BoxFit.fill,
-                                                        )),
-                                                    const Expanded(child: Text("تفاصيل")),
-                                                  ],
-                                                ),
-                                              ),
-
-                                            ),
-                                            Container(
-                                              height: 60,
-                                              width: 50,
-                                              child: Column(
-                                                children: [
-                                                  Expanded(
-                                                      flex: 2,
-                                                      child: Image.asset(
-                                                        "assets/images/cancel.png",
-                                                        fit: BoxFit.fill,
-                                                      )),
-                                                  const Expanded(child: Text("إزالة")),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                          shrinkWrap: true,
+                          itemCount: controller.data[0]['types_of_center_services'].length,
+                          itemBuilder: (context,int){
+                            return ListView.builder(
+                              shrinkWrap: true,
+                                itemCount: controller.data[0]['types_of_center_services'][int]['user'].length,
+                                itemBuilder: (context, index) {
+                                  return GestureDetector(
+                                    onTap: () {},
+                                    child: Container(
+                                      padding: EdgeInsets.all(8)
+                                      ,
+                                      margin: const EdgeInsets.only(top: 10),
+                                      height: MediaQuery.of(context).size.height * 0.1,
+                                      width: MediaQuery.of(context).size.width * 0.2,
+                                      decoration: BoxDecoration(
+                                        color: StaticColor.thirdgrey,
+                                        borderRadius: BorderRadius.circular(20),
                                       ),
-                                      Column(
-                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Row(children: [
-                                            Text(
-                                              "${controller.data[0]['types_of_center_services'][0]['user'][index]['name']} ",
-                                              style: TextStyle(fontWeight: FontWeight.bold),
+                                          Container(
+                                            child: Row(
+                                              children: [
+                                                GestureDetector(
+                                                  onTap: (){
+                                                    Get.toNamed("/details_user",arguments: {
+                                                      "id_user":controller.data[0]['types_of_center_services'][int]['user'][index]['id']
+                                                    });
+                                                  },
+                                                  child: Container(
+                                                    height: 60,
+                                                    width: 50,
+                                                    child: Column(
+                                                      children: [
+                                                        Expanded(
+                                                            flex: 2,
+                                                            child: Image.asset(
+                                                              "assets/images/service_details.png",
+                                                              fit: BoxFit.fill,
+                                                            )),
+                                                        const Expanded(child: Text("تفاصيل")),
+                                                      ],
+                                                    ),
+                                                  ),
+
+                                                ),
+                                                // Container(
+                                                //   height: 60,
+                                                //   width: 50,
+                                                //   child: Column(
+                                                //     children: [
+                                                //       Expanded(
+                                                //           flex: 2,
+                                                //           child: Image.asset(
+                                                //             "assets/images/cancel.png",
+                                                //             fit: BoxFit.fill,
+                                                //           )),
+                                                //       const Expanded(child: Text("إزالة")),
+                                                //     ],
+                                                //   ),
+                                                // ),
+                                              ],
                                             ),
-                                            SizedBox(width: 3,),
-                                            Text(": الإسم",style: TextStyle(fontWeight: FontWeight.bold,color: StaticColor.primarycolor),)
-                                          ],),
-                                          //    const Text(" الإختصاص : ب",style: TextStyle(color: Colors.grey),),
+                                          ),
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.end,
+                                            children: [
+                                              Row(children: [
+                                                Text(
+                                                  "${controller.data[0]['types_of_center_services'][int]['user'][index]['name']} ",
+                                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                                ),
+                                                SizedBox(width: 3,),
+                                                Text(": الإسم",style: TextStyle(fontWeight: FontWeight.bold,color: StaticColor.primarycolor),)
+                                              ],),
+                                              //    const Text(" الإختصاص : ب",style: TextStyle(color: Colors.grey),),
+                                            ],
+                                          ),
                                         ],
                                       ),
-                                    ],
-                                  ),
-                                ),
-                              );
-                            }),
+                                    ),
+                                  );
+                                });
+                          },
+                        )
                       ),
                     );
                 }),

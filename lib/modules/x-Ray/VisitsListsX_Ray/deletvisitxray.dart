@@ -1,10 +1,8 @@
 import 'dart:io';
-
-import 'package:flutter_file_dialog/flutter_file_dialog.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_utils/get_utils.dart';
-import 'package:path_provider/path_provider.dart';
+
 import 'package:project_after_update/config/server_config.dart';
 import 'package:project_after_update/core/class/Crud.dart';
 import 'package:http/http.dart' as http;
@@ -22,7 +20,7 @@ class deletexray {
   String? token ;
   deletexraybyid(int id)async{
 
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("xray_token");
     var response=await crud.postdata(Serverconfig.deletexray,
 
         {

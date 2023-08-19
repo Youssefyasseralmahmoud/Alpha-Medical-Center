@@ -102,8 +102,10 @@ class VisitsListControllerlab extends GetxController{
 
         if (data_details[0][i]['laboratory_test_results'].length!=0){
           data.add(data_details[0][i]['laboratory_test_results']);
-          String s = DateTime.parse(data_details[0][i]['created_at']).toString();
-          date.add(s.substring(0, 10)) ;
+          String s ='2023-8-15';
+          //String s1 = DateTime.parse(data_details[0][i]['created_at']).toString();
+         // date.add(s.substring(0, 10)) ;
+          date.add(s);
 
         }
       }

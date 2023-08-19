@@ -24,8 +24,9 @@ class Nurse_wait_patient_controller extends GetxController {
   }
 
   homeNurseServices services =
-  homeNurseServices(Get.find(), Get.find(), Get.find(), Get.find(),Get.find());
+  homeNurseServices(Get.find(), Get.find(), Get.find(), Get.find(),Get.find(),Get.find(),Get.find(),Get.find(),Get.find());
   StatusRequest? statusRequest;
+  StatusRequest? statusRequest3;
 
   Secury_storage secury_storage = new Secury_storage();
 
@@ -66,7 +67,48 @@ class Nurse_wait_patient_controller extends GetxController {
     }
     update();
   }
+  bool isFilterOn =true;
+  changstatuslabbyidservic(int status ) async {
+    statusRequest3 = StatusRequest.loading;
+    update();
 
+    var response = await services.changstatuslabbyidservice(status);
+    statusRequest3 = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest3) {
+      if(status==0){
+        Get.defaultDialog(title: "", content: Text("تم إيقاف طلبات التحويل"));}
+      else {
+        Get.defaultDialog(title: "", content: Text("تم استئناف طلبات التحويل"));
+
+      }
+
+
+    }
+
+    else if (StatusRequest.failure == statusRequest3) {
+      await Get.snackbar(
+        "تحذير",
+        "لا يوجد بيانات لعرضها",
+      );
+    }
+    else{
+      Get.defaultDialog(title: "حدث خطأ ما", content: Text("حدث خطا ما"));
+    }
+    update();
+
+
+
+
+
+
+
+
+
+
+
+
+  }
 
 
 }

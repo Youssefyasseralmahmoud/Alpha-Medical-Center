@@ -14,7 +14,7 @@ class Doctor_following_nures_services {
   Secury_storage secury = new Secury_storage();
 
   get_users_byid(id_patient) async {
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("doctor_token");
 
     var response = await crud_get_users_byid.postdata(
         Serverconfig.get_Users_ByType + '?id_TypeUser=6',
@@ -31,7 +31,7 @@ class Doctor_following_nures_services {
 
   late var message;
   AddFollower(int ID_User, int ID_UserFollow, String start ,String end) async {
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("doctor_token");
     var response = await crud_AddFollower.postdata(Serverconfig.add_Follower, {
       "ID_User": "${ID_User}",
       "ID_UserFollow": "${ID_UserFollow}",
@@ -49,7 +49,7 @@ class Doctor_following_nures_services {
   }
 
   get_nurses_follower() async {
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("doctor_token");
 
     // final Map<String, dynamic> data = {};
     // data['Key']="ID Personal";
@@ -68,7 +68,7 @@ class Doctor_following_nures_services {
     return response.fold((l) => l, (r) => r);
   }
   get_UserInfoByID(int id) async {
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("doctor_token");
     print("${id}");
 print("gggggggggggggggggggggggg");
     // final Map<String, dynamic> data = {};

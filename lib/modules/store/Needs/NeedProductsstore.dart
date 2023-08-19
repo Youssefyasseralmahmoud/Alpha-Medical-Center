@@ -11,7 +11,8 @@ class need_Products extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return GetBuilder<need_controller>(builder: (controller) {
+      return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
         elevation: 0,
@@ -38,11 +39,13 @@ class need_Products extends StatelessWidget {
             const EdgeInsets.only(bottom: 90, right: 20, left: 20, top: 20),
             child: Center(
               child: GridView.builder(
-                itemCount: controller.products.length,
+                itemCount: controller.data_details.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 7,
+                  mainAxisSpacing: 7,
+                  childAspectRatio: 1.5,
+
                 ),
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
@@ -54,7 +57,7 @@ class need_Products extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          controller.products[index].name,
+                          controller.data_details[index]['Name'],
                           style: TextStyle(
                             color: Color(0xff9bb4fd),
                             fontWeight: FontWeight.bold,
@@ -66,7 +69,7 @@ class need_Products extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Text(
-                                (controller.products[index].min)
+                                (controller.data_details[index]['Lower_Limit'])
                                     .toString(),
                                 style: TextStyle(
                                   color: Colors.black54,
@@ -90,7 +93,7 @@ class need_Products extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Text(
-                                (controller.products[index].quantity)
+                                (controller.data_details[index]['Quantity'])
                                     .toString(),
                                 style: TextStyle(
                                   color: Colors.black54,
@@ -109,31 +112,6 @@ class need_Products extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(height: 10),
-                        Center(
-                          child: Container(
-                            width: 70,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              color: Colors.grey[300],
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Center(
-                              child: TextField(
-                                keyboardType: TextInputType.number,
-                                onChanged: (value) {
-                                  //   controller.updateQuantity(index, value);
-                                  controller.order(int.parse(value), index);
-                                },
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 10),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
 
                       ],
                     ),
@@ -144,45 +122,9 @@ class need_Products extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: Text('تأكيد الطلب'),
-                    content: Text('هل أنت متأكد من هذا الطلب؟'),
-                    actions: <Widget>[
-                      TextButton(
-                        child: const Text('لا'),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                      TextButton(
-                        child: const Text('نعم'),
-                        onPressed: () {
-                          Get.snackbar(
-
-                            'تم تسجيل هذا الطلب',
-                            ''
-                            ,
-                            backgroundColor: Colors.white,
-                            colorText:StaticColor.primarycolor,
-                          );
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                    ],
-                  );
-                },
-              );
-
-
-
-
-
-
-
-            },
+             controller.addorder();
+             Get.toNamed('/add_order');
+              },
             child: Align(
               alignment: Alignment.bottomLeft,
               child: Container(
@@ -230,7 +172,7 @@ class need_Products extends StatelessWidget {
         ],
       ),
     );
-  }
+  });}
 
 
 

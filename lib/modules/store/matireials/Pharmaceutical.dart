@@ -6,12 +6,13 @@ import '../home_store/warehouseControllerstor.dart';
 
 class Pharmaceutical  extends StatelessWidget {
     Pharmaceutical ({super.key});
-  warehouseControllerstor controller = Get.find();  @override
+  warehouseControllerstor controller = Get.find();
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: GridView.builder(
-          itemCount: controller.products.length,
+          itemCount: 1,//controller.products.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 10,
@@ -27,7 +28,7 @@ class Pharmaceutical  extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    controller.products[index].name,
+                    'controller.products[index].name',
                     style: TextStyle(
                       color: Color(0xff9bb4fd),
                       fontWeight: FontWeight.bold,
@@ -39,7 +40,7 @@ class Pharmaceutical  extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
-                          (controller.products[index].quantity)
+                          ('controller.products[index].quantity')
                               .toString(),
                           style: TextStyle(
                             color: Colors.black54,
@@ -72,7 +73,7 @@ class Pharmaceutical  extends StatelessWidget {
                           keyboardType: TextInputType.number,
                           onChanged: (value) {
                             //   controller.updateQuantity(index, value);
-                            controller.errors(int.parse(value), index);
+                            //controller.errors(int.parse(value), index);
                           },
                           decoration: InputDecoration(
                             border: InputBorder.none,

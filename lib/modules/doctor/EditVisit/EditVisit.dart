@@ -27,7 +27,7 @@ class EditVisit extends StatelessWidget {
 
             Expanded(
               child: Text(
-                'تعديل تيجة المعاينة',
+                'تعديل نتيحة المعاينة',
                 textAlign: TextAlign.right,
                 style: TextStyle(fontSize: 22, color: Colors.black54),
               ),
@@ -69,7 +69,8 @@ class EditVisit extends StatelessWidget {
                                 color: StaticColor.primarycolor,
                                 fontWeight: FontWeight.bold),
                           ),
-                          hintText: controller.hint_Pressure.toString(),
+                         hintText: controller.hint_Pressure.toString(),
+                        //  hintText: "عالي",
                           hintStyle: TextStyle(color:Colors.grey.withAlpha(70)),
                           suffixIcon: Container(
                             padding: EdgeInsets.all(5),
@@ -105,7 +106,8 @@ class EditVisit extends StatelessWidget {
                                 color: StaticColor.primarycolor,
                                 fontWeight: FontWeight.bold),
                           ),
-                          hintText: controller.hint_BodyHeat.toString(),
+                         hintText: controller.hint_BodyHeat.toString(),
+                         // hintText: "40",
                           hintStyle: TextStyle(color:Colors.grey.withAlpha(70)),
                           suffixIcon: Container(
                             padding: EdgeInsets.all(5),
@@ -140,7 +142,8 @@ class EditVisit extends StatelessWidget {
                                 color: StaticColor.primarycolor,
                                 fontWeight: FontWeight.bold),
                           ),
-                          hintText: controller.hint_ClinicalStory.toString(),
+                        hintText: controller.hint_ClinicalStory.toString(),
+                       //   hintText: "ألم  في الرأس و صداع",
                           hintStyle: TextStyle(color:Colors.grey.withAlpha(70)),
                           suffixIcon: Container(
                             padding: EdgeInsets.all(5),
@@ -176,6 +179,7 @@ class EditVisit extends StatelessWidget {
                                 fontWeight: FontWeight.bold),
                           ),
                           hintText: controller.hint_ClinicalExamination.toString(),
+                        //  hintText: "سليم",
                           hintStyle: TextStyle(color:Colors.grey.withAlpha(70)),
                           suffixIcon: Container(
                             padding: EdgeInsets.all(5),
@@ -204,13 +208,14 @@ class EditVisit extends StatelessWidget {
                       decoration: InputDecoration(
                           floatingLabelBehavior: FloatingLabelBehavior.always,
                           label: const Text(
-                            "ضربات القلب",
+                            "النبض",
                             style: TextStyle(
                                 fontSize: 20,
                                 color: StaticColor.primarycolor,
                                 fontWeight: FontWeight.bold),
                           ),
                           hintText: controller.hint_Heartbeat.toString(),
+                          //hintText: "طبيعي",
                           hintStyle: TextStyle(color:Colors.grey.withAlpha(70)),
                           suffixIcon: Container(
                             padding: EdgeInsets.all(6),
@@ -239,14 +244,15 @@ class EditVisit extends StatelessWidget {
                       decoration: InputDecoration(
                           floatingLabelBehavior: FloatingLabelBehavior.always,
                           label: const Text(
-                            "الملاحظات",
+                            "التشخيص و العلاج",
                             style: TextStyle(
                                 fontSize: 20,
                                 color: StaticColor.primarycolor,
                                 fontWeight: FontWeight.bold),
                           ),
-                          hintText: controller.hint_comments.toString(),
-                          hintStyle: TextStyle(color:Colors.grey.withAlpha(70)),
+                         hintText: controller.hint_comments.toString(),
+                         // hintText: "صداع مزمن | مسكنات ",
+                          hintStyle: TextStyle(color:Colors.grey.withAlpha(170)),
                           suffixIcon: Container(
                             padding: EdgeInsets.all(6),
                             height: 20,

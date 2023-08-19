@@ -139,8 +139,8 @@ class Laboratory_service extends StatelessWidget {
                                       ),
                                       child:  ListTile(
                                         title: Text(
-                                      "  ${controller.data_wating_req[index]["FullName"]} : المريض  ",
-                                        style: TextStyle(fontWeight: FontWeight.bold),
+                                      "   المريض : ${controller.data_wating_req[index]["FullName"]}   ",
+                                        style: TextStyle(fontWeight: FontWeight.bold,color: StaticColor.primarycolor),
                                       ),
                                         subtitle: Text(" الخدمة : ${controller.data_wating_req[index]['ServiceName']}"),
                                         trailing: Text(
@@ -215,7 +215,7 @@ class Laboratory_service extends StatelessWidget {
                                           "${controller.data_doctor[index]['name']} : اسم الطبيب  ",
                                           style: TextStyle(fontWeight: FontWeight.bold),
                                         ),
-                                        subtitle: const Text("حالة الطبيب  : متواجد"),
+                                      //  subtitle: const Text("حالة الطبيب  : متواجد"),
                                         trailing:
                                   CircleAvatar(
                                   child: Image.asset("assets/images/doctor.png"),
@@ -381,7 +381,7 @@ class Laboratory_service extends StatelessWidget {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 const Text(
-                                  "مركز ألفا الطبي / قسم الإستقبال / المخبر",
+                                  "مركز ألفا الطبي ",
                                   style: TextStyle(
                                       fontSize: 15, color: Colors.grey),
                                 ),
@@ -408,25 +408,18 @@ class Laboratory_service extends StatelessWidget {
                                             padding: EdgeInsets.all(10),
                                             color: Colors.white,
                                             child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.end,
                                               children: [
-                                                Row(
-                                                  mainAxisAlignment:
-                                                  MainAxisAlignment.end,
-                                                  children: [
-                                                    Text(
-                                                        "${controller.data[index]['Details']}"),
-                                                    //  Text("${controller.data[0]['center_service'][index]['Details']}"),
-                                                    Text(
-                                                      " : التفاصيل  ",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                          FontWeight.bold),
-                                                    ),
-                                                    SizedBox(
-                                                      width: 5,
-                                                    ),
-                                                  ],
-                                                )
+                                                Text(
+                                                  " : التفاصيل  ",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                      FontWeight.bold),
+                                                ),
+                                                Text(
+                                                    "${controller.data[index]['Details']}"),
+                                                //  Text("${controller.data[0]['center_service'][index]['Details']}"),
+
                                               ],
                                             ),
                                           ));
@@ -452,7 +445,7 @@ class Laboratory_service extends StatelessWidget {
                                                   ),
                                                 ),
                                                 Expanded(
-                                                  flex: 2,
+                                                  flex: 3,
                                                   child: Text(
                                                     " ${controller.data[index]['Name']}",
                                                     style: TextStyle(

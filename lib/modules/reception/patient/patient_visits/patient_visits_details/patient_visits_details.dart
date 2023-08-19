@@ -80,7 +80,15 @@ class Patient_visits_details extends StatelessWidget {
                     color: StaticColor.thirdgrey,
                     borderRadius: BorderRadius.circular(5),
                   ),
-                  child:  Text(
+                  child:
+                  controller.data[0]['Pressure']==null?
+                  Text(
+                    "لم يتم تحديده",
+                    style: TextStyle(
+                        fontSize: 15, color: StaticColor.primarycolor),
+                    textAlign: TextAlign.end,
+                  ):
+                  Text(
                     "${controller.data[0]['Pressure']}",
                     style: TextStyle(
                         fontSize: 15, color: StaticColor.primarycolor),
@@ -103,7 +111,15 @@ class Patient_visits_details extends StatelessWidget {
                     color: StaticColor.thirdgrey,
                     borderRadius: BorderRadius.circular(5),
                   ),
-                  child:  Text(
+                  child:
+                  controller.data[0]['Heartbeat']==null?
+                  Text(
+                    "لم يتم تحديده",
+                    style: TextStyle(
+                        fontSize: 15, color: StaticColor.primarycolor),
+                    textAlign: TextAlign.end,
+                  ):
+                  Text(
                     "${controller.data[0]['Heartbeat']}",
                     style: TextStyle(
                         fontSize: 15, color: StaticColor.primarycolor),
@@ -126,7 +142,15 @@ class Patient_visits_details extends StatelessWidget {
                     color: StaticColor.thirdgrey,
                     borderRadius: BorderRadius.circular(5),
                   ),
-                  child:  Text(
+                  child:
+                  controller.data[0]['BodyHeat']==null?
+                  Text(
+                    "لم يتم تحديده",
+                    style: TextStyle(
+                        fontSize: 15, color: StaticColor.primarycolor),
+                    textAlign: TextAlign.end,
+                  ):
+                  Text(
                     "${controller.data[0]['BodyHeat']}",
                     style: TextStyle(
                         fontSize: 15, color: StaticColor.primarycolor),
@@ -149,7 +173,15 @@ class Patient_visits_details extends StatelessWidget {
                     color: StaticColor.thirdgrey,
                     borderRadius: BorderRadius.circular(5),
                   ),
-                  child:  Text(
+                  child:
+                  controller.data[0]['ClinicalStory']==null?
+                  Text(
+                    "لم يتم تحديده",
+                    style: TextStyle(
+                        fontSize: 15, color: StaticColor.primarycolor),
+                    textAlign: TextAlign.end,
+                  ):
+                  Text(
                     "${controller.data[0]['ClinicalStory']}",
                     style: TextStyle(
                         fontSize: 15, color: StaticColor.primarycolor),
@@ -172,7 +204,15 @@ class Patient_visits_details extends StatelessWidget {
                     color: StaticColor.thirdgrey,
                     borderRadius: BorderRadius.circular(5),
                   ),
-                  child:  Text(
+                  child:
+                  controller.data[0]['ClinicalExamination']==null?
+                  Text(
+                    "لم يتم تحديده",
+                    style: TextStyle(
+                        fontSize: 15, color: StaticColor.primarycolor),
+                    textAlign: TextAlign.end,
+                  ):
+                  Text(
                     "${controller.data[0]['ClinicalExamination']}",
                     style: TextStyle(
                         fontSize: 15, color: StaticColor.primarycolor),
@@ -195,7 +235,16 @@ class Patient_visits_details extends StatelessWidget {
                     color: StaticColor.thirdgrey,
                     borderRadius: BorderRadius.circular(5),
                   ),
-                  child:  Text(
+                  child:
+                  controller.data[0]['Comments'
+                      '']==null?
+                  Text(
+                    "لم يتم تحديده",
+                    style: TextStyle(
+                        fontSize: 15, color: StaticColor.primarycolor),
+                    textAlign: TextAlign.end,
+                  ):
+                  Text(
                     "${controller.data[0]['Comments'
                         '']}",
                     style: TextStyle(
@@ -219,8 +268,15 @@ class Patient_visits_details extends StatelessWidget {
                     color: StaticColor.thirdgrey,
                     borderRadius: BorderRadius.circular(5),
                   ),
-                  child:  Text(
-
+                  child:
+                  controller.data[0]['ReferringPhysician']==null?
+                  Text(
+                    "لم يتم تحديده",
+                    style: TextStyle(
+                        fontSize: 15, color: StaticColor.primarycolor),
+                    textAlign: TextAlign.end,
+                  ):
+                  Text(
                     "${controller.data[0]['ReferringPhysician']}",
                     style: TextStyle(
                         fontSize: 15, color: StaticColor.primarycolor),

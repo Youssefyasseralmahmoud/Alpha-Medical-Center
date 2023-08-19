@@ -9,6 +9,8 @@ import 'package:project_after_update/secure_storage/secure_storage.dart';
 
 class EditVisitDetailsNuresController extends GetxController {
   GlobalKey<FormState> formstate2 = GlobalKey<FormState>();
+
+
   late String Pressure;
   late String Heartbeat;
   late int BodyHeat;
@@ -22,11 +24,47 @@ class EditVisitDetailsNuresController extends GetxController {
   late String hint_ClinicalExamination=" ";
   late String hint_comments=" ";
   late int id;
+  @override
+  void onInit() {
+    if (Get.arguments != null) {
+      if (Get.arguments['Pressure']!=null)
+        hint_Pressure = Get.arguments['Pressure'];
+      if (Get.arguments['Heartbeat']!=null)
+        hint_Heartbeat = Get.arguments['Heartbeat'];
+      if (Get.arguments['BodyHeat']!=null)
+        hint_BodyHeat = Get.arguments['BodyHeat'];
+      if (Get.arguments['ClinicalStory']!=null)
+        hint_ClinicalStory = Get.arguments['ClinicalStory'];
+      if (Get.arguments['ClinicalExamination']!=null)
+        hint_ClinicalExamination = Get.arguments['ClinicalExamination'];
+      if (Get.arguments['Comments']!=null)
+        hint_comments = Get.arguments['Comments'];
+      id =Get.arguments['id'];
+
+    }
+
+    super.onInit();
+
+
+  }
+
+
+
   EditVisitDetailsNuresServices services = EditVisitDetailsNuresServices(Get.find());
   StatusRequest? statusRequest;
   Secury_storage secury_storage = new Secury_storage();
   late var token;
   String? Function(String?)? valid;
+
+// checkinput() {
+//   var formdata = formstate2.currentState;
+//   if (formdata!.validate()) {
+//     edit_result();
+//   } else {
+//     print("الحقول غير صالحة");
+//   }
+// }
+
 
   checkinput() {
     var formdata = formstate2.currentState;
@@ -36,20 +74,10 @@ class EditVisitDetailsNuresController extends GetxController {
       print("الحقول غير صالحة");
     }
   }
-
   edit_result() async {
     statusRequest = StatusRequest.loading;
     update();
-    // Pressure ="rr";
-    // Heartbeat="ff";
-    // comments="grg";
-    // ClinicalExamination="grg";
-    // ClinicalStory="rg";
-    // BodyHeat=37;
-    print(id);
-
-    var response = await services.edit_result(
-        Pressure, Heartbeat, BodyHeat,
+    var response = await services.edit_result(Pressure, Heartbeat, BodyHeat,
         ClinicalStory, ClinicalExamination, comments,id);
     statusRequest = handlingdata(response);
 
@@ -57,9 +85,7 @@ class EditVisitDetailsNuresController extends GetxController {
       await Get.snackbar(
         "تم التعديل بنجاح",
         "تمت عملية تعديل المعاينة بنجاح",
-
       );
-      print("done editor ");
     } else if (StatusRequest.failure == statusRequest) {
       await Get.snackbar(
         "تنبيه",
@@ -71,33 +97,6 @@ class EditVisitDetailsNuresController extends GetxController {
     update();
   }
 
-  @override
-  void onInit() {
-    if (Get.arguments['Pressure']!=null)
-      hint_Pressure = Get.arguments['Pressure'];
-    if (Get.arguments['Heartbeat']!=null)
-    hint_Heartbeat = Get.arguments['Heartbeat'];
-    if (Get.arguments['BodyHeat']!=null)
-    hint_BodyHeat = Get.arguments['BodyHeat'];
-    if (Get.arguments['ClinicalStory']!=null)
-    hint_ClinicalStory = Get.arguments['ClinicalStory'];
-    if (Get.arguments['ClinicalExamination']!=null)
-    hint_ClinicalExamination = Get.arguments['ClinicalExamination'];
-    if (Get.arguments['Comments']!=null)
-    hint_comments = Get.arguments['Comments'];
-    id =Get.arguments['id'];
 
-    // Pressure =hint_Pressure;
-    // Heartbeat =hint_Heartbeat;
-    // BodyHeat= int.parse(hint_BodyHeat);
-    // ClinicalExamination = hint_ClinicalExamination;
-    // ClinicalStory = hint_ClinicalStory;
-    // comments = hint_comments;
-
-
-
-
-    super.onInit();
-  }
 
 }

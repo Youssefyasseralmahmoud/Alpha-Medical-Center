@@ -32,7 +32,7 @@ class financial_Clinic extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              Get.toNamed('/');
+              Get.toNamed('/financial_Clinic_incoming_material');
             },
             child: Align(
               alignment: Alignment.bottomCenter,

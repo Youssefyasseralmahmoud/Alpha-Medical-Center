@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_after_update/modules/doctor/Home/homeController.dart';
+import 'package:project_after_update/modules/doctor/record/patientVisitRecordController.dart';
 
 
 
 class PersonalInformationD extends StatelessWidget {
-  homeController controller = Get.put(homeController());
+  patientVisitRecordController controller = Get.find();
 
   int  height = Get.height.toInt();
  int  width  = Get.width.toInt();
@@ -50,9 +51,9 @@ class PersonalInformationD extends StatelessWidget {
                   color: Color.fromARGB(100, 189, 189, 189).withAlpha(30),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Text("محمد سعيد :"),
-                      Text(" المريض",
+                    children:  [
+                      Text("${controller.data2[0]['FullName']}     : "),
+                      Text("اسم المريض",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       Padding(
                         padding: EdgeInsets.all(10.0),
@@ -71,9 +72,9 @@ class PersonalInformationD extends StatelessWidget {
                   margin: const EdgeInsets.only(bottom: 7,left: 7,right: 7),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Text(" 5423456789 :"),
-                      Text("رقم الوطني ",
+                    children:  [
+                      Text(" ${controller.data2[0]['IDPersonal']}    : "),
+                      Text("الرقم الوطني ",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       Padding(
                         padding: EdgeInsets.all(10.0),
@@ -92,8 +93,8 @@ class PersonalInformationD extends StatelessWidget {
                   margin: const EdgeInsets.only(bottom: 7,left: 7,right: 7),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Text("40:"),
+                    children:  [
+                      Text("${controller.data2[0]['age']}   : "),
                       Text("العمر",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       Padding(
@@ -113,8 +114,8 @@ class PersonalInformationD extends StatelessWidget {
                   margin: const EdgeInsets.only(bottom: 5,left: 7,right: 7),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Text("دمشق:"),
+                    children:  [
+                      Text("${controller.data2[0]['address']}   : "),
                       Text("العنوان",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       Padding(
@@ -134,8 +135,8 @@ class PersonalInformationD extends StatelessWidget {
                   color: Color.fromARGB(100, 189, 189, 189).withAlpha(30),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Text("093476155:"),
+                    children:  [
+                      Text("${controller.data2[0]['phonenumber']}   : "),
                       Text("رقم الهاتف",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       Padding(

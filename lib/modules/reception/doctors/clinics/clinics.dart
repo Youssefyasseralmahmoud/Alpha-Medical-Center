@@ -47,55 +47,58 @@ class Clinics extends StatelessWidget {
                         height: 10,
                         color: Colors.black45,
                       ),
-                      GridView.builder(
-                        itemCount: controller.data.length,
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 10),
-                        shrinkWrap: true,
-                        padding: const EdgeInsets.all(10),
-                        itemBuilder: (context,index){
-                          return
-                            GestureDetector(
-                              onTap: () {
-                                Get.toNamed("/wating_in_clinics",arguments: {
-                                  "id":controller.data[index]['id'],
-                                  "status":controller.data[index]['Status']
-                                });
-                              },
-                              child: Container(
-                                // height: MediaQuery.of(context).size.height * 0.3,
-                                // width: MediaQuery.of(context).size.width * 0.5,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: StaticColor.primarycolor,
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      Expanded(
-                                        flex: 5,
-                                        child:
-                                        controller.data[index]['Name']=='عيادة أطفال'?
-                                        Image.asset(
-                                            "assets/images/children.png",
-                                            fit: BoxFit.fill):
-                                        Image.asset(
-                                            "assets/images/hospital.png",
-                                            fit: BoxFit.fill) ,
-                                      ),
-                                      Expanded(
+                      Container(
+                        height: MediaQuery.of(context).size.height*0.7,
+                        child: GridView.builder(
+                          itemCount: controller.data.length,
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 10,
+                              mainAxisSpacing: 10),
+                          shrinkWrap: true,
+                          padding: const EdgeInsets.all(10),
+                          itemBuilder: (context,index){
+                            return
+                              GestureDetector(
+                                onTap: () {
+                                  Get.toNamed("/wating_in_clinics",arguments: {
+                                    "id":controller.data[index]['id'],
+                                    "status":controller.data[index]['Status']
+                                  });
+                                },
+                                child: Container(
+                                  // height: MediaQuery.of(context).size.height * 0.3,
+                                  // width: MediaQuery.of(context).size.width * 0.5,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: StaticColor.primarycolor,
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Expanded(
+                                          flex: 5,
                                           child:
-                                          Text(
-                                            "${controller.data[index]['Name']}",
-                                            style: TextStyle(
-                                                color: Colors.white, fontSize: 15),
-                                          )
-                                      )
-                                    ],
-                                  )),
-                            );
-                        },
+                                          controller.data[index]['Name']=='عيادة أطفال'?
+                                          Image.asset(
+                                              "assets/images/children.png",
+                                              fit: BoxFit.fill):
+                                          Image.asset(
+                                              "assets/images/hospital.png",
+                                              fit: BoxFit.fill) ,
+                                        ),
+                                        Expanded(
+                                            child:
+                                            Text(
+                                              "${controller.data[index]['Name']}",
+                                              style: TextStyle(
+                                                  color: Colors.white, fontSize: 15),
+                                            )
+                                        )
+                                      ],
+                                    )),
+                              );
+                          },
+                        ),
                       ),
                     ],
                   ),

@@ -65,12 +65,13 @@ class Details extends StatelessWidget {
             ),
             child: Center(
               child:TextField(
-                controller: TextEditingController(text: "${controller.products[controller.index].name}"),
+                controller: TextEditingController(text: "${controller.data_details[controller.index]['Name']}"),
                 textAlign: TextAlign.center,
                 keyboardType: TextInputType.text,
                 onChanged: (value) {
-                  //   controller.updateQuantity(index, value);
-
+                  print("fffffffff");
+                  print (controller.id);
+                 controller.name =value ;
                 },
                 decoration: InputDecoration(
                   border: InputBorder.none,
@@ -123,11 +124,11 @@ class Details extends StatelessWidget {
                                ),
                                child: Center(
                                  child:TextField(
-                                   controller: TextEditingController(text: "${controller.products[controller.index].min}"),
+                                   controller: TextEditingController(text: "${controller.data_details[controller.index]['Lower_Limit']}"),
                                    textAlign: TextAlign.center,
                                    keyboardType: TextInputType.number,
                                    onChanged: (value) {
-                                     //   controller.updateQuantity(index, value);
+                                     controller.lower = value;
 
                                    },
                                    decoration: InputDecoration(
@@ -180,11 +181,11 @@ class Details extends StatelessWidget {
                            ),
                            child: Center(
                              child:TextField(
-                               controller: TextEditingController(text: "${controller.products[controller.index].quantity}"),
+                               controller: TextEditingController(text: "${controller.data_details[controller.index]['Quantity']}"),
                                textAlign: TextAlign.center,
                                keyboardType: TextInputType.number,
                                onChanged: (value) {
-                                 //   controller.updateQuantity(index, value);
+                                controller.quantity=value;
 
                                },
                                decoration: InputDecoration(
@@ -243,11 +244,11 @@ class Details extends StatelessWidget {
                                 ),
                                 child: Center(
                                   child:TextField(
-                                    controller: TextEditingController(text: "${controller.products[controller.index].expiry_date}"),
+                                    controller: TextEditingController(text: "${controller.data_details[controller.index]['ExpiryDate']}"),
                                     textAlign: TextAlign.center,
-                                    keyboardType: TextInputType.datetime,
+                                    keyboardType: TextInputType.text,
                                     onChanged: (value) {
-                                      //   controller.updateQuantity(index, value);
+                                      controller.Expiry=value;
 
                                     },
                                     decoration: InputDecoration(
@@ -300,11 +301,11 @@ class Details extends StatelessWidget {
                                 ),
                                 child: Center(
                                   child:TextField(
-                                    controller: TextEditingController(text: "${controller.products[controller.index].production_date}"),
+                                    controller: TextEditingController(text: "${controller.data_details[controller.index]['ProductionDate']}"),
                                     textAlign: TextAlign.center,
-                                    keyboardType: TextInputType.datetime,
+                                    keyboardType: TextInputType.text,
                                     onChanged: (value) {
-                                      //   controller.updateQuantity(index, value);
+                                      controller.production= value;
 
                                     },
                                     decoration: InputDecoration(
@@ -343,14 +344,8 @@ class Details extends StatelessWidget {
                       TextButton(
                         child: const Text('نعم'),
                         onPressed: () {
-                          Get.snackbar(
+                          controller.updateMatirial();
 
-                            'تم تعديل المادة',
-                            ''
-                            ,
-                            backgroundColor: Colors.white,
-                            colorText:StaticColor.primarycolor,
-                          );
                           Navigator.of(context).pop();
                         },
                       ),
@@ -392,42 +387,7 @@ class Details extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10),
-          GestureDetector(
-            onTap: () {
-              Get.toNamed('/add_Details');
-            },
-            child: Align(
-              alignment: Alignment.center,
-              child: Container(
-                width: 220,
-                height: 50,
 
-
-                decoration: BoxDecoration(
-                  border: Border.all(color: Color(0xff9bb4fd), width: 3),
-                  color: Color(0xffcbd6fa),
-                  borderRadius: BorderRadius.circular(25),
-                ),
-
-
-                child:  Align(
-                  alignment: Alignment.center,
-                  child:
-
-                  Text(
-                    'إضافة مادة',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w100,
-                      color: Colors.white,
-
-                    ),
-                    textDirection: TextDirection.rtl,
-                  ),
-                ),
-              ),
-            ),
-          ),
         ],
       ),)
     );

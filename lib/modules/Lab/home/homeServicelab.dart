@@ -17,7 +17,7 @@ class homeServicelab {
   String? token ;
   get_allTypeofsection()async{
 
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("laboratory_token");
     var response=await crud.postdata(Serverconfig.typeServicelab,
         {
           "Authorization": "Bearer" + " " + token.toString(),

@@ -10,7 +10,7 @@ class addvisitlab{
   addvisitlab(this.crud);
 
   uploadtest(String Details,int patient,int requiredPatientServices_id,int Status)async{
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("laboratory_token");
     var response=await crud.postdata(Serverconfig.addlabtest,{
       "Details" :"${Details}",
       "patientVisitDetails_id" : "${patient}",

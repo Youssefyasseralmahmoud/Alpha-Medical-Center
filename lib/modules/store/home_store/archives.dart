@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_after_update/modules/store/home_store/warehouseControllerstor.dart';
 import 'dart:ui';
-class orders_from_warehouse extends StatelessWidget {
-  const orders_from_warehouse({Key? key}) : super(key: key);
 
+import '../../../core/class/StatusRequest.dart';
+import '../../../static_colors/StaticColors.dart';
+import 'home_screen_store_controller.dart';
+class orders_from_warehouse extends StatelessWidget {
+
+  const orders_from_warehouse({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    warehouseControllerstor controllerstor = Get.find();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -32,16 +38,18 @@ class orders_from_warehouse extends StatelessWidget {
           ],
         ),
       ),
-      body: _buildMaterialList(),
+      body:
+      _buildMaterialList(controllerstor),
 
 
     );
   }
 
-  Widget _buildMaterialList() {
+  Widget _buildMaterialList(warehouseControllerstor controller) {
+
     return ListView.builder(
-      itemCount: 4,
-      itemBuilder: (context, index) {
+      itemCount: controller.data_details3.length,
+      itemBuilder: (context, index1) {
         return Padding(
           padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
           child: Container(
@@ -61,24 +69,17 @@ class orders_from_warehouse extends StatelessWidget {
               children: [
 
                 SizedBox(height: 10),
-                Text(
-                  "قسم الاسعاف",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-
-                SizedBox(height: 10),
                 ListView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
-                  itemCount: 3,
+                  itemCount: controller.data_details3[index1]['item_request_detail'].length,
                   itemBuilder: (context, index) {
                     return Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
-                          '  (  العدد  :  20  )',
+                          '  (  العدد  : ${controller.data_details3[index1]['item_request_detail'][index]['Quantity']}   )',
                           textAlign: TextAlign.right,
                           style: TextStyle(
                             fontSize: 14,
@@ -86,7 +87,7 @@ class orders_from_warehouse extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "قطن",
+                          "${controller.data_details3[index1]['item_request_detail'][index]['Name']}",
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w200,

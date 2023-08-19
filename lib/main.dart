@@ -208,6 +208,7 @@ import 'modules/Lab/VisitListLab/detalisvistlab.dart';
 import 'modules/Lab/Warehose/addConsumer.dart';
 import 'modules/Lab/Warehose/warehouseProductslab.dart';
 import 'modules/Lab/home/listlab.dart';
+import 'modules/store/Needs/Addorder.dart';
 import 'modules/store/Orders/dep_order.dart';
 import 'modules/store/home_store/Details.dart';
 import 'modules/store/home_store/add_details.dart';
@@ -274,7 +275,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/Laboratory_reserv', page: () => Laboratory_reserv()),
         GetPage(name: '/Home_screen_manager', page: () => Home_screen_manager()),
         GetPage(name: '/Home_manager', page: () => Home_manager()),
-        GetPage(name: '/Join_request', page: () => Join_request()),
+        GetPage(name: '/Join_request', page: () => Join_requestpag()),
         GetPage(name: '/Employee', page: () => Employee()),
         GetPage(name: '/Patients_in_managment', page: () => Patients_in_managment()),
         GetPage(name: '/Clinics_in_managment', page: () => Clinics_in_managment()),
@@ -418,7 +419,7 @@ class MyApp extends StatelessWidget {
         ///////////// END YOUSSEF
 
         GetPage(name: '/HomeNurse',            page: () =>homeNurse(),          binding:HomeNurseBinding()),
-        GetPage(name: '/AddVisit',             page: () =>AddVisit(),           binding:AddVisitBinding()),
+        //GetPage(name: '/AddVisit',             page: () =>AddVisit(),           binding:AddVisitBinding()),
         GetPage(name: '/VisitsListNurse',      page: () =>VisitsList(),         ),
         GetPage(name: '/EditVisitNurse',       page: () =>EditVisitNurse(),     binding:EditVisitNurseBinding()),
         GetPage(name: '/PersonalInformationN', page: () =>PersonalInformation(),binding:VisitsListBinding()),
@@ -465,10 +466,11 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/detailvistelab',    page: () => DetailVisteLabPage (),),
         GetPage(name: '/Home_screen_store',    page: () =>Home_screen_store(),binding:stormaaterialBindinds()),
         GetPage(name: '/Pharmaceutical',    page: () =>Pharmaceutical()),
-        GetPage(name: '/dep_order',    page: () =>dep_order()),
+        GetPage(name: '/dep_order',    page: () =>deporderPage()),
         GetPage(name: '/orders_from_warehouse',    page: () =>orders_from_warehouse()),
         GetPage(name: '/Details',    page: () =>Details()),
         GetPage(name: '/add_Details',    page: () =>add_Details ()),
+        GetPage(name: '/add_order',    page: () =>add_order ()),
 
         GetPage(name: '/financial_home',       page: () =>financial_home(), ),
         GetPage(name: '/inancial_sections',    page: () =>financial_sections(), ),

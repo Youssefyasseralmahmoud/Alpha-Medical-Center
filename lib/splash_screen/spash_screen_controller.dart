@@ -21,6 +21,7 @@ class Splash_controller extends GetxController {
     String? xray_token = await secury_storage.read("xray_token");
     String? nurse_token = await secury_storage.read("nurse_token");
     String? finance_token = await secury_storage.read(("finance_token"));
+    String? store_tokne = await secury_storage.read("Store_token");
    // String? receptionist_token = await secury_storage.read("receptionist_token");
 
     //if doctor_token = await secur.read(" doctor_token");
@@ -36,13 +37,16 @@ class Splash_controller extends GetxController {
     }else if (ambulance_token!=null){
       Get.offAllNamed("/home_screen_ambulance");
     }else if (laboratory_token!=null){
-      Get.offAllNamed("/homelab");
+      Get.offAllNamed("/FancyNavBarlab");
     }else if (xray_token!=null){
-      Get.offAllNamed("/Homex_ray");
+      Get.offAllNamed("/FancyNavBarx_ray");
     }else if (nurse_token!=null){
       Get.offAllNamed("/HomeNurse");
     }else if (finance_token!=null){
       Get.offAllNamed("/navigationBar_financial");
+    }
+    else if (store_tokne!=null){
+      Get.offAllNamed("/Home_screen_store");
     }
     else{
       Get.offAllNamed('/login');

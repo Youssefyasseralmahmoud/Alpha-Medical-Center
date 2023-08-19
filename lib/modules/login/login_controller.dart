@@ -22,18 +22,10 @@ class Login_controller extends GetxController{
   late var xray_token;
   late var nurse_token;
   late var finance_token;
+  late var stor_token;
   String? Function(String?)? valid;
 
 
-
-  // checkinput(){
-  //  // var formdata=formstate3.currentState;
-  //   if(formdata!.validate()){
-  //     login();
-  //   }else{
-  //     print("الحقول غير صالحة");
-  //   }
-  // }
 
   login() async{
 
@@ -50,7 +42,10 @@ class Login_controller extends GetxController{
         print("tesst from login");
         secury_storage3.save("admin_token", admin_token);
         await Get.snackbar("تسجيل دخول ناجح", "تمت عملية الدخول بنجاح",);
-         Get.offAllNamed("/Home_screen_manager");
+
+        Get.offAllNamed("/Home_screen_manager");
+
+
       }
       else if(response['code']== 1 && response['data']['user']['TypeUser'] == "Manager" ){
         // && response['carer']=='reception'
@@ -90,7 +85,7 @@ class Login_controller extends GetxController{
         print("tesst from login");
         secury_storage3.save("laboratory_token", laboratory_token);
         await Get.snackbar("تسجيل دخول ناجح", "تمت عملية الدخول بنجاح",);
-        Get.offAllNamed("/homelab");
+        Get.offAllNamed("/FancyNavBarlab");
       }
       else if(response['code']== 1 && response['data']['user']['TypeUser'] == "Radiographer" ) {
         // && response['carer']=='reception'
@@ -98,7 +93,7 @@ class Login_controller extends GetxController{
         print("tesst from login");
         secury_storage3.save("xray_token", xray_token);
         await Get.snackbar("تسجيل دخول ناجح", "تمت عملية الدخول بنجاح",);
-        Get.offAllNamed("/Homex_ray");
+        Get.offAllNamed("/FancyNavBarx_ray");
       }
       else if(response['code']== 1 && response['data']['user']['TypeUser'] == "Nurse" ) {
         // && response['carer']=='reception'
@@ -114,7 +109,15 @@ class Login_controller extends GetxController{
         secury_storage3.save("finance_token", finance_token);
         await Get.snackbar("تسجيل دخول ناجح", "تمت عملية الدخول بنجاح",);
         Get.offAllNamed("/navigationBar_financial");
+      } else if(response['code']== 1 && response['data']['user']['TypeUser'] == "Store" ) {
+        // && response['carer']=='reception'
+        stor_token=response['data']['token'];
+        print("tesst from login");
+        secury_storage3.save("Store_token", stor_token);
+        await Get.snackbar("تسجيل دخول ناجح", "تمت عملية الدخول بنجاح",);
+        Get.offAllNamed("/Home_screen_store");
       }
+
       else{
         statusRequest=StatusRequest.failure;
       }

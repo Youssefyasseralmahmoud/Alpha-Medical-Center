@@ -32,7 +32,7 @@ class department_orders extends StatelessWidget {
 
       ),
       body: GridView.builder(
-        itemCount: controller.orders.length,
+        itemCount: controller.data_details.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 1,
           crossAxisSpacing: 10,
@@ -56,13 +56,14 @@ class department_orders extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
+                  SizedBox(height: 10),
                   Padding(
                     padding: EdgeInsets.symmetric( horizontal: 20),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
-                         controller.orders[index].department_name,
+                         controller.data_details[index]['Name'],
                           style: TextStyle(fontSize: 25),
                         ),
                         SizedBox(width: 10),
@@ -101,7 +102,7 @@ class department_orders extends StatelessWidget {
                                         Get.snackbar(
 
                                           'تم حذف طلب قسم',
-                                          '${controller.orders[index].department_name}'
+                                          '${controller.data_details[index]['Name']}'
                                           ,
                                           backgroundColor: Colors.white,
                                           colorText:StaticColor.primarycolor,
@@ -120,7 +121,9 @@ class department_orders extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: 25),
                         child: TextButton(
                           child: const Text('عرض',style: TextStyle(fontSize: 18, color: StaticColor.primarycolor)),
-                          onPressed: () { Get.toNamed("/dep_order");},
+                          onPressed: () { Get.toNamed("/dep_order",arguments: {
+                            "id" : controller.data_details[index]['id'],
+                          });},
                         ),
                       ),
                     ],

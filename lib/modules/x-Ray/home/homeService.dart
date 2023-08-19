@@ -17,7 +17,7 @@ class homeService {
   String? token ;
   get_allTypeofsection()async{
 
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("xray_token");
     var response=await crud.postdata(Serverconfig.typeServicexray,
         {
           "Authorization": "Bearer" + " " + token.toString(),

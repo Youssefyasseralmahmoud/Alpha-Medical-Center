@@ -103,8 +103,8 @@ class VisitsListControllerX_Ray extends GetxController{
 
         if (data_details[0][i]['x_ray'].length!=0){
           data.add(data_details[0][i]['x_ray']);
-          String s = DateTime.parse(response['data'][0]['created_at']).toString();
-          date.add(s.substring(0, 10)) ;
+          //String s = DateTime.parse(response['data'][0]['created_at']).toString();
+          date.add('2023/8/20') ;
 
         }
       }

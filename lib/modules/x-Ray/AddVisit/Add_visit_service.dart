@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 
 import '../../../secure_storage/secure_storage.dart';
 class Add_visit_service {
+
    var message;
    Secury_storage secury = new Secury_storage();
 

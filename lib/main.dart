@@ -438,7 +438,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/doctor_patient_servies',    page: () =>Doctor_patient_servies(),),
 
 /////////////////////////////////////////////////////////////////////////////////////
-        GetPage(name: '/List',            page: () =>List(),),
+        GetPage(name: '/List',            page: () =>Mylistray(),),
         GetPage(name: '/FancyNavBarx_ray',    page: () =>FancyNavBarx_ray(),binding: homex_rayBinding()),
         GetPage(name: '/Addvisitx_ray',             page: () =>Addvisitx_ray (),binding: AddvisitaX_raybinding () ),
         GetPage(name: '/PersonalInformationx_ray',             page: () =>PersonalInformationx_ray (),),

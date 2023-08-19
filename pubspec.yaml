@@ -41,7 +41,8 @@ dependencies:
   dependencies:
   flutter_datetime_picker: ^1.5.1
   file_picker: ^4.4.0
-
+  path_provider: ^2.0.15
+  flutter_file_dialog: ^3.0.1
 
 
 

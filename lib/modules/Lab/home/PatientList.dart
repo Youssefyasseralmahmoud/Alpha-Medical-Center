@@ -19,7 +19,7 @@ class ListPatientslab extends StatelessWidget {
   Widget build(BuildContext context) {
     return  controller.statusRequest == StatusRequest.loading?
     Center(child: CircularProgressIndicator(color: StaticColor.primarycolor,)) :
-      Flexible(
+    Flexible(
         child: ListView.builder(
             itemCount: controller.data_details.length,
             itemBuilder: (BuildContext contex, int index) {
@@ -73,7 +73,7 @@ class Listpatients extends StatelessWidget {
                     size: 30,
                   ),
                   onPressed: () {
-                    //   itemDetailsController.add()
+                    controller.copmpletvisit(controller.data_details[index]['RequiredPatientID']);
 
                   },
                 ),

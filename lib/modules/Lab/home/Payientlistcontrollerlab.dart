@@ -6,6 +6,7 @@ import 'package:project_after_update/modules/Lab/home/changestatuslabservic.dart
 import '../../../core/class/StatusRequest.dart';
 import '../../../core/function/handlingdata.dart';
 import '../../../secure_storage/secure_storage.dart';
+import '../AddVisit/completeservice.dart';
 import '../VisitListLab/patientlistService.dart';
 
 
@@ -13,6 +14,7 @@ class  PatientListControllerlab extends GetxController{
 
   changstatuslab change =changstatuslab(Get.find());
   patientlistservice services = patientlistservice(Get.find());
+  completvisit service2 = completvisit(Get.find());
   StatusRequest? statusRequest;
   StatusRequest? statusRequest2;
   StatusRequest? statusRequest3;
@@ -65,12 +67,12 @@ class  PatientListControllerlab extends GetxController{
     statusRequest3 = handlingdata(response);
 
     if (StatusRequest.succes == statusRequest3) {
-        if(status==0){
-      Get.defaultDialog(title: "", content: Text("تم إيقاف طلبات التحويل"));}
-        else {
-          Get.defaultDialog(title: "", content: Text("تم استئناف طلبات التحويل"));
+      if(status==0){
+        Get.defaultDialog(title: "", content: Text("تم إيقاف طلبات التحويل"));}
+      else {
+        Get.defaultDialog(title: "", content: Text("تم استئناف طلبات التحويل"));
 
-        }
+      }
 
 
     }
@@ -86,18 +88,12 @@ class  PatientListControllerlab extends GetxController{
     }
     update();
 
+  }
+  copmpletvisit(var id){
 
+    service2.complete(id);
 
-
-
-
-
-
-
-
-
-
-}
+  }
 
   @override
   onInit() {

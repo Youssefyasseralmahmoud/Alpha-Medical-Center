@@ -271,7 +271,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/Laboratory_reserv', page: () => Laboratory_reserv()),
         GetPage(name: '/Home_screen_manager', page: () => Home_screen_manager()),
         GetPage(name: '/Home_manager', page: () => Home_manager()),
-        GetPage(name: '/Join_request', page: () => Join_requestpag()),
+        GetPage(name: '/Join_request', page: () => Join_request()),
         GetPage(name: '/Employee', page: () => Employee()),
         GetPage(name: '/Patients_in_managment', page: () => Patients_in_managment()),
         GetPage(name: '/Clinics_in_managment', page: () => Clinics_in_managment()),

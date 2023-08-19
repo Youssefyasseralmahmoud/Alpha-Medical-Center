@@ -3,11 +3,6 @@ import 'package:get/get.dart';
 import 'package:project_after_update/core/class/StatusRequest.dart';
 import 'package:project_after_update/modules/manager/join_request/join_request_controller.dart';
 import 'package:project_after_update/static_colors/StaticColors.dart';
-class Join_requestpag extends StatefulWidget {
-  @override
-  Join_request createState() => Join_request();
-}
-class Join_request extends State<Join_requestpag>{
 
 
 // class Join_request_page extends StatefulWidget{

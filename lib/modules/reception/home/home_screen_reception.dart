@@ -98,12 +98,12 @@ class Home_screen_reception extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(
-                          Icons.notifications_active_outlined,
+                          Icons.monetization_on_outlined,
                           color: controller.currentpage == 3
                               ? StaticColor.primarycolor
                               : Colors.black,
                         ),
-                        Text("الإشعارات"),
+                        Text("طلب زيادة"),
                       ],
                     ),
                   ),

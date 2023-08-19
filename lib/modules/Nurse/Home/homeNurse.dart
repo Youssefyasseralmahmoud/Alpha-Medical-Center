@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:project_after_update/core/function/validinput.dart';
-import 'package:project_after_update/modules/Nurse/AddVisit/AddVisitController.dart';
+
 import 'package:project_after_update/modules/Nurse/Home/PatientList.dart';
 import 'package:project_after_update/modules/Nurse/Home/homeNurseController.dart';
 import 'package:project_after_update/modules/Nurse/VisitsList/PersonalInformation/PersonalinfrmationController.dart';
@@ -10,12 +10,14 @@ import 'package:project_after_update/static_colors/StaticColors.dart';
 
 class homeNurse extends StatelessWidget {
 
-
-  @override
-    homeNurseController controller= Get.put(homeNurseController());
+  homeNurseController controller= Get.put(homeNurseController());
   PersonalinfrmationController personalinfrmationController = Get.put(PersonalinfrmationController());
+  @override
+
+
  // AddVisitController addVisitController =Get.put<AddVisitController>(AddVisitController());
   Widget build(BuildContext context) {
+    return GetBuilder<homeNurseController>(builder: (controller){
     return Scaffold(
         body:
         SafeArea(
@@ -25,24 +27,40 @@ class homeNurse extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.start,
 
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(20.0),
+                      padding: const EdgeInsets.only(top: 20.0,left: 20),
                       child: IconButton(
                         icon: Icon(
-                          Icons.settings,
-                          size: 40,
-                          color: Color(0xff9bb4fd),
+                          Icons.logout,
+                          size: 30,
+                          color:Color(0xff9bb4fd),
                         ),
-                        color:Color(0xff9bb4fd)
-                        ,
+                        //  color: Color(0xff3366ff)
+                        //,
                         onPressed: () {
-
+                         controller.logout();
                         },
                       ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20.0),
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.add_box_outlined,
+                          size: 30,
+                          color:Color(0xff9bb4fd),
+                        ),
+                        //  color: Color(0xff3366ff)
+                        //,
+                        onPressed: () {
+                          _increment_requrst_SalaryDialog();
+                        },
+                      ),
+                    ),
+                    SizedBox(width: 200,),
                     Obx(() =>
                         Padding(
                           padding: const EdgeInsets.only(
@@ -94,6 +112,7 @@ class homeNurse extends StatelessWidget {
                             ),
                           ),
                         )),
+
                   ],
                 ),
                 Padding(
@@ -122,9 +141,51 @@ class homeNurse extends StatelessWidget {
                     ),
                   ),
                 ),
+
                 ListPatients(),
 
               ],
-            )));
+            )));});
+  }
+  void _increment_requrst_SalaryDialog() {
+    Get.defaultDialog(
+      title: ' طلب زيادة راتب ',
+      content: Column(
+        children: [
+
+          Padding(
+            padding: const EdgeInsets.only(left: 30.0,right: 30),
+            child: TextFormField(
+              onChanged: (val) {
+                controller.detaile = val;
+              },
+              decoration: InputDecoration(labelText: 'أدخل تفاصيل الطلب'),
+              maxLines: 3,
+            ),
+          ),
+        ],
+      ),
+      actions: [
+        ElevatedButton(
+          onPressed: () {
+            Get.back();
+          },
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Color(0xff9bb4fd)),
+          ),
+          child: Text('إلغاء'),
+        ),
+        ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Color(0xff9bb4fd)),
+          ),
+          onPressed: () {
+            controller.increment_requrst_Salary();
+            Get.back();
+          },
+          child: Text('إرسال الطلب'),
+        ),
+      ],
+    );
   }
 }

@@ -23,7 +23,9 @@ class Splash_screen extends StatelessWidget {
             height: 300,
             width: 300,
             child: Image.asset(
-              "assets/images/splash.png",
+             // "assets/images/splash.png",
+              "assets/images/logo.png"
+                  ,
               fit: BoxFit.cover,
             ),
           ),

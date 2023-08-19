@@ -3,11 +3,15 @@ import 'package:get/get.dart';
 import 'package:project_after_update/core/class/StatusRequest.dart';
 import 'package:project_after_update/modules/manager/join_request/join_request_controller.dart';
 import 'package:project_after_update/static_colors/StaticColors.dart';
-class Join_requestpag extends StatefulWidget {
-  @override
-  Join_request createState() => Join_request();
-}
-class Join_request extends State<Join_requestpag>{
+
+
+// class Join_request_page extends StatefulWidget{
+//   @override
+//   Join_request createState() =>Join_request();
+// }
+
+class Join_request extends StatelessWidget {
+ // const Join_request({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +27,7 @@ class Join_request extends State<Join_requestpag>{
         body: SafeArea(
             child: GetBuilder<Join_request_controller>(builder: (controller){
               return
-                controller.statusRequest==StatusRequest.loading?
-                Center(child: CircularProgressIndicator(color: StaticColor.primarycolor,),):
+
                 Container(
                   child: ListView(
                     children: [
@@ -73,15 +76,19 @@ class Join_request extends State<Join_requestpag>{
                       ),
                       GetBuilder<Join_request_controller>(builder: (controller){
                         return
+                          controller.statusRequest==StatusRequest.loading?
+                          Center(child: CircularProgressIndicator(color: StaticColor.primarycolor,),):
                           controller.data.isEmpty?Container(child: Center(child: Text("لا يوجد طلبات انضمام لعرضها",style: TextStyle(color: StaticColor.primarycolor),),),):
-                          Card(
-                            child: Container(
+                        //  Card(
+                          //  child:
+                            Container(
                               padding: const EdgeInsets.all(8),
                               height: MediaQuery.of(context).size.height * 0.6,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
                               ),
-                              child: ListView.builder(
+                              child:
+                              ListView.builder(
                                   itemCount: controller.data.length,
                                   itemBuilder: (context, index) {
                                     return Container(
@@ -259,9 +266,6 @@ class Join_request extends State<Join_requestpag>{
                                                           Get.back();
                                                           controller.accept_join(controller.data[index]['id']);
                                                           controller.data.removeAt(index);
-                                                          setState(() {
-                                                            Join_requestpag();
-                                                          });
                                                         },
                                                         textCancel: "رجوع",
                                                         onCancel: (){
@@ -298,7 +302,7 @@ class Join_request extends State<Join_requestpag>{
                                                               onTap: (){
                                                                 Get.back();
                                                                 controller.reject_join(controller.data[index]['id']);
-
+                                                                      controller.data.removeAt(index);
 
                                                               },
                                                               child: Container(
@@ -520,8 +524,8 @@ class Join_request extends State<Join_requestpag>{
                                       ),
                                     );
                                   }),
-                            ),
-                          );
+                            );
+                         // );
                       })
                     ],
                   ),

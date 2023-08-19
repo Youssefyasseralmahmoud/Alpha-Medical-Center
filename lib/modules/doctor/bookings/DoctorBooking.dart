@@ -3,20 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
 import 'package:get/get.dart';
 import 'package:project_after_update/modules/doctor/bookings/CalendarController.dart';
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
 
-class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: DoctorBooking(),
-    );
-  }
-}
 class DoctorBooking extends StatefulWidget {
   @override
   _DoctorBookingState createState() => _DoctorBookingState();
@@ -156,6 +143,7 @@ class _DoctorBookingState extends State<DoctorBooking> {
     );
   }
 }
+
 
 // class DoctorBooking extends StatefulWidget {
 //   const DoctorBooking({Key? key}) : super(key: key);

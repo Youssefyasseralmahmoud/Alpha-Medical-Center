@@ -60,68 +60,68 @@ class DoctorBookingController extends GetxController{
 
   final Map<DateTime,List<CleanCalendarEvent>> events = {};
   //final Map<DateTime, List<Map<String, String>>> appointments = {};
-calender_event(){
-  for (int i = 0; i < data.length ; i++)
-  { print("int ");
+  calender_event(){
+    for (int i = 0; i < data.length ; i++)
+    { print("int ");
     print(i);
-  final booking = data[i];
-                      String bookingDateStr = booking['BookingDate'];
-                      String day =bookingDateStr.substring(8,10);
-                      String month =bookingDateStr.substring(5,7);
-                      String year =bookingDateStr.substring(0,4);
-                      String hour = bookingDateStr.substring(11,13);
-                      String minute =bookingDateStr.substring(14,16);
-                  print("rama");
+    final booking = data[i];
+    String bookingDateStr = booking['BookingDate'];
+    String day =bookingDateStr.substring(8,10);
+    String month =bookingDateStr.substring(5,7);
+    String year =bookingDateStr.substring(0,4);
+    String hour = bookingDateStr.substring(11,13);
+    String minute =bookingDateStr.substring(14,16);
+    print("rama");
     print( "${year}  ${month}   ${day}  ${hour}   ${minute}");int yearInt = int.parse(year);
-  int monthInt = int.parse(month);
-  int dayInt = int.parse(day);
-  int hourInt = int.parse(hour);
-  int minuteInt = int.parse(minute);
-  int hourIntend = int.parse(hour);
-  int minuteIntend = int.parse(minute);
-  if (minuteInt==30)
+    int monthInt = int.parse(month);
+    int dayInt = int.parse(day);
+    int hourInt = int.parse(hour);
+    int minuteInt = int.parse(minute);
+    int hourIntend = int.parse(hour);
+    int minuteIntend = int.parse(minute);
+    if (minuteInt==30)
     {minuteIntend =0;
     hourIntend=hourInt +1;
 
     }
 
-  DateTime date = DateTime(yearInt, monthInt, dayInt);
-  List<CleanCalendarEvent> appointmentsList = events[date] ?? [];
-  if (appointmentsList.isNotEmpty) {
-    print("isNotEmpty");
-    // add new appointment to existing list
-    appointmentsList.add(CleanCalendarEvent('${booking['patient_medical_record']['FullName']}',
-        startTime: DateTime(yearInt,minuteInt,
-            dayInt , hourInt, minuteInt),
-        endTime: DateTime(yearInt,minuteInt,
-            dayInt , hourInt, minuteInt),
-        color: Color(0xff9bb4fd)));
-  } else {
-    print("isEmpty");
-    appointmentsList = [
-      CleanCalendarEvent('${booking['patient_medical_record']['FullName']}',
-          startTime: DateTime(yearInt,minuteInt, dayInt , hourInt, minuteInt),
-          endTime: DateTime(yearInt,minuteInt, dayInt , hourIntend, minuteIntend),
-  color: Color(0xff9bb4fd))];
+    DateTime date = DateTime(yearInt, monthInt, dayInt);
+    List<CleanCalendarEvent> appointmentsList = events[date] ?? [];
+    if (appointmentsList.isNotEmpty) {
+      print("isNotEmpty");
+      // add new appointment to existing list
+      appointmentsList.add(CleanCalendarEvent('${booking['patient_medical_record']['FullName']}',
+          startTime: DateTime(yearInt,minuteInt,
+              dayInt , hourInt, minuteInt),
+          endTime: DateTime(yearInt,minuteInt,
+              dayInt , hourInt, minuteInt),
+          color: Color(0xff9bb4fd)));
+    } else {
+      print("isEmpty");
+      appointmentsList = [
+        CleanCalendarEvent('${booking['patient_medical_record']['FullName']}',
+            startTime: DateTime(yearInt,minuteInt, dayInt , hourInt, minuteInt),
+            endTime: DateTime(yearInt,minuteInt, dayInt , hourIntend, minuteIntend),
+            color: Color(0xff9bb4fd))];
 
+    }
+    print(appointmentsList);
+    events[date] = appointmentsList;
+
+
+    }
+
+
+
+    // events.addAll(
+    //   {
+    //
+    //   }
+    // )
+    //
+    // List<CleanCalendarEvent> newEvents = [CleanCalendarEvent(), CleanCalendarEvent()];
+    //
   }
-  print(appointmentsList);
-  events[date] = appointmentsList;
-
-
-  }
-
-
-
-  // events.addAll(
-  //   {
-  //
-  //   }
-  // )
-  //
-  // List<CleanCalendarEvent> newEvents = [CleanCalendarEvent(), CleanCalendarEvent()];
-  //
-}
 
 
 
@@ -169,3 +169,4 @@ calender_event(){
 //     dataSource.appointments = appointments;
 //   }
 // }
+

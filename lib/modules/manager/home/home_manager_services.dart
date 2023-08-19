@@ -64,27 +64,7 @@ class Home_manager_services {
       } else {
         return "هنالك مشكلة في الإتصال بالأنترنت";
       }
-      // } catch(_){
-      //   return const Left(StatusRequest.serverfailure);
-      // }
 
-
-
-
-    // await crud_delete.postdata(
-    //     Serverconfig.delete_section,
-    //     {
-    //       "id" : "${id}"
-    //     },
-    //
-    //     {
-    //       "Authorization": bearer + " " + token.toString(),
-    //       "Accept": "application/json"
-    //     }
-    // );
-    // print("response from patient_visits services");
-    // print(response);
-    // return response.fold((l) => l, (r) => r);
   }
 
 }

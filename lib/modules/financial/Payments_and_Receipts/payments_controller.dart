@@ -35,12 +35,12 @@ class Payments_controller extends GetxController {
     } else if (test_data.isEmpty) {
       await Get.snackbar(
         "تنبيه",
-        "لا يوجد مدفوعات صيانة لعرضهم",
+        "لا يوجد مدفوعات  لعرضهم",
       );
     } else if (StatusRequest.failure == statusRequest) {
       await Get.snackbar(
         "تحذير",
-        "لا يوجد مدفوعات صيانة لعرضهم",
+        "لا يوجد مدفوعات  لعرضهم",
       );
     } else {
       Get.defaultDialog(title: " خطأ", content: Text("حدث خطا ما"));

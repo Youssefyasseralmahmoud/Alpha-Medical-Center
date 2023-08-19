@@ -68,7 +68,7 @@ class Laboratory_section_in_finance extends StatelessWidget {
                                     onTap: () {},
                                     child: ListTile(
                                       title: Text('${controller.data[0]['types_of_center_services'][int]['user'][index]['name']}'),
-                                      subtitle: Text('الراتب :200000'),
+                                      subtitle: Text('الراتب :${controller.data[0]['types_of_center_services'][int]['user'][index]['Salary']}'),
                                       trailing: Row( // Wrap the IconButton widgets with a Row widget
                                         mainAxisSize: MainAxisSize.min,
                                         children: [

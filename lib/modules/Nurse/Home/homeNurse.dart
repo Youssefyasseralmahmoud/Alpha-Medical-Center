@@ -6,19 +6,22 @@ import 'package:project_after_update/core/function/validinput.dart';
 import 'package:project_after_update/modules/Nurse/Home/PatientList.dart';
 import 'package:project_after_update/modules/Nurse/Home/homeNurseController.dart';
 import 'package:project_after_update/modules/Nurse/VisitsList/PersonalInformation/PersonalinfrmationController.dart';
+import 'package:project_after_update/modules/Nurse/warehouse/warehouseController.dart';
 import 'package:project_after_update/static_colors/StaticColors.dart';
 
 class homeNurse extends StatelessWidget {
-
   homeNurseController controller= Get.put(homeNurseController());
-  PersonalinfrmationController personalinfrmationController = Get.put(PersonalinfrmationController());
-  @override
+  Nurse_warehouseController c= Get.put(Nurse_warehouseController());
 
 
  // AddVisitController addVisitController =Get.put<AddVisitController>(AddVisitController());
+  @override
   Widget build(BuildContext context) {
     return GetBuilder<homeNurseController>(builder: (controller){
-    return Scaffold(
+
+     // PersonalinfrmationController personalinfrmationController = Get.put(PersonalinfrmationController());
+
+      return Scaffold(
         body:
         SafeArea(
 

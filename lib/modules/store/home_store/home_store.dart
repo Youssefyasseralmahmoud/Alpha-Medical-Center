@@ -47,10 +47,10 @@ class home_store extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   child: IconButton(
                     onPressed: () {
-                      Get.toNamed("/notification");
+                      _increment_requrst_SalaryDialog();
                     },
                     icon: const Icon(
-                      Icons.notifications_active_outlined,
+                      Icons.add_box_outlined,
                       size: 25,
                       color: Colors.white,
                     ),
@@ -66,9 +66,11 @@ class home_store extends StatelessWidget {
                   height: 55,
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.logout();
+                    },
                     icon: const Icon(
-                      Icons.settings,
+                      Icons.login_outlined,
                       size: 25,
                       color: Colors.white,
                     ),
@@ -159,4 +161,48 @@ class home_store extends StatelessWidget {
       ),
     ));
   });
-}}
+}
+  void _increment_requrst_SalaryDialog() {
+    warehouseControllerstor controller = Get.find();
+    Get.defaultDialog(
+      title: ' طلب زيادة راتب ',
+      content: Column(
+        children: [
+
+          Padding(
+            padding: const EdgeInsets.only(left: 30.0,right: 30),
+            child: TextFormField(
+              onChanged: (val) {
+                controller.detaile = val;
+              },
+              decoration: InputDecoration(labelText: 'أدخل تفاصيل الطلب'),
+              maxLines: 3,
+            ),
+          ),
+        ],
+      ),
+      actions: [
+        ElevatedButton(
+          onPressed: () {
+            Get.back();
+          },
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Color(0xff9bb4fd)),
+          ),
+          child: Text('إلغاء'),
+        ),
+        ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Color(0xff9bb4fd)),
+          ),
+          onPressed: () {
+            controller.increment_requrst_Salary();
+            Get.back();
+          },
+          child: Text('إرسال الطلب'),
+        ),
+      ],
+    );
+  }
+
+}

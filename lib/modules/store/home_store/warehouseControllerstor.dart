@@ -1,8 +1,10 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_after_update/modules/store/home_store/products_store.dart';
 import 'package:project_after_update/modules/store/home_store/updatedetalsservice.dart';
 import 'package:project_after_update/modules/store/home_store/warehouseProdactstoreService.dart';
+import 'package:project_after_update/secure_storage/secure_storage.dart';
 
 import '../../../core/class/StatusRequest.dart';
 import '../../../core/function/handlingdata.dart';
@@ -17,9 +19,12 @@ class warehouseControllerstor extends GetxController{
   StatusRequest? statusRequest ;
   StatusRequest? statusRequest2 ;
   StatusRequest? statusRequest3 ;
+  StatusRequest? statusRequest8;
+  StatusRequest? statusRequest7;
+  Secury_storage secury_storage = new Secury_storage();
   var data_details =[];
   var data_details3 =[];
-  warehouseProdactstorService service = warehouseProdactstorService(Get.find());
+  warehouseProdactstorService service = warehouseProdactstorService(Get.find(),Get.find(),Get.find());
   Updateservic servic2 = Updateservic(Get.find());
   archiveServic servic3= archiveServic(Get.find());
   String name= '';
@@ -140,5 +145,59 @@ class warehouseControllerstor extends GetxController{
 
     super.onInit();
   }
+
+
+  logout() async {
+    statusRequest8 = StatusRequest.loading;
+    update();
+    var response = await service.logout();
+    // test_data.addAll(response['data']) ;
+    statusRequest8 = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest8) {
+      await Get.snackbar(
+        "تم",
+        "تم تسجيل الخروج بنجاح",
+      );
+      FirebaseMessaging.instance.unsubscribeFromTopic("reception");
+      secury_storage.delete();
+
+      Get.offAllNamed("/login");
+
+    }
+    else if (StatusRequest.failure == statusRequest8) {
+      await Get.snackbar(
+        "تنبيه",
+        "لم تتم عملية تسجيل الخروج   ",
+      );
+    }
+    else {
+      Get.defaultDialog(title: " خطأ", content: Text("حدث خطا ما"));
+    }
+    update();
+  }
+  String detaile ="";
+  increment_requrst_Salary() async {
+    statusRequest7 = StatusRequest.loading;
+    update();
+    var response = await service.increment_requrst_Salary(detaile);
+    statusRequest7 = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest7) {
+      await Get.snackbar(
+        "ملاحظة ",
+        "تم إرسال الطلب بنجاج",
+      );
+    } else if (StatusRequest.failure == statusRequest7) {
+      await Get.snackbar(
+        "تنبيه",
+        "فشل إرسال الطلب",
+      );
+    } else {
+      Get.defaultDialog(title: " خطأ ", content: Text("حدث خطأ ما"));
+    }
+    update();
+  }
+
 
 }

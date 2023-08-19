@@ -16,7 +16,7 @@ class _Nurse_wait_patientState extends State<Nurse_wait_patient> {
   Widget build(BuildContext context) {
     homeNurseController controlle_home= Get.find();
     VisitsListController visitsListController= Get.put<VisitsListController>(VisitsListController());
-    Nurse_wait_patient_controller controller= Get.put<Nurse_wait_patient_controller>(Nurse_wait_patient_controller());
+    Nurse_wait_patient_controller controller= Get.put(Nurse_wait_patient_controller());
     bool _isFilterOn = true;
     return Scaffold(
         backgroundColor: Color(0xffffffff),
@@ -233,7 +233,13 @@ class _Nurse_wait_patientState extends State<Nurse_wait_patient> {
 
                                       },
                                     ),
-                                    Text("${controller.data[index]['FullName']}",style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: 'Arial')),
+                                    Column(
+                                      children: [
+
+                                        Text("${controller.data[index]['FullName']}",style: TextStyle(fontSize: 20,fontWeight: FontWeight.normal,fontFamily: 'Arial')),
+                                        Text("(  ${controller.data[index]['ServiceName']}  )" ,style: TextStyle(fontSize: 14,fontWeight: FontWeight.w200,fontFamily: 'Arial',color: Colors.grey[900])),
+                                      ],
+                                    ),
                                     IconButton(
                                       color:Color(0xff9bb4fd),
                                       icon: Icon(

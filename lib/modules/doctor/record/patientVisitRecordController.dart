@@ -61,22 +61,22 @@ class patientVisitRecordController extends GetxController{
   go_to_edit(int index ){
     Get.toNamed("/EditVisitDoctor"
         ,arguments: {
-      "Pressure" :data[index]['Pressure'].toString(),
-      "Heartbeat" : data[index]['Heartbeat'].toString(),
-      "BodyHeat" : data[index]['BodyHeat'].toString(),
-      "ClinicalStory" : data[index]['ClinicalStory'].toString(),
-      "ClinicalExamination" : data[index]['ClinicalExamination'].toString(),
-      "Comments" : data[index]['Comments'].toString(),
-      "id" : data[index]['id']
+          "Pressure" :data[index]['Pressure'].toString(),
+          "Heartbeat" : data[index]['Heartbeat'].toString(),
+          "BodyHeat" : data[index]['BodyHeat'].toString(),
+          "ClinicalStory" : data[index]['ClinicalStory'].toString(),
+          "ClinicalExamination" : data[index]['ClinicalExamination'].toString(),
+          "Comments" : data[index]['Comments'].toString(),
+          "id" : data[index]['id']
 
-    }
+        }
     );
   }
   get_patient_info(int id) async {
     statusRequest2 = StatusRequest.loading;
     update();
     var response = await services.get_patient_info(id);
-   // test_data2.addAll(response['data']) ;
+    // test_data2.addAll(response['data']) ;
     statusRequest2 = handlingdata(response);
 
     if (StatusRequest.succes == statusRequest2) {
@@ -103,15 +103,15 @@ class patientVisitRecordController extends GetxController{
     }
     update();
   }
-  // late int id ;
-  // @override
-  // void onInit() {
-  //   if (Get.arguments != null) {
-  //     if (Get.arguments['id'] != null)
-  //       id = Get.arguments['id'];
-  //   }
-  //   super.onInit();
-  // }
+// late int id ;
+// @override
+// void onInit() {
+//   if (Get.arguments != null) {
+//     if (Get.arguments['id'] != null)
+//       id = Get.arguments['id'];
+//   }
+//   super.onInit();
+// }
 
 
 }

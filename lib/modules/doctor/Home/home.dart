@@ -10,60 +10,18 @@ import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:project_after_update/modules/doctor/bookings/CalendarController.dart';
 import 'package:project_after_update/static_colors/StaticColors.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
 
-  @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  homeController controller = Get.put(homeController());
-  DoctorBookingController c = Get.put<DoctorBookingController>(DoctorBookingController());
+class Home extends StatelessWidget  {
+  // homeController controller = Get.put(homeController());
+  // DoctorBookingController c = Get.put<DoctorBookingController>(DoctorBookingController());
   @override
   Widget build(BuildContext context) {
- //   controller = Get.put(homeController());
+    Get.put(homeController());
+    return GetBuilder<homeController>(builder: (controller) {
+
     bool isFilterOn = true;
     return Scaffold(
-        drawer: Drawer(
-          child: ListView(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.settings,size: 30,color: StaticColor.primarycolor,),
-                  SizedBox(width: 5,),
-                  Text("قائمة الإعدادات",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
 
-                ],
-              ),
-              Divider(),
-              SizedBox(height: 20,),
-              GestureDetector(
-                onTap: (){
-                 // controller.logout();
-                },
-                child: Container(
-                  padding: EdgeInsets.all(8),
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height*0.09,
-                  decoration: BoxDecoration(
-                      color:StaticColor.primarycolor,
-                      borderRadius: BorderRadius.circular(20)
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Icon(Icons.arrow_back_ios_new),
-                      Text("تسجيل الخروج",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
-
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
         body: SafeArea(
           child: Column(
 
@@ -189,9 +147,9 @@ SizedBox(width: 200,),
                       child: Switch(
                         value: controller.isFilterOn,
                         onChanged: (value) {
-                          setState(() {
+
                             controller.isFilterOn = value;
-                          });
+
                          // print(_isFilterOn);
                           if(controller.isFilterOn==false){
                             controller.changstatuslabbyidservic(0);}
@@ -311,7 +269,7 @@ SizedBox(width: 200,),
               // ),
 
               Padding(
-                padding: const EdgeInsets.only(right: 140, bottom: 20, top: 20),
+                padding: const EdgeInsets.only(right: 120, bottom: 20, top: 20),
                 child: Text("قائمة مرضى اليوم", style: TextStyle(fontFamily: 'Arial',
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
@@ -320,16 +278,17 @@ SizedBox(width: 200,),
                 ),
               ),
 
-              patientList(),
+              patientList(controller: controller,),
             ],
 
 
 
           ),
-        ));
+        ));});
   }
 
   void _increment_requrst_SalaryDialog() {
+    homeController controller = Get.find();
     Get.defaultDialog(
       title: ' طلب زيادة راتب ',
       content: Column(

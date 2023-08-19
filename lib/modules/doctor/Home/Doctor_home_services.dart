@@ -13,12 +13,13 @@ import '../../../secure_storage/secure_storage.dart';
 class Doctor_home_services {
   Crud_get crud;
   Crud_put crud_Change;
+  Crud_put crud_com;
   Crud crud_salary;
   Crud_get crud_my_user;
   Crud_get crud_logout;
 
   Secury_storage secury = new Secury_storage();
-  Doctor_home_services (this.crud,this.crud_Change,this.crud_salary,this.crud_my_user,this.crud_logout);
+  Doctor_home_services (this.crud,this.crud_Change,this.crud_salary,this.crud_my_user,this.crud_logout,this.crud_com);
   String? token ;
   get_allwaitingPatient(int id_types_of_center_services)async{
 
@@ -39,6 +40,19 @@ class Doctor_home_services {
     var response = await crud_Change.postdata(Serverconfig.changeStatus,
         {"id": "${2}",
           'Status': '${status}',
+        },
+        {
+          "Authorization": "Bearer" + " " + token.toString(),
+          "Accept": "application/json"
+        }
+    );
+    print(response);
+    return response.fold((l) => l, (r) => r);
+  }
+  complete( int ID ) async {
+    String? token = await secury.read("doctor_token");
+    var response = await crud_com.postdata(Serverconfig.completeRequiredPatientServices,
+        {"RequiredPatientID": "${ID}",
         },
         {
           "Authorization": "Bearer" + " " + token.toString(),

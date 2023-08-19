@@ -102,7 +102,7 @@ class Serverconfig{
   static const update_user_staus ='$domainnameserver/api/updateUserStatus';
   static const get_all_item_in_order ='$domainnameserver/api/getAllItemByOrderInComplete';
   static const get_all_item_in_order_complete ='$domainnameserver/api/getAllItemByOrderComplete';
-
+  static const completeRequiredPatientServices ='$domainnameserver/api/completeRequiredPatientServices';
 
 
 

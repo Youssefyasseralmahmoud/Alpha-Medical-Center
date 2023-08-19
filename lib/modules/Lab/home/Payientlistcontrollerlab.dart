@@ -18,6 +18,7 @@ class  PatientListControllerlab extends GetxController{
   StatusRequest? statusRequest;
   StatusRequest? statusRequest2;
   StatusRequest? statusRequest3;
+  StatusRequest? statusRequest5;
   late int id_typeservic;
 
   late String name;
@@ -89,9 +90,20 @@ class  PatientListControllerlab extends GetxController{
     update();
 
   }
-  copmpletvisit(var id){
+  copmpletvisit(var id)async{
+    statusRequest5 = StatusRequest.loading;
+    update();
+    var respons2=  await service2.enter(id);
+    var response = await service2.complete(id);
 
-    service2.complete(id);
+    statusRequest5 = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest5)
+      Get.defaultDialog(title: "", content: Text("تمت إزالة المريض من الدور"));
+    else
+      Get.defaultDialog(title: "", content: Text("حدث خطأ ما "));
+
+
 
   }
 

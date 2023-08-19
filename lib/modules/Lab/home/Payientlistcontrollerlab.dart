@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_after_update/modules/Lab/home/changestatuslabservic.dart';
-import 'package:project_after_update/modules/x-Ray/home/patientlistService.dart';
+
 
 import '../../../core/class/StatusRequest.dart';
 import '../../../core/function/handlingdata.dart';
 import '../../../secure_storage/secure_storage.dart';
+import '../VisitListLab/patientlistService.dart';
 
 
 class  PatientListControllerlab extends GetxController{

@@ -17,7 +17,7 @@ class personalinformationlab {
   String? token ;
   get_pationbyid(int id)async{
 
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("laboratory_token");
     var response=await crud.postdata(Serverconfig.getinformationbyId+"${id}",
         {
           "Authorization": "Bearer" + " " + token.toString(),

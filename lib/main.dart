@@ -7,7 +7,7 @@ import 'package:project_after_update/GetxBindings/Lab/Editvisitlabbinding.dart';
 import 'package:project_after_update/GetxBindings/Lab/Homelabbinding.dart';
 import 'package:project_after_update/GetxBindings/Lab/VisitListlabbinding.dart';
 import 'package:project_after_update/GetxBindings/Lab/Warehoselabbinding.dart';
-import 'package:project_after_update/GetxBindings/Nurse/AddVisitBinding.dart';
+
 import 'package:project_after_update/GetxBindings/Nurse/EditVisitNurseBinding.dart';
 import 'package:project_after_update/GetxBindings/Nurse/HomeBinding.dart';
 import 'package:project_after_update/GetxBindings/Nurse/VisitsListBinding.dart';
@@ -39,7 +39,6 @@ import 'package:project_after_update/modules/Lab/VisitListLab/PersonalInformatio
 import 'package:project_after_update/modules/Lab/VisitListLab/VisitsListlab.dart';
 import 'package:project_after_update/modules/Lab/funcybarlab.dart';
 import 'package:project_after_update/modules/Lab/home/homelab.dart';
-import 'package:project_after_update/modules/Nurse/AddVisit/AddVisit.dart';
 import 'package:project_after_update/modules/Nurse/EditVisitDetailsNures/EditVisitDetailsNures.dart';
 import 'package:project_after_update/modules/Nurse/EditVisitNurse/EditVisitNurse.dart';
 import 'package:project_after_update/modules/Nurse/Home/homeNurse.dart';
@@ -47,7 +46,6 @@ import 'package:project_after_update/modules/Nurse/Nures_patiient_services_list/
 import 'package:project_after_update/modules/Nurse/Nurse_wait_patient/Nurse_wait_patient.dart';
 import 'package:project_after_update/modules/Nurse/VisitsList/Nurse_visit_ditails/Nurse_visit_ditails.dart';
 import 'package:project_after_update/modules/Nurse/VisitsList/PersonalInformation/PersonalInformation.dart';
-
 import 'package:project_after_update/modules/Nurse/VisitsList/VisitsList.dart';
 import 'package:project_after_update/modules/Nurse/funcybarNurse.dart';
 import 'package:project_after_update/modules/Nurse/warehouse/addConsumer.dart';
@@ -61,19 +59,51 @@ import 'package:project_after_update/modules/doctor/record/PersonalInformationD.
 import 'package:project_after_update/modules/doctor/record/doctorDitailes.dart';
 import 'package:project_after_update/modules/doctor/record/patientVisitRecord.dart';
 import 'package:project_after_update/modules/financial/Payments_and_Receipts/Payments_and_Receipts.dart';
+import 'package:project_after_update/modules/financial/Receipts/Receipts.dart';
+import 'package:project_after_update/modules/financial/Receipts/bill_details_in_receipts/bill_details_in_receipts.dart';
+import 'package:project_after_update/modules/financial/Receipts/update_receipts/update_receipts.dart';
+import 'package:project_after_update/modules/financial/clinics_section_in_finanical/clinics_section_in_finance.dart';
+import 'package:project_after_update/modules/financial/complete_order/add_payments_for_orders/add_payments_for_orders.dart';
+import 'package:project_after_update/modules/financial/complete_order/all_items_in_order_complete.dart';
+import 'package:project_after_update/modules/financial/complete_order/complete_order.dart';
+import 'package:project_after_update/modules/financial/complete_order/payment_for_orders/payment_for_orders.dart';
+import 'package:project_after_update/modules/financial/complete_order/update_payments_orders/update_payments_order.dart';
+import 'package:project_after_update/modules/financial/finance_section_in_finanical/finance_section_in_finacne.dart';
+import 'package:project_after_update/modules/financial/financial_employees_salary/financial_employees_salary.dart';
+import 'package:project_after_update/modules/financial/financial_home/Setting_in_finance.dart';
 import 'package:project_after_update/modules/financial/financial_home/financial_home.dart';
+import 'package:project_after_update/modules/financial/financial_home/patient_bills/add_receipts_from_patinet_bill/add_receipts_from_patient_bill.dart';
+import 'package:project_after_update/modules/financial/financial_home/patient_bills/patient_bills.dart';
+import 'package:project_after_update/modules/financial/financial_home/patient_bills/update_bills/update_bills.dart';
+import 'package:project_after_update/modules/financial/financial_home/profile_info_finance/edit_profile_info_finance/edit_profile_info_finance.dart';
+import 'package:project_after_update/modules/financial/financial_home/profile_info_finance/profile_info_finance.dart';
 import 'package:project_after_update/modules/financial/financial_invoices_archive/financial_invoices_archive.dart';
 import 'package:project_after_update/modules/financial/financial_material/financial_material.dart';
+import 'package:project_after_update/modules/financial/insurance_company/add_insurance_company/add_insurance_company.dart';
+import 'package:project_after_update/modules/financial/insurance_company/edit_insurance_company/edit_insurance_company.dart';
+import 'package:project_after_update/modules/financial/insurance_company/insurance_company.dart';
+import 'package:project_after_update/modules/financial/laboratory_section_in_finanical/laboratory_section_in_finance.dart';
+import 'package:project_after_update/modules/financial/maintenance/add_maintenance_request/add_maintenance_request.dart';
+import 'package:project_after_update/modules/financial/maintenance/edit_maintenance_request/edit_maintenance_request.dart';
 import 'package:project_after_update/modules/financial/maintenance/maintenance.dart';
+import 'package:project_after_update/modules/financial/maintenance/payments_for_maintenance/add_payments_for_maintenance_req/add_payments_for_maintenance_req.dart';
+import 'package:project_after_update/modules/financial/maintenance/payments_for_maintenance/payments_for_maintenance.dart';
+import 'package:project_after_update/modules/financial/maintenance/payments_for_maintenance/update_payments_maintenance/update_payments_maintenance.dart';
 import 'package:project_after_update/modules/financial/navigationBar_financial.dart';
+import 'package:project_after_update/modules/financial/orders_from_warehouse/accept_item_request/accept_item_request.dart';
+import 'package:project_after_update/modules/financial/orders_from_warehouse/all_items_in_order.dart';
+import 'package:project_after_update/modules/financial/reception_section_in_finanical/reception_section_in_finance.dart';
 import 'package:project_after_update/modules/financial/sections/financial_Clinic.dart';
 import 'package:project_after_update/modules/financial/sections/financial_Clinic_incoming_material/financial_Clinic_incoming_material.dart';
 import 'package:project_after_update/modules/financial/sections/financial_sections.dart';
+import 'package:project_after_update/modules/financial/waiting_from_reception/Add_Receipts/add_receipts.dart';
 import 'package:project_after_update/modules/financial/waiting_from_reception/InvoicePage.dart';
 import 'package:project_after_update/modules/financial/waiting_from_reception/waiting_from_reception.dart';
+import 'package:project_after_update/modules/financial/xray_section_in_finanical/xray_section_in_finance.dart';
 import 'package:project_after_update/modules/login/login.dart';
 import 'package:project_after_update/modules/manager/employee/employee.dart';
 import 'package:project_after_update/modules/manager/home/Setting_managment.dart';
+import 'package:project_after_update/modules/manager/home/all_employee_status/all_employee_status.dart';
 import 'package:project_after_update/modules/manager/home/ambulance_in_managment/add_service_type_inambulance/add_service_type_for_ambulance.dart';
 import 'package:project_after_update/modules/manager/home/ambulance_in_managment/ambulance_in_managment.dart';
 import 'package:project_after_update/modules/manager/home/ambulance_in_managment/details_user_in_ambulance/details_user_in_ambulance.dart';
@@ -87,6 +117,10 @@ import 'package:project_after_update/modules/manager/home/clinics_in_managment/d
 import 'package:project_after_update/modules/manager/home/clinics_in_managment/edit_clinics_type_in_managment/edit_clinics_type.dart';
 import 'package:project_after_update/modules/manager/home/edit_section/edit_section_controller.dart';
 import 'package:project_after_update/modules/manager/home/edit_section/edit_the_section.dart';
+import 'package:project_after_update/modules/manager/home/finance_in_managment/add_service_type_for_finance/add_service_type_for_finance.dart';
+import 'package:project_after_update/modules/manager/home/finance_in_managment/details_of_users/details_of_finance_users.dart';
+import 'package:project_after_update/modules/manager/home/finance_in_managment/edit_service_type_finance/edit_service_type_finance.dart';
+import 'package:project_after_update/modules/manager/home/finance_in_managment/finance_in_managment.dart';
 import 'package:project_after_update/modules/manager/home/home_manager.dart';
 import 'package:project_after_update/modules/manager/home/home_screen_manager.dart';
 import 'package:project_after_update/modules/manager/home/laboratory_in_managment/add_analysis/add_analysis_type.dart';
@@ -121,6 +155,7 @@ import 'package:project_after_update/modules/reception/add_record/add_record.dar
 import 'package:project_after_update/modules/reception/add_record/previous_medical_condition/add_previous_medical_condition.dart';
 import 'package:project_after_update/modules/reception/center_services/center_services.dart';
 import 'package:project_after_update/modules/reception/doctors/clinics/add_reservation/add_reservation.dart';
+import 'package:project_after_update/modules/reception/doctors/clinics/add_shudular/add_shudular.dart';
 import 'package:project_after_update/modules/reception/doctors/clinics/clinics.dart';
 import 'package:project_after_update/modules/reception/doctors/clinics/reservations/edit_reservation/edit_reservation.dart';
 import 'package:project_after_update/modules/reception/doctors/clinics/reservations/patient_details/patient_details.dart';
@@ -128,6 +163,7 @@ import 'package:project_after_update/modules/reception/doctors/clinics/reservati
 import 'package:project_after_update/modules/reception/doctors/clinics/wating_in_clinics/wating_in_clinics.dart';
 import 'package:project_after_update/modules/reception/doctors/doctors.dart';
 import 'package:project_after_update/modules/reception/doctors/doctors_details.dart';
+import 'package:project_after_update/modules/reception/home/all_employee_reception/all_employee_reception.dart';
 import 'package:project_after_update/modules/reception/home/home_reception.dart';
 import 'package:project_after_update/modules/reception/home/home_screen_reception.dart';
 import 'package:project_after_update/modules/reception/home/profile_info/edit_profile_info/edit_profile_info.dart';
@@ -161,14 +197,14 @@ import 'package:project_after_update/modules/x-Ray/home/homeX-Ray.dart';
 import 'package:project_after_update/modules/x-Ray/warehose/addConsumer.dart';
 import 'package:project_after_update/modules/x-Ray/warehose/funcybarX-ray.dart';
 import 'package:project_after_update/modules/x-Ray/warehose/warehouseProducts.dart';
-
+import 'modules/financial/store_section_in_finanical/store_section_infinance.dart';
 import 'modules/manager/home/profile_info_managment/profilr_info_managment.dart';
-
 import 'GetxBindings/store/store_materialeBinding.dart';
 import 'modules/Lab/VisitListLab/detalisvistlab.dart';
 import 'modules/Lab/Warehose/addConsumer.dart';
 import 'modules/Lab/Warehose/warehouseProductslab.dart';
 import 'modules/Lab/home/listlab.dart';
+import 'modules/store/Needs/Addorder.dart';
 import 'modules/store/Orders/dep_order.dart';
 import 'modules/store/home_store/Details.dart';
 import 'modules/store/home_store/add_details.dart';
@@ -202,7 +238,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       initialBinding: Binding(),
       debugShowCheckedModeBanner: false,
-      initialRoute:'/login',
+      initialRoute:'/Splash_screen',
       getPages: [
         //START YOUSSEF
         GetPage(name: '/login', page: () =>  Login()),
@@ -299,13 +335,86 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/Notifications_manager', page: () =>      Notifications_manager()),
         GetPage(name: '/EDit_profile_info', page: () =>      EDit_profile_info()),
         GetPage(name: '/EDit_profile_info_managment', page: () =>      EDit_profile_info_managment()),
+        GetPage(name: '/Finance_in_managment', page: () =>      Finance_in_managment()),
+        GetPage(name: '/Add_service_type_for_finance', page: () =>      Add_service_type_for_finance()),
+        GetPage(name: '/Edit_service_type_finance', page: () =>      Edit_service_type_finance()),
+        GetPage(name: '/Details_of_finance_user', page: () =>      Details_of_finance_user()),
+        GetPage(name: '/Insurance_company', page: () =>      Insurance_company()),
+        GetPage(name: '/Edit_insurance_company', page: () =>      Edit_insurance_company()),
+        GetPage(name: '/Add_insurance_company', page: () =>      Add_insurance_company()),
+        GetPage(name: '/Setting_in_finance', page: () =>      Setting_in_finance()),
+        GetPage(name: '/Profile_info_finance', page: () =>      Profile_info_finance()),
+        GetPage(name: '/EDit_profile_info_finance', page: () =>      EDit_profile_info_finance()),
+        GetPage(name: '/Add_receipts',    page: () =>Add_receipts(), ),
+        GetPage(name: '/Patient_bills',    page: () =>Patient_bills(), ),
+        GetPage(name: '/Add_receipts_from_patient_bill',    page: () =>Add_receipts_from_patient_bill(), ),
+        GetPage(name: '/Receipts',    page: () =>Receipts(), ),
+        GetPage(name: '/Bill_details_in_receipts',    page: () =>Bill_details_in_receipts(), ),
+        GetPage(name: '/update_receipts',    page: () =>update_receipts(), ),
+        GetPage(name: '/update_bill',    page: () =>update_bill(), ),
+        GetPage(name: '/Add_maintenance_request',    page: () =>Add_maintenance_request(), ),
+        GetPage(name: '/update_maintenance_request',    page: () =>update_maintenance_request(), ),
+        GetPage(name: '/Clinics_section_in_finance',    page: () =>Clinics_section_in_finance(), ),
+        GetPage(name: '/Finance_section_in_finance',    page: () =>Finance_section_in_finance(), ),
+        GetPage(name: '/Laboratory_section_in_finance',    page: () =>Laboratory_section_in_finance(), ),
+        GetPage(name: '/Reception_section_in_finance',    page: () =>Reception_section_in_finance(), ),
+        GetPage(name: '/Store_section_in_finance',    page: () =>Store_section_in_finance(), ),
+        GetPage(name: '/Xray_section_in_finance',    page: () =>Xray_section_in_finance(), ),
+        GetPage(name: '/Payments_for_maintenance',    page: () =>Payments_for_maintenance(), ),
+        GetPage(name: '/Add_payments_maintenance_request',    page: () =>Add_payments_maintenance_request(), ),
+        GetPage(name: '/update_payments_maintenance',    page: () =>update_payments_maintenance(), ),
+        GetPage(name: '/All_employee_reception',    page: () =>All_employee_reception(), ),
+        GetPage(name: '/Accept_item_request',    page: () =>Accept_item_request(), ),
+        GetPage(name: '/All_item_in_order',    page: () =>All_item_in_order(), ),
+        GetPage(name: '/All_item_in_order_complete',    page: () =>All_item_in_order_complete(), ),
+        GetPage(name: '/Complete_order',    page: () =>Complete_order(), ),
+        GetPage(name: '/Add_payments_orders',    page: () =>Add_payments_orders(), ),
+        GetPage(name: '/Payments_for_orders',    page: () =>Payments_for_orders(), ),
+        GetPage(name: '/update_payments_orders',    page: () =>update_payments_orders(), ),
+        GetPage(name: '/All_employee_manager',    page: () =>All_employee_manager(), ),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
         ///////////// END YOUSSEF
 
         GetPage(name: '/HomeNurse',            page: () =>homeNurse(),          binding:HomeNurseBinding()),
-        GetPage(name: '/AddVisit',             page: () =>AddVisit(),           binding:AddVisitBinding()),
         GetPage(name: '/VisitsListNurse',      page: () =>VisitsList(),         ),
         GetPage(name: '/EditVisitNurse',       page: () =>EditVisitNurse(),     binding:EditVisitNurseBinding()),
         GetPage(name: '/PersonalInformationN', page: () =>PersonalInformation(),binding:VisitsListBinding()),
@@ -319,7 +428,7 @@ class MyApp extends StatelessWidget {
 
         GetPage(name: '/FancyNavBarNurse',    page: () =>FancyNavBarNurse()),
 
-/////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
         GetPage(name: '/HomeDoctor',           page: () =>Home(),                 binding:HomeDoctorBinding()),
         GetPage(name: '/patientVisitRecord',   page: () =>patientVisitRecord(),   binding:patientVisitRecordBinding()),
         GetPage(name: '/PersonalInformationD', page: () =>PersonalInformationD(), binding:patientVisitRecordBinding()),
@@ -335,8 +444,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/PersonalInformationx_ray',             page: () =>PersonalInformationx_ray (),),
         GetPage(name: '/VisitsListX_Ray',             page: () =>VisitsListX_Ray (),binding: VisitListX_raybinding() ),
         GetPage(name: '/EditVisitx_ray',             page: () =>EditVisitx_ray (),binding: Editvisitingx_raybinding() ),
-        GetPage(name: '/addConsumer',          page: () =>addConsumer(),        binding:warehouseBindinds()),
-        GetPage(name: '/warehouseProducts',    page: () =>warehouseProducts(),  binding:warehouseBindinds()),
+        GetPage(name: '/addConsumer',          page: () =>AddConsumer(),        binding:warehouseBindinds()),
+        GetPage(name: '/warehouseProducts',    page: () =>WarehouseProducts(),  binding:warehouseBindinds()),
         GetPage(name: '/detailvistexray',    page: () =>DetailVistexrayPage(),),
 
         /////////last adding for lab by saly
@@ -352,22 +461,27 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/detailvistelab',    page: () => DetailVisteLabPage (),),
         GetPage(name: '/Home_screen_store',    page: () =>Home_screen_store(),binding:stormaaterialBindinds()),
         GetPage(name: '/Pharmaceutical',    page: () =>Pharmaceutical()),
-        GetPage(name: '/dep_order',    page: () =>dep_order()),
+        GetPage(name: '/dep_order',    page: () =>deporderPage()),
         GetPage(name: '/orders_from_warehouse',    page: () =>orders_from_warehouse()),
         GetPage(name: '/Details',    page: () =>Details()),
         GetPage(name: '/add_Details',    page: () =>add_Details ()),
+        GetPage(name: '/add_order',    page: () =>add_order ()),
 
         GetPage(name: '/financial_home',       page: () =>financial_home(), ),
         GetPage(name: '/inancial_sections',    page: () =>financial_sections(), ),
         GetPage(name: '/financial_Clinic',     page: () =>financial_Clinic(), ),
         GetPage(name: '/financial_Clinic_incoming_material',    page: () =>financial_Clinic_incoming_material(), ),
         GetPage(name: '/Payments_and_Receipts',    page: () =>Payments_and_Receipts(), ),
-        GetPage(name: '/maintenance',    page: () =>maintenance(), ),
+        GetPage(name: '/Maintenance',    page: () =>Maintenance(), ),
         GetPage(name: '/waiting_from_reception',    page: () =>waiting_from_reception(), ),
         GetPage(name: '/InvoicePage',    page: () =>InvoicePage(), ),
         GetPage(name: '/navigationBar_financial',    page: () =>navigationBar_financial(), ),
         GetPage(name: '/Financial_invoices_archive',    page: () =>Financial_invoices_archive(), ),
         GetPage(name: '/financial_material',    page: () =>financial_material(), ),
+        GetPage(name: '/Finanical_employee_salary',    page: () =>Finanical_employee_salary(), ),
+
+
+
 
 
 

@@ -10,7 +10,7 @@ class Add_visit_service {
 
    String? token ;
    Future<bool> upload(path,details,id_visit,id_requerd) async{
-     token = await secury.read("admin_token");
+     token = await secury.read("xray_token");
      var headers = {
        'Accept': 'application/json',
        "Authorization": "Bearer" + " " + token.toString(),

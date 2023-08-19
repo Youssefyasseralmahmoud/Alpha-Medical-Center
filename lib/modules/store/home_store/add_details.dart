@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../static_colors/StaticColors.dart';
+import 'addDetailscontroller.dart';
 
 
 class add_Details extends StatelessWidget {
 
-
+  addmatirialcontoller controller =addmatirialcontoller();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +66,7 @@ class add_Details extends StatelessWidget {
                         child: TextField(
                           keyboardType: TextInputType.text,
                           onChanged: (value) {
-                            //   controller.updateQuantity(index, value);
+                            controller.name=value;
 
                           },
                           decoration: InputDecoration(
@@ -121,7 +122,9 @@ class add_Details extends StatelessWidget {
                                   child: TextField(
                                     keyboardType: TextInputType.number,
                                     onChanged: (value) {
-                                      //   controller.updateQuantity(index, value);
+
+                                      controller.lower = value  ;
+                                      print(controller.lower);
 
                                     },
                                     decoration: InputDecoration(
@@ -176,7 +179,7 @@ class add_Details extends StatelessWidget {
                                   child: TextField(
                                     keyboardType: TextInputType.number,
                                     onChanged: (value) {
-                                      //   controller.updateQuantity(index, value);
+                                      controller.quantity= value;
 
                                     },
                                     decoration: InputDecoration(
@@ -236,9 +239,9 @@ class add_Details extends StatelessWidget {
                                 child: Center(
                                   child: TextField(
 
-                                    keyboardType: TextInputType.datetime,
+                                    keyboardType: TextInputType.text,
                                     onChanged: (value) {
-                                      //   controller.updateQuantity(index, value);
+                                      controller.Expiry= value;
 
                                     },
                                     decoration: InputDecoration(
@@ -291,9 +294,9 @@ class add_Details extends StatelessWidget {
                                 ),
                                 child: Center(
                                   child: TextField(
-                                    keyboardType: TextInputType.datetime,
+                                    keyboardType: TextInputType.text,
                                     onChanged: (value) {
-                                      //   controller.updateQuantity(index, value);
+                                      controller.production = value;
 
                                     },
                                     decoration: InputDecoration(
@@ -314,15 +317,8 @@ class add_Details extends StatelessWidget {
               ]),
           GestureDetector(
             onTap: () {
+              controller.AddMatirial();
 
-              Get.snackbar(
-
-                'تم إضافة المادة',
-                ''
-                ,
-                backgroundColor: Colors.white,
-                colorText:StaticColor.primarycolor,
-              );
 
             },
             child: Align(

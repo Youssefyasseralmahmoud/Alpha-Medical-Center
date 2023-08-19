@@ -17,7 +17,7 @@ class patientlistservice {
   String? token ;
   get_allwaitrequest(int id_type)async{
 
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("xray_token");
     var response=await crud.postdata('${Serverconfig.getwaitRequest}?types_of_center_services_id=${id_type}' ,
         {
           "Authorization": "Bearer" + " " + token.toString(),

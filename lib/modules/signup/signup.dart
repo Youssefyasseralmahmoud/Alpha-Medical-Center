@@ -84,7 +84,7 @@ class Signup extends StatelessWidget {
                           margin: EdgeInsets.only(bottom: 10),
                           child: TextFormField(
                             validator: (val){
-                              return validinput(val!,3,100,"username");
+                              return validinput(val!,3,100,"name");
                             },
                             keyboardType: TextInputType.name,
                             onChanged: (val) {

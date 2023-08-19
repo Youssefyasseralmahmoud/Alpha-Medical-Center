@@ -17,10 +17,12 @@ class VisitsListController extends GetxController{
   }
   var doctor = false.obs;
 
-  VisitListSsevices services = VisitListSsevices(Get.find());
+  VisitListSsevices services = VisitListSsevices(Get.find(),Get.find());
   StatusRequest? statusRequest;
+  StatusRequest? statusRequest2;
   Secury_storage secury_storage = new Secury_storage();
   List data=[];
+  List data2=[];
   List test_data=[];
   get_patient_visits(int id) async {
     statusRequest = StatusRequest.loading;
@@ -63,6 +65,37 @@ class VisitsListController extends GetxController{
       "id" : data[index]['id']
 
     });
+  }
+  get_patient_info(int id) async {
+    statusRequest2 = StatusRequest.loading;
+    update();
+    var response = await services.get_patient_info(id);
+    // test_data2.addAll(response['data']) ;
+    statusRequest2 = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest2) {
+      data2.clear();
+      data2.add(response['data']) ;
+      print("this is patient details");
+
+      print(data2);
+    }
+    // else if(StatusRequest.failure == statusRequest2) {
+    //   await Get.snackbar(
+    //     "تحذير",
+    //     "لا يوجد زيارات لعرضها",
+    //   );
+    // }
+    else if (StatusRequest.failure == statusRequest2) {
+      await Get.snackbar(
+        "تحذير",
+        "لا يوجد بيانات لعرضها ",
+      );
+    }
+    else {
+      Get.defaultDialog(title: " خطأ", content: Text("حدث خطا ما"));
+    }
+    update();
   }
 
 

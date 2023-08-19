@@ -27,6 +27,7 @@ class Profile_info_controller extends GetxController {
     if (StatusRequest.succes == statusRequest&& test_data.isNotEmpty) {
       data_details.clear();
       data_details.addAll(response.values) ;
+      print("the info is ${data_details}");
       // Get.toNamed("/patient_details");
     }
     else if(test_data.isEmpty) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_after_update/modules/reception/home/home_screen_reception_controller.dart';
+import 'package:project_after_update/modules/store/home_store/warehouseControllerstor.dart';
 import 'package:project_after_update/static_colors/StaticColors.dart';
 
 import 'home_screen_store_controller.dart';
@@ -12,6 +13,7 @@ class Home_screen_store extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    warehouseControllerstor controllerstor = Get.find();
     Get.put(Home_screen_store_controller());
     return GetBuilder<Home_screen_store_controller>(builder: (controller) {
       return Scaffold(
@@ -19,6 +21,7 @@ class Home_screen_store extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           backgroundColor: StaticColor.primarycolor,
           onPressed: () {
+            controllerstor.Archive();
             Get.toNamed("/orders_from_warehouse");
           },
           child: Icon(Icons.receipt),

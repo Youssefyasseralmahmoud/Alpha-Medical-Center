@@ -44,9 +44,9 @@ class Add_record extends StatelessWidget {
                     ),
                     const SizedBox(height: 20,),
                     TextFormField(
-                      validator: (val){
-                      return  validinput(val!, 3, 20,"username");
-                      },
+                      // validator: (val){
+                      // return  validinput(val!, 3, 20,"username");
+                      // },
                       keyboardType: TextInputType.name,
                       onChanged: (val) {
                         controller.fullname=val;

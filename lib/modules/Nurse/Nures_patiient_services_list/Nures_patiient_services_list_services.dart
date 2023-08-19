@@ -13,7 +13,7 @@ class Nures_patiient_services_list_services{
   Secury_storage secury = new Secury_storage();
 
   get_patient_visits(int id) async {
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("nurse_token");
 
     // final Map<String, dynamic> data = {};
     // data['Key']="ID Personal";

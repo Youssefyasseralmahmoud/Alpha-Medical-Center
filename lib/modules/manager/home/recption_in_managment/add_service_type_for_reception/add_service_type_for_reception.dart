@@ -82,10 +82,6 @@ class Add_service_type_for_reception extends StatelessWidget {
                             " إضافة نوع خدمة جديدة",
                             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                           ),
-                          const Text(
-                            "إضافة نوع خدمة ل قسم الإستقبال",
-                            style: TextStyle(fontSize: 15, color: Colors.grey),
-                          ),
                           const Divider(
                             height: 10,
                             color: Colors.black45,

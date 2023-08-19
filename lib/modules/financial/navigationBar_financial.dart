@@ -16,7 +16,7 @@ class navigationBar_financial extends StatelessWidget {
   final screens = [
     financial_home(),
     waiting_from_reception(),
-    financial_employees_salary(),
+    Finanical_employee_salary(),
     orders_from_warehouse(),
     // addConsumerNurse()
 

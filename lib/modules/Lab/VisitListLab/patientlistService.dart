@@ -9,24 +9,23 @@ import '../../../core/class/crud_get.dart';
 import '../../../secure_storage/secure_storage.dart';
 
 
-class personalinformationlab {
+class patientlistservice {
   Crud_get crud;
 
   Secury_storage secury = new Secury_storage();
-  personalinformationlab (this.crud);
+  patientlistservice (this.crud);
   String? token ;
-  get_pationbyid(int id)async{
-    print('ffffffffffffff');
-    String? token = await secury.read("laboratory_token");
+  get_allwaitrequest(int id_type)async{
 
-    print(token);
-    var response=await crud.postdata(Serverconfig.getinformationbyId+"${id}",
+    String? token = await secury.read("laboratory_token");
+    var response=await crud.postdata('${Serverconfig.getwaitRequest}?types_of_center_services_id=${id_type}' ,
         {
           "Authorization": "Bearer" + " " + token.toString(),
           "Accept": "application/json"
         }
     );
-    print(response);
+
     return response.fold((l) => l, (r) => r);
   }
+
 }

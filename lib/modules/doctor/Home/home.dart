@@ -8,17 +8,22 @@ import 'package:project_after_update/static_colors/StaticColors.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:project_after_update/modules/doctor/bookings/CalendarController.dart';
+import 'package:project_after_update/static_colors/StaticColors.dart';
 
-class Home extends StatelessWidget {
-  homeController controller = Get.put(homeController());
-  DoctorBookingController c = Get.put<DoctorBookingController>(DoctorBookingController());
-  Future<void> _refreshData() async {
-    await controller.get_allwaitingPatient();
-  }
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
 
   @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  homeController controller = Get.put(homeController());
+  DoctorBookingController c = Get.put<DoctorBookingController>(DoctorBookingController());
+  @override
   Widget build(BuildContext context) {
-    controller = Get.put(homeController());
+ //   controller = Get.put(homeController());
+    bool isFilterOn = true;
     return Scaffold(
         drawer: Drawer(
           child: ListView(
@@ -36,7 +41,7 @@ class Home extends StatelessWidget {
               SizedBox(height: 20,),
               GestureDetector(
                 onTap: (){
-                  //controller.logout();
+                 // controller.logout();
                 },
                 child: Container(
                   padding: EdgeInsets.all(8),
@@ -67,24 +72,40 @@ class Home extends StatelessWidget {
             children: [
 
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
 
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.only(top: 20.0,left: 20),
                     child: IconButton(
                       icon: Icon(
-                        Icons.settings,
-                        size: 40,
+                        Icons.logout,
+                        size: 30,
                         color:Color(0xff9bb4fd),
                       ),
                       //  color: Color(0xff3366ff)
                       //,
                       onPressed: () {
-                        // Add your onPressed function here
+                      controller.logout();
                       },
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.add_box_outlined,
+                        size: 30,
+                        color:Color(0xff9bb4fd),
+                      ),
+                      //  color: Color(0xff3366ff)
+                      //,
+                      onPressed: () {
+                        _increment_requrst_SalaryDialog();
+                      },
+                    ),
+                  ),
+SizedBox(width: 200,),
                   Obx(() =>
                       Padding(
                         padding: const EdgeInsets.only(
@@ -157,95 +178,137 @@ class Home extends StatelessWidget {
                 height: 5,
                 color: Colors.black38,
               ),
-              Center(
-                child: Container(
-                  width: Get.width * 0.90,
-                  height: Get.height * 0.17,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomLeft,
 
-                        colors: [
-                          Color(0xffe5ebfc),
-                          Color(0xffbecefd),
-                          Color(0xff9bb4fd)
-                        ]
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+
+                  children: [
+
+                    Transform.scale(
+                      scale: 1.5,
+                      child: Switch(
+                        value: controller.isFilterOn,
+                        onChanged: (value) {
+                          setState(() {
+                            controller.isFilterOn = value;
+                          });
+                         // print(_isFilterOn);
+                          if(controller.isFilterOn==false){
+                            controller.changstatuslabbyidservic(0);}
+                          else{
+                            controller.changstatuslabbyidservic(1);
+                          }
+                        },
+                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        activeColor: StaticColor.primarycolor,
+                        inactiveThumbColor: Colors.black12,
+                        inactiveTrackColor: Colors.black12,
+                      ),
 
                     ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: Get.width * 0.45,
-                        height: Get.height * 0.17,
-                        decoration: BoxDecoration(
-                          // color: Color(0x6E649EFF),
+                    SizedBox(width: 15,),
 
-                          borderRadius: BorderRadius.circular(20),
-                          image: DecorationImage(
-                            image: AssetImage("assets/images/pic.png"),
-                          ),
-                        ),
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('تحويل المرضى',  style: TextStyle(fontFamily: 'Arial',
-                              fontSize: 20,
-                              fontWeight: FontWeight.w200,
-                              color: Colors.black45),),
-                          SizedBox(height: 10,),
-                          Obx(() => OutlinedButtonTheme(
+                    Text(
+                      'تحويل المرضى',
+                      style: TextStyle(
+                          fontFamily: 'Arial',
+                          fontSize: 25,
+                          fontWeight: FontWeight.w200,
+                          color: Colors.black45),
+                    ),
 
-                            data: OutlinedButtonThemeData(
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
+                  ]),
 
-                                    borderRadius: BorderRadius.circular(18.0),
-                                    side: BorderSide(color :Color(0xff1e364d,)),
 
-                                  ),
-
-                                ),
-                              ),
-                            ),
-                            child: OutlinedButton(
-
-                                onPressed: () => controller.toggleStop(),
-                                child: Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(6.0),
-                                      child: Icon(Icons.timer_sharp, size: 25,
-                                        color:  Color(0xff494e56,),
-                                      ),
-                                    ),
-                                    SizedBox(width: 10,),
-                                    Padding(
-                                      padding: const EdgeInsets.all( 6.0),
-                                      child: Text(controller.isStoping.value
-                                          ? 'إيقاف  '
-                                          : 'أستئناف',
-                                        style: TextStyle(fontFamily: 'Arial',
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w200,
-                                            color:Color(0xff494e56,)),),
-                                    ),
-                                  ],
-                                )
-                            ),
-                          ),
-                          ),
-                        ],
-                      ),
-
-                    ],
-                  ),
-                ),
-              ),
+              // Center(
+              //   child: Container(
+              //     width: Get.width * 0.90,
+              //     height: Get.height * 0.17,
+              //     decoration: BoxDecoration(
+              //       gradient: LinearGradient(
+              //           begin: Alignment.topRight,
+              //           end: Alignment.bottomLeft,
+              //
+              //           colors: [
+              //             Color(0xffe5ebfc),
+              //             Color(0xffbecefd),
+              //             Color(0xff9bb4fd)
+              //           ]
+              //
+              //       ),
+              //       borderRadius: BorderRadius.circular(20),
+              //     ),
+              //     child: Row(
+              //       children: [
+              //         Container(
+              //           width: Get.width * 0.45,
+              //           height: Get.height * 0.17,
+              //           decoration: BoxDecoration(
+              //             // color: Color(0x6E649EFF),
+              //
+              //             borderRadius: BorderRadius.circular(20),
+              //             image: DecorationImage(
+              //               image: AssetImage("assets/images/pic.png"),
+              //             ),
+              //           ),
+              //         ),
+              //         Column(
+              //           mainAxisAlignment: MainAxisAlignment.center,
+              //           children: [
+              //             Text('تحويل المرضى',  style: TextStyle(fontFamily: 'Arial',
+              //                 fontSize: 20,
+              //                 fontWeight: FontWeight.w200,
+              //                 color: Colors.black45),),
+              //             SizedBox(height: 10,),
+              //             Obx(() => OutlinedButtonTheme(
+              //
+              //               data: OutlinedButtonThemeData(
+              //                 style: ButtonStyle(
+              //                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              //                     RoundedRectangleBorder(
+              //
+              //                       borderRadius: BorderRadius.circular(18.0),
+              //                       side: BorderSide(color :Color(0xff1e364d,)),
+              //
+              //                     ),
+              //
+              //                   ),
+              //                 ),
+              //               ),
+              //               child: OutlinedButton(
+              //
+              //                   onPressed: () => controller.toggleStop(),
+              //                   child: Row(
+              //                     children: [
+              //                       Padding(
+              //                         padding: const EdgeInsets.all(6.0),
+              //                         child: Icon(Icons.timer_sharp, size: 25,
+              //                           color:  Color(0xff494e56,),
+              //                         ),
+              //                       ),
+              //                       SizedBox(width: 10,),
+              //                       Padding(
+              //                         padding: const EdgeInsets.all( 6.0),
+              //                         child: Text(controller.isStoping.value
+              //                             ? 'إيقاف  '
+              //                             : 'أستئناف',
+              //                           style: TextStyle(fontFamily: 'Arial',
+              //                               fontSize: 20,
+              //                               fontWeight: FontWeight.w200,
+              //                               color:Color(0xff494e56,)),),
+              //                       ),
+              //                     ],
+              //                   )
+              //               ),
+              //             ),
+              //             ),
+              //           ],
+              //         ),
+              //
+              //       ],
+              //     ),
+              //   ),
+              // ),
 
               Padding(
                 padding: const EdgeInsets.only(right: 140, bottom: 20, top: 20),
@@ -262,7 +325,50 @@ class Home extends StatelessWidget {
 
 
 
-    ),
+          ),
         ));
   }
+
+  void _increment_requrst_SalaryDialog() {
+    Get.defaultDialog(
+      title: ' طلب زيادة راتب ',
+      content: Column(
+        children: [
+
+          Padding(
+            padding: const EdgeInsets.only(left: 30.0,right: 30),
+            child: TextFormField(
+              onChanged: (val) {
+                controller.detaile = val;
+              },
+              decoration: InputDecoration(labelText: 'أدخل تفاصيل الطلب'),
+              maxLines: 3,
+            ),
+          ),
+        ],
+      ),
+      actions: [
+        ElevatedButton(
+          onPressed: () {
+            Get.back();
+          },
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Color(0xff9bb4fd)),
+          ),
+          child: Text('إلغاء'),
+        ),
+        ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Color(0xff9bb4fd)),
+          ),
+          onPressed: () {
+            controller.increment_requrst_Salary();
+            Get.back();
+          },
+          child: Text('إرسال الطلب'),
+        ),
+      ],
+    );
+  }
 }
+

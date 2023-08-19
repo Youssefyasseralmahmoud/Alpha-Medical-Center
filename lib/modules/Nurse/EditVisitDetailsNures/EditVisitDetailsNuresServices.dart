@@ -10,12 +10,11 @@ class EditVisitDetailsNuresServices {
   Crud_put crud;
   EditVisitDetailsNuresServices(this.crud);
   Secury_storage secury = new Secury_storage();
-  edit_result(String Pressure,String Heartbeat,int  BodyHeat,String ClinicalStory,String ClinicalExamination,String comments,int id)async{
-
+  edit_result(String Pressure,String Heartbeat,int BodyHeat,String ClinicalStory,String ClinicalExamination,String comments,int id)async{
     //there is String id in parameters
-    String? token = await secury.read("admin_token");
+    String? token = await secury.read("nurse_token");
     print("the id for visit to edit it is ${id}");
-    var response=await crud.postdata(Serverconfig.add_preview_resault,{
+    var response=await crud.postdata(Serverconfig.update_preview_reult,{
       "id" :"${id}",
       "Pressure" : Pressure,
       "Heartbeat" : Heartbeat,

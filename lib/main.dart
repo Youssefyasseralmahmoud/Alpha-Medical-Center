@@ -7,7 +7,7 @@ import 'package:project_after_update/GetxBindings/Lab/Editvisitlabbinding.dart';
 import 'package:project_after_update/GetxBindings/Lab/Homelabbinding.dart';
 import 'package:project_after_update/GetxBindings/Lab/VisitListlabbinding.dart';
 import 'package:project_after_update/GetxBindings/Lab/Warehoselabbinding.dart';
-import 'package:project_after_update/GetxBindings/Nurse/AddVisitBinding.dart';
+
 import 'package:project_after_update/GetxBindings/Nurse/EditVisitNurseBinding.dart';
 import 'package:project_after_update/GetxBindings/Nurse/HomeBinding.dart';
 import 'package:project_after_update/GetxBindings/Nurse/VisitsListBinding.dart';
@@ -39,7 +39,6 @@ import 'package:project_after_update/modules/Lab/VisitListLab/PersonalInformatio
 import 'package:project_after_update/modules/Lab/VisitListLab/VisitsListlab.dart';
 import 'package:project_after_update/modules/Lab/funcybarlab.dart';
 import 'package:project_after_update/modules/Lab/home/homelab.dart';
-import 'package:project_after_update/modules/Nurse/AddVisit/AddVisit.dart';
 import 'package:project_after_update/modules/Nurse/EditVisitDetailsNures/EditVisitDetailsNures.dart';
 import 'package:project_after_update/modules/Nurse/EditVisitNurse/EditVisitNurse.dart';
 import 'package:project_after_update/modules/Nurse/Home/homeNurse.dart';
@@ -47,7 +46,6 @@ import 'package:project_after_update/modules/Nurse/Nures_patiient_services_list/
 import 'package:project_after_update/modules/Nurse/Nurse_wait_patient/Nurse_wait_patient.dart';
 import 'package:project_after_update/modules/Nurse/VisitsList/Nurse_visit_ditails/Nurse_visit_ditails.dart';
 import 'package:project_after_update/modules/Nurse/VisitsList/PersonalInformation/PersonalInformation.dart';
-
 import 'package:project_after_update/modules/Nurse/VisitsList/VisitsList.dart';
 import 'package:project_after_update/modules/Nurse/funcybarNurse.dart';
 import 'package:project_after_update/modules/Nurse/warehouse/addConsumer.dart';
@@ -199,10 +197,8 @@ import 'package:project_after_update/modules/x-Ray/home/homeX-Ray.dart';
 import 'package:project_after_update/modules/x-Ray/warehose/addConsumer.dart';
 import 'package:project_after_update/modules/x-Ray/warehose/funcybarX-ray.dart';
 import 'package:project_after_update/modules/x-Ray/warehose/warehouseProducts.dart';
-
 import 'modules/financial/store_section_in_finanical/store_section_infinance.dart';
 import 'modules/manager/home/profile_info_managment/profilr_info_managment.dart';
-
 import 'GetxBindings/store/store_materialeBinding.dart';
 import 'modules/Lab/VisitListLab/detalisvistlab.dart';
 import 'modules/Lab/Warehose/addConsumer.dart';
@@ -419,7 +415,6 @@ class MyApp extends StatelessWidget {
         ///////////// END YOUSSEF
 
         GetPage(name: '/HomeNurse',            page: () =>homeNurse(),          binding:HomeNurseBinding()),
-        //GetPage(name: '/AddVisit',             page: () =>AddVisit(),           binding:AddVisitBinding()),
         GetPage(name: '/VisitsListNurse',      page: () =>VisitsList(),         ),
         GetPage(name: '/EditVisitNurse',       page: () =>EditVisitNurse(),     binding:EditVisitNurseBinding()),
         GetPage(name: '/PersonalInformationN', page: () =>PersonalInformation(),binding:VisitsListBinding()),
@@ -433,7 +428,7 @@ class MyApp extends StatelessWidget {
 
         GetPage(name: '/FancyNavBarNurse',    page: () =>FancyNavBarNurse()),
 
-/////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
         GetPage(name: '/HomeDoctor',           page: () =>Home(),                 binding:HomeDoctorBinding()),
         GetPage(name: '/patientVisitRecord',   page: () =>patientVisitRecord(),   binding:patientVisitRecordBinding()),
         GetPage(name: '/PersonalInformationD', page: () =>PersonalInformationD(), binding:patientVisitRecordBinding()),

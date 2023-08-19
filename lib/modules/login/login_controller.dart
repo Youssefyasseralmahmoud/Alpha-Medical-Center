@@ -101,7 +101,7 @@ class Login_controller extends GetxController{
         print("tesst from login");
         secury_storage3.save("nurse_token", nurse_token);
         await Get.snackbar("تسجيل دخول ناجح", "تمت عملية الدخول بنجاح",);
-        Get.offAllNamed("/HomeNurse");
+        Get.offAllNamed("/FancyNavBarNurse");
       }  else if(response['code']== 1 && response['data']['user']['TypeUser'] == "Finance" ){
         // && response['carer']=='reception'
         finance_token=response['data']['token'];

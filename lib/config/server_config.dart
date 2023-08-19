@@ -14,7 +14,7 @@ class Serverconfig{
   static const get_pervious_medical_condition ='$domainnameserver/api/getPreviousMedicalCondition';
   static const update_pervious_medical_condition ='$domainnameserver/api/updatePreviousMedicalCondition';
   static const patient_reservation_registeration ='$domainnameserver/api/patientReservationRegistration';
- // static const getalldoctor ='$domainnameserver/api/getAllDoctors';
+  // static const getalldoctor ='$domainnameserver/api/getAllDoctors';
   static const getalldoctor_in_type_service ='$domainnameserver/api/getAllUserInThisTypes';
   static const get_view_doctor_booking ='$domainnameserver/api/getViewDoctorBookings';
   static const update_patient_reservation ='$domainnameserver/api/updatePatientReservation';
@@ -165,6 +165,9 @@ class Serverconfig{
   static const deletetest ='$domainnameserver/api/removeLaboratoryTest';
   static const deletexray ='$domainnameserver/api/deleteX_Rays';
   static const changestatus ='$domainnameserver/api/changeStatus';
+  static const changeStatus ='$domainnameserver/api/changeStatus';
+  static const add_Salary_Increase ='$domainnameserver/api/addSalaryIncrease';
+  static const get_MyUser_Info ='$domainnameserver/api/getMyUserInfo';
   static const getmatirial ='$domainnameserver/api/getAllCenterMaterial';
   static const Addmatirial ='$domainnameserver/api/addMaterial';
   static const updatematirial ='$domainnameserver/api/updateCenterMaterial';
@@ -176,6 +179,11 @@ class Serverconfig{
   static const deletematirial ='$domainnameserver/api/deleteItemsRequestDateExpired?ItmeRequest_id=';
   static const ordermatirialbysection ='$domainnameserver/api/getAllConsumableInCompleteBySection?';
   static const Accept ='$domainnameserver/api/AcceptOrRejectItemRequest?Status=1&itemRequestId=';
+
+
+
+
+
 
 
 

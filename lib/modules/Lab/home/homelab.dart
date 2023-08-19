@@ -23,24 +23,40 @@ class homelab extends  StatelessWidget{
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.start,
 
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.only(top: 20.0,left: 20),
                         child: IconButton(
                           icon: Icon(
-                            Icons.settings,
-                            size: 40,
-                            color: Color(0xff9bb4fd),
+                            Icons.logout,
+                            size: 30,
+                            color:Color(0xff9bb4fd),
                           ),
-                          color:Color(0xff9bb4fd)
-                          ,
+                          //  color: Color(0xff3366ff)
+                          //,
                           onPressed: () {
-
+                            controller.logout();
                           },
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20.0),
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.add_box_outlined,
+                            size: 30,
+                            color:Color(0xff9bb4fd),
+                          ),
+                          //  color: Color(0xff3366ff)
+                          //,
+                          onPressed: () {
+                            //  _increment_requrst_SalaryDialog();
+                          },
+                        ),
+                      ),
+                      SizedBox(width: 200,),
                       Obx(() =>
                           Padding(
                             padding: const EdgeInsets.only(
@@ -92,6 +108,7 @@ class homelab extends  StatelessWidget{
                               ),
                             ),
                           )),
+
                     ],
                   ),
                   SizedBox(height: 10,),

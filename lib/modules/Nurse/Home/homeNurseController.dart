@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +15,7 @@ import 'dart:collection';
 class homeNurseController extends GetxController {
   var notificationCount = 0.obs;
   var isStoping = false.obs;
-
+  RxBool isFilterOn =true.obs ;
   void toggleStop() {
     isStoping.value = !isStoping.value;
   }
@@ -24,12 +25,17 @@ class homeNurseController extends GetxController {
   }
 
   homeNurseServices services =
-      homeNurseServices(Get.find(), Get.find(), Get.find(), Get.find(),Get.find());
+  homeNurseServices(Get.find(), Get.find(), Get.find(), Get.find(),Get.find(),Get.find(),Get.find(),Get.find(),Get.find());
   StatusRequest? statusRequest;
   StatusRequest? statusRequest2;
   StatusRequest? statusRequest3;
   StatusRequest? statusRequest4;
   StatusRequest? statusRequest5;
+  StatusRequest? statusRequest6;
+  StatusRequest? statusRequest7;
+  StatusRequest? statusRequest8;
+  StatusRequest? statusRequest9;
+
   Secury_storage secury_storage = new Secury_storage();
   late String id_patient;
 
@@ -38,6 +44,7 @@ class homeNurseController extends GetxController {
   List data3 = [];
   List data4 = [];
   List data5 = [];
+  List data9 = [];
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
 
   List<Map<String, dynamic>> listOfFollowerData = [];
@@ -45,8 +52,8 @@ class homeNurseController extends GetxController {
 
   @override
   void onInit() {
-    get_all_nurese_follower();
 
+    get_my_user();
     super.onInit();
   }
 
@@ -101,7 +108,7 @@ class homeNurseController extends GetxController {
       listOfFollowerData = getListOfFollowerData();
       data_work = getFilteredFollowerData();
       get_name_sernice();
-      get_name_doctor();
+      // get_name_doctor();
       print(data_work);
     } else if (StatusRequest.failure == statusRequest2) {
       await Get.snackbar(
@@ -116,7 +123,7 @@ class homeNurseController extends GetxController {
   List<String> data_names_doctor = [];
   Future<void> get_name_doctor() async {
     for (var item in data2) {
-      if (item['ID_UserFollow'] == 5) {
+      if (item['ID_UserFollow'] == data9[0]['id']) {
         String id = await get_doctor_name(item['ID_User']);
         print("${id}");
         data_names_doctor.add(id);
@@ -134,7 +141,7 @@ class homeNurseController extends GetxController {
   List<Map<String, dynamic>> getListOfFollowerData() {
     List<Map<String, dynamic>> data = [];
     for (var item in data2) {
-      if (item['ID_UserFollow'] == 5) {
+      if (item['ID_UserFollow'] == data9[0]['id']) {
         print(item);
         print('5');
         data.add(item);
@@ -172,15 +179,16 @@ class homeNurseController extends GetxController {
 
     return data_work;
   }
-  List<int> data_names = [];
+  List<String> data_names = [];
+  List<int> data_num = [];
 
   Future<void> get_name_sernice() async {
     for (var item in data_work) {
       int type_service_id = await get_UserInfoByID(item['ID_User']);
-
+data_num.add(type_service_id);
       print("${type_service_id}");
-     // String name_service = await get_name_of_service(type_service_id);
-      data_names.add(type_service_id);
+     //  name_service = await get_name_of_service(type_service_id);
+      data_names.add(await get_name_of_service(type_service_id));
     }
     print('namessssssss');
     print(data_names);
@@ -269,7 +277,7 @@ class homeNurseController extends GetxController {
         "",
       );
     } else {
-      Get.defaultDialog(title: "حدث خطأ ما", content: Text("حدث خطا ماwait"));
+      Get.defaultDialog(title: "حدث خطأ ما", content: Text("حدث خطا ما"));
     }
     update();
   }
@@ -285,12 +293,12 @@ class homeNurseController extends GetxController {
 
     if (StatusRequest.succes == statusRequest5) {
       data5.clear();
-      data5.add(response["data"]);
+      data5.addAll(response["data"]);
       print("done3333333");
 
       print(data5);
-      String name = data5[0]['Name'].toString();
-      // Return the "name" field from the response
+      String name = data5[0]['Name'];
+      return name;
       return "";
     } else if (StatusRequest.failure == statusRequest5) {
       await Get.snackbar(
@@ -307,4 +315,114 @@ class homeNurseController extends GetxController {
   }
 
 
+  changstatuslabbyidservic(int status , int type) async {
+    statusRequest3 = StatusRequest.loading;
+    update();
+
+    var response = await services.changstatuslabbyidservice(type);
+    statusRequest3 = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest3) {
+      if(status==0){
+        Get.defaultDialog(title: "", content: Text("تم إيقاف طلبات التحويل"));}
+      else {
+        Get.defaultDialog(title: "", content: Text("تم استئناف طلبات التحويل"));
+
+      }
+
+
+    }
+
+    else if (StatusRequest.failure == statusRequest3) {
+      await Get.snackbar(
+        "تحذير",
+        "لا يوجد بيانات لعرضها",
+      );
+    }
+    else{
+      Get.defaultDialog(title: "حدث خطأ ما", content: Text("حدث خطا ما"));
+    }
+    update();
+
+  }
+  String detaile ="";
+  increment_requrst_Salary() async {
+    statusRequest7 = StatusRequest.loading;
+    update();
+    var response = await services.increment_requrst_Salary(detaile);
+    statusRequest7 = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest7) {
+      await Get.snackbar(
+        "ملاحظة ",
+        "تم إرسال الطلب بنجاج",
+      );
+    } else if (StatusRequest.failure == statusRequest7) {
+      await Get.snackbar(
+        "تنبيه",
+        "فشل إرسال الطلب",
+      );
+    } else {
+      Get.defaultDialog(title: " خطأ ", content: Text("حدث خطأ ما"));
+    }
+    update();
+  }
+
+  get_my_user() async {
+    statusRequest9 = StatusRequest.loading;
+    update();
+    print("statuserequest now is ${statusRequest9}");
+    var response = await services.get_my_user_info();
+
+    statusRequest9 = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest9) {
+
+      data9.clear();
+      data9.add(response['data']) ;
+      print(response);
+      print("get information");
+      get_all_nurese_follower();
+
+    } else if (StatusRequest.failure == statusRequest9) {
+      await Get.snackbar(
+        "تحذير",
+        "",
+      );
+    } else {
+      Get.defaultDialog(title: "حدث خطأ ما", content: Text("حدث خطا ما"));
+    }
+    update();
+  }
+
+
+  logout() async {
+    statusRequest8 = StatusRequest.loading;
+    update();
+    var response = await services.logout();
+    // test_data.addAll(response['data']) ;
+    statusRequest8 = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest8) {
+      await Get.snackbar(
+        "تم",
+        "تم تسجيل الخروج بنجاح",
+      );
+      FirebaseMessaging.instance.unsubscribeFromTopic("reception");
+      secury_storage.delete();
+
+      Get.offAllNamed("/login");
+
+    }
+    else if (StatusRequest.failure == statusRequest8) {
+      await Get.snackbar(
+        "تنبيه",
+        "لم تتم عملية تسجيل الخروج   ",
+      );
+    }
+    else {
+      Get.defaultDialog(title: " خطأ", content: Text("حدث خطا ما"));
+    }
+    update();
+  }
 }

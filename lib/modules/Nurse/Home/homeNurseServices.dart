@@ -141,7 +141,7 @@ class homeNurseServices{
   logout() async {
     String? token = await secury.read("nurse_token");
 
-    var response = await crud.postdata(
+    var response = await crud_logout.postdata(
         Serverconfig.logout,
 
         {

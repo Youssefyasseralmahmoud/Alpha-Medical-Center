@@ -11,9 +11,10 @@ import '../../../secure_storage/secure_storage.dart';
 
 class warehouseProdactstorService {
   Crud_get crud;
-
+  Crud crud_salary;
+  Crud_get crud_logout;
   Secury_storage secury = new Secury_storage();
-  warehouseProdactstorService (this.crud);
+  warehouseProdactstorService (this.crud,this.crud_logout,this.crud_salary);
   String? token ;
   get_allMatirial()async{
 
@@ -25,6 +26,39 @@ class warehouseProdactstorService {
         }
     );
 
+    return response.fold((l) => l, (r) => r);
+  }
+  increment_requrst_Salary(String Details)async{
+    //there is String id in parameters
+    String? token = await secury.read("Store_token");
+    //  String? token = "15|nHiUHfUWloXkp1CC2ZcoVK5dhSg7dZ0tyMMIfiqp";
+
+    var response=await crud_salary.postdata(Serverconfig.add_Salary_Increase,{
+      "Details" :Details,
+
+    },
+        {
+          "Authorization": "Bearer" + " " + token.toString(),
+          "Accept": "application/json"
+        }
+    );
+    print("this is response edit_services  ");
+    print(response);
+    return response.fold((l) => l, (r) => r);
+  }
+  logout() async {
+    String? token = await secury.read("Store_token");
+
+    var response = await crud_logout.postdata(
+        Serverconfig.logout,
+
+        {
+          "Authorization": "Bearer" + " " + token.toString(),
+          "Accept": "application/json"
+        }
+    );
+    print("response from get all section services");
+    print(response);
     return response.fold((l) => l, (r) => r);
   }
 

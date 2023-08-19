@@ -20,6 +20,7 @@ class VisitsListController extends GetxController{
   VisitListSsevices services = VisitListSsevices(Get.find(),Get.find());
   StatusRequest? statusRequest;
   StatusRequest? statusRequest2;
+  StatusRequest? statusRequest1;
   Secury_storage secury_storage = new Secury_storage();
   List data=[];
   List data2=[];
@@ -97,7 +98,24 @@ class VisitsListController extends GetxController{
     }
     update();
   }
+  downloadxray(int id) async {
+    statusRequest1 = StatusRequest.loading;
+    update();
+    var response = await services.download_XRay(id);
+    if (response!=null) {
+      await Get.snackbar(
+        "تنبيه",
+        "تم تحميل الصورة بنجاح",
+        backgroundColor: Colors.white,
 
+      );
+
+    }
+    else{
+      Get.defaultDialog(title: "حدث خطأ ما", content: Text("حدث خطا ما"));
+    }
+    update();
+  }
 
 
 }

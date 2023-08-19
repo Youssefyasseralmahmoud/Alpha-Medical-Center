@@ -231,8 +231,8 @@ class VisitsList extends StatelessWidget {
                 Column(
                   children: [
                     if (!controller.doctor.value) doctor(index),
-                    // if (controller.data[index]['x_ray'] != null && controller.data[index]['x_ray'].length > 0) ashaa(index),
-                    //if (controller.data[index]['laboratory_test_results'] != null && controller.data[index]['laboratory_test_results'].length > 0) makhbar(index),
+                     if (controller.data[index]['x_ray'] != null && controller.data[index]['x_ray'].length > 0) ashaa(index),
+                    if (controller.data[index]['laboratory_test_results'] != null && controller.data[index]['laboratory_test_results'].length > 0) makhbar(index),
                   ],
                 )
               else
@@ -364,10 +364,11 @@ class VisitsList extends StatelessWidget {
             itemBuilder: (context, index2) {
 
               return  Column(
+
                 children: [
-                  widget1('أسم التحليل ', controller.data[index]['laboratory_test_results'][index2]['NameIMG'],
-                      Icons.edit_note_sharp),
-                  widget1('التفاصيل ', controller.data[index]['laboratory_test_results'][index2]['Details'], Icons.insert_drive_file_outlined),
+
+               //   widget1('أسم التحليل ', controller.data[index]['laboratory_test_results'][index2]['NameIMG'],Icons.edit_note_sharp),
+                 // widget1('التفاصيل ', controller.data[index]['laboratory_test_results'][index2]['Details'], Icons.insert_drive_file_outlined),
                 ],
               );
             },
@@ -397,10 +398,25 @@ class VisitsList extends StatelessWidget {
           itemBuilder: (context, index2) {
 
             return  Column(
+
               children: [
-                widget1('أسم التحليل ', controller.data[index]['laboratory_test_results'][index2]['NameIMG'],
-                    Icons.edit_note_sharp),
-                widget1('التفاصيل ', controller.data[index]['laboratory_test_results'][index2]['Details'], Icons.insert_drive_file_outlined),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextButton(
+                      onPressed: () {
+
+                      },
+                      child: Text(
+                        'تحميل',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xff9bb4fd),
+                        ),
+                      )),
+                ),
+                widget1('أسم الصورة ', controller.data[index]['x_ray'][index2]['NameIMG'], Icons.edit_note_sharp),
+                widget1('التفاصيل ', controller.data[index]['x_ray'][index2]['Details'], Icons.insert_drive_file_outlined),
               ],
             );
           },

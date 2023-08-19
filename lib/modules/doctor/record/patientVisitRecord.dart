@@ -5,11 +5,9 @@ import 'package:project_after_update/modules/doctor/Home/homeController.dart';
 import 'package:project_after_update/modules/doctor/record/patientVisitRecordController.dart';
 
 class patientVisitRecord extends StatelessWidget {
-  patientVisitRecordController controller =
-      Get.put(patientVisitRecordController());
-  Doctor_patient_servies_servie_controller Doctor_patient_servies =
-      Get.put(Doctor_patient_servies_servie_controller());
-  homeController homeControler = Get.find();
+  patientVisitRecordController controller = Get.put(patientVisitRecordController());
+  Doctor_patient_servies_servie_controller Doctor_patient_servies = Get.put(Doctor_patient_servies_servie_controller());
+  //homeController homeControler = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -118,8 +116,8 @@ class patientVisitRecord extends StatelessWidget {
                   child: GestureDetector(
                     onTap: () async {
                       print("iddddd");
-                      await Doctor_patient_servies.get_patient_services(
-                          controller.data2[0]['IDPatientRecord']);
+
+              //        await Doctor_patient_servies.get_patient_services(controller.data2[0]['IDPatientRecord']);
                       Get.toNamed("/doctor_patient_servies");
                     },
                     child: Container(
@@ -202,7 +200,7 @@ class patientVisitRecord extends StatelessWidget {
     }
 
     return Obx(
-      () => Padding(
+          () => Padding(
         padding: const EdgeInsets.all(8.0),
         child: GestureDetector(
           onTap: () => controller.toggleDetails(index),
@@ -226,8 +224,8 @@ class patientVisitRecord extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                        // width: 0.5,
-                        ),
+                      // width: 0.5,
+                    ),
                     Icon(Icons.arrow_drop_down_sharp),
                     Text(
                       '${date}',
@@ -387,12 +385,12 @@ class patientVisitRecord extends StatelessWidget {
                   widget1(
                       'أسم التحليل ',
                       controller.data[index]['laboratory_test_results'][index2]
-                          ['NameIMG'],
+                      ['NameIMG'],
                       Icons.edit_note_sharp),
                   widget1(
                       'التفاصيل ',
                       controller.data[index]['laboratory_test_results'][index2]
-                          ['Details'],
+                      ['Details'],
                       Icons.insert_drive_file_outlined),
                 ],
               );
@@ -423,12 +421,12 @@ class patientVisitRecord extends StatelessWidget {
                 widget1(
                     'أسم التحليل ',
                     controller.data[index]['laboratory_test_results'][index2]
-                        ['NameIMG'],
+                    ['NameIMG'],
                     Icons.edit_note_sharp),
                 widget1(
                     'التفاصيل ',
                     controller.data[index]['laboratory_test_results'][index2]
-                        ['Details'],
+                    ['Details'],
                     Icons.insert_drive_file_outlined),
               ],
             );

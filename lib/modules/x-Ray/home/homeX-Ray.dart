@@ -9,12 +9,12 @@ import 'homeX-RayController.dart';
 
 class homex_ray extends  StatelessWidget{
 
-
+  homex_rayController controller= Get.put(homex_rayController());
   homex_ray({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Get.put(homex_rayController());
+
     return GetBuilder<homex_rayController>(builder: (controller) {
       return Scaffold(
           body: SafeArea(
@@ -53,7 +53,7 @@ class homex_ray extends  StatelessWidget{
                           //  color: Color(0xff3366ff)
                           //,
                           onPressed: () {
-                          //  _increment_requrst_SalaryDialog();
+                            _increment_requrst_SalaryDialog();
                           },
                         ),
                       ),
@@ -113,12 +113,6 @@ class homex_ray extends  StatelessWidget{
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 35, bottom: 3, top: 10),
-                    child: Text("الأشعة",
-                      style: TextStyle(fontFamily: 'Arial', fontSize: 32, color: Color(
-                          0xff36414d),),
-                    ),),
-                  Padding(
                     padding: const EdgeInsets.only(right: 38, bottom: 14, top: 3),
                     child: Text("مركز ألفا الطبي",
                       style: TextStyle(fontFamily: 'Arial',
@@ -158,59 +152,12 @@ class homex_ray extends  StatelessWidget{
                               ),
                             ),
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-
-                            children: [
-                              Text('تحويل المرضى',  style: TextStyle(fontFamily: 'Arial',
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w200,
-                                  color: Colors.black45),),
-                              SizedBox(height: 10,),
-                              Obx(() => OutlinedButtonTheme(
-
-                                data: OutlinedButtonThemeData(
-                                  style: ButtonStyle(
-                                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-
-                                        borderRadius: BorderRadius.circular(18.0),
-                                        side: BorderSide(color :Color(0xff1e364d,)),
-
-                                      ),
-
-                                    ),
-                                  ),
-                                ),
-                                child: OutlinedButton(
-
-                                    onPressed: () => controller.toggleStop(),
-                                    child: Row(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(6.0),
-                                          child: Icon(Icons.timer_sharp, size: 25,
-                                            color:  Color(0xff494e56,),
-                                          ),
-                                        ),
-                                        SizedBox(width: 10,),
-                                        Padding(
-                                          padding: const EdgeInsets.all( 6.0),
-                                          child: Text(controller.isStoping.value
-                                              ? 'إيقاف  '
-                                              : 'أستئناف',
-                                            style: TextStyle(fontFamily: 'Arial',
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w200,
-                                                color:Color(0xff494e56,)),),
-                                        ),
-                                      ],
-                                    )
-                                ),
-                              ),
-                              ),
-                            ],
-                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 30, bottom: 3),
+                            child: Text("الأشعة",
+                              style: TextStyle(fontFamily: 'Arial', fontSize: 32, color: Color(
+                                  0xff36414d),),
+                            ),),
 
                         ],
                       ),
@@ -234,6 +181,46 @@ class homex_ray extends  StatelessWidget{
     });
 
   }
+  void _increment_requrst_SalaryDialog() {
+    Get.defaultDialog(
+      title: ' طلب زيادة راتب ',
+      content: Column(
+        children: [
+
+          Padding(
+            padding: const EdgeInsets.only(left: 30.0,right: 30),
+            child: TextFormField(
+              onChanged: (val) {
+                controller.detaile = val;
+              },
+              decoration: InputDecoration(labelText: 'أدخل تفاصيل الطلب'),
+              maxLines: 3,
+            ),
+          ),
+        ],
+      ),
+      actions: [
+        ElevatedButton(
+          onPressed: () {
+            Get.back();
+          },
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Color(0xff9bb4fd)),
+          ),
+          child: Text('إلغاء'),
+        ),
+        ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Color(0xff9bb4fd)),
+          ),
+          onPressed: () {
+            controller.increment_requrst_Salary();
+            Get.back();
+          },
+          child: Text('إرسال الطلب'),
+        ),
+      ],
+    );}
 
 
 }

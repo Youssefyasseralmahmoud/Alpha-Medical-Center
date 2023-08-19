@@ -72,7 +72,7 @@ class Listpatients extends StatelessWidget {
                     size: 30,
                   ),
                   onPressed: () {
-                    //   itemDetailsController.add()
+                    controller.copmpletvisit(controller.data_details[index]['RequiredPatientID']);
 
                   },
                 ),

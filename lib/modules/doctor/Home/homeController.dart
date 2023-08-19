@@ -10,15 +10,16 @@ import 'package:project_after_update/core/function/handlingdata.dart';
 class homeController extends GetxController{
 
 
-  bool isFilterOn =true;
+  bool isFilterOn =true.obs as bool;
 
-  Doctor_home_services services = Doctor_home_services(Get.find(),Get.find(),Get.find(),Get.find(),Get.find());
+  Doctor_home_services services = Doctor_home_services(Get.find(),Get.find(),Get.find(),Get.find(),Get.find(),Get.find());
 
   StatusRequest? statusRequest;
   StatusRequest? statusRequest3;
   StatusRequest? statusRequest2;
   StatusRequest? statusRequest4;
   StatusRequest? statusRequest8;
+  StatusRequest? statusRequest5;
 
 
   Secury_storage secury_storage = new Secury_storage();
@@ -82,6 +83,7 @@ class homeController extends GetxController{
       }
     }
   }
+
   increment_requrst_Salary() async {
     statusRequest4 = StatusRequest.loading;
     update();
@@ -158,5 +160,20 @@ class homeController extends GetxController{
       Get.defaultDialog(title: " خطأ", content: Text("حدث خطا ما"));
     }
     update();
+  }
+
+  complet(int id ) async {
+    statusRequest5 = StatusRequest.loading;
+    update();
+
+    var response = await services.complete(id);
+    statusRequest5 = handlingdata(response);
+
+    if (StatusRequest.succes == statusRequest5)
+       Get.defaultDialog(title: "", content: Text("تمت إزالة المريض من الدور"));
+    else
+        Get.defaultDialog(title: "", content: Text("حدث خطأ ما "));
+
+
   }
 }
